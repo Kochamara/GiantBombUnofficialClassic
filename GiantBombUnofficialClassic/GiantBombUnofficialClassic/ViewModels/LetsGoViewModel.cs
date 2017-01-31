@@ -1,6 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
 using GiantBombApi.Models;
-using GiantBombUnofficialClassic.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,12 +19,36 @@ namespace GiantBombUnofficialClassic.ViewModels
         public async Task InitializeAsync()
         {
             ShowJeff = true;
-            var response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideoThingAsync();
-            VideoSource = new MediaEnginePlaybackSource();
 
-        //    VideoSource = new IMediaEnginePlaybackSource(response.Results.First<Video>().HdUrl);
+            var response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideosAsync(Constants.ApiKey);
+
+            var uri = new Uri("http://v.giantbomb.com/video/video_thing_082008_3500.mp4?api_key=" + Constants.ApiKey);
+
+            //var _mediaPlayer = new MediaPlayer();
+            VideoSource = Windows.Media.Core.MediaSource.CreateFromUri(uri);
+            //_mediaPlayer.Play();
+            //_mediaPlayerElement.SetMediaPlayer(_mediaPlayer);
+
             ShowJeff = false;
         }
+
+        public IMediaPlaybackSource VideoSource
+        {
+            get
+            {
+                return _videoSource;
+            }
+
+            set
+            {
+                if (_videoSource != value)
+                {
+                    _videoSource = value;
+                    RaisePropertyChanged(() => VideoSource);
+                }
+            }
+        }
+        private IMediaPlaybackSource _videoSource;
 
         public bool ShowJeff
         {
@@ -44,24 +67,5 @@ namespace GiantBombUnofficialClassic.ViewModels
             }
         }
         private bool _showJeff;
-
-        public MediaEnginePlaybackSource VideoSource
-        {
-            get
-            {
-                return _videoSource;
-            }
-
-            set
-            {
-                if (_videoSource != value)
-                {
-                    _videoSource = value;
-                    RaisePropertyChanged(() => VideoSource);
-                }
-            }
-        }
-        private MediaEnginePlaybackSource _videoSource;
-
     }
 }

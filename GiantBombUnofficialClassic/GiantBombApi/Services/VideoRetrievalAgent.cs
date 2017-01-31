@@ -8,41 +8,24 @@ namespace GiantBombApi.Services
 {
     public class VideoRetrievalAgent
     {
-        public static async Task<Response> GetVideoThingAsync()
+        public const string UserAgent = "CECACEF1-8469-4318-A1ED-EDC4B5F3BF2A_GiantBombTestApp_UnregisteredUserAgent";
+
+        public static async Task<Response> GetVideosAsync(string apiKey)
         {
             Response response = null;
 
             try
             {
-                var status = (StatusCode)1;
+                var uri = new Uri("http://www.giantbomb.com/api/videos/?api_key=" + apiKey + "&format=json");
 
-                Uri url = null; // No no no!
+                using (var client = new HttpClient())
+                {
+                    HttpRequestHeaders headers = client.DefaultRequestHeaders;
+                    headers.UserAgent.ParseAdd(UserAgent);
 
-                HttpClient client = new HttpClient();
-
-                
-                //var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
-                //httpWebRequest.Method = "GET";
-
-                HttpRequestHeaders headers = client.DefaultRequestHeaders;
-                headers.UserAgent.ParseAdd("CECACEF1-8469-4318-A1ED-EDC4B5F3BF2A_GiantBombTestApp_UnregisteredUserAgent");
-
-                var streamResult = await client.GetStringAsync(url);
-
-
-                //var webResponse = await httpWebRequest.GetResponseAsync();
-                //var streamReader = new System.IO.StreamReader(webResponse.GetResponseStream());
-                //string result = streamReader.ReadToEnd();
-
-                //    response = Serializer.Deserialize<Response>(streamResult);
-
-                response = Newtonsoft.Json.JsonConvert.DeserializeObject<Response>(streamResult);
-
-                //var thing = Newtonsoft.Json.JsonSerializer.Create();
-
-                //response = thing.Deserialize<Response>(streamResult);
-                //Response a = new Response();
-                //string b = Serializer.Serialize<Response>(a);
+                    var rawJson = await client.GetStringAsync(uri);
+                    response = Newtonsoft.Json.JsonConvert.DeserializeObject<Response>(rawJson);
+                }
             }
             catch (Exception e)
             {

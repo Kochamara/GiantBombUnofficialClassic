@@ -15,7 +15,6 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Image Source="ms-appx:///Assets/jeff.jpg" Visibility="{Binding ShowJeff, Converter={StaticResource BoolToVisibility}}" />
-
-        <MediaPlayerElement x:Name="_mediaPlayerElement" AreTransportControlsEnabled="False" HorizontalAlignment="Stretch"  Grid.Row="0"/>
+        <MediaPlayerElement x:Name="MediaPlayer" AutoPlay="True" Source="{Binding VideoSource}" HorizontalAlignment="Stretch" Visibility="{Binding ShowJeff, Converter={StaticResource NegatedBoolToVisibility}}"/>
     </Grid>
 </Page>
