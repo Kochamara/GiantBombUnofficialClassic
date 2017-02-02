@@ -11,10 +11,37 @@
     <Page.Resources>
         <Converters:BoolToVisibilityConverter x:Key="BoolToVisibility"/>
         <Converters:NegatedBoolToVisibilityConverter x:Key="NegatedBoolToVisibility"/>
+
+        <DataTemplate x:Name="DataTemplate1">
+            <Button Width="400" Height="340">
+                <Grid>
+                    <Image Stretch="UniformToFill" Opacity="30">
+                        <Image.Source>
+                            <BitmapImage UriSource="{Binding ImageLocation}" />
+                        </Image.Source>
+                    </Image>
+                    <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="Red" Opacity="0.5" />
+                    <TextBlock Text="{Binding Title}" Foreground="White" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" MaxLines="3" FontSize="24" TextWrapping="WrapWholeWords" />
+                </Grid>
+            </Button>
+        </DataTemplate>
     </Page.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Image Source="ms-appx:///Assets/jeff.jpg" Visibility="{Binding ShowJeff, Converter={StaticResource BoolToVisibility}}" />
-        <MediaPlayerElement x:Name="MediaPlayer" AutoPlay="True" Source="{Binding VideoSource}" HorizontalAlignment="Stretch" Visibility="{Binding ShowJeff, Converter={StaticResource NegatedBoolToVisibility}}"/>
-    </Grid>
+    <ScrollViewer>
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Image Source="ms-appx:///Assets/jeff.jpg" Visibility="{Binding ShowJeff, Converter={StaticResource BoolToVisibility}}" />
+
+            <Grid x:Name="FunGrid" Visibility="{Binding ShowJeff, Converter={StaticResource NegatedBoolToVisibility}}">
+                <!--<MediaPlayerElement x:Name="MediaPlayer" AutoPlay="True" Source="{Binding VideoSource}" HorizontalAlignment="Stretch" />-->
+
+                <ItemsControl ItemsSource="{Binding Videos}" ItemTemplate="{StaticResource DataTemplate1}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <ItemsWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
 </Page>
