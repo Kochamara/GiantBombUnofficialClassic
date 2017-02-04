@@ -42,7 +42,7 @@ namespace GiantBombUnofficialClassic
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
-                this.DebugSettings.EnableFrameRateCounter = true;
+                this.DebugSettings.EnableFrameRateCounter = false;
             }
 #endif
             Frame rootFrame = Window.Current.Content as Frame;
@@ -64,6 +64,8 @@ namespace GiantBombUnofficialClassic
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
             }
+
+            GalaSoft.MvvmLight.Threading.DispatcherHelper.Initialize();
 
             if (e.PrelaunchActivated == false)
             {

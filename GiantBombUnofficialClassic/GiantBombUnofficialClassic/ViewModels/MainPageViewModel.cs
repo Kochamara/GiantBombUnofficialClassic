@@ -1,72 +1,55 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using GiantBombApi.Models;
+using GiantBombUnofficialClassic.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Windows.Media.Playback;
 
 namespace GiantBombUnofficialClassic.ViewModels
 {
-    public class LetsGoViewModel : ViewModelBase
+    public class MainPageViewModel : ViewModelBase
     {
-        public LetsGoViewModel()
-        {
-            dataItems = new ObservableCollection<BasicViewModel>();
-        }
+        private NavigationManager _navigationManager;
 
+        public MainPageViewModel()
+        {
+            _videos = new ObservableCollection<BasicViewModel>();
+        }
+        
         public async Task InitializeAsync()
         {
             ShowJeff = true;
+
+            _navigationManager = NavigationManager.GetInstance();
 
             var response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideosAsync(Constants.ApiKey);
             if ((response != null) && (response.Status == StatusCode.OK) && (response.Results != null) && (response.Results.Count() > 0))
             {
                 foreach (var video in response.Results)
                 {
-                    dataItems.Add(new BasicViewModel()
+                    _videos.Add(new VideoViewModel
                     {
                         Title = video.Name,
-                        ImageLocation = new Uri(video.Image.MediumUrl)
+                        ImageLocation = new Uri(video.Image.MediumUrl),
+                        HdUri = new Uri(video.HdUrl)
                     });
                 }
             }
-
-            var uri = new Uri("http://v.giantbomb.com/video/video_thing_082008_3500.mp4?api_key=" + Constants.ApiKey);
-
-            //var _mediaPlayer = new MediaPlayer();
-            VideoSource = Windows.Media.Core.MediaSource.CreateFromUri(uri);
-            //_mediaPlayer.Play();
-            //_mediaPlayerElement.SetMediaPlayer(_mediaPlayer);
-
+            
             ShowJeff = false;
         }
 
-        private ObservableCollection<BasicViewModel> dataItems;
         public ObservableCollection<BasicViewModel> Videos
         {
-            get { return dataItems; }
+            get { return _videos; }
         }
-
-        public IMediaPlaybackSource VideoSource
-        {
-            get
-            {
-                return _videoSource;
-            }
-
-            set
-            {
-                if (_videoSource != value)
-                {
-                    _videoSource = value;
-                    RaisePropertyChanged(() => VideoSource);
-                }
-            }
-        }
-        private IMediaPlaybackSource _videoSource;
+        private ObservableCollection<BasicViewModel> _videos;
 
         public bool ShowJeff
         {
