@@ -1,0 +1,17 @@
+﻿THE GIANT BOMB UNOFFICIAL CLASSIC TO DO LIST
+
+Required:
+-Categories
+-Search
+-Error logging
+-Open source page
+-API key entry and storage
+-Video quality selection
+-Video player controls
+-Gamepad support
+-Images
+
+Maybe?
+-Video playback position
+-Feedback link
+-API key entry audio
