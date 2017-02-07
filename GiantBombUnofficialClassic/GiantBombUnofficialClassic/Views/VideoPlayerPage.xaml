@@ -9,6 +9,6 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ProgressRing Width="100" Height="100" Foreground="Red" IsActive="True" />
-        <MediaPlayerElement AutoPlay="True" Source="{Binding VideoSource}" HorizontalAlignment="Stretch" />
+        <MediaPlayerElement AutoPlay="True" Source="{Binding VideoSource}" AreTransportControlsEnabled="True" HorizontalAlignment="Stretch" />
     </Grid>
 </Page>

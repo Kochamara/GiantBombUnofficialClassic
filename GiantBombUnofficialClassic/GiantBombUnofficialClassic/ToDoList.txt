@@ -4,12 +4,14 @@ Required:
 -Categories
 -Search
 -Error logging
--Open source page
+-Open source page (MIT license for Microsoft samples, ? for Newtonsoft.Json, ? for MvvmLightLibs)
 -API key entry and storage
 -Video quality selection
 -Video player controls
 -Gamepad support
 -Images
+-Loading views
+-Navigation
 
 Maybe?
 -Video playback position
