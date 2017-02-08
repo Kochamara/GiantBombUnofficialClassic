@@ -9,41 +9,34 @@ namespace GiantBombUnofficialClassic.Utilities
 {
     public class SettingsManager
     {
-        private ApplicationDataContainer _localSettings;
-        public const string PrimaryContainerName = "Settings";
-
-        /// <summary>
-        /// feb 6: this uh, this isn't working.
-        /// </summary>
+        private ApplicationDataContainer _roamingSettings;
+        
         public SettingsManager()
         {
-            _localSettings = ApplicationData.Current.LocalSettings;
+            _roamingSettings = ApplicationData.Current.RoamingSettings;
         }
 
-        public void SetKey(string key, object value)
+        public void SaveSetting(string key, object value)
         {
-            _localSettings.CreateContainer(PrimaryContainerName, Windows.Storage.ApplicationDataCreateDisposition.Always);
-
-            if (_localSettings.Containers[PrimaryContainerName].Values.ContainsKey(key))
-            {
-                _localSettings.Containers[PrimaryContainerName].Values[key] = value;
-            }
+            _roamingSettings.Values[key] = value;
         }
 
-        public object GetValue(string key)
+        public object GetSetting(string key)
         {
             object value = null;
             try
             {
-                if (_localSettings.Containers.ContainsKey(PrimaryContainerName))
-                {
-                    _localSettings.Containers[PrimaryContainerName].Values.TryGetValue(key, out value);
-                }
+                value = _roamingSettings.Values[key];
             }
             catch (Exception e)
             {
             }
             return value;
+        }
+
+        public void DeleteSetting(string key)
+        {
+            _roamingSettings.Values.Remove(key);
         }
     }
 }

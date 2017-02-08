@@ -19,6 +19,9 @@ namespace GiantBombUnofficialClassic.Services
             return _instance ?? (_instance = new ApiKeyManager());
         }
 
+        /// <summary>
+        /// Handles storage and retrieval of the user-specific API key needed to show Giant Bomb content
+        /// </summary>
         private ApiKeyManager()
         {
             _settingsManager = new SettingsManager();
@@ -28,14 +31,15 @@ namespace GiantBombUnofficialClassic.Services
         {
             if (String.IsNullOrWhiteSpace(_currentKey))
             {
-                _currentKey = (string)_settingsManager.GetValue(ApiKeySettingName);
+                _currentKey = (string)_settingsManager.GetSetting(ApiKeySettingName);
             }
             return _currentKey;
         }
 
         public void SaveNewApiKey(string apiKey)
         {
-            _settingsManager.SetKey(ApiKeySettingName, apiKey);
+            // TODO: Validate the API key works before saving.
+            _settingsManager.SaveSetting(ApiKeySettingName, apiKey);
             _currentKey = apiKey;
         }
     }
