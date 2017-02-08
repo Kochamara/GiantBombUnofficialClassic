@@ -34,7 +34,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 () =>
                 {
                     var navigationManager = Utilities.NavigationManager.GetInstance();
-                    navigationManager.Navigate("VideoPlayerPage", new Uri(this.HdUri + "?api_key=" + Constants.ApiKey));
+                    navigationManager.Navigate("VideoPlayerPage", new Uri(this.HdUri + "?api_key=" + Services.ApiKeyManager.GetInstance().GetSavedApiKey()));
                 }));
             }
         }

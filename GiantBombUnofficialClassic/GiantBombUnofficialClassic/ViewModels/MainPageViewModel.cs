@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GiantBombApi.Models;
+using GiantBombUnofficialClassic.Services;
 using GiantBombUnofficialClassic.Utilities;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace GiantBombUnofficialClassic.ViewModels
     public class MainPageViewModel : ViewModelBase
     {
         private NavigationManager _navigationManager;
+        private string _apiKey;
 
         public MainPageViewModel()
         {
@@ -27,8 +29,9 @@ namespace GiantBombUnofficialClassic.ViewModels
             ShowJeff = true;
 
             _navigationManager = NavigationManager.GetInstance();
+            _apiKey = ApiKeyManager.GetInstance().GetSavedApiKey();
 
-            var response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideosAsync(Constants.ApiKey);
+            var response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideosAsync(_apiKey);
             if ((response != null) && (response.Status == StatusCode.OK) && (response.Results != null) && (response.Results.Count() > 0))
             {
                 foreach (var video in response.Results)
