@@ -18,6 +18,7 @@ namespace GiantBombUnofficialClassic.Views
 {
     public sealed partial class VideoPlayerPage : Page
     {
+        public const string PageKey = "VideoPlayerPage";
         private VideoPlayerViewModel _context;
 
         public VideoPlayerPage()

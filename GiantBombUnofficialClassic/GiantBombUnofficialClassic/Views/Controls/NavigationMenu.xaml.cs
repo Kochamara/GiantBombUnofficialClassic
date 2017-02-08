@@ -30,22 +30,28 @@ namespace GiantBombUnofficialClassic.Views.Controls
             {
                 new NavMenuItem()
                 {
-                    Symbol = Symbol.Contact,
-                    Label = "Basic Page",
-                    //DestPage = typeof(BasicPage)
+                    Symbol = Symbol.Home,
+                    Label = "Recent",
+                    DestPageKey = Views.MainPage.PageKey
                 },
                 new NavMenuItem()
                 {
-                    Symbol = Symbol.Edit,
-                    Label = "CommandBar Page",
-                    //DestPage = typeof(CommandBarPage)
+                    Symbol = Symbol.Find,
+                    Label = "Search",
+                    DestPageKey = Views.SearchPage.PageKey
                 },
                 new NavMenuItem()
                 {
-                    Symbol = Symbol.Favorite,
-                    Label = "Drill In Page",
-                    //DestPage = typeof(DrillInPage)
+                    Symbol = Symbol.Shop,
+                    Label = "Categories",
+                    DestPageKey = Views.CategoriesPage.PageKey
                 },
+                new NavMenuItem()
+                {
+                    Symbol = Symbol.Setting,
+                    Label = "Settings",
+                    DestPageKey = Views.SettingsPage.PageKey
+                }
             });
 
         /// <summary>
@@ -149,6 +155,9 @@ namespace GiantBombUnofficialClassic.Views.Controls
             //        this.AppFrame.Navigate(item.DestPage, item.Arguments);
             //    }
             //}
+
+            var item = (NavMenuItem)((NavMenuListView)sender).ItemFromContainer(listViewItem);
+            Utilities.NavigationManager.GetInstance().Navigate(item.DestPageKey);
         }
 
         /// <summary>

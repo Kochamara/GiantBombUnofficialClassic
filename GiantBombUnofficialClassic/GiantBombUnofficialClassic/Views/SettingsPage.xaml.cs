@@ -1,5 +1,4 @@
-﻿using GiantBombUnofficialClassic.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -16,14 +15,14 @@ using Windows.UI.Xaml.Navigation;
 
 namespace GiantBombUnofficialClassic.Views
 {
-    public sealed partial class WelcomePage : Page
+    public sealed partial class SettingsPage : Page
     {
-        public const string PageKey = "WelcomePage";
-        private WelcomePageViewModel _viewModel;
+        public const string PageKey = "SettingsPage";
+        private ViewModels.SettingsPageViewModel _viewModel;
 
-        public WelcomePage()
+        public SettingsPage()
         {
-            _viewModel = new WelcomePageViewModel();
+            _viewModel = new ViewModels.SettingsPageViewModel();
             this.DataContext = _viewModel;
             this.InitializeComponent();
         }

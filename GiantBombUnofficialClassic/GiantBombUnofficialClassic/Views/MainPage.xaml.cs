@@ -21,6 +21,7 @@ namespace GiantBombUnofficialClassic.Views
 {
     public sealed partial class MainPage : Page
     {
+        public const string PageKey = "MainPage";
         private MainPageViewModel _context;
 
         public MainPage()

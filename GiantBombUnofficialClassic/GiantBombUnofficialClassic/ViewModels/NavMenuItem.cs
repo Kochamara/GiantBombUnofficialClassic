@@ -48,7 +48,7 @@ namespace GiantBombUnofficialClassic.ViewModels
             }
         }
 
-        public Type DestPage { get; set; }
+        public string DestPageKey { get; set; }
         public object Arguments { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged = delegate { };

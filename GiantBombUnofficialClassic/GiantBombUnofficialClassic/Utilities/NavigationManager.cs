@@ -16,7 +16,6 @@ namespace GiantBombUnofficialClassic.Utilities
         private static NavigationManager _instance;
         private INavigationService _navigationService;
         private SystemNavigationManager _systemNavigationManager;
-        private const string HomePageKey = "MainPage";
 
         public static NavigationManager GetInstance()
         {
@@ -34,7 +33,7 @@ namespace GiantBombUnofficialClassic.Utilities
 
         public void NavigateHome()
         {
-            Navigate("MainPage");
+            Navigate(Views.MainPage.PageKey);
         }
 
         public void Navigate(string pageKey)
@@ -70,8 +69,12 @@ namespace GiantBombUnofficialClassic.Utilities
         {
             var navigationService = new NavigationService();
 
-            navigationService.Configure(HomePageKey, typeof(Views.MainPage));
-            navigationService.Configure("VideoPlayerPage", typeof(Views.VideoPlayerPage));
+            navigationService.Configure(Views.MainPage.PageKey, typeof(Views.MainPage));
+            navigationService.Configure(Views.VideoPlayerPage.PageKey, typeof(Views.VideoPlayerPage));
+            navigationService.Configure(Views.CategoriesPage.PageKey, typeof(Views.CategoriesPage));
+            navigationService.Configure(Views.SearchPage.PageKey, typeof(Views.SearchPage));
+            navigationService.Configure(Views.SettingsPage.PageKey, typeof(Views.SettingsPage));
+            navigationService.Configure(Views.WelcomePage.PageKey, typeof(Views.WelcomePage));
 
             return navigationService;
         }
