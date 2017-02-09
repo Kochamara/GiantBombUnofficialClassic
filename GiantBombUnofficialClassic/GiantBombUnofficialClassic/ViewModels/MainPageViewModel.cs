@@ -32,9 +32,10 @@ namespace GiantBombUnofficialClassic.ViewModels
             _apiKey = ApiKeyManager.GetInstance().GetSavedApiKey();
 
             var response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideosAsync(_apiKey);
-            if ((response != null) && (response.Status == StatusCode.OK) && (response.Results != null) && (response.Results.Count() > 0))
+            if ((response != null) && (response.Status == StatusCode.OK) && (response.Results != null))
             {
-                foreach (var video in response.Results)
+                var videos = response.Results as IEnumerable<Video>;
+                foreach (var video in videos)
                 {
                     _videos.Add(new VideoViewModel
                     {

@@ -25,6 +25,7 @@ namespace GiantBombUnofficialClassic.Views
             _viewModel = new ViewModels.CategoriesPageViewModel();
             this.DataContext = _viewModel;
             this.InitializeComponent();
+            var unawaitedTask = _viewModel.InitializeAsync();
         }
     }
 }

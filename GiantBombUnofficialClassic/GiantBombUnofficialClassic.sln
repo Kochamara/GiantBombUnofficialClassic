@@ -19,6 +19,10 @@ Global
 		Release|ARM = Release|ARM
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
+		Xbox - Debug|Any CPU = Xbox - Debug|Any CPU
+		Xbox - Debug|ARM = Xbox - Debug|ARM
+		Xbox - Debug|x64 = Xbox - Debug|x64
+		Xbox - Debug|x86 = Xbox - Debug|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{49AF8211-5DC3-4221-8F04-38ADCD4E3E8D}.Debug|Any CPU.ActiveCfg = Debug|x86
@@ -41,6 +45,16 @@ Global
 		{49AF8211-5DC3-4221-8F04-38ADCD4E3E8D}.Release|x86.ActiveCfg = Release|x86
 		{49AF8211-5DC3-4221-8F04-38ADCD4E3E8D}.Release|x86.Build.0 = Release|x86
 		{49AF8211-5DC3-4221-8F04-38ADCD4E3E8D}.Release|x86.Deploy.0 = Release|x86
+		{49AF8211-5DC3-4221-8F04-38ADCD4E3E8D}.Xbox - Debug|Any CPU.ActiveCfg = Xbox - Debug|x86
+		{49AF8211-5DC3-4221-8F04-38ADCD4E3E8D}.Xbox - Debug|ARM.ActiveCfg = Xbox - Debug|ARM
+		{49AF8211-5DC3-4221-8F04-38ADCD4E3E8D}.Xbox - Debug|ARM.Build.0 = Xbox - Debug|ARM
+		{49AF8211-5DC3-4221-8F04-38ADCD4E3E8D}.Xbox - Debug|ARM.Deploy.0 = Xbox - Debug|ARM
+		{49AF8211-5DC3-4221-8F04-38ADCD4E3E8D}.Xbox - Debug|x64.ActiveCfg = Xbox - Debug|x64
+		{49AF8211-5DC3-4221-8F04-38ADCD4E3E8D}.Xbox - Debug|x64.Build.0 = Xbox - Debug|x64
+		{49AF8211-5DC3-4221-8F04-38ADCD4E3E8D}.Xbox - Debug|x64.Deploy.0 = Xbox - Debug|x64
+		{49AF8211-5DC3-4221-8F04-38ADCD4E3E8D}.Xbox - Debug|x86.ActiveCfg = Xbox - Debug|x86
+		{49AF8211-5DC3-4221-8F04-38ADCD4E3E8D}.Xbox - Debug|x86.Build.0 = Xbox - Debug|x86
+		{49AF8211-5DC3-4221-8F04-38ADCD4E3E8D}.Xbox - Debug|x86.Deploy.0 = Xbox - Debug|x86
 		{A18FE160-293C-4FA1-9365-50C25BA3E0A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A18FE160-293C-4FA1-9365-50C25BA3E0A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A18FE160-293C-4FA1-9365-50C25BA3E0A9}.Debug|ARM.ActiveCfg = Debug|ARM
@@ -57,6 +71,14 @@ Global
 		{A18FE160-293C-4FA1-9365-50C25BA3E0A9}.Release|x64.Build.0 = Release|x64
 		{A18FE160-293C-4FA1-9365-50C25BA3E0A9}.Release|x86.ActiveCfg = Release|x86
 		{A18FE160-293C-4FA1-9365-50C25BA3E0A9}.Release|x86.Build.0 = Release|x86
+		{A18FE160-293C-4FA1-9365-50C25BA3E0A9}.Xbox - Debug|Any CPU.ActiveCfg = Xbox - Debug|Any CPU
+		{A18FE160-293C-4FA1-9365-50C25BA3E0A9}.Xbox - Debug|Any CPU.Build.0 = Xbox - Debug|Any CPU
+		{A18FE160-293C-4FA1-9365-50C25BA3E0A9}.Xbox - Debug|ARM.ActiveCfg = Xbox - Debug|ARM
+		{A18FE160-293C-4FA1-9365-50C25BA3E0A9}.Xbox - Debug|ARM.Build.0 = Xbox - Debug|ARM
+		{A18FE160-293C-4FA1-9365-50C25BA3E0A9}.Xbox - Debug|x64.ActiveCfg = Xbox - Debug|x64
+		{A18FE160-293C-4FA1-9365-50C25BA3E0A9}.Xbox - Debug|x64.Build.0 = Xbox - Debug|x64
+		{A18FE160-293C-4FA1-9365-50C25BA3E0A9}.Xbox - Debug|x86.ActiveCfg = Xbox - Debug|x86
+		{A18FE160-293C-4FA1-9365-50C25BA3E0A9}.Xbox - Debug|x86.Build.0 = Xbox - Debug|x86
 		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -73,6 +95,14 @@ Global
 		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Release|x64.Build.0 = Release|Any CPU
 		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Release|x86.ActiveCfg = Release|Any CPU
 		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Release|x86.Build.0 = Release|Any CPU
+		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Xbox - Debug|Any CPU.ActiveCfg = Xbox - Debug|Any CPU
+		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Xbox - Debug|Any CPU.Build.0 = Xbox - Debug|Any CPU
+		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Xbox - Debug|ARM.ActiveCfg = Xbox - Debug|Any CPU
+		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Xbox - Debug|ARM.Build.0 = Xbox - Debug|Any CPU
+		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Xbox - Debug|x64.ActiveCfg = Xbox - Debug|Any CPU
+		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Xbox - Debug|x64.Build.0 = Xbox - Debug|Any CPU
+		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Xbox - Debug|x86.ActiveCfg = Xbox - Debug|Any CPU
+		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Xbox - Debug|x86.Build.0 = Xbox - Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

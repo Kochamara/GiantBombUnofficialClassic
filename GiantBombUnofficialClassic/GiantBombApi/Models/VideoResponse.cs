@@ -1,7 +1,18 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace GiantBombApi.Models
 {
+    [DataContract]
+    public class VideoResponse : Response
+    {
+        /// <summary>
+        /// Zero or more items that match the filters specified
+        /// </summary>
+        [DataMember(Name = "results")]
+        public IEnumerable<Video> Results;
+    }
+
     [DataContract]
     public class Video
     {
