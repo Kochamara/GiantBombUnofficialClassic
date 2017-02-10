@@ -107,10 +107,12 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\ApiKeyResponse.cs" />
     <Compile Include="Models\CategoriesResponse.cs" />
     <Compile Include="Models\Response.cs" />
     <Compile Include="Models\VideoResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ApiKeyRetrievalAgent.cs" />
     <Compile Include="Services\VideoRetrievalAgent.cs" />
     <Compile Include="Utilities\HttpRequestAgent.cs" />
     <EmbeddedResource Include="Properties\GiantBombApi.rd.xml" />

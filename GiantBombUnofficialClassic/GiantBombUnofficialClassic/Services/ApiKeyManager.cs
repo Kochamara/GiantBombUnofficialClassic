@@ -38,7 +38,6 @@ namespace GiantBombUnofficialClassic.Services
 
         public void SaveNewApiKey(string apiKey)
         {
-            // TODO: Validate the API key works before saving.
             _settingsManager.SaveSetting(ApiKeySettingName, apiKey);
             _currentKey = apiKey;
         }

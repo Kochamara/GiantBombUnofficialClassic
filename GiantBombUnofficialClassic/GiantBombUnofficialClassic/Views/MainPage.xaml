@@ -7,12 +7,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     NavigationCacheMode="Enabled"
     xmlns:controls="using:GiantBombUnofficialClassic.Views.Controls"
-    xmlns:Converters="using:GiantBombUnofficialClassic.Views.Converters"
+    xmlns:converters="using:GiantBombUnofficialClassic.Views.Converters"
     mc:Ignorable="d">
 
     <Page.Resources>
-        <Converters:BoolToVisibilityConverter x:Key="BoolToVisibility"/>
-        <Converters:NegatedBoolToVisibilityConverter x:Key="NegatedBoolToVisibility"/>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibility"/>
+        <converters:NegatedBoolToVisibilityConverter x:Key="NegatedBoolToVisibility"/>
 
         <DataTemplate x:Name="DataTemplate1">
             <Button Width="440" Height="340" Command="{Binding PlayVideoCommand}" Margin="8">

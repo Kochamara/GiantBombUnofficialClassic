@@ -51,18 +51,25 @@ namespace GiantBombApi.Models
     {
         [EnumMember(Value = "0")]
         Unknown = 0,
+
         [EnumMember(Value = "1")]
         OK = 1,
+
         [EnumMember(Value = "100")]
         InvalidApiKey = 100,
+
         [EnumMember(Value = "101")]
         ObjectNotFound = 101,
+
         [EnumMember(Value = "102")]
         ErrorInUrlFormat = 102,
+
         [EnumMember(Value = "103")]
         JsonpFormatRequiresJsonCallbackArg = 103,
+
         [EnumMember(Value = "104")]
         FilterError = 104,
+
         [EnumMember(Value = "105")]
         SubscriberOnlyVideo = 105
     }

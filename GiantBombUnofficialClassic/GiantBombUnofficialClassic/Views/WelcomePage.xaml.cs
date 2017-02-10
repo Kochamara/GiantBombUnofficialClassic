@@ -27,5 +27,10 @@ namespace GiantBombUnofficialClassic.Views
             this.DataContext = _viewModel;
             this.InitializeComponent();
         }
+
+        private void LinkCodeHyperlink_Click(Windows.UI.Xaml.Documents.Hyperlink sender, Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)
+        {
+            var unawaitedTask = Windows.System.Launcher.LaunchUriAsync(_viewModel.LinkCodeWebsite);
+        }
     }
 }

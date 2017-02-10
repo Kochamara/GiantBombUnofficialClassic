@@ -119,6 +119,7 @@
     </Compile>
     <Compile Include="Views\Controls\NavMenuListView.cs" />
     <Compile Include="Views\Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Views\Converters\NullToVisibilityConverter.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

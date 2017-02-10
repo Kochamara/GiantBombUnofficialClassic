@@ -15,10 +15,40 @@ namespace GiantBombUnofficialClassic.ViewModels
         private NavigationManager _navigationManager;
         private ApiKeyManager _apiKeyManager;
 
+        public const string NoKeyEnteredError = "Uh oh! You need to enter a key to use this app.";
+        public const string NoApiKeyReturnedError = "We're having trouble validating your code. Are you sure it's correct?";
+        public Uri LinkCodeWebsite = new Uri("http://www.giantbomb.com/boxee/");
+
         public WelcomePageViewModel()
         {
             _navigationManager = NavigationManager.GetInstance();
             _apiKeyManager = ApiKeyManager.GetInstance();
+        }
+
+        public async Task ConvertLinkCodeToApiKeyAndNavigateAsync(string linkCode)
+        {
+            IsLoading = true;
+
+            if (!String.IsNullOrWhiteSpace(UserInput))
+            {
+                var apiKey = await GiantBombApi.Services.ApiKeyRetrievalAgent.GetApiKeyFromCodeAsync(linkCode);
+
+                if (!String.IsNullOrWhiteSpace(apiKey))
+                {
+                    _apiKeyManager.SaveNewApiKey(apiKey);
+                    _navigationManager.Navigate("MainPage");
+                }
+                else
+                {
+                    ErrorText = NoApiKeyReturnedError;
+                }
+            }
+            else
+            {
+                ErrorText = NoKeyEnteredError;
+            }
+
+            IsLoading = false;
         }
 
         public RelayCommand SaveKeyCommand
@@ -28,15 +58,47 @@ namespace GiantBombUnofficialClassic.ViewModels
                 return _saveKeyCommand ?? (_saveKeyCommand = new RelayCommand(
                 () =>
                 {
-                    if (!String.IsNullOrWhiteSpace(UserInput))
-                    {
-                        _apiKeyManager.SaveNewApiKey(UserInput);
-                        _navigationManager.Navigate("MainPage");
-                    }
+                    var unawaitedTask = ConvertLinkCodeToApiKeyAndNavigateAsync(UserInput);
                 }));
             }
         }
         private RelayCommand _saveKeyCommand;
+
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+
+            set
+            {
+                if (_isLoading != value)
+                {
+                    _isLoading = value;
+                    RaisePropertyChanged(() => IsLoading);
+                }
+            }
+        }
+        private bool _isLoading;
+
+        public string ErrorText
+        {
+            get
+            {
+                return _errorText;
+            }
+
+            set
+            {
+                if (_errorText != value)
+                {
+                    _errorText = value;
+                    RaisePropertyChanged(() => ErrorText);
+                }
+            }
+        }
+        private string _errorText;
 
         public string UserInput { get; set; }
     }

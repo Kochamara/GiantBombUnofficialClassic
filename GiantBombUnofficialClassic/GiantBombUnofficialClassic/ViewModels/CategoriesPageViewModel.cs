@@ -25,7 +25,7 @@ namespace GiantBombUnofficialClassic.ViewModels
             newText += "SHOWS ONLY\n";
             foreach (var item in response)
             {
-                newText += item.Id + " " + item.Name + "\n";
+                newText += item.Name + "\n";
             }
             newText += "\n\n";
 
@@ -34,7 +34,7 @@ namespace GiantBombUnofficialClassic.ViewModels
             newText += "ALL THAT SHIT\n";
             foreach (var item in response)
             {
-                newText += item.Id + " " + item.Name + "\n";
+                newText += item.Name + "\n";
             }
             newText += "\n\n";
 
