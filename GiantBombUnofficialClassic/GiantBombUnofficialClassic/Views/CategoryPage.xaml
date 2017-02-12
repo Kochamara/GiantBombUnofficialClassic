@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="GiantBombUnofficialClassic.Views.CategoriesPage"
+    x:Class="GiantBombUnofficialClassic.Views.CategoryPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:GiantBombUnofficialClassic.Views"
@@ -16,11 +16,11 @@
         <DataTemplate x:Name="DataTemplate1">
             <Button Width="440" Height="340" Command="{Binding Command}" Margin="8">
                 <Grid>
-                    <!--<Image Stretch="UniformToFill" Opacity="30">
+                    <Image Stretch="UniformToFill" Opacity="30">
                         <Image.Source>
                             <BitmapImage UriSource="{Binding ImageLocation}" />
                         </Image.Source>
-                    </Image>-->
+                    </Image>
                     <Grid VerticalAlignment="Bottom" Opacity="0.75" Background="DarkRed">
                         <TextBlock Text="{Binding Title}" Foreground="White" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" FontSize="24" TextWrapping="WrapWholeWords" Margin="20" />
                     </Grid>
@@ -28,15 +28,24 @@
             </Button>
         </DataTemplate>
     </Page.Resources>
+    
+    <Grid Background="Purple">
+        <Image Source="ms-appx:///Assets/jeff.jpg" Visibility="{Binding ShowJeff, Converter={StaticResource BoolToVisibility}}" Stretch="UniformToFill" VerticalAlignment="Center" />
+        <ScrollViewer>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="{Binding Category.Title}" FontFamily="Courier New" Foreground="Red" Margin="20" FontSize="24" HorizontalAlignment="Center" />
+                <TextBlock Text="{Binding Category.Description}" FontFamily="Courier New" Foreground="Red" Margin="20" FontSize="24" HorizontalAlignment="Center" />
 
-    <ScrollViewer Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-        <ItemsControl ItemsSource="{Binding Categories}" ItemTemplate="{StaticResource DataTemplate1}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <ItemsWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal" />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-        </ItemsControl>
-    </ScrollViewer>
+                <Grid HorizontalAlignment="Center" Visibility="{Binding ShowJeff, Converter={StaticResource NegatedBoolToVisibility}}">
+                    <ItemsControl ItemsSource="{Binding Videos}" ItemTemplate="{StaticResource DataTemplate1}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <ItemsWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
 </Page>

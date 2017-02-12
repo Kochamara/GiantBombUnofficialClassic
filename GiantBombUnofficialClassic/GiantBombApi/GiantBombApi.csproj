@@ -108,9 +108,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\ApiKeyResponse.cs" />
-    <Compile Include="Models\CategoriesResponse.cs" />
+    <Compile Include="Models\TypesResponse.cs" />
     <Compile Include="Models\Response.cs" />
-    <Compile Include="Models\VideoResponse.cs" />
+    <Compile Include="Models\VideosResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ApiKeyRetrievalAgent.cs" />
     <Compile Include="Services\VideoRetrievalAgent.cs" />

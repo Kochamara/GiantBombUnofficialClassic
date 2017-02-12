@@ -9,14 +9,14 @@ namespace GiantBombApi.Services
 {
     public class VideoRetrievalAgent
     {
-        public static async Task<VideoResponse> GetVideosAsync(string apiKey)
+        public static async Task<VideosResponse> GetVideosAsync(string apiKey)
         {
-            VideoResponse response = null;
+            VideosResponse response = null;
 
             try
             {
-                var uri = new Uri("http://www.giantbomb.com/api/videos/?api_key=" + apiKey + "&format=json");
-                response = await Utilities.HttpRequestAgent.GetDeserializedResponseAsync<VideoResponse>(uri);
+                var uri = new Uri("http://www.giantbomb.com/api/videos/?format=json&api_key=" + apiKey);
+                response = await Utilities.HttpRequestAgent.GetDeserializedResponseAsync<VideosResponse>(uri);
             }
             catch (Exception e)
             {
@@ -26,48 +26,55 @@ namespace GiantBombApi.Services
             return response;
         }
 
-        public static async Task<IEnumerable<Category>> GetCategoriesAsync(string apiKey, bool onlyReturnShows)
+        public static async Task<VideosResponse> GetVideosAsync(string apiKey, string videoTypeId)
         {
-            List<Category> categories = null;
+            VideosResponse response = null;
 
             try
             {
-                var showsUri = new Uri("http://www.giantbomb.com/api/video_shows/?api_key=" + apiKey + "&format=json");
-                var showsResponse = await Utilities.HttpRequestAgent.GetDeserializedResponseAsync<CategoriesResponse>(showsUri);
-
-                if (showsResponse.Status == StatusCode.OK)
-                {
-                    categories = new List<Category>();
-                    categories.AddRange(showsResponse.Results);
-
-                    if (!onlyReturnShows)
-                    {
-                        var typesUri = new Uri("http://www.giantbomb.com/api/video_types/?api_key=" + apiKey + "&format=json");
-                        var typesResponse = await Utilities.HttpRequestAgent.GetDeserializedResponseAsync<CategoriesResponse>(typesUri);
-
-                        if (typesResponse.Status == StatusCode.OK)
-                        {
-                            foreach (var type in typesResponse.Results)
-                            {
-                                if (!String.IsNullOrWhiteSpace(type.Name) && (categories.Find(item => String.Equals(item.Name, type.Name, StringComparison.OrdinalIgnoreCase)) == null))
-                                {
-                                    categories.Add(type);
-                                }
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    // TODO: Add error logging
-                }
+                var uri = new Uri("http://www.giantbomb.com/api/videos/?format=json&api_key=" + apiKey + "&video_type=" + videoTypeId);
+                response = await Utilities.HttpRequestAgent.GetDeserializedResponseAsync<VideosResponse>(uri);
             }
             catch (Exception e)
             {
                 // TODO: add a logger
             }
 
-            return categories;
+            return response;
+        }
+
+        public static async Task<TypesResponse> GetVideoTypesAsync(string apiKey)
+        {
+            TypesResponse response = null;
+
+            try
+            {
+                var uri = new Uri("http://www.giantbomb.com/api/video_types/?format=json&api_key=" + apiKey);
+                response = await Utilities.HttpRequestAgent.GetDeserializedResponseAsync<TypesResponse>(uri);
+            }
+            catch (Exception e)
+            {
+                // TODO: add a logger
+            }
+
+            return response;
+        }
+
+        public static async Task<VideosResponse> GetVideoSearchResultsAsync(string apiKey, string query)
+        {
+            VideosResponse response = null;
+
+            try
+            {
+                var uri = new Uri("http://www.giantbomb.com/api/search/?format=json&api_key=" + apiKey + "&query=" + query + "&resources=video");
+                response = await Utilities.HttpRequestAgent.GetDeserializedResponseAsync<VideosResponse>(uri);
+            }
+            catch (Exception e)
+            {
+                // TODO: add a logger
+            }
+
+            return response;
         }
     }
 }

@@ -14,28 +14,36 @@ using Windows.Media.Playback;
 
 namespace GiantBombUnofficialClassic.ViewModels
 {
-    public class MainPageViewModel : ViewModelBase
+    public class VideoListPageViewModel : ViewModelBase
     {
         private NavigationManager _navigationManager;
         private string _apiKey;
 
-        public MainPageViewModel()
+        public VideoListPageViewModel()
         {
             _videos = new ObservableCollection<BasicViewModel>();
         }
-        
+
         public async Task InitializeAsync()
         {
             ShowJeff = true;
 
             _navigationManager = NavigationManager.GetInstance();
             _apiKey = ApiKeyManager.GetInstance().GetSavedApiKey();
+            VideosResponse response = null;
 
-            var response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideosAsync(_apiKey);
+            if ((this.Category == null) || (String.IsNullOrWhiteSpace(this.Category.Id)))
+            {
+                response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideosAsync(_apiKey);
+            }
+            else
+            {
+                response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideosAsync(_apiKey, Category.Id);
+            }
+            
             if ((response != null) && (response.Status == StatusCode.OK) && (response.Results != null))
             {
-                var videos = response.Results as IEnumerable<Video>;
-                foreach (var video in videos)
+                foreach (var video in response.Results)
                 {
                     _videos.Add(new VideoViewModel
                     {
@@ -45,7 +53,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                     });
                 }
             }
-            
+
             ShowJeff = false;
         }
 
@@ -54,6 +62,24 @@ namespace GiantBombUnofficialClassic.ViewModels
             get { return _videos; }
         }
         private ObservableCollection<BasicViewModel> _videos;
+
+        public VideoType Category
+        {
+            get
+            {
+                return _category;
+            }
+
+            set
+            {
+                if (_category != value)
+                {
+                    _category = value;
+                    RaisePropertyChanged(() => Category);
+                }
+            }
+        }
+        private VideoType _category;
 
         public bool ShowJeff
         {

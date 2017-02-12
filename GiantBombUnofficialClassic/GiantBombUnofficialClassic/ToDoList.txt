@@ -12,8 +12,10 @@ Required:
 -Images
 -Loading views
 -Navigation
+-figure out how to handle non-premium users
 
 Maybe?
+-Random video button
 -Video playback position
 -Feedback link
 -API key entry audio

@@ -22,13 +22,12 @@ namespace GiantBombUnofficialClassic.Views
     public sealed partial class MainPage : Page
     {
         public const string PageKey = "MainPage";
-        private MainPageViewModel _context;
+        private VideoListPageViewModel _context;
 
         public MainPage()
         {
             this.InitializeComponent();
-
-            _context = new MainPageViewModel();
+            _context = new VideoListPageViewModel();
             this.DataContext = _context;
             var unawaitedTask = _context.InitializeAsync();
         }

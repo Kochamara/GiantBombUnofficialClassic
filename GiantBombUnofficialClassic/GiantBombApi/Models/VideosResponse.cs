@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace GiantBombApi.Models
 {
     [DataContract]
-    public class VideoResponse : Response
+    public class VideosResponse : Response
     {
         /// <summary>
         /// Zero or more items that match the filters specified

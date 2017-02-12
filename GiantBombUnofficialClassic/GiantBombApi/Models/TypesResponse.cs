@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 namespace GiantBombApi.Models
 {
     [DataContract]
-    public class CategoriesResponse : Response
+    public class TypesResponse : Response
     {
         /// <summary>
         /// Zero or more items that match the filters specified
         /// </summary>
         [DataMember(Name = "results")]
-        public IEnumerable<Category> Results;
+        public IEnumerable<VideoType> Results;
     }
 
     [DataContract]
-    public class Category
+    public class VideoType
     {
         /// <summary>
         /// URL pointing to the video_category detail resource.

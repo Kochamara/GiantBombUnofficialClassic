@@ -5,9 +5,57 @@
     xmlns:local="using:GiantBombUnofficialClassic.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:GiantBombUnofficialClassic.Views.Controls"
+    xmlns:converters="using:GiantBombUnofficialClassic.Views.Converters"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <!--deal with this shit later-->
+    <Page.Resources>
+        <DataTemplate x:Name="DataTemplate1">
+            <Button Width="440" Height="340" Command="{Binding PlayVideoCommand}" Margin="8">
+                <Grid>
+                    <Image Stretch="UniformToFill" Opacity="30">
+                        <Image.Source>
+                            <BitmapImage UriSource="{Binding ImageLocation}" />
+                        </Image.Source>
+                    </Image>
+                    <Grid VerticalAlignment="Bottom" Opacity="0.75" Background="DarkRed">
+                        <TextBlock Text="{Binding Title}" Foreground="White" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" FontSize="24" TextWrapping="WrapWholeWords" Margin="20" />
+                    </Grid>
+                </Grid>
+            </Button>
+        </DataTemplate>
+        <Style TargetType="TextBlock" x:Key="NormalTextStyle">
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="FontFamily" Value="Georgia" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="TextWrapping" Value="WrapWholeWords" />
+            <Setter Property="TextAlignment" Value="Center" />
+        </Style>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibility"/>
+        <converters:NegatedBoolToVisibilityConverter x:Key="NegatedBoolToVisibility"/>
+        <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+    </Page.Resources>
+    
+    <ScrollViewer>
+        <StackPanel Orientation="Vertical" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" VerticalAlignment="Center">
+            <TextBlock Text="{Binding ErrorText}" Style="{StaticResource NormalTextStyle}" Foreground="DarkRed" Margin="20" Visibility="{Binding ErrorText, Converter={StaticResource NullToVisibilityConverter}}" />
 
-    </Grid>
+            <StackPanel Orientation="Vertical" Visibility="{Binding IsLoading, Converter={StaticResource NegatedBoolToVisibility}}">
+                <TextBlock Text="Search query:" Style="{StaticResource NormalTextStyle}" Margin="20" />
+                <TextBox x:Name="KeyEntryTextBox" Width="200" Text="{Binding UserInput, Mode=TwoWay}" />
+                <Button x:Name="SubmitButton" Content="Submit" Command="{Binding SearchCommand}" HorizontalAlignment="Center" />
+            </StackPanel>
+
+            <ProgressRing Width="40" Height="40" Foreground="Blue" Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibility}}" IsActive="True" />
+
+            <ItemsControl ItemsSource="{Binding SearchResults}" ItemTemplate="{StaticResource DataTemplate1}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <ItemsWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </StackPanel>
+    </ScrollViewer>
 </Page>

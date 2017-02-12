@@ -104,7 +104,7 @@
     <Compile Include="Utilities\SystemInformationManager.cs" />
     <Compile Include="ViewModels\BasicViewModel.cs" />
     <Compile Include="ViewModels\CategoriesPageViewModel.cs" />
-    <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Compile Include="ViewModels\VideoListPageViewModel.cs" />
     <Compile Include="ViewModels\NavMenuItem.cs" />
     <Compile Include="ViewModels\SearchPageViewModel.cs" />
     <Compile Include="ViewModels\SettingsPageViewModel.cs" />
@@ -113,6 +113,9 @@
     <Compile Include="ViewModels\WelcomePageViewModel.cs" />
     <Compile Include="Views\CategoriesPage.xaml.cs">
       <DependentUpon>CategoriesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CategoryPage.xaml.cs">
+      <DependentUpon>CategoryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Controls\NavigationMenu.xaml.cs">
       <DependentUpon>NavigationMenu.xaml</DependentUpon>
@@ -161,6 +164,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Views\CategoriesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CategoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,23 @@ namespace GiantBombUnofficialClassic.ViewModels
 {
     public class BasicViewModel : ViewModelBase
     {
+        public string Id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (value != _id)
+                {
+                    _id = value;
+                    RaisePropertyChanged(() => Id);
+                }
+            }
+        }
+        private string _id;
+
         public string Title
         {
             get
@@ -59,5 +77,22 @@ namespace GiantBombUnofficialClassic.ViewModels
             }
         }
         private Uri _imageLocation;
+
+        public RelayCommand Command
+        {
+            get
+            {
+                return _command;
+            }
+            set
+            {
+                if (value != _command)
+                {
+                    _command = value;
+                    RaisePropertyChanged(() => Command);
+                }
+            }
+        }
+        private RelayCommand _command;
     }
 }

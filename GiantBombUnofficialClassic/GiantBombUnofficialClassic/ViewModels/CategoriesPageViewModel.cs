@@ -1,6 +1,8 @@
 ﻿using GalaSoft.MvvmLight;
+using GiantBombApi.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,55 +11,47 @@ namespace GiantBombUnofficialClassic.ViewModels
 {
     public class CategoriesPageViewModel : ViewModelBase
     {
+        private Utilities.NavigationManager _navigationManager;
+        private string _apiKey;
+
         public CategoriesPageViewModel()
         {
-
+            _navigationManager = Utilities.NavigationManager.GetInstance();
+            _categories = new ObservableCollection<BasicViewModel>();
         }
 
         public async Task InitializeAsync()
         {
-            Text = "hello video website";
-            var apiKey = Services.ApiKeyManager.GetInstance().GetSavedApiKey();
+            _apiKey = Services.ApiKeyManager.GetInstance().GetSavedApiKey();
 
-            string newText = string.Empty;
+            string text = string.Empty;
 
-            var response = await GiantBombApi.Services.VideoRetrievalAgent.GetCategoriesAsync(apiKey, true);
-            newText += "SHOWS ONLY\n";
-            foreach (var item in response)
+            var response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideoTypesAsync(_apiKey);
+            if ((response != null) && (response.Status == StatusCode.OK) && (response.Results != null))
             {
-                newText += item.Name + "\n";
-            }
-            newText += "\n\n";
-
-
-            response = await GiantBombApi.Services.VideoRetrievalAgent.GetCategoriesAsync(apiKey, false);
-            newText += "ALL THAT SHIT\n";
-            foreach (var item in response)
-            {
-                newText += item.Name + "\n";
-            }
-            newText += "\n\n";
-
-            this.Text = newText;
-        }
-
-        public string Text
-        {
-            get
-            {
-                return _text;
-            }
-
-            set
-            {
-                if (_text != value)
+                foreach (var category in response.Results)
                 {
-                    _text = value;
-                    RaisePropertyChanged(() => Text);
+                    _categories.Add(new BasicViewModel
+                    {
+                        Title = category.Name,
+                        Description = category.Deck,
+                        Id = category.Id,
+                        Command = new GalaSoft.MvvmLight.Command.RelayCommand(
+                        () =>
+                        {
+                            _navigationManager.Navigate("CategoryPage", category);
+                        })
+                    });
+                    text += category.Name + " " + category.Id + "\n" + category.Deck + "\n\n";
                 }
             }
+            text += "end";
         }
-        private string _text;
-    
+
+        public ObservableCollection<BasicViewModel> Categories
+        {
+            get { return _categories; }
+        }
+        private ObservableCollection<BasicViewModel> _categories;
     }
 }
