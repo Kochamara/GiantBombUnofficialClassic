@@ -38,6 +38,8 @@ namespace GiantBombUnofficialClassic.ViewModels
             }
             else
             {
+                CategoryTitle = Category.Name;
+                CategoryDescription = Category.Deck;
                 response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideosAsync(_apiKey, Category.Id);
             }
             
@@ -80,6 +82,42 @@ namespace GiantBombUnofficialClassic.ViewModels
             }
         }
         private VideoType _category;
+
+        public string CategoryTitle
+        {
+            get
+            {
+                return _categoryTitle;
+            }
+
+            set
+            {
+                if (_categoryTitle != value)
+                {
+                    _categoryTitle = value;
+                    RaisePropertyChanged(() => CategoryTitle);
+                }
+            }
+        }
+        private string _categoryTitle;
+
+        public string CategoryDescription
+        {
+            get
+            {
+                return _categoryDescription;
+            }
+
+            set
+            {
+                if (_categoryDescription != value)
+                {
+                    _categoryDescription = value;
+                    RaisePropertyChanged(() => CategoryDescription);
+                }
+            }
+        }
+        private string _categoryDescription;
 
         public bool ShowJeff
         {
