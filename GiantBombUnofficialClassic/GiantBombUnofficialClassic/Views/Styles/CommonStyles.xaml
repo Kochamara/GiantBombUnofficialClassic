@@ -5,7 +5,7 @@
 
     <Style x:Key="HeaderTextStyle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="24" />
-        <Setter Property="Foreground" Value="DarkRed" />
+        <Setter Property="Foreground" Value="Red" />
         <Setter Property="TextWrapping" Value="WrapWholeWords" />
         <Setter Property="TextTrimming" Value="WordEllipsis" />
         <Setter Property="FontFamily" Value="Georgia" />
@@ -13,7 +13,7 @@
 
     <Style x:Key="SubHeaderTextStyle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="20" />
-        <Setter Property="Foreground" Value="DarkRed" />
+        <Setter Property="Foreground" Value="Red" />
         <Setter Property="TextWrapping" Value="WrapWholeWords" />
         <Setter Property="TextTrimming" Value="WordEllipsis" />
         <Setter Property="FontFamily" Value="Georgia" />
