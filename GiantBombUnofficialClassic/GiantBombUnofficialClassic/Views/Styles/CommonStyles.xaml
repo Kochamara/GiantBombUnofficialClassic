@@ -8,6 +8,7 @@
         <Setter Property="Foreground" Value="DarkRed" />
         <Setter Property="TextWrapping" Value="WrapWholeWords" />
         <Setter Property="TextTrimming" Value="WordEllipsis" />
+        <Setter Property="FontFamily" Value="Georgia" />
     </Style>
 
     <Style x:Key="SubHeaderTextStyle" TargetType="TextBlock">
@@ -15,6 +16,7 @@
         <Setter Property="Foreground" Value="DarkRed" />
         <Setter Property="TextWrapping" Value="WrapWholeWords" />
         <Setter Property="TextTrimming" Value="WordEllipsis" />
+        <Setter Property="FontFamily" Value="Georgia" />
     </Style>
 
     <Style x:Key="BodyTextStyle" TargetType="TextBlock">
@@ -27,18 +29,29 @@
         <Setter Property="ItemTemplate">
             <Setter.Value>
                 <DataTemplate x:Name="VideoTemplate">
-                    <Button Width="440" Height="700" Command="{Binding Command}" Margin="8">
-                        <Grid>
-                            <Image Stretch="UniformToFill" Opacity="30">
-                                <Image.Source>
-                                    <BitmapImage UriSource="{Binding ImageLocation}" />
-                                </Image.Source>
-                            </Image>
-                            <Grid VerticalAlignment="Bottom" Opacity="0.75" Background="DarkRed">
-                                <TextBlock Text="{Binding Title}" Foreground="White" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" FontSize="24" TextWrapping="WrapWholeWords" Margin="20" />
+                    <Grid Width="440" Height="240"  Margin="8">
+                        <Button Command="{Binding Command}" Background="Transparent">
+                            <Grid>
+                                <Image Stretch="UniformToFill" Opacity="30" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                    <Image.Source>
+                                        <BitmapImage UriSource="{Binding ImageLocation}" />
+                                    </Image.Source>
+                                </Image>
+                                <Grid VerticalAlignment="Bottom" MinHeight="80">
+                                    <Grid.Background>
+                                        <LinearGradientBrush StartPoint=".5,0" EndPoint=".5,1">
+                                                <GradientStop Offset="0" />
+                                                <GradientStop Offset="1" Color="Black"/>
+                                            </LinearGradientBrush>
+                                        </Grid.Background>
+                                    <TextBlock Margin="8,0,8,8" Text="{Binding Title}" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource SubHeaderTextStyle}" />
+                                </Grid>
                             </Grid>
-                        </Grid>
-                    </Button>
+                            <!--<Grid VerticalAlignment="Bottom" Opacity="0.75" Background="DarkRed">
+                                <TextBlock Text="{Binding Title}" Foreground="White" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" FontSize="24" TextWrapping="WrapWholeWords" Margin="20" />
+                            </Grid>-->
+                        </Button>
+                    </Grid>
                 </DataTemplate>
             </Setter.Value>
         </Setter>

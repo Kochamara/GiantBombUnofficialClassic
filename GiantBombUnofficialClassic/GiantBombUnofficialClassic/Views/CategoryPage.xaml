@@ -16,7 +16,7 @@
 
     </Page.Resources>
     
-    <Grid Background="Purple">
+    <Grid Background="Black">
         <Image Source="ms-appx:///Assets/jeff.jpg" Visibility="{Binding ShowJeff, Converter={StaticResource BoolToVisibility}}" Stretch="UniformToFill" VerticalAlignment="Center" />
         <ScrollViewer>
             <StackPanel Orientation="Vertical">
