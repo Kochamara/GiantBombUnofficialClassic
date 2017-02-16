@@ -11,9 +11,34 @@
         <StackPanel Orientation="Vertical" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="20">
 
             <TextBlock Text="Settings" Style="{StaticResource HeaderTextStyle}" />
-            <TextBlock Text="Settings2" Style="{StaticResource HeaderTextStyle}" />
 
+            <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20" Text="Giant Bomb content used with permission. © 2017 CBS Interactive Inc. All rights reserved."/>
 
+            <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20">
+                <Run Text="Visit Giant Bomb dot com at"/>
+                <Hyperlink NavigateUri="http://www.giantbomb.com">
+                    <Run Text="giantbomb.com"/>
+                </Hyperlink>
+            </TextBlock>
+
+            <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20">
+                <Run Text="Make your own cool app using their API, documented at"/>
+                <Hyperlink NavigateUri="http://www.giantbomb.com/api">
+                    <Run Text="giantbomb.com/api"/>
+                </Hyperlink>
+            </TextBlock>
+            
+            <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20">
+                <Run Text="The Giant Bomb Unofficial Classic App for Your Computer and Mine is open source, and available at"/>
+                <Hyperlink NavigateUri="https://github.com/Kochamara/GiantBombUnofficialClassic">
+                    <Run Text="github.com/Kochamara/GiantBombUnofficialClassic"/>
+                </Hyperlink>
+            </TextBlock>
+
+            <Button Content="Change API key" Command="{Binding ChangeApiKeyCommand}" Margin="20" />
+
+            <Button Content="View open source licenses" Command="{Binding ViewOpenSourceLicensesCommand}" Margin="20" />
+            
         </StackPanel>
     </ScrollViewer>
 </Page>
