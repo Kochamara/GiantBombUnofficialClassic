@@ -11,11 +11,9 @@
     <Page.Resources>
         <converters:BoolToVisibilityConverter x:Key="BoolToVisibility"/>
         <converters:NegatedBoolToVisibilityConverter x:Key="NegatedBoolToVisibility"/>
-
-
     </Page.Resources>
-    
-    <Grid Background="Black">
+
+    <Grid Background="{StaticResource DarkestGrayBrush}">
         <Image Source="ms-appx:///Assets/jeff.jpg" Visibility="{Binding ShowJeff, Converter={StaticResource BoolToVisibility}}" Stretch="UniformToFill" VerticalAlignment="Center" />
         <ScrollViewer>
             <StackPanel Orientation="Vertical">
@@ -23,13 +21,7 @@
                 <TextBlock Text="{Binding CategoryDescription}" FontFamily="Courier New" Foreground="Red" Margin="20" FontSize="24" HorizontalAlignment="Center" />
 
                 <Grid HorizontalAlignment="Center" Visibility="{Binding ShowJeff, Converter={StaticResource NegatedBoolToVisibility}}">
-                    <ItemsControl ItemsSource="{Binding Videos}" Style="{StaticResource VideoStyle}">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <ItemsWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal" />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                    </ItemsControl>
+                    <ItemsControl ItemsSource="{Binding Videos}" Style="{StaticResource VideoListStyle}" />
                 </Grid>
             </StackPanel>
         </ScrollViewer>

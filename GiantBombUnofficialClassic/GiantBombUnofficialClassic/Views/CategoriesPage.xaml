@@ -11,31 +11,9 @@
     <Page.Resources>
         <converters:BoolToVisibilityConverter x:Key="BoolToVisibility"/>
         <converters:NegatedBoolToVisibilityConverter x:Key="NegatedBoolToVisibility"/>
-
-        <DataTemplate x:Name="DataTemplate1">
-            <Button Width="440" Height="340" Command="{Binding Command}" Margin="8">
-                <Grid>
-                    <!--<Image Stretch="UniformToFill" Opacity="30">
-                        <Image.Source>
-                            <BitmapImage UriSource="{Binding ImageLocation}" />
-                        </Image.Source>
-                    </Image>-->
-                    <Grid VerticalAlignment="Bottom" Opacity="0.75" Background="DarkRed">
-                        <TextBlock Text="{Binding Title}" Foreground="White" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" FontSize="24" TextWrapping="WrapWholeWords" Margin="20" />
-                    </Grid>
-                </Grid>
-            </Button>
-        </DataTemplate>
     </Page.Resources>
 
-    <ScrollViewer Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-        <ItemsControl ItemsSource="{Binding Categories}" ItemTemplate="{StaticResource DataTemplate1}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <ItemsWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal" />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-        </ItemsControl>
+    <ScrollViewer Background="{StaticResource DarkestGrayBrush}">
+        <ItemsControl ItemsSource="{Binding Categories}" Style="{StaticResource CategoryListStyle}" />
     </ScrollViewer>
 </Page>

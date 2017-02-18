@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <ScrollViewer Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock x:Name="LicenseTextBlock" Style="{StaticResource BodyTextStyle}" Margin="40"/>
+    <ScrollViewer Background="{StaticResource DarkestGrayBrush}">
+        <TextBlock x:Name="LicenseTextBlock" Style="{StaticResource BodyTextStyle}" Margin="100"/>
     </ScrollViewer>
 </Page>

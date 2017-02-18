@@ -105,7 +105,6 @@
     <Compile Include="ViewModels\BasicViewModel.cs" />
     <Compile Include="ViewModels\CategoriesPageViewModel.cs" />
     <Compile Include="ViewModels\VideoListPageViewModel.cs" />
-    <Compile Include="ViewModels\NavMenuItem.cs" />
     <Compile Include="ViewModels\SearchPageViewModel.cs" />
     <Compile Include="ViewModels\SettingsPageViewModel.cs" />
     <Compile Include="ViewModels\VideoPlayerViewModel.cs" />

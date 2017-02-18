@@ -12,45 +12,20 @@
     <Page.Resources>
         <converters:BoolToVisibilityConverter x:Key="BoolToVisibility"/>
         <converters:NegatedBoolToVisibilityConverter x:Key="NegatedBoolToVisibility"/>
-
-        <DataTemplate x:Name="DataTemplate1">
-            <Button Width="440" Height="340" Command="{Binding PlayVideoCommand}" Margin="8">
-                <Grid>
-                    <Image Stretch="UniformToFill" Opacity="30">
-                        <Image.Source>
-                            <BitmapImage UriSource="{Binding ImageLocation}" />
-                        </Image.Source>
-                    </Image>
-                    <Grid VerticalAlignment="Bottom" Opacity="0.75" Background="DarkRed">
-                        <TextBlock Text="{Binding Title}" Foreground="White" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" FontSize="24" TextWrapping="WrapWholeWords" Margin="20" />
-                    </Grid>
-                </Grid>
-            </Button>
-        </DataTemplate>
     </Page.Resources>
 
-    <Grid Background="{StaticResource DarkestGrayBrush}">
-        <Image Source="ms-appx:///Assets/jeff.jpg" Visibility="{Binding ShowJeff, Converter={StaticResource BoolToVisibility}}" Stretch="UniformToFill" VerticalAlignment="Center" />
-
-        <ScrollViewer>
-            <StackPanel Orientation="Vertical">
-                <TextBlock Text="WELCOME TO THE GIANT BOMB" FontFamily="Courier New" Foreground="Red" Margin="20" FontSize="24" HorizontalAlignment="Center" />
-                <StackPanel Orientation="Horizontal">
-                    <Button Content="Search" Command="{Binding NavigateSearchPageCommand}" Style="{StaticResource NavigationButtonStyle}" />
-                    <Button Content="Categories" Command="{Binding NavigateCategoriesPageCommand}" Style="{StaticResource NavigationButtonStyle}" />
-                    <Button Content="Quick Looks" Command="{Binding NavigateQuickLooksPageCommand}" Style="{StaticResource NavigationButtonStyle}" />
-                    <Button Content="Settings" Command="{Binding NavigateSettingsPageCommand}" Style="{StaticResource NavigationButtonStyle}" />
-                </StackPanel>
-                <Grid HorizontalAlignment="Center" Visibility="{Binding ShowJeff, Converter={StaticResource NegatedBoolToVisibility}}">
-                    <ItemsControl ItemsSource="{Binding Videos}" ItemTemplate="{StaticResource DataTemplate1}">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <ItemsWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal" />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                    </ItemsControl>
-                </Grid>
+    <ScrollViewer Background="{StaticResource DarkestGrayBrush}">
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="Welcome to Giant Bomb Unofficial Classic" HorizontalAlignment="Center" Margin="40" Style="{StaticResource HeaderTextStyle}" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Search" Command="{Binding NavigateSearchPageCommand}" Style="{StaticResource NavigationButtonStyle}" />
+                <Button Content="Categories" Command="{Binding NavigateCategoriesPageCommand}" Style="{StaticResource NavigationButtonStyle}" />
+                <Button Content="Quick Looks" Command="{Binding NavigateQuickLooksPageCommand}" Style="{StaticResource NavigationButtonStyle}" />
+                <Button Content="Settings" Command="{Binding NavigateSettingsPageCommand}" Style="{StaticResource NavigationButtonStyle}" />
             </StackPanel>
-        </ScrollViewer>
-    </Grid>
+
+            <Image Source="ms-appx:///Assets/jeff.jpg" MaxWidth="400" MaxHeight="600" Margin="100" Visibility="{Binding ShowJeff, Converter={StaticResource BoolToVisibility}}" Stretch="Uniform" HorizontalAlignment="Center" />
+            <ItemsControl ItemsSource="{Binding Videos}" Style="{StaticResource VideoListStyle}" Visibility="{Binding ShowJeff, Converter={StaticResource NegatedBoolToVisibility}}" />
+        </StackPanel>
+    </ScrollViewer>
 </Page>

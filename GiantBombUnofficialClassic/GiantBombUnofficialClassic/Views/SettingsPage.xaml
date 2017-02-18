@@ -7,8 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <ScrollViewer>
-        <StackPanel Orientation="Vertical" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="20">
+    <ScrollViewer Background="{StaticResource DarkestGrayBrush}">
+        <StackPanel Orientation="Vertical" Margin="20">
 
             <TextBlock Text="Settings" Style="{StaticResource HeaderTextStyle}" />
 
@@ -35,6 +35,10 @@
                 </Hyperlink>
             </TextBlock>
 
+            <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20">
+                <Run Text="Portrait of Jeff Gerstmann provided by Avid Sarshab (Giant Bomb user LiquidPrince)." />
+            </TextBlock>
+            
             <Button Content="Change API key" Command="{Binding ChangeApiKeyCommand}" Margin="20" />
 
             <Button Content="View open source licenses" Command="{Binding ViewOpenSourceLicensesCommand}" Margin="20" />

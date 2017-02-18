@@ -42,7 +42,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 CategoryDescription = Category.Deck;
                 response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideosAsync(_apiKey, Category.Id);
             }
-            
+
             if ((response != null) && (response.Status == StatusCode.OK) && (response.Results != null))
             {
                 foreach (var video in response.Results)
@@ -136,5 +136,73 @@ namespace GiantBombUnofficialClassic.ViewModels
             }
         }
         private bool _showJeff;
+
+        #region Navigation
+        public RelayCommand NavigateSearchPageCommand
+        {
+            get
+            {
+                return _navigateSearchPageCommand ?? (_navigateSearchPageCommand = new RelayCommand(
+                () =>
+                {
+                    _navigationManager.Navigate(Views.SearchPage.PageKey);
+                }));
+            }
+        }
+        private RelayCommand _navigateSearchPageCommand;
+
+        public RelayCommand NavigateCategoriesPageCommand
+        {
+            get
+            {
+                return _navigateCategoriesPageCommand ?? (_navigateCategoriesPageCommand = new RelayCommand(
+                () =>
+                {
+                    _navigationManager.Navigate(Views.CategoriesPage.PageKey);
+                }));
+            }
+        }
+        private RelayCommand _navigateCategoriesPageCommand;
+
+        public RelayCommand NavigateSettingsPageCommand
+        {
+            get
+            {
+                return _navigateSettingsPageCommand ?? (_navigateSettingsPageCommand = new RelayCommand(
+                () =>
+                {
+                    _navigationManager.Navigate(Views.SettingsPage.PageKey);
+                }));
+            }
+        }
+        private RelayCommand _navigateSettingsPageCommand;
+
+        public RelayCommand NavigateQuickLooksPageCommand
+        {
+            get
+            {
+                return _navigateQuickLooksPageCommand ?? (_navigateQuickLooksPageCommand = new RelayCommand(
+                () =>
+                {
+                    // TODO: Hard code the quick looks category info
+                    // _navigationManager.Navigate(Views.CategoryPage.PageKey);
+                }));
+            }
+        }
+        private RelayCommand _navigateQuickLooksPageCommand;
+
+        public RelayCommand NavigateHomeCommand
+        {
+            get
+            {
+                return _navigateHomeCommand ?? (_navigateHomeCommand = new RelayCommand(
+                () =>
+                {
+                    _navigationManager.NavigateHome();
+                }));
+            }
+        }
+        private RelayCommand _navigateHomeCommand;
+        #endregion
     }
 }
