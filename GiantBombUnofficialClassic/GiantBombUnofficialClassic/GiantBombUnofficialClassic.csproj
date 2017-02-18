@@ -117,10 +117,6 @@
     <Compile Include="Views\CategoryPage.xaml.cs">
       <DependentUpon>CategoryPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Controls\NavigationMenu.xaml.cs">
-      <DependentUpon>NavigationMenu.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Controls\NavMenuListView.cs" />
     <Compile Include="Views\Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Views\Converters\NullToVisibilityConverter.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
@@ -177,10 +173,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CategoryPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Controls\NavigationMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

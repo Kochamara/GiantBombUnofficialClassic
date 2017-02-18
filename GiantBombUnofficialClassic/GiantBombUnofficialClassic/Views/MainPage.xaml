@@ -6,7 +6,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     NavigationCacheMode="Enabled"
-    xmlns:controls="using:GiantBombUnofficialClassic.Views.Controls"
     xmlns:converters="using:GiantBombUnofficialClassic.Views.Converters"
     mc:Ignorable="d">
 
@@ -29,56 +28,29 @@
             </Button>
         </DataTemplate>
     </Page.Resources>
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="1000" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="NavigationMenu.(Grid.ColumnSpan)" Value="1"/>
-                        <Setter Target="NavigationColumn.Width" Value="Auto"/>
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="NavigationMenu.(Grid.ColumnSpan)" Value="2"/>
-                        <Setter Target="NavigationColumn.Width" Value="48"/>
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
+    <Grid Background="{StaticResource DarkestGrayBrush}">
+        <Image Source="ms-appx:///Assets/jeff.jpg" Visibility="{Binding ShowJeff, Converter={StaticResource BoolToVisibility}}" Stretch="UniformToFill" VerticalAlignment="Center" />
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition x:Name="NavigationColumn" Width="48" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-
-        <Grid Grid.Column="1" Background="{StaticResource DarkestGrayBrush}">
-            <Image Source="ms-appx:///Assets/jeff.jpg" Visibility="{Binding ShowJeff, Converter={StaticResource BoolToVisibility}}" Stretch="UniformToFill" VerticalAlignment="Center" />
-
-            <ScrollViewer>
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Text="WELCOME TO THE GIANT BOMB" FontFamily="Courier New" Foreground="Red" Margin="20" FontSize="24" HorizontalAlignment="Center" />
-                    <Grid HorizontalAlignment="Center" Visibility="{Binding ShowJeff, Converter={StaticResource NegatedBoolToVisibility}}">
-                        <ItemsControl ItemsSource="{Binding Videos}" ItemTemplate="{StaticResource DataTemplate1}">
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <ItemsWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal" />
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                    </Grid>
+        <ScrollViewer>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="WELCOME TO THE GIANT BOMB" FontFamily="Courier New" Foreground="Red" Margin="20" FontSize="24" HorizontalAlignment="Center" />
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Search" Command="{Binding NavigateSearchPageCommand}" Style="{StaticResource NavigationButtonStyle}" />
+                    <Button Content="Categories" Command="{Binding NavigateCategoriesPageCommand}" Style="{StaticResource NavigationButtonStyle}" />
+                    <Button Content="Quick Looks" Command="{Binding NavigateQuickLooksPageCommand}" Style="{StaticResource NavigationButtonStyle}" />
+                    <Button Content="Settings" Command="{Binding NavigateSettingsPageCommand}" Style="{StaticResource NavigationButtonStyle}" />
                 </StackPanel>
-            </ScrollViewer>
-        </Grid>
-
-        <controls:NavigationMenu x:Name="NavigationMenu" Grid.Column="0" />
-
+                <Grid HorizontalAlignment="Center" Visibility="{Binding ShowJeff, Converter={StaticResource NegatedBoolToVisibility}}">
+                    <ItemsControl ItemsSource="{Binding Videos}" ItemTemplate="{StaticResource DataTemplate1}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <ItemsWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

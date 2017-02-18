@@ -28,7 +28,7 @@
 
     <Style x:Key="HeaderTextStyle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="24" />
-        <Setter Property="Foreground" Value="Red" />
+        <Setter Property="Foreground" Value="{StaticResource DarkRedBrush}" />
         <Setter Property="TextWrapping" Value="WrapWholeWords" />
         <Setter Property="TextTrimming" Value="WordEllipsis" />
         <Setter Property="FontFamily" Value="Georgia" />
@@ -36,16 +36,24 @@
 
     <Style x:Key="SubHeaderTextStyle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="20" />
-        <Setter Property="Foreground" Value="Red" />
+        <Setter Property="Foreground" Value="{StaticResource DarkRedBrush}" />
         <Setter Property="TextWrapping" Value="WrapWholeWords" />
         <Setter Property="TextTrimming" Value="WordEllipsis" />
         <Setter Property="FontFamily" Value="Georgia" />
     </Style>
 
     <Style x:Key="BodyTextStyle" TargetType="TextBlock">
-        <Setter Property="Foreground" Value="DarkRed" />
+        <Setter Property="Foreground" Value="{StaticResource LightGrayBrush}" />
         <Setter Property="TextWrapping" Value="WrapWholeWords" />
         <Setter Property="TextTrimming" Value="WordEllipsis" />
+    </Style>
+
+    <Style x:Key="NavigationButtonStyle" TargetType="Button">
+        <Setter Property="Foreground" Value="{StaticResource LightGrayBrush}" />
+        <Setter Property="Background" Value="{StaticResource DarkRedBrush}" />
+        <Setter Property="Margin" Value="24" />
+        <Setter Property="MinHeight" Value="48" />
+        <Setter Property="MinWidth" Value="48" />
     </Style>
 
     <Style x:Key="VideoStyle" TargetType="ItemsControl">

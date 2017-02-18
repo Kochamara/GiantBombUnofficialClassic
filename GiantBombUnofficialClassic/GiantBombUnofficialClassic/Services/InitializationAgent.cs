@@ -14,21 +14,30 @@ namespace GiantBombUnofficialClassic.Services
         public static void Initialize()
         {
             GalaSoft.MvvmLight.Threading.DispatcherHelper.Initialize();
+            SetTitleBarColors();
+        }
 
-            //PC customization
-            // TODO: Set correct colors
+        public static void SetTitleBarColors()
+        {
             if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.ApplicationView"))
             {
-                var titleBar = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().TitleBar;
-                if (titleBar != null)
+                var view = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView();
+                if ((view != null) && (view.TitleBar != null))
                 {
-                    titleBar.ButtonBackgroundColor = Windows.UI.Colors.DarkMagenta;
-                    titleBar.ButtonForegroundColor = Windows.UI.Colors.White;
-                    titleBar.BackgroundColor = Windows.UI.Colors.Magenta;
-                    titleBar.ForegroundColor = Windows.UI.Colors.White;
+                    var primaryColor = Windows.UI.Color.FromArgb(0, 179, 25, 25);
+                    var hoverColor = Windows.UI.Color.FromArgb(0, 230, 73, 73);
+                    var highlightColor = Windows.UI.Color.FromArgb(0, 232, 90, 90);
+
+                    view.TitleBar.ButtonBackgroundColor = primaryColor;
+                    view.TitleBar.ButtonForegroundColor = Windows.UI.Colors.White;
+                    view.TitleBar.BackgroundColor = primaryColor;
+                    view.TitleBar.ForegroundColor = Windows.UI.Colors.White;
+                    view.TitleBar.ButtonHoverBackgroundColor = hoverColor;
+                    view.TitleBar.ButtonHoverForegroundColor = Windows.UI.Colors.White;
+                    view.TitleBar.ButtonPressedBackgroundColor = highlightColor;
+                    view.TitleBar.ButtonPressedForegroundColor = Windows.UI.Colors.White;
                 }
             }
-
         }
 
         /// <summary>
