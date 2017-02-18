@@ -2,6 +2,29 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:GiantBombUnofficialClassic.Views.Styles">
+    
+
+
+    <!--This should be the primary text color. RGB: 247, 247, 247-->
+    <Color x:Key="LightGray">#FFF7F7F7</Color>
+    <SolidColorBrush x:Key="LightGrayBrush" Color="{StaticResource LightGray}" />
+
+    <!--This should be the secondary text color. RGB: 171, 171, 171-->
+    <Color x:Key="MidGray">#FFABABAB</Color>
+    <SolidColorBrush x:Key="MidGrayBrush" Color="{StaticResource MidGray}" />
+
+    <!--This should be the primary page background color. RGB: 41, 41, 41-->
+    <Color x:Key="DarkestGray">#FF292929</Color>
+    <SolidColorBrush x:Key="DarkestGrayBrush" Color="{StaticResource DarkestGray}" />
+
+    <!--This should be the text highlight color. RGB: 230, 25, 25-->
+    <Color x:Key="BrightRed">#FFE61919</Color>
+    <SolidColorBrush x:Key="BrightRedBrush" Color="{StaticResource BrightRed}" />
+
+    <!--Let's use this as the app color. RGB: 179, 25, 25-->
+    <Color x:Key="DarkRed">#FFB31919</Color>
+    <SolidColorBrush x:Key="DarkRedBrush" Color="{StaticResource DarkRed}" />
+
 
     <Style x:Key="HeaderTextStyle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="24" />

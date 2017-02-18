@@ -14,6 +14,21 @@ namespace GiantBombUnofficialClassic.Services
         public static void Initialize()
         {
             GalaSoft.MvvmLight.Threading.DispatcherHelper.Initialize();
+
+            //PC customization
+            // TODO: Set correct colors
+            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.ApplicationView"))
+            {
+                var titleBar = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().TitleBar;
+                if (titleBar != null)
+                {
+                    titleBar.ButtonBackgroundColor = Windows.UI.Colors.DarkMagenta;
+                    titleBar.ButtonForegroundColor = Windows.UI.Colors.White;
+                    titleBar.BackgroundColor = Windows.UI.Colors.Magenta;
+                    titleBar.ForegroundColor = Windows.UI.Colors.White;
+                }
+            }
+
         }
 
         /// <summary>
