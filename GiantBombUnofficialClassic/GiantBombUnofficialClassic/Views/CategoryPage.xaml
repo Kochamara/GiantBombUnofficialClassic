@@ -14,7 +14,7 @@
     </Page.Resources>
 
     <Grid Background="{StaticResource DarkestGrayBrush}">
-        <Image Source="ms-appx:///Assets/jeff.jpg" Visibility="{Binding ShowJeff, Converter={StaticResource BoolToVisibility}}" Stretch="UniformToFill" VerticalAlignment="Center" />
+        <Image Source="ms-appx:///Assets/JeffFrame.jpg" Visibility="{Binding ShowJeff, Converter={StaticResource BoolToVisibility}}" Stretch="UniformToFill" VerticalAlignment="Center" />
         <ScrollViewer>
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="{Binding CategoryTitle}" FontFamily="Courier New" Foreground="Red" Margin="20" FontSize="24" HorizontalAlignment="Center" />

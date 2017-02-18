@@ -145,9 +145,8 @@
     <None Include="GiantBombUnofficialClassic_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\GiantBombCurrentLogo.png" />
-    <Content Include="Assets\GiantBombCurrentLogoSquare.png" />
-    <Content Include="Assets\jeff.jpg" />
+    <Content Include="Assets\GiantBombLogo.png" />
+    <Content Include="Assets\JeffFrame.jpg" />
     <Content Include="Assets\Licenses.txt" />
     <Content Include="Assets\Required\SplashScreen.scale-100.png" />
     <Content Include="Assets\Required\SplashScreen.scale-125.png" />

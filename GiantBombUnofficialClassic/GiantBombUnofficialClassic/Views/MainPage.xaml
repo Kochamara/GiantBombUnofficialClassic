@@ -16,16 +16,21 @@
 
     <ScrollViewer Background="{StaticResource DarkestGrayBrush}">
         <StackPanel Orientation="Vertical">
-            <TextBlock Text="Welcome to Giant Bomb Unofficial Classic" HorizontalAlignment="Center" Margin="40" Style="{StaticResource HeaderTextStyle}" />
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Content="Search" Command="{Binding NavigateSearchPageCommand}" Style="{StaticResource NavigationButtonStyle}" />
-                <Button Content="Categories" Command="{Binding NavigateCategoriesPageCommand}" Style="{StaticResource NavigationButtonStyle}" />
-                <Button Content="Quick Looks" Command="{Binding NavigateQuickLooksPageCommand}" Style="{StaticResource NavigationButtonStyle}" />
-                <Button Content="Settings" Command="{Binding NavigateSettingsPageCommand}" Style="{StaticResource NavigationButtonStyle}" />
+            <StackPanel Visibility="{Binding ShowJeff, Converter={StaticResource BoolToVisibility}}" Orientation="Vertical">
+                <Image Source="ms-appx:///Assets/JeffFrame.jpg" MaxWidth="400" MaxHeight="600" Margin="0,100,0,24"  Stretch="Uniform" HorizontalAlignment="Center" />
+                <ProgressRing Style="{StaticResource ProgressRingStyle}" />
             </StackPanel>
-
-            <Image Source="ms-appx:///Assets/jeff.jpg" MaxWidth="400" MaxHeight="600" Margin="100" Visibility="{Binding ShowJeff, Converter={StaticResource BoolToVisibility}}" Stretch="Uniform" HorizontalAlignment="Center" />
-            <ItemsControl ItemsSource="{Binding Videos}" Style="{StaticResource VideoListStyle}" Visibility="{Binding ShowJeff, Converter={StaticResource NegatedBoolToVisibility}}" />
+            <StackPanel Visibility="{Binding ShowJeff, Converter={StaticResource NegatedBoolToVisibility}}" Orientation="Vertical">
+                <Image Source="ms-appx:///Assets/GiantBombLogo.png" MaxWidth="300" MaxHeight="300" Margin="40" Stretch="Uniform" HorizontalAlignment="Center" />
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Content="Search" Command="{Binding NavigateSearchPageCommand}" Style="{StaticResource NavigationButtonStyle}" />
+                    <Button Content="Categories" Command="{Binding NavigateCategoriesPageCommand}" Style="{StaticResource NavigationButtonStyle}" />
+                    <Button Content="Quick Looks" Command="{Binding NavigateQuickLooksPageCommand}" Style="{StaticResource NavigationButtonStyle}" />
+                    <Button Content="Settings" Command="{Binding NavigateSettingsPageCommand}" Style="{StaticResource NavigationButtonStyle}" />
+                </StackPanel>
+                <TextBlock Text="Latest Videos" HorizontalAlignment="Center" Margin="20" Style="{StaticResource HeaderTextStyle}" />
+                <ItemsControl ItemsSource="{Binding Videos}" Style="{StaticResource VideoListStyle}"  />
+            </StackPanel>
         </StackPanel>
     </ScrollViewer>
 </Page>

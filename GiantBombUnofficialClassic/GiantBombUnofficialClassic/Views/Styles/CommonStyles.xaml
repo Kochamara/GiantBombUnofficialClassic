@@ -56,6 +56,15 @@
         <Setter Property="MinWidth" Value="48" />
     </Style>
 
+    <Style x:Key="ProgressRingStyle" TargetType="ProgressRing">
+        <Setter Property="Foreground" Value="{StaticResource BrightRedBrush}" />
+        <Setter Property="IsActive" Value="True" />
+        <Setter Property="Width" Value="40" />
+        <Setter Property="Height" Value="40" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
     <Style x:Key="VideoListStyle" TargetType="ItemsControl">
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="ItemTemplate">

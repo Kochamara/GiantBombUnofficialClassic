@@ -34,7 +34,7 @@
                 <Button x:Name="SubmitButton" Content="Submit" Command="{Binding SaveKeyCommand}" HorizontalAlignment="Center" />
             </StackPanel>
 
-            <ProgressRing Width="40" Height="40" Foreground="{StaticResource BrightRedBrush}" Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibility}}" IsActive="True" />
+            <ProgressRing Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibility}}" Style="{StaticResource ProgressRingStyle}" />
         </StackPanel>
     </ScrollViewer>
 </Page>
