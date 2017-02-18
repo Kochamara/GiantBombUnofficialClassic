@@ -150,16 +150,21 @@
     <None Include="GiantBombUnofficialClassic_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\GiantBombCurrentLogo.png" />
+    <Content Include="Assets\GiantBombCurrentLogoSquare.png" />
     <Content Include="Assets\jeff.jpg" />
     <Content Include="Assets\Licenses.txt" />
+    <Content Include="Assets\Required\SplashScreen.scale-100.png" />
+    <Content Include="Assets\Required\SplashScreen.scale-125.png" />
+    <Content Include="Assets\Required\SplashScreen.scale-150.png" />
     <Content Include="Properties\Default.rd.xml" />
-    <Content Include="Assets\LockScreenLogo.scale-200.png" />
-    <Content Include="Assets\SplashScreen.scale-200.png" />
-    <Content Include="Assets\Square150x150Logo.scale-200.png" />
-    <Content Include="Assets\Square44x44Logo.scale-200.png" />
-    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
-    <Content Include="Assets\StoreLogo.png" />
-    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="Assets\Required\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\Required\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Required\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Required\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Required\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\Required\StoreLogo.png" />
+    <Content Include="Assets\Required\Wide310x150Logo.scale-200.png" />
     <Content Include="ToDoList.txt" />
   </ItemGroup>
   <ItemGroup>

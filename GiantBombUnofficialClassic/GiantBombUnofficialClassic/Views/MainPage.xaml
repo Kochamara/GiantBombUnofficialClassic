@@ -59,7 +59,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="1" Background="{StaticResource DarkGrayBrush}">
+        <Grid Grid.Column="1" Background="{StaticResource DarkestGrayBrush}">
             <Image Source="ms-appx:///Assets/jeff.jpg" Visibility="{Binding ShowJeff, Converter={StaticResource BoolToVisibility}}" Stretch="UniformToFill" VerticalAlignment="Center" />
 
             <ScrollViewer>
