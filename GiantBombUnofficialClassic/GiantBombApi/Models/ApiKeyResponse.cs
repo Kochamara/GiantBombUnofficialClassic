@@ -13,7 +13,7 @@ namespace GiantBombApi.Models
         /// <summary>
         /// Your API key!
         /// </summary>
-        [DataMember(Name = "api_key")]
+        [DataMember(Name = "regToken")]
         public string ApiKey;
     }
 }

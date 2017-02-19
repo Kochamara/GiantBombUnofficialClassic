@@ -14,7 +14,21 @@ namespace GiantBombUnofficialClassic.Services
         public static void Initialize()
         {
             GalaSoft.MvvmLight.Threading.DispatcherHelper.Initialize();
-            SetTitleBarColors();
+
+            if (Utilities.SystemInformationManager.IsTenFootExperience)
+            {
+                // System is an Xbox
+                if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.ApplicationViewBoundsMode"))
+                {
+                    var view = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView();
+                    view.SetDesiredBoundsMode(Windows.UI.ViewManagement.ApplicationViewBoundsMode.UseCoreWindow);
+                }
+            }
+            else
+            {
+                // System is a PC
+                SetTitleBarColors();
+            }
         }
 
         public static void SetTitleBarColors()

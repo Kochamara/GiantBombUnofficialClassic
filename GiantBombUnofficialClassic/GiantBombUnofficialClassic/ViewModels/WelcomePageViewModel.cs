@@ -17,7 +17,7 @@ namespace GiantBombUnofficialClassic.ViewModels
 
         public const string NoKeyEnteredError = "Uh oh! You need to enter a key to use this app.";
         public const string NoApiKeyReturnedError = "We're having trouble validating your code. Are you sure it's correct?";
-        public Uri LinkCodeWebsite = new Uri("http://www.giantbomb.com/boxee/");
+        public Uri LinkCodeWebsite = new Uri("http://www.giantbomb.com/app/Giant%20Bomb%20Unofficial%20Classic/");
 
         public WelcomePageViewModel()
         {

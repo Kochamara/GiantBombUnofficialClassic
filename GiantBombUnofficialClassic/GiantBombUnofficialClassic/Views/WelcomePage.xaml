@@ -8,15 +8,14 @@
     xmlns:converters="using:GiantBombUnofficialClassic.Views.Converters"
     mc:Ignorable="d">
 
-    <!--deal with this shit later-->
     <Page.Resources>
         <converters:BoolToVisibilityConverter x:Key="BoolToVisibility"/>
         <converters:NegatedBoolToVisibilityConverter x:Key="NegatedBoolToVisibility"/>
         <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
     </Page.Resources>
 
-    <ScrollViewer>
-        <StackPanel Orientation="Vertical" Background="{StaticResource DarkestGrayBrush}" VerticalAlignment="Center">
+    <ScrollViewer Background="{StaticResource DarkestGrayBrush}">
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
             <TextBlock Text="Hey duder!" Style="{StaticResource HeaderTextBlockStyle}" Margin="20" />
             <TextBlock Text="Welcome to the Giant Bomb Unofficial Classic application for computers!" Style="{StaticResource BodyTextBlockStyle}" Margin="20" />
             <TextBlock Text="Let's link your Giant Bomb account so you can start watching videos." Style="{StaticResource BodyTextBlockStyle}" Margin="20" />

@@ -29,6 +29,14 @@ namespace GiantBombUnofficialClassic
         public App()
         {
             this.InitializeComponent();
+
+            // Turn off the mouse pointer and turn off automatic 200% scaling for Xbox
+            if (Utilities.SystemInformationManager.IsTenFootExperience)
+            {
+                this.RequiresPointerMode = Windows.UI.Xaml.ApplicationRequiresPointerMode.WhenRequested;
+                Windows.UI.ViewManagement.ApplicationViewScaling.TrySetDisableLayoutScaling(true);
+            }
+
             this.Suspending += OnSuspending;
         }
 
