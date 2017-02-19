@@ -36,11 +36,11 @@ namespace GiantBombUnofficialClassic.ViewModels
                         Title = category.Name,
                         Description = category.Deck,
                         Id = category.Id,
-                        Command = new GalaSoft.MvvmLight.Command.RelayCommand(
-                        () =>
-                        {
-                            _navigationManager.Navigate("CategoryPage", category);
-                        })
+                        //Command = new GalaSoft.MvvmLight.Command.RelayCommand(
+                        //() =>
+                        //{
+                        //    _navigationManager.Navigate("CategoryPage", category);
+                        //})
                     });
                     text += category.Name + " " + category.Id + "\n" + category.Deck + "\n\n";
                 }

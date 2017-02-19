@@ -71,7 +71,7 @@
             <Setter.Value>
                 <DataTemplate x:Name="VideoTemplate">
                     <Grid Width="440" Height="240"  Margin="8">
-                        <Button Command="{Binding Command}" Background="Transparent">
+                        <Button Command="{Binding PlayVideoCommand}" Background="Transparent">
                             <Grid>
                                 <Image Stretch="UniformToFill" Opacity="30" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                                     <Image.Source>

@@ -42,11 +42,11 @@ namespace GiantBombUnofficialClassic.ViewModels
                 {
                     foreach (var video in response.Results)
                     {
-                        _searchResults.Add(new VideoViewModel
+                        _searchResults.Add(new BasicViewModel
                         {
                             Title = video.Name,
                             ImageLocation = new Uri(video.Image.MediumUrl),
-                            HdUri = new Uri(video.HdUrl)
+                        //    HdUri = new Uri(video.HdUrl)
                         });
                     }
                 }

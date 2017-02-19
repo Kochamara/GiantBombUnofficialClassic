@@ -17,6 +17,7 @@ namespace GiantBombUnofficialClassic.ViewModels
     public class VideoListPageViewModel : ViewModelBase
     {
         private NavigationManager _navigationManager;
+        private VideoUriManager _videoUriManager;
         private string _apiKey;
 
         public VideoListPageViewModel()
@@ -29,6 +30,7 @@ namespace GiantBombUnofficialClassic.ViewModels
             ShowJeff = true;
 
             _navigationManager = NavigationManager.GetInstance();
+            _videoUriManager = VideoUriManager.GetInstance();
             _apiKey = ApiKeyManager.GetInstance().GetSavedApiKey();
             VideosResponse response = null;
 
@@ -47,12 +49,37 @@ namespace GiantBombUnofficialClassic.ViewModels
             {
                 foreach (var video in response.Results)
                 {
-                    _videos.Add(new VideoViewModel
+                    var videoUri = _videoUriManager.GetAppropriateVideoUri(video);
+
+                    var viewModel = new VideoViewModel()
                     {
+                        Id = video.Id,
                         Title = video.Name,
-                        ImageLocation = new Uri(video.Image.MediumUrl),
-                        HdUri = new Uri(video.HdUrl)
-                    });
+                        Description = video.Deck,
+                        VideoUri = videoUri
+                    };
+
+                    if (video.Image != null)
+                    {
+                        if (!String.IsNullOrWhiteSpace(video.Image.SuperUrl))
+                        {
+                            viewModel.ImageLocation = new Uri(video.Image.SuperUrl);
+                        }
+                        else if (!String.IsNullOrWhiteSpace(video.Image.MediumUrl))
+                        {
+                            viewModel.ImageLocation = new Uri(video.Image.MediumUrl);
+                        }
+                        else if (!String.IsNullOrWhiteSpace(video.Image.SmallUrl))
+                        {
+                            viewModel.ImageLocation = new Uri(video.Image.SmallUrl);
+                        }
+                        else
+                        {
+                            // TODO: Add default image
+                        }
+                    }
+                    
+                    _videos.Add(viewModel);
                 }
             }
 

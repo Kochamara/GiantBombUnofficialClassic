@@ -110,6 +110,7 @@
     <Compile Include="Models\ApiKeyResponse.cs" />
     <Compile Include="Models\TypesResponse.cs" />
     <Compile Include="Models\Response.cs" />
+    <Compile Include="Models\VideoQuality.cs" />
     <Compile Include="Models\VideosResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ApiKeyRetrievalAgent.cs" />
