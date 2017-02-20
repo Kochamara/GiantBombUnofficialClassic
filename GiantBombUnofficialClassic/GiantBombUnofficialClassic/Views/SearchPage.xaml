@@ -16,17 +16,18 @@
 
     <ScrollViewer Background="{StaticResource DarkestGrayBrush}">
         <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-            <TextBlock Text="{Binding ErrorText}" Style="{StaticResource BodyTextStyle}" Margin="20" Visibility="{Binding ErrorText, Converter={StaticResource NullToVisibilityConverter}}" />
-
-            <StackPanel Orientation="Vertical" Visibility="{Binding IsLoading, Converter={StaticResource NegatedBoolToVisibility}}">
-                <TextBlock Text="Search query:" Style="{StaticResource BodyTextStyle}" Margin="20" />
-                <TextBox x:Name="KeyEntryTextBox" Width="200" Text="{Binding UserInput, Mode=TwoWay}" />
-                <Button x:Name="SubmitButton" Content="Submit" Command="{Binding SearchCommand}" HorizontalAlignment="Center" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20,40,20,0">
+                <TextBox x:Name="SearchQueryTextBox" Width="300" KeyDown="SearchQueryTextBox_KeyDown" PlaceholderText="Search Giant Bomb..." Text="{Binding UserInput, Mode=TwoWay}" />
+                <Button x:Name="SubmitButton" Content="Submit" Command="{Binding SearchCommand}" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Center" Margin="4,0,0,0" />
             </StackPanel>
 
-            <ProgressRing Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibility}}" Style="{StaticResource ProgressRingStyle}" />
+            <TextBlock Text="{Binding ErrorText}" Style="{StaticResource BodyTextStyle}" HorizontalAlignment="Center" TextAlignment="Center" Margin="20" Visibility="{Binding ErrorText, Converter={StaticResource NullToVisibilityConverter}}" />
 
-            <ItemsControl ItemsSource="{Binding SearchResults}" Style="{StaticResource VideoListStyle}" />
+            <!--Loading ring and spacing grid-->
+            <ProgressRing Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibility}}" Style="{StaticResource ProgressRingStyle}" Margin="8" />
+            <Grid Height="40" Visibility="{Binding IsLoading, Converter={StaticResource NegatedBoolToVisibility}}" Margin="8" />
+
+            <ItemsControl ItemsSource="{Binding SearchResults}" Style="{StaticResource VideoListStyle}" Margin="20,0,20,40" />
         </StackPanel>
     </ScrollViewer>
 </Page>

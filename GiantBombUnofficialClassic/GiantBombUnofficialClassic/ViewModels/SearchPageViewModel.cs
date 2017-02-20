@@ -29,8 +29,9 @@ namespace GiantBombUnofficialClassic.ViewModels
         public async Task GetSearchResultsAsync(string query)
         {
             IsLoading = true;
+            _searchResults.Clear();
 
-            if (!String.IsNullOrWhiteSpace(UserInput))
+            if (!String.IsNullOrWhiteSpace(query))
             {
                 if (String.IsNullOrWhiteSpace(_apiKey))
                 {

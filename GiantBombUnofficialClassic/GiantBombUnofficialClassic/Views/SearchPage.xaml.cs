@@ -26,5 +26,13 @@ namespace GiantBombUnofficialClassic.Views
             this.DataContext = _viewModel;
             this.InitializeComponent();
         }
+
+        private void SearchQueryTextBox_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if ((e.Key == Windows.System.VirtualKey.Enter) && (e.KeyStatus.RepeatCount == 1))
+            {
+                var unawaitedTask = _viewModel.GetSearchResultsAsync(SearchQueryTextBox.Text);
+            }
+        }
     }
 }
