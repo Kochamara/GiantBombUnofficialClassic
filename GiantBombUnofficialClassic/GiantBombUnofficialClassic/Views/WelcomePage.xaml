@@ -14,27 +14,39 @@
         <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
     </Page.Resources>
 
-    <ScrollViewer Background="{StaticResource DarkestGrayBrush}">
+    <ScrollViewer Background="{StaticResource DarkestGrayBrush}"  VerticalScrollBarVisibility="Auto">
         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
             <MediaElement x:Name="AudioPlayer" />
-            <TextBlock Text="Hey duder!" Style="{StaticResource HeaderTextStyle}" TextAlignment="Center" Margin="20" />
-            <TextBlock Text="Welcome to the Giant Bomb Unofficial Classic application for computers!" TextAlignment="Center" Style="{StaticResource BodyTextStyle}" Margin="20" />
-            <TextBlock Text="Let's link your Giant Bomb account so you can start watching videos." TextAlignment="Center" Style="{StaticResource BodyTextStyle}" Margin="20" />
-            <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20" TextAlignment="Center">
-            <Hyperlink Click="LinkCodeHyperlink_Click">
-                <Run Text="Click here to get your key." />
-            </Hyperlink>
-            </TextBlock>
+            <TextBlock Text="Hey duder!" Style="{StaticResource HeaderTextStyle}" TextAlignment="Center" Margin="20" FontSize="28" />
 
-            <TextBlock Text="{Binding ErrorText}" Style="{StaticResource BodyTextStyle}" TextAlignment="Center" Foreground="{StaticResource BrightRedBrush}" Margin="20" Visibility="{Binding ErrorText, Converter={StaticResource NullToVisibilityConverter}}" />
+            <!--PC intro text-->
+            <StackPanel Orientation="Vertical" Visibility="{Binding IsTenFootExperience, Converter={StaticResource NegatedBoolToVisibility}}" HorizontalAlignment="Center">
+                <TextBlock Text="Welcome to the Giant Bomb Video Player for Windows!" TextAlignment="Center" Style="{StaticResource BodyTextStyle}" Margin="8" />
+                <TextBlock Text="Let's link your Giant Bomb account so you can start watching videos." TextAlignment="Center" Style="{StaticResource BodyTextStyle}" Margin="8" />
+                <TextBlock Style="{StaticResource BodyTextStyle}" Margin="8" TextAlignment="Center">
+                    <Hyperlink Click="LinkCodeHyperlink_Click">
+                        <Run Text="Click here to get your link code." />
+                    </Hyperlink>
+                </TextBlock>
+            </StackPanel>
 
-            <TextBlock Text="Code:" Style="{StaticResource BodyTextStyle}" TextAlignment="Center" Margin="20" Visibility="{Binding IsLoading, Converter={StaticResource NegatedBoolToVisibility}}" />
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Visibility="{Binding IsLoading, Converter={StaticResource NegatedBoolToVisibility}}">
-                    <TextBox x:Name="KeyEntryTextBox" Width="200" Text="{Binding UserInput, Mode=TwoWay}" />
-                    <Button x:Name="SubmitButton" Content="Submit" Command="{Binding SaveKeyCommand}" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Center" />
-                </StackPanel>
+            <!--Xbox intro text-->
+            <StackPanel Orientation="Vertical" Visibility="{Binding IsTenFootExperience, Converter={StaticResource BoolToVisibility}}" HorizontalAlignment="Center">
+                <TextBlock Text="Welcome to the Giant Bomb Video Player for the Xbox One!" TextAlignment="Center" Style="{StaticResource BodyTextStyle}" Margin="8" />
+                <TextBlock Text="To get started, we need to link up your Giant Bomb account. Go here to get your link code:" TextAlignment="Center" Style="{StaticResource BodyTextStyle}" Margin="8" />
+                <TextBlock Text="giantbomb.com/app/Xbox" TextAlignment="Center" Style="{StaticResource BodyTextStyle}" FontSize="20" Margin="12" />
+            </StackPanel>
 
+            <!--Link code entry-->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="4,12,4,8">
+                <TextBox x:Name="KeyEntryTextBox" Width="200" KeyDown="KeyEntryTextBox_KeyDown" PlaceholderText="Enter your code here" Text="{Binding UserInput, Mode=TwoWay}" />
+                <Button x:Name="SubmitButton" Content="Submit" Command="{Binding SaveKeyCommand}" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Center" Margin="4,0,0,0" />
+            </StackPanel>
+
+            <!--Error handling-->
+            <TextBlock Text="{Binding ErrorText}" Style="{StaticResource BodyTextStyle}" TextAlignment="Center" Foreground="{StaticResource BrightRedBrush}" Margin="8" Visibility="{Binding ErrorText, Converter={StaticResource NullToVisibilityConverter}}" />
             <ProgressRing HorizontalAlignment="Center" Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibility}}" Style="{StaticResource ProgressRingStyle}" />
+            
         </StackPanel>
     </ScrollViewer>
 </Page>

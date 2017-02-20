@@ -18,7 +18,8 @@ namespace GiantBombUnofficialClassic.ViewModels
         public const string NoKeyEnteredError = "Uh oh! You need to enter a key to use this app.";
         public const string NoApiKeyReturnedError = "We're having trouble validating your code. Are you sure it's correct?";
 
-        public const string EncodedAppNameForPcVersion = "Giant%20Bomb%20Unofficial%20Classic";
+        //public const string EncodedAppNameForPcVersion = "Giant%20Bomb%20Unofficial%20Classic";
+        public const string EncodedAppNameForPcVersion = "Windows";
         public const string EncodedAppNameForXboxVersion = "Xbox";
 
         public WelcomePageViewModel()
@@ -40,7 +41,7 @@ namespace GiantBombUnofficialClassic.ViewModels
         {
             IsLoading = true;
 
-            if (!String.IsNullOrWhiteSpace(UserInput))
+            if (!String.IsNullOrWhiteSpace(linkCode))
             {
                 var apiKey = string.Empty;
                 

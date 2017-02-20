@@ -74,5 +74,13 @@ namespace GiantBombUnofficialClassic.Views
         {
             var unawaitedTask = Windows.System.Launcher.LaunchUriAsync(_viewModel.LinkCodeWebsite);
         }
+
+        private void KeyEntryTextBox_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Enter)
+            {
+                var unawaitedTask = _viewModel.ConvertLinkCodeToApiKeyAndNavigateAsync(KeyEntryTextBox.Text);
+            }
+        }
     }
 }
