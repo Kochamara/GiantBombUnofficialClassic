@@ -13,7 +13,7 @@ Required:
 -Navigation
 -figure out how to handle non-premium users
 
--finalize media controls
+-finalize media controls (style them, make red?)
 
 
 Maybe?

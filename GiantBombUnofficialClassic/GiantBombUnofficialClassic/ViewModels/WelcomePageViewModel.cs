@@ -17,12 +17,23 @@ namespace GiantBombUnofficialClassic.ViewModels
 
         public const string NoKeyEnteredError = "Uh oh! You need to enter a key to use this app.";
         public const string NoApiKeyReturnedError = "We're having trouble validating your code. Are you sure it's correct?";
-        public Uri LinkCodeWebsite = new Uri("http://www.giantbomb.com/app/Giant%20Bomb%20Unofficial%20Classic/");
+
+        public const string EncodedAppNameForPcVersion = "Giant%20Bomb%20Unofficial%20Classic";
+        public const string EncodedAppNameForXboxVersion = "Xbox";
 
         public WelcomePageViewModel()
         {
             _navigationManager = NavigationManager.GetInstance();
             _apiKeyManager = ApiKeyManager.GetInstance();
+            
+            if (SystemInformationManager.IsTenFootExperience)
+            {
+                LinkCodeWebsite = new Uri("http://www.giantbomb.com/app/" + EncodedAppNameForXboxVersion);
+            }
+            else
+            {
+                LinkCodeWebsite = new Uri("http://www.giantbomb.com/app/" + EncodedAppNameForPcVersion);
+            }
         }
 
         public async Task ConvertLinkCodeToApiKeyAndNavigateAsync(string linkCode)
@@ -31,7 +42,16 @@ namespace GiantBombUnofficialClassic.ViewModels
 
             if (!String.IsNullOrWhiteSpace(UserInput))
             {
-                var apiKey = await GiantBombApi.Services.ApiKeyRetrievalAgent.GetApiKeyFromCodeAsync(linkCode);
+                var apiKey = string.Empty;
+                
+                if (SystemInformationManager.IsTenFootExperience)
+                {
+                    apiKey = await GiantBombApi.Services.ApiKeyRetrievalAgent.GetApiKeyFromCodeAsync(linkCode, EncodedAppNameForXboxVersion);
+                }
+                else
+                {
+                    apiKey = await GiantBombApi.Services.ApiKeyRetrievalAgent.GetApiKeyFromCodeAsync(linkCode, EncodedAppNameForPcVersion);
+                }
 
                 if (!String.IsNullOrWhiteSpace(apiKey))
                 {
@@ -81,6 +101,32 @@ namespace GiantBombUnofficialClassic.ViewModels
             }
         }
         private bool _isLoading;
+
+        public bool IsTenFootExperience
+        {
+            get
+            {
+                return SystemInformationManager.IsTenFootExperience;
+            }
+        }
+
+        public Uri LinkCodeWebsite
+        {
+            get
+            {
+                return _linkCodeWebsite;
+            }
+
+            set
+            {
+                if (_linkCodeWebsite != value)
+                {
+                    _linkCodeWebsite = value;
+                    RaisePropertyChanged(() => LinkCodeWebsite);
+                }
+            }
+        }
+        private Uri _linkCodeWebsite;
 
         public string ErrorText
         {

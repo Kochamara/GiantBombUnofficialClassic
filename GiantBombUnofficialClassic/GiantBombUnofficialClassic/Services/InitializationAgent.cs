@@ -38,18 +38,30 @@ namespace GiantBombUnofficialClassic.Services
                 var view = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView();
                 if ((view != null) && (view.TitleBar != null))
                 {
-                    var primaryColor = Windows.UI.Color.FromArgb(0, 179, 25, 25);
-                    var hoverColor = Windows.UI.Color.FromArgb(0, 230, 73, 73);
-                    var highlightColor = Windows.UI.Color.FromArgb(0, 232, 90, 90);
+                    // Let's not use red because it's distracting when watching videos
+                    //var primaryColor = Windows.UI.Color.FromArgb(0, 179, 25, 25);
+                    //var hoverColor = Windows.UI.Color.FromArgb(0, 230, 73, 73);
+                    //var highlightColor = Windows.UI.Color.FromArgb(0, 232, 90, 90);
 
-                    view.TitleBar.ButtonBackgroundColor = primaryColor;
-                    view.TitleBar.ButtonForegroundColor = Windows.UI.Colors.White;
-                    view.TitleBar.BackgroundColor = primaryColor;
-                    view.TitleBar.ForegroundColor = Windows.UI.Colors.White;
-                    view.TitleBar.ButtonHoverBackgroundColor = hoverColor;
-                    view.TitleBar.ButtonHoverForegroundColor = Windows.UI.Colors.White;
-                    view.TitleBar.ButtonPressedBackgroundColor = highlightColor;
-                    view.TitleBar.ButtonPressedForegroundColor = Windows.UI.Colors.White;
+                    var primaryBackgroundColor = Windows.UI.Color.FromArgb(0, 41, 41, 41);
+                    var hoverBackgroundColor = Windows.UI.Color.FromArgb(0, 62, 62, 62);
+                    var highlightBackgroundColor = Windows.UI.Color.FromArgb(0, 83, 83, 83);
+
+                    var primaryForegroundColor = Windows.UI.Color.FromArgb(0, 247, 247, 247);
+                    var primaryInactiveForegroundColor = Windows.UI.Color.FromArgb(0, 171, 171, 171);
+
+                    view.TitleBar.ButtonBackgroundColor = primaryBackgroundColor;
+                    view.TitleBar.ButtonForegroundColor = primaryForegroundColor;
+                    view.TitleBar.BackgroundColor = primaryBackgroundColor;
+                    view.TitleBar.ForegroundColor = primaryForegroundColor;
+                    view.TitleBar.ButtonHoverBackgroundColor = hoverBackgroundColor;
+                    view.TitleBar.ButtonHoverForegroundColor = primaryForegroundColor;
+                    view.TitleBar.ButtonPressedBackgroundColor = highlightBackgroundColor;
+                    view.TitleBar.ButtonPressedForegroundColor = primaryForegroundColor;
+                    view.TitleBar.ButtonInactiveBackgroundColor = primaryBackgroundColor;
+                    view.TitleBar.ButtonInactiveForegroundColor = primaryInactiveForegroundColor;
+                    view.TitleBar.InactiveBackgroundColor = primaryBackgroundColor;
+                    view.TitleBar.InactiveForegroundColor = primaryInactiveForegroundColor;
                 }
             }
         }
