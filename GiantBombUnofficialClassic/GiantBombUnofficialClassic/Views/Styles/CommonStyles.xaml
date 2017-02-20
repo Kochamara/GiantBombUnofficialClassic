@@ -32,6 +32,7 @@
         <Setter Property="TextWrapping" Value="WrapWholeWords" />
         <Setter Property="TextTrimming" Value="WordEllipsis" />
         <Setter Property="FontFamily" Value="Georgia" />
+        <Setter Property="FontWeight" Value="SemiBold" />
     </Style>
 
     <Style x:Key="SubHeaderTextStyle" TargetType="TextBlock">

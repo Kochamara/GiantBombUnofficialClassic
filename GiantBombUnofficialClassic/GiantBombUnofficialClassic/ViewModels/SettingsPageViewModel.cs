@@ -42,5 +42,20 @@ namespace GiantBombUnofficialClassic.ViewModels
             }
         }
         private RelayCommand _changeApiKeyCommand;
+
+        public string OpenSourceDescription
+        {
+            get
+            {
+                if (Utilities.SystemInformationManager.IsTenFootExperience)
+                {
+                    return "The Giant Bomb Unofficial Classic Video Player for Your Xbox and Mine is open source, and available at";
+                }
+                else
+                {
+                    return "The Giant Bomb Unofficial Classic Video Player for Your Computer and Mine is open source, and available at";
+                }
+            }
+        }
     }
 }

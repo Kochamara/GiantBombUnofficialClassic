@@ -12,12 +12,16 @@ Required:
 -Loading views
 -Navigation
 -figure out how to handle non-premium users
-
 -finalize media controls (style them, make red?)
-
+-Enable NavigationCacheMode once everything's working properly
 
 Maybe?
 -Random video button
 -Video playback position
 -Feedback link
 -API key entry audio
+
+-Header text should be Glyddon (regular), weight 400, shadow .25s
+https://www.fontspring.com/fonts/fontsite/glyddon
+
+-Make styles for hyperlinks, text boxes, combo boxes

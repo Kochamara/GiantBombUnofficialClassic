@@ -8,9 +8,9 @@
     mc:Ignorable="d">
 
     <ScrollViewer Background="{StaticResource DarkestGrayBrush}">
-        <StackPanel Orientation="Vertical" Margin="20">
+        <StackPanel Orientation="Vertical" Margin="40">
 
-            <TextBlock Text="Settings" Style="{StaticResource HeaderTextStyle}" />
+            <TextBlock Text="Settings" Style="{StaticResource HeaderTextStyle}" Margin="20"/>
 
             <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20" Text="Giant Bomb content used with permission. © 2017 CBS Interactive Inc. All rights reserved."/>
 
@@ -19,6 +19,7 @@
                 <Hyperlink NavigateUri="http://www.giantbomb.com">
                     <Run Text="giantbomb.com"/>
                 </Hyperlink>
+                <Run Text=" "/>
             </TextBlock>
 
             <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20">
@@ -26,23 +27,28 @@
                 <Hyperlink NavigateUri="http://www.giantbomb.com/api">
                     <Run Text="giantbomb.com/api"/>
                 </Hyperlink>
+                <Run Text=" "/>
             </TextBlock>
-            
+
             <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20">
-                <Run Text="The Giant Bomb Unofficial Classic App for Your Computer and Mine is open source, and available at"/>
+                <Run Text="{Binding OpenSourceDescription}" />
                 <Hyperlink NavigateUri="https://github.com/Kochamara/GiantBombUnofficialClassic">
                     <Run Text="github.com/Kochamara/GiantBombUnofficialClassic"/>
                 </Hyperlink>
+                <Run Text=" "/>
             </TextBlock>
 
             <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20">
                 <Run Text="Portrait of Jeff Gerstmann provided by Avid Sarshab (Giant Bomb user LiquidPrince)." />
             </TextBlock>
-            
-            <Button Content="Change API key" Command="{Binding ChangeApiKeyCommand}" Margin="20" />
 
-            <Button Content="View open source licenses" Command="{Binding ViewOpenSourceLicensesCommand}" Margin="20" />
-            
+            <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20,20,20,4" Text="Preferred video quality:" />
+            <ComboBox x:Name="VideoQualityComboBox" SelectionChanged="VideoQuality_SelectionChanged" Margin="20,0,20,20" />
+
+            <Button Content="Change API key" Command="{Binding ChangeApiKeyCommand}" Style="{StaticResource ButtonStyle}" Margin="20" />
+
+            <Button Content="View open source licenses" Command="{Binding ViewOpenSourceLicensesCommand}" Style="{StaticResource ButtonStyle}" Margin="20" />
+
         </StackPanel>
     </ScrollViewer>
 </Page>
