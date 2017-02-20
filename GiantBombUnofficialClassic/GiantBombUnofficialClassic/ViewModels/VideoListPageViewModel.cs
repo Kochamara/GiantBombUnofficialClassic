@@ -17,85 +17,123 @@ namespace GiantBombUnofficialClassic.ViewModels
     public class VideoListPageViewModel : ViewModelBase
     {
         private NavigationManager _navigationManager;
-        private VideoUriManager _videoUriManager;
         private string _apiKey;
+        private const int NumberOfSubHeadersOnMainPage = 2;
+        private const int NumberOfSubHeadersOnCategoryPage = 4;
 
         public VideoListPageViewModel()
         {
             _videos = new ObservableCollection<VideoViewModel>();
+            _subHeaderVideos = new ObservableCollection<VideoViewModel>();
         }
 
         public async Task InitializeAsync()
         {
-            ShowJeff = true;
+            IsLoading = true;
+            bool isCategoryPage = false;
 
-            _navigationManager = NavigationManager.GetInstance();
-            _videoUriManager = VideoUriManager.GetInstance();
-            _apiKey = ApiKeyManager.GetInstance().GetSavedApiKey();
-            VideosResponse response = null;
+            try
+            {
+                _navigationManager = NavigationManager.GetInstance();
+                _apiKey = ApiKeyManager.GetInstance().GetSavedApiKey();
+                VideosResponse response = null;
 
-            if ((this.Category == null) || (String.IsNullOrWhiteSpace(this.Category.Id)))
-            {
-                response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideosAsync(_apiKey);
-            }
-            else
-            {
-                CategoryTitle = Category.Name;
-                CategoryDescription = Category.Deck;
-                response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideosAsync(_apiKey, Category.Id);
-            }
-
-            if ((response != null) && (response.Status == StatusCode.OK) && (response.Results != null))
-            {
-                foreach (var video in response.Results)
+                if ((this.Category == null) || (String.IsNullOrWhiteSpace(this.Category.Id)))
                 {
-                    var videoUri = _videoUriManager.GetAppropriateVideoUri(video);
+                    response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideosAsync(_apiKey);
+                }
+                else
+                {
+                    isCategoryPage = true;
+                    CategoryTitle = Category.Name;
+                    CategoryDescription = Category.Deck;
+                    response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideosAsync(_apiKey, Category.Id);
+                }
 
-                    var viewModel = new VideoViewModel()
+                if ((response != null) && (response.Status == StatusCode.OK) && (response.Results != null))
+                {
+                    foreach (var video in response.Results)
                     {
-                        Id = video.Id,
-                        Title = video.Name,
-                        Description = video.Deck,
-                        VideoUri = videoUri
-                    };
-                    
-                    if (video.Image != null)
+                        var viewModel = new VideoViewModel()
+                        {
+                            Id = video.Id,
+                            Title = video.Name,
+                            Description = video.Deck,
+                            Source = video
+                        };
+
+                        if (video.Image != null)
+                        {
+                            if (!String.IsNullOrWhiteSpace(video.Image.SuperUrl))
+                            {
+                                viewModel.ImageLocation = new Uri(video.Image.SuperUrl);
+                            }
+                            else if (!String.IsNullOrWhiteSpace(video.Image.MediumUrl))
+                            {
+                                viewModel.ImageLocation = new Uri(video.Image.MediumUrl);
+                            }
+                            else if (!String.IsNullOrWhiteSpace(video.Image.SmallUrl))
+                            {
+                                viewModel.ImageLocation = new Uri(video.Image.SmallUrl);
+                            }
+                            else
+                            {
+                                // TODO: Add default image
+                            }
+                        }
+
+                        _videos.Add(viewModel);
+                    }
+                }
+
+                // Add in the header and subheader view models
+                if (isCategoryPage)
+                {
+                    // Category page style, no header. Don't show anything unless we have a full
+                    // second row (3 wide) of videos.
+                    if (_videos.Count > (NumberOfSubHeadersOnCategoryPage + 3))
                     {
-                        if (!String.IsNullOrWhiteSpace(video.Image.SuperUrl))
+                        var subHeaderViewModels = _videos.Take(NumberOfSubHeadersOnCategoryPage);
+                        foreach (var video in subHeaderViewModels)
                         {
-                            viewModel.ImageLocation = new Uri(video.Image.SuperUrl);
+                            _subHeaderVideos.Add(video);
                         }
-                        else if (!String.IsNullOrWhiteSpace(video.Image.MediumUrl))
+
+                        for (int i = 0; i < NumberOfSubHeadersOnCategoryPage; i++)
                         {
-                            viewModel.ImageLocation = new Uri(video.Image.MediumUrl);
-                        }
-                        else if (!String.IsNullOrWhiteSpace(video.Image.SmallUrl))
-                        {
-                            viewModel.ImageLocation = new Uri(video.Image.SmallUrl);
-                        }
-                        else
-                        {
-                            // TODO: Add default image
+                            _videos.RemoveAt(0);
                         }
                     }
-                    
-                    _videos.Add(viewModel);
                 }
-            }
+                else
+                {
+                    // Main page style, includes header. Don't show anything unless we have a full
+                    // third row (3 wide) of videos.
+                    if (_videos.Count > (NumberOfSubHeadersOnMainPage + 4))
+                    {
+                        HeaderVideo = _videos.First();
+                        _videos.RemoveAt(0);
 
-            if (_videos.Count > 3)
+                        var subHeaderViewModels = _videos.Take(NumberOfSubHeadersOnMainPage);
+                        foreach (var video in subHeaderViewModels)
+                        {
+                            _subHeaderVideos.Add(video);
+                        }
+
+                        for (int i = 0; i < NumberOfSubHeadersOnMainPage; i++)
+                        {
+                            _videos.RemoveAt(0);
+                        }
+                    }
+                }
+
+            }
+            catch (Exception e)
             {
-                FirstVideo = _videos.First();
-                _videos.RemoveAt(0);
-
-                SecondVideo = _videos.First();
-                _videos.RemoveAt(0);
-
-                ThirdVideo = _videos.First();
-                _videos.RemoveAt(0);
+                // TODO: Add a logger
             }
-
-            ShowJeff = false;
+            
+            IsLoading = false;
         }
 
         public ObservableCollection<VideoViewModel> Videos
@@ -103,6 +141,12 @@ namespace GiantBombUnofficialClassic.ViewModels
             get { return _videos; }
         }
         private ObservableCollection<VideoViewModel> _videos;
+
+        public ObservableCollection<VideoViewModel> SubHeaderVideos
+        {
+            get { return _subHeaderVideos; }
+        }
+        private ObservableCollection<VideoViewModel> _subHeaderVideos;
 
         public VideoType Category
         {
@@ -158,41 +202,41 @@ namespace GiantBombUnofficialClassic.ViewModels
         }
         private string _categoryDescription;
 
-        public bool ShowJeff
+        public bool IsLoading
         {
             get
             {
-                return _showJeff;
+                return _isLoading;
             }
 
             set
             {
-                if (_showJeff != value)
+                if (_isLoading != value)
                 {
-                    _showJeff = value;
-                    RaisePropertyChanged(() => ShowJeff);
+                    _isLoading = value;
+                    RaisePropertyChanged(() => IsLoading);
                 }
             }
         }
-        private bool _showJeff;
+        private bool _isLoading;
 
-        public VideoViewModel FirstVideo
+        public VideoViewModel HeaderVideo
         {
             get
             {
-                return _firstVideo;
+                return _headerVideo;
             }
 
             set
             {
-                if (_firstVideo != value)
+                if (_headerVideo != value)
                 {
-                    _firstVideo = value;
-                    RaisePropertyChanged(() => FirstVideo);
+                    _headerVideo = value;
+                    RaisePropertyChanged(() => HeaderVideo);
                 }
             }
         }
-        private VideoViewModel _firstVideo;
+        private VideoViewModel _headerVideo;
 
         public VideoViewModel SecondVideo
         {

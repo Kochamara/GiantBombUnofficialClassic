@@ -6,19 +6,21 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:converters="using:GiantBombUnofficialClassic.Views.Converters"
+    NavigationCacheMode="Enabled"
     mc:Ignorable="d">
 
     <Page.Resources>
         <converters:BoolToVisibilityConverter x:Key="BoolToVisibility"/>
         <converters:NegatedBoolToVisibilityConverter x:Key="NegatedBoolToVisibility"/>
+        <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
     </Page.Resources>
 
     <Grid Background="{StaticResource DarkestGrayBrush}">
-        <StackPanel Visibility="{Binding ShowJeff, Converter={StaticResource BoolToVisibility}}" Orientation="Vertical">
+        <StackPanel Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibility}}" Orientation="Vertical">
             <Image Source="ms-appx:///Assets/JeffFrame.jpg" MaxWidth="400" MaxHeight="600" Margin="0,100,0,24"  Stretch="Uniform" HorizontalAlignment="Center" />
             <ProgressRing Style="{StaticResource ProgressRingStyle}" />
         </StackPanel>
-        <Grid Visibility="{Binding ShowJeff, Converter={StaticResource NegatedBoolToVisibility}}"  HorizontalAlignment="Center">
+        <Grid Visibility="{Binding IsLoading, Converter={StaticResource NegatedBoolToVisibility}}"  HorizontalAlignment="Center">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="192" />
@@ -36,32 +38,8 @@
             <ScrollViewer Grid.Column="1" HorizontalAlignment="Stretch">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
                     <TextBlock Text="Latest Videos" HorizontalAlignment="Left" Margin="20" Style="{StaticResource HeaderTextStyle}" />
-
-                    <Button Style="{StaticResource LargeVideoButton}"  DataContext="{Binding FirstVideo}" Command="{Binding PlayVideoCommand}" />
-
-                    <StackPanel Orientation="Horizontal">
-                        <Button Style="{StaticResource MediumVideoButton}" DataContext="{Binding ThirdVideo}" Command="{Binding PlayVideoCommand}" Margin="0,0,8,0" />
-                        <!--<Button Style="{StaticResource MediumVideoButton}" DataContext="{Binding SecondVideo}" Command="{Binding PlayVideoCommand}" />-->
-
-                        <Button Command="{Binding SecondVideo.PlayVideoCommand}" Width="292" Height="164" Padding="0">
-                            <Grid>
-                                <Image Stretch="UniformToFill" Opacity="30" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                                    <Image.Source>
-                                        <BitmapImage UriSource="{Binding SecondVideo.ImageLocation}" />
-                                    </Image.Source>
-                                </Image>
-                                <Grid VerticalAlignment="Bottom" MinHeight="80">
-                                    <Grid.Background>
-                                        <LinearGradientBrush StartPoint=".5,0" EndPoint=".5,1">
-                                            <GradientStop Offset="0" />
-                                            <GradientStop Offset="1" Color="Black"/>
-                                        </LinearGradientBrush>
-                                    </Grid.Background>
-                                    <TextBlock Margin="8,0,8,8" Text="{Binding SecondVideo.ImageLocation}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource SubHeaderTextStyle}" />
-                                </Grid>
-                            </Grid>
-                        </Button>
-                    </StackPanel>
+                    <Button Style="{StaticResource LargeVideoButton}"  DataContext="{Binding HeaderVideo}" Command="{Binding PlayVideoCommand}" Visibility="{Binding HeaderVideo, Converter={StaticResource NullToVisibilityConverter}}" />
+                    <ItemsControl ItemsSource="{Binding SubHeaderVideos}" Style="{StaticResource SubHeaderVideoListStyle}"  />
                     <ItemsControl ItemsSource="{Binding Videos}" Style="{StaticResource VideoListStyle}"  />
                 </StackPanel>
             </ScrollViewer>

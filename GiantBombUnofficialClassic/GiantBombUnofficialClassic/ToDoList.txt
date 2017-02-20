@@ -14,6 +14,10 @@ Windows Store release:
 -Error logging
 -Video player page styling
 -VisualStateGroups for different window sizes
+-Unit tests
+-Double click to fullscreen shortcut on video player
+-Should the video player page figure out the Uri itself?
+-Clean up the CommonStyles file
 
 Xbox release:
 -Full gamepad support (plus TextBox start button handling)
@@ -26,3 +30,7 @@ V2 release:
 -Video playback position handling
 -New font for header text: Glyddon regular, weight 400
 https://www.fontspring.com/fonts/fontsite/glyddon
+-Maybe move the category selection onto the main page itself? ComboBox? Ehh?
+
+Bugs:
+-Sometimes when you quickly navigate to and from a video page, the video keeps playing

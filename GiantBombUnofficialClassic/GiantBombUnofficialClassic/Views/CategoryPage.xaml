@@ -14,13 +14,13 @@
     </Page.Resources>
 
     <Grid Background="{StaticResource DarkestGrayBrush}">
-        <Image Source="ms-appx:///Assets/JeffFrame.jpg" Visibility="{Binding ShowJeff, Converter={StaticResource BoolToVisibility}}" Stretch="UniformToFill" VerticalAlignment="Center" />
+        <Image Source="ms-appx:///Assets/JeffFrame.jpg" Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibility}}" Stretch="UniformToFill" VerticalAlignment="Center" />
         <ScrollViewer>
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="{Binding CategoryTitle}" FontFamily="Courier New" Foreground="Red" Margin="20" FontSize="24" HorizontalAlignment="Center" />
                 <TextBlock Text="{Binding CategoryDescription}" FontFamily="Courier New" Foreground="Red" Margin="20" FontSize="24" HorizontalAlignment="Center" />
 
-                <Grid HorizontalAlignment="Center" Visibility="{Binding ShowJeff, Converter={StaticResource NegatedBoolToVisibility}}">
+                <Grid HorizontalAlignment="Center" Visibility="{Binding IsLoading, Converter={StaticResource NegatedBoolToVisibility}}">
                     <ItemsControl ItemsSource="{Binding Videos}" Style="{StaticResource VideoListStyle}" />
                 </Grid>
             </StackPanel>

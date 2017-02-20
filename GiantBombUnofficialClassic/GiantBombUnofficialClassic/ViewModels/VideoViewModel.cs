@@ -9,35 +9,29 @@ namespace GiantBombUnofficialClassic.ViewModels
 {
     public class VideoViewModel : BasicViewModel
     {
-        public Uri VideoUri
-        {
-            get
-            {
-                return _videoUri;
-            }
-            set
-            {
-                if (value != _videoUri)
-                {
-                    _videoUri = value;
-                    RaisePropertyChanged(() => VideoUri);
-                }
-            }
-        }
-        private Uri _videoUri;
+        public GiantBombApi.Models.Video Source;
 
         public RelayCommand PlayVideoCommand
         {
             get
             {
-                return _playVideoCommand ?? (_playVideoCommand = new RelayCommand(
+                return new RelayCommand(
                 () =>
                 {
+                    var videoUriManager = Services.VideoUriManager.GetInstance();
                     var navigationManager = Utilities.NavigationManager.GetInstance();
-                    navigationManager.Navigate(Views.VideoPlayerPage.PageKey, VideoUri);
-                }));
+                    var videoUri = videoUriManager.GetAppropriateVideoUri(this.Source);
+
+                    if (videoUri != null)
+                    {
+                        navigationManager.Navigate(Views.VideoPlayerPage.PageKey, videoUri);
+                    }
+                    else
+                    {
+                        // TODO: Add logging
+                    }
+                });
             }
         }
-        private RelayCommand _playVideoCommand;
     }
 }
