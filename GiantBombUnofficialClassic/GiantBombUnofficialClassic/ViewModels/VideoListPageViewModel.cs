@@ -22,7 +22,7 @@ namespace GiantBombUnofficialClassic.ViewModels
 
         public VideoListPageViewModel()
         {
-            _videos = new ObservableCollection<BasicViewModel>();
+            _videos = new ObservableCollection<VideoViewModel>();
         }
 
         public async Task InitializeAsync()
@@ -58,7 +58,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                         Description = video.Deck,
                         VideoUri = videoUri
                     };
-
+                    
                     if (video.Image != null)
                     {
                         if (!String.IsNullOrWhiteSpace(video.Image.SuperUrl))
@@ -83,14 +83,26 @@ namespace GiantBombUnofficialClassic.ViewModels
                 }
             }
 
+            if (_videos.Count > 3)
+            {
+                FirstVideo = _videos.First();
+                _videos.RemoveAt(0);
+
+                SecondVideo = _videos.First();
+                _videos.RemoveAt(0);
+
+                ThirdVideo = _videos.First();
+                _videos.RemoveAt(0);
+            }
+
             ShowJeff = false;
         }
 
-        public ObservableCollection<BasicViewModel> Videos
+        public ObservableCollection<VideoViewModel> Videos
         {
             get { return _videos; }
         }
-        private ObservableCollection<BasicViewModel> _videos;
+        private ObservableCollection<VideoViewModel> _videos;
 
         public VideoType Category
         {
@@ -163,6 +175,60 @@ namespace GiantBombUnofficialClassic.ViewModels
             }
         }
         private bool _showJeff;
+
+        public VideoViewModel FirstVideo
+        {
+            get
+            {
+                return _firstVideo;
+            }
+
+            set
+            {
+                if (_firstVideo != value)
+                {
+                    _firstVideo = value;
+                    RaisePropertyChanged(() => FirstVideo);
+                }
+            }
+        }
+        private VideoViewModel _firstVideo;
+
+        public VideoViewModel SecondVideo
+        {
+            get
+            {
+                return _secondVideo;
+            }
+
+            set
+            {
+                if (_secondVideo != value)
+                {
+                    _secondVideo = value;
+                    RaisePropertyChanged(() => SecondVideo);
+                }
+            }
+        }
+        private VideoViewModel _secondVideo;
+
+        public VideoViewModel ThirdVideo
+        {
+            get
+            {
+                return _thirdVideo;
+            }
+
+            set
+            {
+                if (_thirdVideo != value)
+                {
+                    _thirdVideo = value;
+                    RaisePropertyChanged(() => ThirdVideo);
+                }
+            }
+        }
+        private VideoViewModel _thirdVideo;
 
         #region Navigation
         public RelayCommand NavigateSearchPageCommand

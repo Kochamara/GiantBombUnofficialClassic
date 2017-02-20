@@ -14,23 +14,59 @@
         <converters:NegatedBoolToVisibilityConverter x:Key="NegatedBoolToVisibility"/>
     </Page.Resources>
 
-    <ScrollViewer Background="{StaticResource DarkestGrayBrush}">
-        <StackPanel Orientation="Vertical">
-            <StackPanel Visibility="{Binding ShowJeff, Converter={StaticResource BoolToVisibility}}" Orientation="Vertical">
-                <Image Source="ms-appx:///Assets/JeffFrame.jpg" MaxWidth="400" MaxHeight="600" Margin="0,100,0,24"  Stretch="Uniform" HorizontalAlignment="Center" />
-                <ProgressRing Style="{StaticResource ProgressRingStyle}" />
-            </StackPanel>
-            <StackPanel Visibility="{Binding ShowJeff, Converter={StaticResource NegatedBoolToVisibility}}" Orientation="Vertical">
-                <Image Source="ms-appx:///Assets/GiantBombLogo.png" MaxWidth="300" MaxHeight="300" Margin="40" Stretch="Uniform" HorizontalAlignment="Center" />
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Content="Search" Command="{Binding NavigateSearchPageCommand}" Style="{StaticResource NavigationButtonStyle}" />
-                    <Button Content="Categories" Command="{Binding NavigateCategoriesPageCommand}" Style="{StaticResource NavigationButtonStyle}" />
-                    <Button Content="Quick Looks" Command="{Binding NavigateQuickLooksPageCommand}" Style="{StaticResource NavigationButtonStyle}" />
-                    <Button Content="Settings" Command="{Binding NavigateSettingsPageCommand}" Style="{StaticResource NavigationButtonStyle}" />
-                </StackPanel>
-                <TextBlock Text="Latest Videos" HorizontalAlignment="Center" Margin="20" Style="{StaticResource HeaderTextStyle}" />
-                <ItemsControl ItemsSource="{Binding Videos}" Style="{StaticResource VideoListStyle}"  />
-            </StackPanel>
+    <Grid Background="{StaticResource DarkestGrayBrush}">
+        <StackPanel Visibility="{Binding ShowJeff, Converter={StaticResource BoolToVisibility}}" Orientation="Vertical">
+            <Image Source="ms-appx:///Assets/JeffFrame.jpg" MaxWidth="400" MaxHeight="600" Margin="0,100,0,24"  Stretch="Uniform" HorizontalAlignment="Center" />
+            <ProgressRing Style="{StaticResource ProgressRingStyle}" />
         </StackPanel>
-    </ScrollViewer>
+        <Grid Visibility="{Binding ShowJeff, Converter={StaticResource NegatedBoolToVisibility}}"  HorizontalAlignment="Center">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="192" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Vertical" Grid.Column="0">
+                <Image Source="ms-appx:///Assets/GiantBombLogo.png" Width="192" Stretch="Uniform" HorizontalAlignment="Center" />
+                <Button Content="Search" Command="{Binding NavigateSearchPageCommand}" Style="{StaticResource NavigationButtonStyle}" HorizontalAlignment="Right" />
+                <Button Content="Categories" Command="{Binding NavigateCategoriesPageCommand}" Style="{StaticResource NavigationButtonStyle}" HorizontalAlignment="Right" />
+                <Button Content="Quick Looks" Command="{Binding NavigateQuickLooksPageCommand}" Style="{StaticResource NavigationButtonStyle}" HorizontalAlignment="Right" />
+                <Button Content="Settings" Command="{Binding NavigateSettingsPageCommand}" Style="{StaticResource NavigationButtonStyle}" HorizontalAlignment="Right" />
+            </StackPanel>
+
+            <ScrollViewer Grid.Column="1" HorizontalAlignment="Stretch">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
+                    <TextBlock Text="Latest Videos" HorizontalAlignment="Left" Margin="20" Style="{StaticResource HeaderTextStyle}" />
+
+                    <Button Style="{StaticResource LargeVideoButton}"  DataContext="{Binding FirstVideo}" Command="{Binding PlayVideoCommand}" />
+
+                    <StackPanel Orientation="Horizontal">
+                        <Button Style="{StaticResource MediumVideoButton}" DataContext="{Binding ThirdVideo}" Command="{Binding PlayVideoCommand}" Margin="0,0,8,0" />
+                        <!--<Button Style="{StaticResource MediumVideoButton}" DataContext="{Binding SecondVideo}" Command="{Binding PlayVideoCommand}" />-->
+
+                        <Button Command="{Binding SecondVideo.PlayVideoCommand}" Width="292" Height="164" Padding="0">
+                            <Grid>
+                                <Image Stretch="UniformToFill" Opacity="30" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                    <Image.Source>
+                                        <BitmapImage UriSource="{Binding SecondVideo.ImageLocation}" />
+                                    </Image.Source>
+                                </Image>
+                                <Grid VerticalAlignment="Bottom" MinHeight="80">
+                                    <Grid.Background>
+                                        <LinearGradientBrush StartPoint=".5,0" EndPoint=".5,1">
+                                            <GradientStop Offset="0" />
+                                            <GradientStop Offset="1" Color="Black"/>
+                                        </LinearGradientBrush>
+                                    </Grid.Background>
+                                    <TextBlock Margin="8,0,8,8" Text="{Binding SecondVideo.ImageLocation}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource SubHeaderTextStyle}" />
+                                </Grid>
+                            </Grid>
+                        </Button>
+                    </StackPanel>
+                    <ItemsControl ItemsSource="{Binding Videos}" Style="{StaticResource VideoListStyle}"  />
+                </StackPanel>
+            </ScrollViewer>
+
+        </Grid>
+    </Grid>
 </Page>

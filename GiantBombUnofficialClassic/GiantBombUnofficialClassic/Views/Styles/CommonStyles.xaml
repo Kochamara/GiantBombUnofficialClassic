@@ -5,7 +5,7 @@
 
 
 
-    <!--This should be the primary text color. RGB: 247, 247, 247-->
+    <!--This should be the primary text color. RGB: 247, 247, 247. Maybe change this to 235,235,235 to read better on TVs?-->
     <Color x:Key="LightGray">#FFF7F7F7</Color>
     <SolidColorBrush x:Key="LightGrayBrush" Color="{StaticResource LightGray}" />
 
@@ -51,9 +51,9 @@
     <Style x:Key="NavigationButtonStyle" TargetType="Button">
         <Setter Property="Foreground" Value="{StaticResource LightGrayBrush}" />
         <Setter Property="Background" Value="{StaticResource DarkRedBrush}" />
-        <Setter Property="Margin" Value="24" />
         <Setter Property="MinHeight" Value="48" />
-        <Setter Property="MinWidth" Value="48" />
+        <Setter Property="MinWidth" Value="108" />
+        <Setter Property="Margin" Value="0,0,0,8" />
     </Style>
 
     <Style x:Key="ProgressRingStyle" TargetType="ProgressRing">
@@ -65,37 +65,87 @@
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
-    <Style x:Key="VideoListStyle" TargetType="ItemsControl">
-        <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="ItemTemplate">
+    <Style x:Key="LargeVideoButton" TargetType="Button">
+        <Setter Property="Width" Value="600" />
+        <Setter Property="Height" Value="340" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Content">
             <Setter.Value>
-                <DataTemplate x:Name="VideoTemplate">
-                    <Grid Width="440" Height="240"  Margin="8">
-                        <Button Command="{Binding PlayVideoCommand}" Background="Transparent">
-                            <Grid>
-                                <Image Stretch="UniformToFill" Opacity="30" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                                    <Image.Source>
-                                        <BitmapImage UriSource="{Binding ImageLocation}" />
-                                    </Image.Source>
-                                </Image>
-                                <Grid VerticalAlignment="Bottom" MinHeight="80">
-                                    <Grid.Background>
-                                        <LinearGradientBrush StartPoint=".5,0" EndPoint=".5,1">
-                                            <GradientStop Offset="0" />
-                                            <GradientStop Offset="1" Color="Black"/>
-                                        </LinearGradientBrush>
-                                    </Grid.Background>
-                                    <TextBlock Margin="8,0,8,8" Text="{Binding Title}" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource SubHeaderTextStyle}" />
-                                </Grid>
-                            </Grid>
-                            <!--<Grid VerticalAlignment="Bottom" Opacity="0.75" Background="DarkRed">
-                                <TextBlock Text="{Binding Title}" Foreground="White" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" FontSize="24" TextWrapping="WrapWholeWords" Margin="20" />
-                            </Grid>-->
-                        </Button>
+                <Grid>
+                    <Image Stretch="UniformToFill" Opacity="30" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Image.Source>
+                            <BitmapImage UriSource="{Binding ImageLocation}" />
+                        </Image.Source>
+                    </Image>
+                    <Grid VerticalAlignment="Bottom" MinHeight="80">
+                        <Grid.Background>
+                            <LinearGradientBrush StartPoint=".5,0" EndPoint=".5,1">
+                                <GradientStop Offset="0" />
+                                <GradientStop Offset="1" Color="Black"/>
+                            </LinearGradientBrush>
+                        </Grid.Background>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Margin="8,0,8,8" Text="{Binding Title}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource SubHeaderTextStyle}" />
+                            <TextBlock Margin="8,0,8,8" Text="{Binding Description}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource BodyTextStyle}" />
+                        </StackPanel>
                     </Grid>
-                </DataTemplate>
+                </Grid>
             </Setter.Value>
         </Setter>
+    </Style>
+    
+    <Style x:Key="MediumVideoButton" TargetType="Button">
+        <Setter Property="Width" Value="292" />
+        <Setter Property="Height" Value="164" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Content">
+            <Setter.Value>
+                <Grid>
+                    <Image Stretch="UniformToFill" Opacity="30" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Image.Source>
+                            <BitmapImage UriSource="{Binding ImageLocation}" />
+                        </Image.Source>
+                    </Image>
+                    <Grid VerticalAlignment="Bottom" MinHeight="80">
+                        <Grid.Background>
+                            <LinearGradientBrush StartPoint=".5,0" EndPoint=".5,1">
+                                <GradientStop Offset="0" />
+                                <GradientStop Offset="1" Color="Black"/>
+                            </LinearGradientBrush>
+                        </Grid.Background>
+                            <TextBlock Margin="8,0,8,8" Text="{Binding Title}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource SubHeaderTextStyle}" />
+                    </Grid>
+                </Grid>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <DataTemplate x:Name="VideoTemplate">
+        <Grid Margin="0,0,8,8">
+            <Button Width="192" Height="108" Command="{Binding PlayVideoCommand}" Padding="0">
+                <Grid>
+                    <Image Stretch="UniformToFill" Opacity="30" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Image.Source>
+                            <BitmapImage UriSource="{Binding ImageLocation}" />
+                        </Image.Source>
+                    </Image>
+                    <Grid VerticalAlignment="Bottom" MinHeight="80">
+                        <Grid.Background>
+                            <LinearGradientBrush StartPoint=".5,0" EndPoint=".5,1">
+                                <GradientStop Offset="0" />
+                                <GradientStop Offset="1" Color="Black"/>
+                            </LinearGradientBrush>
+                        </Grid.Background>
+                        <TextBlock Margin="8,0,8,8" Text="{Binding Title}" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource SubHeaderTextStyle}" />
+                    </Grid>
+                </Grid>
+            </Button>
+        </Grid>
+    </DataTemplate>
+
+    <Style x:Key="VideoListStyle" TargetType="ItemsControl">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="ItemTemplate" Value="{StaticResource VideoTemplate}" />
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
