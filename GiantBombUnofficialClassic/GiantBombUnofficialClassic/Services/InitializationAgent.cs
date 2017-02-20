@@ -47,7 +47,7 @@ namespace GiantBombUnofficialClassic.Services
                     var hoverBackgroundColor = Windows.UI.Color.FromArgb(0, 62, 62, 62);
                     var highlightBackgroundColor = Windows.UI.Color.FromArgb(0, 83, 83, 83);
 
-                    var primaryForegroundColor = Windows.UI.Color.FromArgb(0, 247, 247, 247);
+                    var primaryForegroundColor = Windows.UI.Color.FromArgb(0, 235, 235, 235);
                     var primaryInactiveForegroundColor = Windows.UI.Color.FromArgb(0, 171, 171, 171);
 
                     view.TitleBar.ButtonBackgroundColor = primaryBackgroundColor;

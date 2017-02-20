@@ -4,9 +4,8 @@
     xmlns:local="using:GiantBombUnofficialClassic.Views.Styles">
 
 
-
-    <!--This should be the primary text color. RGB: 247, 247, 247. Maybe change this to 235,235,235 to read better on TVs?-->
-    <Color x:Key="LightGray">#FFF7F7F7</Color>
+    <!--This should be the primary text color. RGB: 235, 235, 235. The GB text color is RGB 247, 247, 247, but Microsoft advises this color on TVs.-->
+    <Color x:Key="LightGray">#FFEBEBEB</Color>
     <SolidColorBrush x:Key="LightGrayBrush" Color="{StaticResource LightGray}" />
 
     <!--This should be the secondary text color. RGB: 171, 171, 171-->

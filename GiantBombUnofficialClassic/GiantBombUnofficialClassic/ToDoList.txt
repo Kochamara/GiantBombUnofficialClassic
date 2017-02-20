@@ -1,27 +1,28 @@
-﻿THE GIANT BOMB UNOFFICIAL CLASSIC TO DO LIST
+﻿THE GIANT BOMB UNOFFICIAL CLASSIC VIDEO PLAYER TO DO LIST
 
-Required:
--Categories
--Search
+Limited release (beta):
+-Video container styling
+-VideoViewModel URI handling
+-Category selection page styling
+-Main page and category page styling
+-Enable NavigationCacheMode
+
+Windows Store release:
+-Refresh buttons
+-Handling of non-premium users
+-Final assets
 -Error logging
--Open source page
--Video quality selection
--Video player controls
--Gamepad support
--Images
--Loading views
--Navigation
--figure out how to handle non-premium users
--finalize media controls (style them, make red?)
--Enable NavigationCacheMode once everything's working properly
+-Video player page styling
+-VisualStateGroups for different window sizes
 
-Maybe?
--Random video button
--Video playback position
--Feedback link
--API key entry audio
+Xbox release:
+-Full gamepad support (plus TextBox start button handling)
 
--Header text should be Glyddon (regular), weight 400, shadow .25s
-https://www.fontspring.com/fonts/fontsite/glyddon
-
+V2 release:
 -Make styles for hyperlinks, text boxes, combo boxes
+-Better video playback controls
+-Standard Windows 10 navigation for PC version
+-Random video button
+-Video playback position handling
+-New font for header text: Glyddon regular, weight 400
+https://www.fontspring.com/fonts/fontsite/glyddon

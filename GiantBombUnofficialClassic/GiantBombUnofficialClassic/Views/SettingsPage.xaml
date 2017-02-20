@@ -12,6 +12,20 @@
 
             <TextBlock Text="Settings" Style="{StaticResource HeaderTextStyle}" Margin="20"/>
 
+            <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20">
+                <Run Text="This app was developed by Spencer Guy. I'm"/>
+                <Hyperlink NavigateUri="https://twitter.com/spencerguy">
+                    <Run Text="@SpencerGuy"/>
+                </Hyperlink>
+                <Run Text="on Twitter."/>
+                <LineBreak/>
+                <Run Text="Find a bug?"/>
+                <Hyperlink NavigateUri="http://www.giantbomb.com/pm/compose/?to=2787">
+                    <Run Text="Send a PM to Spencer"/>
+                </Hyperlink>
+                <Run Text="on the site."/>
+            </TextBlock>
+
             <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20" Text="Giant Bomb content used with permission. © 2017 CBS Interactive Inc. All rights reserved."/>
 
             <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20">
