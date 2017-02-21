@@ -20,22 +20,16 @@
             <Image Source="ms-appx:///Assets/JeffFrame.jpg" MaxWidth="400" MaxHeight="600" Margin="0,100,0,24"  Stretch="Uniform" HorizontalAlignment="Center" />
             <ProgressRing Style="{StaticResource ProgressRingStyle}" />
         </StackPanel>
-        <Grid Visibility="{Binding IsLoading, Converter={StaticResource NegatedBoolToVisibility}}"  HorizontalAlignment="Center">
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="192" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
-            <StackPanel Orientation="Vertical" Grid.Column="0">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Visibility="{Binding IsLoading, Converter={StaticResource NegatedBoolToVisibility}}">
+            <StackPanel Orientation="Vertical">
                 <Image Source="ms-appx:///Assets/GiantBombLogo.png" Width="192" Stretch="Uniform" HorizontalAlignment="Center" />
-                <Button Content="Search" Command="{Binding NavigateSearchPageCommand}" Style="{StaticResource NavigationButtonStyle}" HorizontalAlignment="Right" />
-                <Button Content="Categories" Command="{Binding NavigateCategoriesPageCommand}" Style="{StaticResource NavigationButtonStyle}" HorizontalAlignment="Right" />
-                <Button Content="Quick Looks" Command="{Binding NavigateQuickLooksPageCommand}" Style="{StaticResource NavigationButtonStyle}" HorizontalAlignment="Right" />
-                <Button Content="Settings" Command="{Binding NavigateSettingsPageCommand}" Style="{StaticResource NavigationButtonStyle}" HorizontalAlignment="Right" />
+                <Button Content="Search" Command="{Binding NavigateSearchPageCommand}" Style="{StaticResource NavigationButtonStyle}" HorizontalAlignment="Center" />
+                <Button Content="Categories" Command="{Binding NavigateCategoriesPageCommand}" Style="{StaticResource NavigationButtonStyle}" HorizontalAlignment="Center" />
+                <Button Content="Quick Looks" Command="{Binding NavigateQuickLooksPageCommand}" Style="{StaticResource NavigationButtonStyle}" HorizontalAlignment="Center" />
+                <Button Content="Settings" Command="{Binding NavigateSettingsPageCommand}" Style="{StaticResource NavigationButtonStyle}" HorizontalAlignment="Center" />
             </StackPanel>
 
-            <ScrollViewer Grid.Column="1" HorizontalAlignment="Stretch">
+            <ScrollViewer HorizontalAlignment="Stretch">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
                     <TextBlock Text="Latest Videos" HorizontalAlignment="Left" Margin="20" Style="{StaticResource HeaderTextStyle}" />
                     <Button Style="{StaticResource LargeVideoButton}"  DataContext="{Binding HeaderVideo}" Command="{Binding PlayVideoCommand}" Visibility="{Binding HeaderVideo, Converter={StaticResource NullToVisibilityConverter}}" />
@@ -43,7 +37,6 @@
                     <ItemsControl ItemsSource="{Binding Videos}" Style="{StaticResource VideoListStyle}"  />
                 </StackPanel>
             </ScrollViewer>
-
-        </Grid>
+        </StackPanel>
     </Grid>
 </Page>

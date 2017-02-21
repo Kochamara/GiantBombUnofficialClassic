@@ -113,7 +113,7 @@
                                 <GradientStop Offset="1" Color="Black"/>
                             </LinearGradientBrush>
                         </Grid.Background>
-                        <TextBlock Margin="8,0,8,8" Text="{Binding Title}" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource SubHeaderTextStyle}" />
+                        <TextBlock Margin="8,0,8,8" Text="{Binding Title}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource BodyTextStyle}" />
                     </Grid>
                 </Grid>
             </Button>
@@ -136,7 +136,7 @@
                                 <GradientStop Offset="1" Color="Black"/>
                             </LinearGradientBrush>
                         </Grid.Background>
-                        <TextBlock Margin="8,0,8,8" Text="{Binding Title}" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource SubHeaderTextStyle}" />
+                        <TextBlock Margin="8,0,8,8" Text="{Binding Title}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource BodyTextStyle}" />
                     </Grid>
                 </Grid>
             </Button>
