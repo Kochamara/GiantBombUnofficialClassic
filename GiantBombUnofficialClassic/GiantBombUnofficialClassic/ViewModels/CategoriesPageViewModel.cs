@@ -24,8 +24,6 @@ namespace GiantBombUnofficialClassic.ViewModels
         {
             _apiKey = Services.ApiKeyManager.GetInstance().GetSavedApiKey();
 
-            string text = string.Empty;
-
             var response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideoTypesAsync(_apiKey);
             if ((response != null) && (response.Status == StatusCode.OK) && (response.Results != null))
             {
@@ -36,16 +34,14 @@ namespace GiantBombUnofficialClassic.ViewModels
                         Title = category.Name,
                         Description = category.Deck,
                         Id = category.Id,
-                        //Command = new GalaSoft.MvvmLight.Command.RelayCommand(
-                        //() =>
-                        //{
-                        //    _navigationManager.Navigate("CategoryPage", category);
-                        //})
+                        Command = new GalaSoft.MvvmLight.Command.RelayCommand(
+                        () =>
+                        {
+                            _navigationManager.Navigate("CategoryPage", category);
+                        })
                     });
-                    text += category.Name + " " + category.Id + "\n" + category.Deck + "\n\n";
                 }
             }
-            text += "end";
         }
 
         public ObservableCollection<BasicViewModel> Categories

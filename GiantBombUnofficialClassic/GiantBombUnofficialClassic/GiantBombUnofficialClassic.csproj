@@ -149,6 +149,8 @@
     <Content Include="Assets\GiantBombLogo.png" />
     <Content Include="Assets\JeffFrame.jpg" />
     <Content Include="Assets\Licenses.txt" />
+    <Content Include="Assets\JeffRunning.gif" />
+    <Content Include="Assets\RyanRunning.gif" />
     <Content Include="Assets\Required\SplashScreen.scale-100.png" />
     <Content Include="Assets\Required\SplashScreen.scale-125.png" />
     <Content Include="Assets\Required\SplashScreen.scale-150.png" />

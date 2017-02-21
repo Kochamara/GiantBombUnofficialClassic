@@ -171,10 +171,8 @@
         <Setter Property="ItemTemplate">
             <Setter.Value>
                 <DataTemplate x:Name="CategoryTemplate">
-                    <Button Width="320" Height="140" Command="{Binding Command}" Margin="8">
-                        <Grid VerticalAlignment="Bottom" Opacity="0.75" Background="DarkRed">
-                            <TextBlock Text="{Binding Title}" Foreground="White" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" FontSize="24" TextWrapping="WrapWholeWords" Margin="20" />
-                        </Grid>
+                    <Button Width="192" Height="108" Command="{Binding Command}" Margin="0,0,16,16" Padding="0" BorderBrush="{StaticResource DarkRedBrush}" BorderThickness="4" Background="{StaticResource DarkestGrayBrush}">
+                        <TextBlock Text="{Binding Title}" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Style="{StaticResource SubHeaderTextStyle}" Foreground="{StaticResource LightGrayBrush}" />
                     </Button>
                 </DataTemplate>
             </Setter.Value>
@@ -182,7 +180,7 @@
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
-                    <ItemsWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal" />
+                    <ItemsWrapGrid MaximumRowsOrColumns="2" Orientation="Horizontal" />
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>

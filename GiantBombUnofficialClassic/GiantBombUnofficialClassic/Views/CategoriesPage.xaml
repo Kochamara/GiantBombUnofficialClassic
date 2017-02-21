@@ -14,6 +14,10 @@
     </Page.Resources>
 
     <ScrollViewer Background="{StaticResource DarkestGrayBrush}">
-        <ItemsControl ItemsSource="{Binding Categories}" Style="{StaticResource CategoryListStyle}" />
+        <StackPanel Orientation="Horizontal">
+            <Image Source="ms-appx:///Assets/JeffRunning.gif" Width="264" Margin="16" Stretch="Uniform" HorizontalAlignment="Center" />
+            <ItemsControl ItemsSource="{Binding Categories}" Style="{StaticResource CategoryListStyle}" />
+            <Image Source="ms-appx:///Assets/RyanRunning.gif" Width="264" Margin="16" Stretch="Uniform" HorizontalAlignment="Center" />
+        </StackPanel>
     </ScrollViewer>
 </Page>

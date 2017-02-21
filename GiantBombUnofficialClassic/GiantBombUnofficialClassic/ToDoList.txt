@@ -5,7 +5,6 @@ Limited release (beta):
 -VideoViewModel URI handling
 -Category selection page styling
 -Main page and category page styling
--Enable NavigationCacheMode
 
 Windows Store release:
 -Refresh buttons
