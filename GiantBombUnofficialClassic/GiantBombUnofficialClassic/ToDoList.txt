@@ -2,7 +2,6 @@
 
 Limited release (beta):
 -Video container styling
--VideoViewModel URI handling
 -Category selection page styling
 -Main page and category page styling
 
@@ -17,6 +16,8 @@ Windows Store release:
 -Double click to fullscreen shortcut on video player
 -Should the video player page figure out the Uri itself?
 -Clean up the CommonStyles file
+-Version number on settings page
+-Do I need to write a privacy policy?
 
 Xbox release:
 -Full gamepad support (plus TextBox start button handling)

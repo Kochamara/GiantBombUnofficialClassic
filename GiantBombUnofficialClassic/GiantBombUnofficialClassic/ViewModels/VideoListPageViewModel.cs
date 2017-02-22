@@ -25,6 +25,7 @@ namespace GiantBombUnofficialClassic.ViewModels
         {
             _videos = new ObservableCollection<VideoViewModel>();
             _subHeaderVideos = new ObservableCollection<VideoViewModel>();
+            _headerVideos = new ObservableCollection<VideoViewModel>();
         }
 
         public async Task InitializeAsync()
@@ -111,7 +112,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                     // third row (3 wide) of videos.
                     if (_videos.Count > (NumberOfSubHeadersOnMainPage + 4))
                     {
-                        HeaderVideo = _videos.First();
+                        _headerVideos.Add(_videos.First());
                         _videos.RemoveAt(0);
 
                         var subHeaderViewModels = _videos.Take(NumberOfSubHeadersOnMainPage);
@@ -147,6 +148,13 @@ namespace GiantBombUnofficialClassic.ViewModels
             get { return _subHeaderVideos; }
         }
         private ObservableCollection<VideoViewModel> _subHeaderVideos;
+
+        public ObservableCollection<VideoViewModel> HeaderVideos
+        {
+            get { return _headerVideos; }
+        }
+        private ObservableCollection<VideoViewModel> _headerVideos;
+
 
         public VideoType Category
         {
@@ -219,60 +227,6 @@ namespace GiantBombUnofficialClassic.ViewModels
             }
         }
         private bool _isLoading;
-
-        public VideoViewModel HeaderVideo
-        {
-            get
-            {
-                return _headerVideo;
-            }
-
-            set
-            {
-                if (_headerVideo != value)
-                {
-                    _headerVideo = value;
-                    RaisePropertyChanged(() => HeaderVideo);
-                }
-            }
-        }
-        private VideoViewModel _headerVideo;
-
-        public VideoViewModel SecondVideo
-        {
-            get
-            {
-                return _secondVideo;
-            }
-
-            set
-            {
-                if (_secondVideo != value)
-                {
-                    _secondVideo = value;
-                    RaisePropertyChanged(() => SecondVideo);
-                }
-            }
-        }
-        private VideoViewModel _secondVideo;
-
-        public VideoViewModel ThirdVideo
-        {
-            get
-            {
-                return _thirdVideo;
-            }
-
-            set
-            {
-                if (_thirdVideo != value)
-                {
-                    _thirdVideo = value;
-                    RaisePropertyChanged(() => ThirdVideo);
-                }
-            }
-        }
-        private VideoViewModel _thirdVideo;
 
         #region Navigation
         public RelayCommand NavigateSearchPageCommand

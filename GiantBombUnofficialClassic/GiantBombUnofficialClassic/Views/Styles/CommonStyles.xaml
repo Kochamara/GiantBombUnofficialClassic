@@ -68,80 +68,188 @@
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
-    <Style x:Key="LargeVideoButton" TargetType="Button">
-        <Setter Property="Width" Value="600" />
-        <Setter Property="Height" Value="340" />
-        <Setter Property="Padding" Value="0" />
-        <Setter Property="Content">
-            <Setter.Value>
-                <Grid>
-                    <Image Stretch="UniformToFill" Opacity="30" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        <Image.Source>
-                            <BitmapImage UriSource="{Binding ImageLocation}" />
-                        </Image.Source>
-                    </Image>
-                    <Grid VerticalAlignment="Bottom" MinHeight="80">
-                        <Grid.Background>
-                            <LinearGradientBrush StartPoint=".5,0" EndPoint=".5,1">
-                                <GradientStop Offset="0" />
-                                <GradientStop Offset="1" Color="Black"/>
-                            </LinearGradientBrush>
-                        </Grid.Background>
-                        <StackPanel Orientation="Vertical">
-                            <TextBlock Margin="8,0,8,8" Text="{Binding Title}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource SubHeaderTextStyle}" />
-                            <TextBlock Margin="8,0,8,8" Text="{Binding Description}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource BodyTextStyle}" />
-                        </StackPanel>
+    <DataTemplate x:Name="HeaderVideoTemplate">
+        <UserControl>
+            <RelativePanel Margin="0,0,8,8">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="WindowWidthStates">
+                        <VisualState x:Name="WideState">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="1600" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="HeaderButton.Width" Value="1168" />
+                                <Setter Target="HeaderButton.Height" Value="680" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="MiddleState">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="1300" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="HeaderButton.Width" Value="880" />
+                                <Setter Target="HeaderButton.Height" Value="510" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="NarrowState">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="0" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="HeaderButton.Width" Value="592" />
+                                <Setter Target="HeaderButton.Height" Value="340" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+                <Button x:Name="HeaderButton" Width="592" Height="340" Command="{Binding PlayVideoCommand}" Padding="0">
+                    <Grid>
+                        <Image Stretch="UniformToFill" Opacity="30" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Image.Source>
+                                <BitmapImage UriSource="{Binding ImageLocation}" />
+                            </Image.Source>
+                        </Image>
+                        <Grid VerticalAlignment="Bottom" MinHeight="80">
+                            <Grid.Background>
+                                <LinearGradientBrush StartPoint=".75,0" EndPoint=".75,1">
+                                    <GradientStop Offset="0" />
+                                    <GradientStop Offset="1" Color="Black"/>
+                                </LinearGradientBrush>
+                            </Grid.Background>
+                            <StackPanel Orientation="Vertical" Margin="8,0,8,8">
+                                <TextBlock Text="{Binding Title}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource SubHeaderTextStyle}" />
+                                <TextBlock Text="{Binding Description}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource BodyTextStyle}" />
+                            </StackPanel>
+                        </Grid>
                     </Grid>
-                </Grid>
-            </Setter.Value>
-        </Setter>
-    </Style>
+                </Button>
+            </RelativePanel>
+        </UserControl>
+    </DataTemplate>
 
     <DataTemplate x:Name="SubHeaderVideoTemplate">
-        <Grid Margin="0,0,8,8">
-            <Button Width="292" Height="164" Command="{Binding PlayVideoCommand}" Padding="0">
-                <Grid>
-                    <Image Stretch="UniformToFill" Opacity="30" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        <Image.Source>
-                            <BitmapImage UriSource="{Binding ImageLocation}" />
-                        </Image.Source>
-                    </Image>
-                    <Grid VerticalAlignment="Bottom" MinHeight="80">
-                        <Grid.Background>
-                            <LinearGradientBrush StartPoint=".5,0" EndPoint=".5,1">
-                                <GradientStop Offset="0" />
-                                <GradientStop Offset="1" Color="Black"/>
-                            </LinearGradientBrush>
-                        </Grid.Background>
-                        <TextBlock Margin="8,0,8,8" Text="{Binding Title}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource BodyTextStyle}" />
+        <UserControl>
+            <RelativePanel Margin="0,0,8,8">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="WindowWidthStates">
+                        <VisualState x:Name="WideState">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="1600" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="SubHeaderButton.Width" Value="580" />
+                                <Setter Target="SubHeaderButton.Height" Value="328" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="MiddleState">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="1300" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="SubHeaderButton.Width" Value="436" />
+                                <Setter Target="SubHeaderButton.Height" Value="246" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="NarrowState">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="0" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="SubHeaderButton.Width" Value="292" />
+                                <Setter Target="SubHeaderButton.Height" Value="164" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+                <Button x:Name="SubHeaderButton" Width="292" Height="164" Command="{Binding PlayVideoCommand}" Padding="0">
+                    <Grid>
+                        <Image Stretch="UniformToFill" Opacity="30" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Image.Source>
+                                <BitmapImage UriSource="{Binding ImageLocation}" />
+                            </Image.Source>
+                        </Image>
+                        <Grid VerticalAlignment="Bottom" MinHeight="80">
+                            <Grid.Background>
+                                <LinearGradientBrush StartPoint=".5,0" EndPoint=".5,1">
+                                    <GradientStop Offset="0" />
+                                    <GradientStop Offset="1" Color="Black"/>
+                                </LinearGradientBrush>
+                            </Grid.Background>
+                            <TextBlock Margin="8,0,8,8" Text="{Binding Title}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource BodyTextStyle}" />
+                        </Grid>
                     </Grid>
-                </Grid>
-            </Button>
-        </Grid>
+                </Button>
+            </RelativePanel>
+        </UserControl>
     </DataTemplate>
 
     <DataTemplate x:Name="VideoTemplate">
-        <Grid Margin="0,0,8,8">
-            <Button Width="192" Height="108" Command="{Binding PlayVideoCommand}" Padding="0">
-                <Grid>
-                    <Image Stretch="UniformToFill" Opacity="30" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        <Image.Source>
-                            <BitmapImage UriSource="{Binding ImageLocation}" />
-                        </Image.Source>
-                    </Image>
-                    <Grid VerticalAlignment="Bottom" MinHeight="80">
-                        <Grid.Background>
-                            <LinearGradientBrush StartPoint=".5,0" EndPoint=".5,1">
-                                <GradientStop Offset="0" />
-                                <GradientStop Offset="1" Color="Black"/>
-                            </LinearGradientBrush>
-                        </Grid.Background>
-                        <TextBlock Margin="8,0,8,8" Text="{Binding Title}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource BodyTextStyle}" />
+        <UserControl>
+            <RelativePanel Margin="0,0,8,8">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="WindowWidthStates">
+                        <VisualState x:Name="WideState">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="1600" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="VideoButton.Width" Value="384" />
+                                <Setter Target="VideoButton.Height" Value="216" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="MiddleState">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="1300" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="VideoButton.Width" Value="288" />
+                                <Setter Target="VideoButton.Height" Value="162" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="NarrowState">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="0" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="VideoButton.Width" Value="192" />
+                                <Setter Target="VideoButton.Height" Value="108" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+                <Button x:Name="VideoButton" Width="192" Height="108" Command="{Binding PlayVideoCommand}" Padding="0">
+                    <Grid>
+                        <Image Stretch="UniformToFill" Opacity="30" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Image.Source>
+                                <BitmapImage UriSource="{Binding ImageLocation}" />
+                            </Image.Source>
+                        </Image>
+                        <Grid VerticalAlignment="Bottom" MinHeight="80">
+                            <Grid.Background>
+                                <LinearGradientBrush StartPoint=".5,0" EndPoint=".5,1">
+                                    <GradientStop Offset="0" />
+                                    <GradientStop Offset="1" Color="Black"/>
+                                </LinearGradientBrush>
+                            </Grid.Background>
+                            <TextBlock Margin="8,0,8,8" Text="{Binding Title}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource BodyTextStyle}" />
+                        </Grid>
                     </Grid>
-                </Grid>
-            </Button>
-        </Grid>
+                </Button>
+            </RelativePanel>
+        </UserControl>
     </DataTemplate>
+
+    <Style x:Key="HeaderVideoListStyle" TargetType="ItemsControl">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="ItemTemplate" Value="{StaticResource HeaderVideoTemplate}" />
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <ItemsWrapGrid MaximumRowsOrColumns="1" Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
     <Style x:Key="SubHeaderVideoListStyle" TargetType="ItemsControl">
         <Setter Property="HorizontalAlignment" Value="Center" />
