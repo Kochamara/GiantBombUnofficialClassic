@@ -29,11 +29,13 @@ namespace GiantBombUnofficialClassic.ViewModels
             {
                 foreach (var category in response.Results)
                 {
+                    var imageLocation = Services.CategoryImageProvider.GetImageForCategoryName(category.Name);
                     _categories.Add(new BasicViewModel
                     {
                         Title = category.Name,
                         Description = category.Deck,
                         Id = category.Id,
+                        ImageLocation = imageLocation,
                         Command = new GalaSoft.MvvmLight.Command.RelayCommand(
                         () =>
                         {

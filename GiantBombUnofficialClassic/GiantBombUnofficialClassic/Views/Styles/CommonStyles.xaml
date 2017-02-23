@@ -279,8 +279,15 @@
         <Setter Property="ItemTemplate">
             <Setter.Value>
                 <DataTemplate x:Name="CategoryTemplate">
-                    <Button Width="192" Height="108" Command="{Binding Command}" Margin="0,0,16,16" Padding="0" BorderBrush="{StaticResource DarkRedBrush}" BorderThickness="4" Background="{StaticResource DarkestGrayBrush}">
-                        <TextBlock Text="{Binding Title}" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Style="{StaticResource SubHeaderTextStyle}" Foreground="{StaticResource LightGrayBrush}" />
+                    <Button Width="240" Height="180" Margin="20" Command="{Binding Command}">
+                        <StackPanel Orientation="Vertical">
+                            <Image Stretch="UniformToFill" Width="240" Height="135">
+                                <Image.Source>
+                                    <BitmapImage UriSource="{Binding ImageLocation}" />
+                                </Image.Source>
+                            </Image>
+                            <TextBlock Text="{Binding Title}" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center" Margin="0,8,0,0" Style="{StaticResource SubHeaderTextStyle}" Foreground="{StaticResource LightGrayBrush}" />
+                        </StackPanel>
                     </Button>
                 </DataTemplate>
             </Setter.Value>
@@ -288,7 +295,7 @@
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
-                    <ItemsWrapGrid MaximumRowsOrColumns="2" Orientation="Horizontal" />
+                    <ItemsWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal" />
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>

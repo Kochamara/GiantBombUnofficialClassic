@@ -98,6 +98,7 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ApiKeyManager.cs" />
+    <Compile Include="Services\CategoryImageProvider.cs" />
     <Compile Include="Services\InitializationAgent.cs" />
     <Compile Include="Services\VideoUriManager.cs" />
     <Compile Include="Utilities\NavigationManager.cs" />
@@ -146,6 +147,24 @@
     <None Include="GiantBombUnofficialClassic_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Categories\BestOfGiantBomb.jpg" />
+    <Content Include="Assets\Categories\Bombcast.jpg" />
+    <Content Include="Assets\Categories\BreakingBrad.jpg" />
+    <Content Include="Assets\Categories\default.png" />
+    <Content Include="Assets\Categories\EnduranceRun.jpg" />
+    <Content Include="Assets\Categories\Events.jpg" />
+    <Content Include="Assets\Categories\ExtraLife.jpg" />
+    <Content Include="Assets\Categories\Features.jpg" />
+    <Content Include="Assets\Categories\GameTapes.jpg" />
+    <Content Include="Assets\Categories\MetalGearScanlon.jpg" />
+    <Content Include="Assets\Categories\OldGames.png" />
+    <Content Include="Assets\Categories\Premium.jpg" />
+    <Content Include="Assets\Categories\ProjectBEAST.jpg" />
+    <Content Include="Assets\Categories\QuickLooks.jpg" />
+    <Content Include="Assets\Categories\TANG.jpg" />
+    <Content Include="Assets\Categories\Unfinished.png" />
+    <Content Include="Assets\Categories\VideoReview.jpg" />
+    <Content Include="Assets\Categories\Vinnyvania.jpg" />
     <Content Include="Assets\GiantBombLogo.png" />
     <Content Include="Assets\JeffFrame.jpg" />
     <Content Include="Assets\Licenses.txt" />
