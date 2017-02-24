@@ -62,7 +62,7 @@ namespace GiantBombUnofficialClassic.Services
                         imageLocation = new Uri(@"ms-appx:///Assets//Categories//TANG.jpg");
                         break;
                     case "Trailers":
-                        imageLocation = new Uri(@"ms-appx:///Assets//Categories//default.png");
+                        imageLocation = new Uri(@"ms-appx:///Assets//Categories//Trailers.jpg");
                         break;
                     case "Unfinished":
                         imageLocation = new Uri(@"ms-appx:///Assets//Categories//Unfinished.png");

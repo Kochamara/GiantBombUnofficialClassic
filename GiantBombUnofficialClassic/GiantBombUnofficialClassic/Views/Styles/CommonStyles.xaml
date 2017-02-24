@@ -281,7 +281,7 @@
                 <DataTemplate x:Name="CategoryTemplate">
                     <Button Width="240" Height="180" Margin="20" Command="{Binding Command}">
                         <StackPanel Orientation="Vertical">
-                            <Image Stretch="UniformToFill" Width="240" Height="135">
+                            <Image Stretch="Uniform" Width="240" Height="135">
                                 <Image.Source>
                                     <BitmapImage UriSource="{Binding ImageLocation}" />
                                 </Image.Source>
