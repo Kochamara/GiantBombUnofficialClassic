@@ -14,10 +14,18 @@
     </Page.Resources>
 
     <ScrollViewer Background="{StaticResource DarkestGrayBrush}">
-        <StackPanel Orientation="Horizontal">
-            <Image Source="ms-appx:///Assets/JeffRunning.gif" Width="264" Margin="16" Stretch="Uniform" HorizontalAlignment="Center" />
-            <ItemsControl ItemsSource="{Binding Categories}" Style="{StaticResource CategoryListStyle}" />
-            <Image Source="ms-appx:///Assets/RyanRunning.gif" Width="264" Margin="16" Stretch="Uniform" HorizontalAlignment="Center" />
-        </StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Orientation="Vertical">
+                <Image Source="ms-appx:///Assets/JeffRunning.gif" Height="307" Margin="16" Stretch="Uniform" HorizontalAlignment="Center" />
+                <Image Source="ms-appx:///Assets/RyanRunning.gif" Height="307" Margin="16" Stretch="Uniform" HorizontalAlignment="Center" />
+            </StackPanel>
+            
+            <ItemsControl Grid.Column="1" HorizontalAlignment="Center" ItemsSource="{Binding Categories}" Style="{StaticResource CategoryListStyle}" />
+        </Grid>
     </ScrollViewer>
 </Page>

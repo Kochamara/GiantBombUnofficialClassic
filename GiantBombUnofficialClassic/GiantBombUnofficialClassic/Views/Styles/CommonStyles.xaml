@@ -279,16 +279,51 @@
         <Setter Property="ItemTemplate">
             <Setter.Value>
                 <DataTemplate x:Name="CategoryTemplate">
-                    <Button Width="240" Height="180" Margin="20" Command="{Binding Command}">
-                        <StackPanel Orientation="Vertical">
-                            <Image Stretch="Uniform" Width="240" Height="135">
-                                <Image.Source>
-                                    <BitmapImage UriSource="{Binding ImageLocation}" />
-                                </Image.Source>
-                            </Image>
-                            <TextBlock Text="{Binding Title}" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center" Margin="0,8,0,0" Style="{StaticResource SubHeaderTextStyle}" Foreground="{StaticResource LightGrayBrush}" />
-                        </StackPanel>
-                    </Button>
+                    <UserControl>
+                        <RelativePanel Margin="0,0,8,8">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="WindowWidthStates">
+                                    <VisualState x:Name="WideState">
+                                        <VisualState.StateTriggers>
+                                            <AdaptiveTrigger MinWindowWidth="1600" />
+                                        </VisualState.StateTriggers>
+                                        <VisualState.Setters>
+                                            <Setter Target="SubHeaderButton.Width" Value="580" />
+                                            <Setter Target="SubHeaderButton.Height" Value="328" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="MiddleState">
+                                        <VisualState.StateTriggers>
+                                            <AdaptiveTrigger MinWindowWidth="1300" />
+                                        </VisualState.StateTriggers>
+                                        <VisualState.Setters>
+                                            <Setter Target="SubHeaderButton.Width" Value="436" />
+                                            <Setter Target="SubHeaderButton.Height" Value="246" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="NarrowState">
+                                        <VisualState.StateTriggers>
+                                            <AdaptiveTrigger MinWindowWidth="0" />
+                                        </VisualState.StateTriggers>
+                                        <VisualState.Setters>
+                                            <Setter Target="SubHeaderButton.Width" Value="292" />
+                                            <Setter Target="SubHeaderButton.Height" Value="180" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Button x:Name="SubHeaderButton" Width="292" Height="164" Margin="20" Command="{Binding ViewCategoryCommand}">
+                                <StackPanel Orientation="Vertical">
+                                    <Image Stretch="Uniform" Margin="20" HorizontalAlignment="Stretch">
+                                        <Image.Source>
+                                            <BitmapImage UriSource="{Binding ImageLocation}" />
+                                        </Image.Source>
+                                    </Image>
+                                    <TextBlock Text="{Binding Title}" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center" Margin="0,8,0,0" Style="{StaticResource SubHeaderTextStyle}" Foreground="{StaticResource LightGrayBrush}" />
+                                </StackPanel>
+                            </Button>
+                        </RelativePanel>
+                    </UserControl>
                 </DataTemplate>
             </Setter.Value>
         </Setter>
