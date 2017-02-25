@@ -28,7 +28,7 @@
 
                 <StackPanel Visibility="{Binding IsLoading, Converter={StaticResource NegatedBoolToVisibility}}" Orientation="Vertical" Margin="40">
                     <TextBlock Text="{Binding CategoryTitle}" Style="{StaticResource HeaderTextStyle}" HorizontalAlignment="Center" TextAlignment="Center" Margin="16" />
-                    <TextBlock Text="{Binding CategoryDescription}" Style="{StaticResource SubHeaderTextStyle}" HorizontalAlignment="Center" TextAlignment="Center" Margin="8" />
+                    <TextBlock Text="{Binding CategoryDescription}" Foreground="{StaticResource LightGrayBrush}" Style="{StaticResource SubHeaderTextStyle}" HorizontalAlignment="Center" TextAlignment="Center" Margin="16" />
 
                     <ItemsControl ItemsSource="{Binding HeaderVideos}" Style="{StaticResource HeaderVideoListStyle}"  />
                     <ItemsControl ItemsSource="{Binding SubHeaderVideos}" Style="{StaticResource SubHeaderVideoListStyle}"  />

@@ -1,8 +1,7 @@
 ﻿THE GIANT BOMB UNOFFICIAL CLASSIC VIDEO PLAYER TO DO LIST
 
--Change auth links
-
 Windows Store release:
+-Next page buttons
 -Refresh buttons
 -Handling of non-premium users
 -Final assets
