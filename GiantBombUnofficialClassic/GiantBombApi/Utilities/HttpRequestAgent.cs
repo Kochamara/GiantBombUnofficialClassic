@@ -10,7 +10,7 @@ namespace GiantBombApi.Utilities
 {
     public class HttpRequestAgent
     {
-        public const string UserAgent = "CECACEF1-8469-4318-A1ED-EDC4B5F3BF2A_GiantBombUnofficialClassic_UserAgent";
+        public const string UserAgent = "GiantBombVideoPlayer_UnofficialClassic_ForWindowsAndXbox";
 
         public static async Task<T> GetDeserializedResponseAsync<T>(Uri uri)
         {

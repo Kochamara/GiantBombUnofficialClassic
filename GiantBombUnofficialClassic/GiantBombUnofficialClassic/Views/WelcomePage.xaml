@@ -34,7 +34,7 @@
             <StackPanel Orientation="Vertical" Visibility="{Binding IsTenFootExperience, Converter={StaticResource BoolToVisibility}}" HorizontalAlignment="Center">
                 <TextBlock Text="Welcome to the Giant Bomb Video Player for the Xbox One!" TextAlignment="Center" Style="{StaticResource BodyTextStyle}" Margin="8" />
                 <TextBlock Text="To get started, we need to link up your Giant Bomb account. Go here to get your link code:" TextAlignment="Center" Style="{StaticResource BodyTextStyle}" Margin="8" />
-                <TextBlock Text="giantbomb.com/app/Xbox" TextAlignment="Center" Style="{StaticResource BodyTextStyle}" FontSize="20" Margin="12" />
+                <TextBlock Text="giantbomb.com/app/XboxVideoPlayer" TextAlignment="Center" Style="{StaticResource BodyTextStyle}" FontSize="20" Margin="12" />
             </StackPanel>
 
             <!--Link code entry-->

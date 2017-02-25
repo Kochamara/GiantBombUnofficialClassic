@@ -19,15 +19,15 @@ namespace GiantBombUnofficialClassic.ViewModels
         public const string NoApiKeyReturnedError = "We're having trouble validating your code. Are you sure it's correct?";
 
         //public const string EncodedAppNameForPcVersion = "Giant%20Bomb%20Unofficial%20Classic";
-        public const string EncodedAppNameForPcVersion = "Windows";
-        public const string EncodedAppNameForXboxVersion = "Xbox";
+        public const string EncodedAppNameForPcVersion = "WindowsVideoPlayer";
+        public const string EncodedAppNameForXboxVersion = "XboxVideoPlayer";
 
         public WelcomePageViewModel()
         {
             _navigationManager = NavigationManager.GetInstance();
             _apiKeyManager = ApiKeyManager.GetInstance();
             
-            if (SystemInformationManager.IsTenFootExperience)
+            if (IsTenFootExperience)
             {
                 LinkCodeWebsite = new Uri("http://www.giantbomb.com/app/" + EncodedAppNameForXboxVersion);
             }
@@ -45,7 +45,7 @@ namespace GiantBombUnofficialClassic.ViewModels
             {
                 var apiKey = string.Empty;
                 
-                if (SystemInformationManager.IsTenFootExperience)
+                if (IsTenFootExperience)
                 {
                     apiKey = await GiantBombApi.Services.ApiKeyRetrievalAgent.GetApiKeyFromCodeAsync(linkCode, EncodedAppNameForXboxVersion);
                 }
@@ -107,7 +107,7 @@ namespace GiantBombUnofficialClassic.ViewModels
         {
             get
             {
-                return SystemInformationManager.IsTenFootExperience;
+                return true;
             }
         }
 
