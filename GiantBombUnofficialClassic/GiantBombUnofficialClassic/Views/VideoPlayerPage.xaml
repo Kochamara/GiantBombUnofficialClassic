@@ -8,6 +8,6 @@
     mc:Ignorable="d">
 
     <Grid Background="{StaticResource DarkestGrayBrush}">
-        <MediaPlayerElement AutoPlay="True" Source="{Binding VideoSource}" AreTransportControlsEnabled="True" HorizontalAlignment="Stretch" Foreground="{StaticResource BrightRedBrush}" />
+        <MediaPlayerElement x:Name="MediaPlayer" AutoPlay="True" Source="{Binding VideoSource}" AreTransportControlsEnabled="True" HorizontalAlignment="Stretch" Foreground="{StaticResource BrightRedBrush}" />
     </Grid>
 </Page>

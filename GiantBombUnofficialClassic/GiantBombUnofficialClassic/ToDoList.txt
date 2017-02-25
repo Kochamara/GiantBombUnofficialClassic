@@ -9,7 +9,6 @@ Windows Store release:
 -Error logging
 -Video player page styling
 -Unit tests
--Double click to fullscreen shortcut on video player
 -Should the video player page figure out the Uri itself?
 -Clean up the CommonStyles file
 -Do I need to write a privacy policy?
@@ -29,6 +28,4 @@ V2 release:
 https://www.fontspring.com/fonts/fontsite/glyddon
 -Konami code
 -Maybe move the category selection onto the main page itself? ComboBox? Ehh?
-
-Bugs:
--Sometimes when you quickly navigate to and from a video page, the video keeps playing
+-Move search to a normal search box without its own dedicated page

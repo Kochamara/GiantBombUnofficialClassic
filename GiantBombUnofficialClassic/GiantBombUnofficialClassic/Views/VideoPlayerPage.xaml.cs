@@ -26,6 +26,16 @@ namespace GiantBombUnofficialClassic.Views
             this.InitializeComponent();
             _context = new VideoPlayerViewModel();
             this.DataContext = _context;
+
+            if (!Utilities.SystemInformationManager.IsTenFootExperience)
+            {
+                this.MediaPlayer.DoubleTapped += MediaPlayer_DoubleTapped;
+            }
+        }
+
+        private void MediaPlayer_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            MediaPlayer.IsFullWindow = !MediaPlayer.IsFullWindow;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -36,6 +46,12 @@ namespace GiantBombUnofficialClassic.Views
                 var videoSource = e.Parameter as Uri;
                 _context.VideoSource = Windows.Media.Core.MediaSource.CreateFromUri(videoSource);
             }
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+            MediaPlayer.MediaPlayer.Dispose();
         }
     }
 }

@@ -14,7 +14,7 @@
     <Resource Language="x-generate" />
   </Resources>
   <Applications>
-    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="GiantBombUnofficialClassic.App">
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="GiantBombVideoPlayer.App">
       <uap:VisualElements DisplayName="Giant Bomb" Square150x150Logo="Assets\Required\Square150x150Logo.png" Square44x44Logo="Assets\Required\Square44x44Logo.png" Description="The Giant Bomb Video Player is a dedicated application for streaming all of your favorite Giant Bomb content. With support for premium content for members, this lightweight app is the perfect way to stay up-to-date on the newest Quick Looks, Bombcasts, live event archives, and more!" BackgroundColor="#292929">
         <uap:DefaultTile Wide310x150Logo="Assets\Required\Wide310x150Logo.png" ShortName="Giant Bomb" Square310x310Logo="Assets\Required\Square310x310Logo.png">
         </uap:DefaultTile>
