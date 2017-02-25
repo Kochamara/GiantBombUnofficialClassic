@@ -250,4 +250,7 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
-/GiantBombUnofficialClassic/GiantBombUnofficialClassic/Constants.cs
+/GiantBombUnofficialClassic/GiantBombUnofficialClassic/_scale-400.appx
+/GiantBombUnofficialClassic/GiantBombUnofficialClassic/_scale-150.appx
+/GiantBombUnofficialClassic/GiantBombUnofficialClassic/_scale-125.appx
+/GiantBombUnofficialClassic/GiantBombUnofficialClassic/_scale-100.appx
