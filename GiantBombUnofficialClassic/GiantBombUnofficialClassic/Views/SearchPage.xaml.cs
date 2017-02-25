@@ -31,7 +31,7 @@ namespace GiantBombUnofficialClassic.Views
         {
             if ((e.Key == Windows.System.VirtualKey.Enter) && (e.KeyStatus.RepeatCount == 1))
             {
-                var unawaitedTask = _viewModel.GetSearchResultsAsync(SearchQueryTextBox.Text);
+                var unawaitedTask = _viewModel.GetSearchResultsAsync(SearchQueryTextBox.Text, true);
             }
         }
     }

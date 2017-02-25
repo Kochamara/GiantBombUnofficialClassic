@@ -1,8 +1,6 @@
 ﻿THE GIANT BOMB UNOFFICIAL CLASSIC VIDEO PLAYER TO DO LIST
 
 Windows Store release:
--Next page buttons
--Refresh buttons
 -Error logging
 -Video player page styling
 -Unit tests

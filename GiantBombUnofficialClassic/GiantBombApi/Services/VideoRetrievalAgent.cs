@@ -127,7 +127,7 @@ namespace GiantBombApi.Services
             VideosResponse response = null;
 
             string pageNumberParameter = string.Empty;
-            if (pageNumber > 0)
+            if (pageNumber > 1)
             {
                 pageNumberParameter = "&page=" + pageNumber;
             }

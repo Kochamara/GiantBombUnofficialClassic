@@ -15,13 +15,6 @@ namespace GiantBombUnofficialClassic.ViewModels
             Player = new MediaPlayer();
         }
 
-        //public void SetNewVideoSource(Uri videoLocation)
-        //{
-        //    VideoSource = Windows.Media.Core.MediaSource.CreateFromUri(videoLocation);
-        //    // PlayerElement.SetMediaPlayer(_mediaPlayer);
-        //    //_mediaPlayer.Play();
-        //}
-
         public IMediaPlaybackSource VideoSource
         {
             get

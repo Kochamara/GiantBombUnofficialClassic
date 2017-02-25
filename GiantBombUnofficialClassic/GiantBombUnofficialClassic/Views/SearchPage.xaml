@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:converters="using:GiantBombUnofficialClassic.Views.Converters"
+    NavigationCacheMode="Enabled"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -23,11 +24,15 @@
 
             <TextBlock Text="{Binding ErrorText}" Style="{StaticResource BodyTextStyle}" HorizontalAlignment="Center" TextAlignment="Center" Margin="20" Visibility="{Binding ErrorText, Converter={StaticResource NullToVisibilityConverter}}" />
 
-            <!--Loading ring and spacing grid-->
             <ProgressRing Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibility}}" Style="{StaticResource ProgressRingStyle}" Margin="8" />
-            <Grid Height="40" Visibility="{Binding IsLoading, Converter={StaticResource NegatedBoolToVisibility}}" Margin="8" />
 
-            <ItemsControl ItemsSource="{Binding SearchResults}" Style="{StaticResource VideoListStyle}" Margin="20,0,20,40" />
+            <Grid Visibility="{Binding IsLoading, Converter={StaticResource NegatedBoolToVisibility}}" Margin="16" >
+                <StackPanel Orientation="Vertical">
+                    <ItemsControl ItemsSource="{Binding SearchResults}" Style="{StaticResource VideoListStyle}" Margin="20,0,20,40" />
+                    <Button Content="Show more" Command="{Binding ShowMoreVideosCommand}" Style="{StaticResource NavigationButtonStyle}" HorizontalAlignment="Center" Margin="8" Visibility="{Binding AdditionalVideosFound, Converter={StaticResource BoolToVisibility}}" />
+                    <ProgressRing Style="{StaticResource ProgressRingStyle}" VerticalAlignment="Top" Margin="0,16,0,16" Visibility="{Binding AreAdditionalResultsBeingLoaded, Converter={StaticResource BoolToVisibility}}" />
+                </StackPanel>
+            </Grid>
         </StackPanel>
     </ScrollViewer>
 </Page>
