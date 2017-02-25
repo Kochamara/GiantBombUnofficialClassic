@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel;
 
 namespace GiantBombUnofficialClassic.ViewModels
 {
@@ -12,7 +13,13 @@ namespace GiantBombUnofficialClassic.ViewModels
     {
         public SettingsPageViewModel()
         {
-
+            // Set version number text
+            Package package = Package.Current;
+            if ((package != null) && (package.Id != null))
+            {
+                var version = package.Id.Version;
+                VersionNumberText = "Giant Bomb Video Player, version " + string.Format("{0}.{1}.{2}.{3}", version.Major, version.Minor, version.Build, version.Revision);
+            }
         }
 
         public RelayCommand ViewOpenSourceLicensesCommand
@@ -42,6 +49,24 @@ namespace GiantBombUnofficialClassic.ViewModels
             }
         }
         private RelayCommand _changeApiKeyCommand;
+
+        public string VersionNumberText
+        {
+            get
+            {
+                return _versionNumberText;
+            }
+
+            set
+            {
+                if (_versionNumberText != value)
+                {
+                    _versionNumberText = value;
+                    RaisePropertyChanged(() => VersionNumberText);
+                }
+            }
+        }
+        private string _versionNumberText;
 
         public string OpenSourceDescription
         {

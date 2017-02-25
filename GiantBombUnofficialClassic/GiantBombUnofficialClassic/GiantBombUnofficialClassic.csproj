@@ -171,6 +171,25 @@
     <Content Include="Assets\JeffFrame.jpg" />
     <Content Include="Assets\Licenses.txt" />
     <Content Include="Assets\JeffRunning.gif" />
+    <Content Include="Assets\Required\Square150x150Logo.scale-100.png" />
+    <Content Include="Assets\Required\Square150x150Logo.scale-400.png" />
+    <Content Include="Assets\Required\Square310x310Logo.scale-100.png" />
+    <Content Include="Assets\Required\Square310x310Logo.scale-200.png" />
+    <Content Include="Assets\Required\Square44x44Logo.scale-100.png" />
+    <Content Include="Assets\Required\Square44x44Logo.scale-400.png" />
+    <Content Include="Assets\Required\Square44x44Logo.targetsize-16.png" />
+    <Content Include="Assets\Required\Square44x44Logo.targetsize-16_altform-unplated.png" />
+    <Content Include="Assets\Required\Square44x44Logo.targetsize-24.png" />
+    <Content Include="Assets\Required\Square44x44Logo.targetsize-256.png" />
+    <Content Include="Assets\Required\Square44x44Logo.targetsize-256_altform-unplated.png" />
+    <Content Include="Assets\Required\Square44x44Logo.targetsize-48.png" />
+    <Content Include="Assets\Required\Square44x44Logo.targetsize-48_altform-unplated.png" />
+    <Content Include="Assets\Required\StoreLogo.scale-100.png" />
+    <Content Include="Assets\Required\StoreLogo.scale-125.png" />
+    <Content Include="Assets\Required\StoreLogo.scale-150.png" />
+    <Content Include="Assets\Required\StoreLogo.scale-200.png" />
+    <Content Include="Assets\Required\StoreLogo.scale-400.png" />
+    <Content Include="Assets\Required\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\RyanRunning.gif" />
     <Content Include="Assets\Required\SplashScreen.scale-100.png" />
     <Content Include="Assets\Required\SplashScreen.scale-125.png" />
@@ -182,7 +201,6 @@
     <Content Include="Assets\Required\Square150x150Logo.scale-200.png" />
     <Content Include="Assets\Required\Square44x44Logo.scale-200.png" />
     <Content Include="Assets\Required\Square44x44Logo.targetsize-24_altform-unplated.png" />
-    <Content Include="Assets\Required\StoreLogo.png" />
     <Content Include="Assets\Required\Wide310x150Logo.scale-200.png" />
     <Content Include="ToDoList.txt" />
   </ItemGroup>

@@ -1,9 +1,6 @@
 ﻿THE GIANT BOMB UNOFFICIAL CLASSIC VIDEO PLAYER TO DO LIST
 
-Limited release (beta):
--Video container styling
--Category selection page styling
--Main page and category page styling
+-Change auth links
 
 Windows Store release:
 -Refresh buttons
@@ -11,13 +8,13 @@ Windows Store release:
 -Final assets
 -Error logging
 -Video player page styling
--VisualStateGroups for different window sizes
 -Unit tests
 -Double click to fullscreen shortcut on video player
 -Should the video player page figure out the Uri itself?
 -Clean up the CommonStyles file
--Version number on settings page
 -Do I need to write a privacy policy?
+-Finalize video and category containers
+-Finalize category page style
 
 Xbox release:
 -Full gamepad support (plus TextBox start button handling)
@@ -30,6 +27,7 @@ V2 release:
 -Video playback position handling
 -New font for header text: Glyddon regular, weight 400
 https://www.fontspring.com/fonts/fontsite/glyddon
+-Konami code
 -Maybe move the category selection onto the main page itself? ComboBox? Ehh?
 
 Bugs:

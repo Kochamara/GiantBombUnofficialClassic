@@ -68,27 +68,51 @@
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
+    <Style x:Key="NarrowButtonStyle" TargetType="Button"></Style>
+    
     <DataTemplate x:Name="HeaderVideoTemplate">
         <UserControl>
             <RelativePanel Margin="0,0,8,8">
                 <VisualStateManager.VisualStateGroups>
                     <VisualStateGroup x:Name="WindowWidthStates">
-                        <VisualState x:Name="WideState">
+                        <VisualState x:Name="MaxState">
                             <VisualState.StateTriggers>
                                 <AdaptiveTrigger MinWindowWidth="1600" />
                             </VisualState.StateTriggers>
                             <VisualState.Setters>
                                 <Setter Target="HeaderButton.Width" Value="1168" />
                                 <Setter Target="HeaderButton.Height" Value="680" />
+                                <Setter Target="DescriptionText.Visibility" Value="Visible" />
                             </VisualState.Setters>
                         </VisualState>
-                        <VisualState x:Name="MiddleState">
+                        <VisualState x:Name="WideState">
                             <VisualState.StateTriggers>
                                 <AdaptiveTrigger MinWindowWidth="1300" />
                             </VisualState.StateTriggers>
                             <VisualState.Setters>
                                 <Setter Target="HeaderButton.Width" Value="880" />
                                 <Setter Target="HeaderButton.Height" Value="510" />
+                                <Setter Target="DescriptionText.Visibility" Value="Visible" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="MiddleState">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="910" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="HeaderButton.Width" Value="592" />
+                                <Setter Target="HeaderButton.Height" Value="340" />
+                                <Setter Target="DescriptionText.Visibility" Value="Visible" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="SemiNarrowState">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="600" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="HeaderButton.Width" Value="292" />
+                                <Setter Target="HeaderButton.Height" Value="164" />
+                                <Setter Target="DescriptionText.Visibility" Value="Collapsed" />
                             </VisualState.Setters>
                         </VisualState>
                         <VisualState x:Name="NarrowState">
@@ -96,8 +120,9 @@
                                 <AdaptiveTrigger MinWindowWidth="0" />
                             </VisualState.StateTriggers>
                             <VisualState.Setters>
-                                <Setter Target="HeaderButton.Width" Value="592" />
-                                <Setter Target="HeaderButton.Height" Value="340" />
+                                <Setter Target="HeaderButton.Width" Value="192" />
+                                <Setter Target="HeaderButton.Height" Value="108" />
+                                <Setter Target="DescriptionText.Visibility" Value="Collapsed" />
                             </VisualState.Setters>
                         </VisualState>
                     </VisualStateGroup>
@@ -118,7 +143,7 @@
                             </Grid.Background>
                             <StackPanel Orientation="Vertical" Margin="8,0,8,8">
                                 <TextBlock Text="{Binding Title}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource SubHeaderTextStyle}" />
-                                <TextBlock Text="{Binding Description}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource BodyTextStyle}" />
+                                <TextBlock x:Name="DescriptionText" Text="{Binding Description}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource BodyTextStyle}" />
                             </StackPanel>
                         </Grid>
                     </Grid>
@@ -132,31 +157,45 @@
             <RelativePanel Margin="0,0,8,8">
                 <VisualStateManager.VisualStateGroups>
                     <VisualStateGroup x:Name="WindowWidthStates">
-                        <VisualState x:Name="WideState">
+                        <VisualState x:Name="MaxState">
                             <VisualState.StateTriggers>
                                 <AdaptiveTrigger MinWindowWidth="1600" />
                             </VisualState.StateTriggers>
                             <VisualState.Setters>
                                 <Setter Target="SubHeaderButton.Width" Value="580" />
                                 <Setter Target="SubHeaderButton.Height" Value="328" />
+                                <Setter Target="DescriptionText.Visibility" Value="Visible" />
                             </VisualState.Setters>
                         </VisualState>
-                        <VisualState x:Name="MiddleState">
+                        <VisualState x:Name="WideState">
                             <VisualState.StateTriggers>
                                 <AdaptiveTrigger MinWindowWidth="1300" />
                             </VisualState.StateTriggers>
                             <VisualState.Setters>
                                 <Setter Target="SubHeaderButton.Width" Value="436" />
                                 <Setter Target="SubHeaderButton.Height" Value="246" />
+                                <Setter Target="DescriptionText.Visibility" Value="Visible" />
                             </VisualState.Setters>
                         </VisualState>
+                        <VisualState x:Name="MiddleState">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="800" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="SubHeaderButton.Width" Value="292" />
+                                <Setter Target="SubHeaderButton.Height" Value="164" />
+                                <Setter Target="DescriptionText.Visibility" Value="Collapsed" />
+                            </VisualState.Setters>
+                        </VisualState>
+
                         <VisualState x:Name="NarrowState">
                             <VisualState.StateTriggers>
                                 <AdaptiveTrigger MinWindowWidth="0" />
                             </VisualState.StateTriggers>
                             <VisualState.Setters>
-                                <Setter Target="SubHeaderButton.Width" Value="292" />
-                                <Setter Target="SubHeaderButton.Height" Value="164" />
+                                <Setter Target="SubHeaderButton.Width" Value="192" />
+                                <Setter Target="SubHeaderButton.Height" Value="108" />
+                                <Setter Target="DescriptionText.Visibility" Value="Collapsed" />
                             </VisualState.Setters>
                         </VisualState>
                     </VisualStateGroup>
@@ -175,7 +214,10 @@
                                     <GradientStop Offset="1" Color="Black"/>
                                 </LinearGradientBrush>
                             </Grid.Background>
-                            <TextBlock Margin="8,0,8,8" Text="{Binding Title}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource BodyTextStyle}" />
+                            <StackPanel Orientation="Vertical" Margin="8,0,8,8">
+                                <TextBlock Text="{Binding Title}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource SubHeaderTextStyle}" />
+                                <TextBlock x:Name="DescriptionText" Text="{Binding Description}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="2" Style="{StaticResource BodyTextStyle}" />
+                            </StackPanel>
                         </Grid>
                     </Grid>
                 </Button>
@@ -187,8 +229,8 @@
         <UserControl>
             <RelativePanel Margin="0,0,8,8">
                 <VisualStateManager.VisualStateGroups>
-                    <VisualStateGroup x:Name="WindowWidthStates">
-                        <VisualState x:Name="WideState">
+                    <VisualStateGroup x:Name="MaxWidthStates">
+                        <VisualState x:Name="MaxState">
                             <VisualState.StateTriggers>
                                 <AdaptiveTrigger MinWindowWidth="1600" />
                             </VisualState.StateTriggers>
@@ -197,7 +239,7 @@
                                 <Setter Target="VideoButton.Height" Value="216" />
                             </VisualState.Setters>
                         </VisualState>
-                        <VisualState x:Name="MiddleState">
+                        <VisualState x:Name="WideState">
                             <VisualState.StateTriggers>
                                 <AdaptiveTrigger MinWindowWidth="1300" />
                             </VisualState.StateTriggers>
@@ -283,22 +325,31 @@
                         <RelativePanel Margin="0,0,8,8">
                             <VisualStateManager.VisualStateGroups>
                                 <VisualStateGroup x:Name="WindowWidthStates">
-                                    <VisualState x:Name="WideState">
+                                    <VisualState x:Name="MaxState">
                                         <VisualState.StateTriggers>
                                             <AdaptiveTrigger MinWindowWidth="1600" />
                                         </VisualState.StateTriggers>
                                         <VisualState.Setters>
                                             <Setter Target="SubHeaderButton.Width" Value="580" />
-                                            <Setter Target="SubHeaderButton.Height" Value="328" />
+                                            <Setter Target="SubHeaderButton.Height" Value="360" />
                                         </VisualState.Setters>
                                     </VisualState>
-                                    <VisualState x:Name="MiddleState">
+                                    <VisualState x:Name="WideState">
                                         <VisualState.StateTriggers>
                                             <AdaptiveTrigger MinWindowWidth="1300" />
                                         </VisualState.StateTriggers>
                                         <VisualState.Setters>
                                             <Setter Target="SubHeaderButton.Width" Value="436" />
-                                            <Setter Target="SubHeaderButton.Height" Value="246" />
+                                            <Setter Target="SubHeaderButton.Height" Value="300" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="MidState">
+                                        <VisualState.StateTriggers>
+                                            <AdaptiveTrigger MinWindowWidth="800" />
+                                        </VisualState.StateTriggers>
+                                        <VisualState.Setters>
+                                            <Setter Target="SubHeaderButton.Width" Value="292" />
+                                            <Setter Target="SubHeaderButton.Height" Value="240" />
                                         </VisualState.Setters>
                                     </VisualState>
                                     <VisualState x:Name="NarrowState">
@@ -306,19 +357,15 @@
                                             <AdaptiveTrigger MinWindowWidth="0" />
                                         </VisualState.StateTriggers>
                                         <VisualState.Setters>
-                                            <Setter Target="SubHeaderButton.Width" Value="292" />
+                                            <Setter Target="SubHeaderButton.Width" Value="192" />
                                             <Setter Target="SubHeaderButton.Height" Value="180" />
                                         </VisualState.Setters>
                                     </VisualState>
                                 </VisualStateGroup>
                             </VisualStateManager.VisualStateGroups>
-                            <Button x:Name="SubHeaderButton" Width="292" Height="164" Margin="20" Command="{Binding ViewCategoryCommand}">
+                            <Button x:Name="SubHeaderButton" Width="192" Height="180" Margin="20" Command="{Binding ViewCategoryCommand}">
                                 <StackPanel Orientation="Vertical">
-                                    <Image Stretch="Uniform" Margin="20" HorizontalAlignment="Stretch">
-                                        <Image.Source>
-                                            <BitmapImage UriSource="{Binding ImageLocation}" />
-                                        </Image.Source>
-                                    </Image>
+                                    <Image Stretch="Uniform" HorizontalAlignment="Stretch" Source="{Binding ImageLocation}" />
                                     <TextBlock Text="{Binding Title}" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center" Margin="0,8,0,0" Style="{StaticResource SubHeaderTextStyle}" Foreground="{StaticResource LightGrayBrush}" />
                                 </StackPanel>
                             </Button>

@@ -15,15 +15,25 @@
     </Page.Resources>
 
     <Grid Background="{StaticResource DarkestGrayBrush}">
-        <Image Source="ms-appx:///Assets/JeffFrame.jpg" Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibility}}" Stretch="UniformToFill" VerticalAlignment="Center" />
         <ScrollViewer>
             <StackPanel Orientation="Vertical">
-                <TextBlock Text="{Binding CategoryTitle}" FontFamily="Courier New" Foreground="Red" Margin="20" FontSize="24" HorizontalAlignment="Center" />
-                <TextBlock Text="{Binding CategoryDescription}" FontFamily="Courier New" Foreground="Red" Margin="20" FontSize="24" HorizontalAlignment="Center" />
-
-                <Grid HorizontalAlignment="Center" Visibility="{Binding IsLoading, Converter={StaticResource NegatedBoolToVisibility}}">
-                    <ItemsControl ItemsSource="{Binding Videos}" Style="{StaticResource VideoListStyle}" />
+                <Grid Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibility}}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".6*" />
+                        <RowDefinition Height=".4*" />
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0" Source="ms-appx:///Assets/JeffFrame.jpg" MaxWidth="400" MaxHeight="600" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                    <ProgressRing Grid.Row="1" Style="{StaticResource ProgressRingStyle}" VerticalAlignment="Top" Margin="0,50,0,0" />
                 </Grid>
+
+                <StackPanel Visibility="{Binding IsLoading, Converter={StaticResource NegatedBoolToVisibility}}" Orientation="Vertical" Margin="40">
+                    <TextBlock Text="{Binding CategoryTitle}" Style="{StaticResource HeaderTextStyle}" HorizontalAlignment="Center" TextAlignment="Center" Margin="16" />
+                    <TextBlock Text="{Binding CategoryDescription}" Style="{StaticResource SubHeaderTextStyle}" HorizontalAlignment="Center" TextAlignment="Center" Margin="8" />
+
+                    <ItemsControl ItemsSource="{Binding HeaderVideos}" Style="{StaticResource HeaderVideoListStyle}"  />
+                    <ItemsControl ItemsSource="{Binding SubHeaderVideos}" Style="{StaticResource SubHeaderVideoListStyle}"  />
+                    <ItemsControl ItemsSource="{Binding Videos}" Style="{StaticResource VideoListStyle}"  />
+                </StackPanel>
             </StackPanel>
         </ScrollViewer>
     </Grid>

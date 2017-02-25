@@ -22,6 +22,8 @@ namespace GiantBombUnofficialClassic.ViewModels
 
         public async Task InitializeAsync()
         {
+            IsLoading = true;
+
             _apiKey = Services.ApiKeyManager.GetInstance().GetSavedApiKey();
 
             var response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideoTypesAsync(_apiKey);
@@ -40,6 +42,8 @@ namespace GiantBombUnofficialClassic.ViewModels
                     });
                 }
             }
+
+            IsLoading = false;
         }
 
         public ObservableCollection<BasicViewModel> Categories
@@ -47,5 +51,23 @@ namespace GiantBombUnofficialClassic.ViewModels
             get { return _categories; }
         }
         private ObservableCollection<BasicViewModel> _categories;
+
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+
+            set
+            {
+                if (_isLoading != value)
+                {
+                    _isLoading = value;
+                    RaisePropertyChanged(() => IsLoading);
+                }
+            }
+        }
+        private bool _isLoading;
     }
 }
