@@ -18,6 +18,7 @@ namespace GiantBombUnofficialClassic.ViewModels
     {
         private NavigationManager _navigationManager;
         private string _apiKey;
+        private int _numberOfVideosCurrentlyShown;
         private const int NumberOfSubHeadersOnMainPage = 2;
         private const int NumberOfSubHeadersOnCategoryPage = 4;
 
@@ -30,29 +31,59 @@ namespace GiantBombUnofficialClassic.ViewModels
 
         public async Task InitializeAsync()
         {
-            IsLoading = true;
-            bool isCategoryPage = false;
+            _navigationManager = NavigationManager.GetInstance();
+            _apiKey = ApiKeyManager.GetInstance().GetSavedApiKey();
+            await LoadVideosAsync(true);
+        }
 
+        public async Task LoadVideosAsync(bool isFirstTimeLoadingVideos)
+        {
             try
             {
-                _navigationManager = NavigationManager.GetInstance();
-                _apiKey = ApiKeyManager.GetInstance().GetSavedApiKey();
+                if (isFirstTimeLoadingVideos)
+                {
+                    IsLoading = true;
+                    FoundVideos = false;
+                    _numberOfVideosCurrentlyShown = 0;
+                    _videos.Clear();
+                    _subHeaderVideos.Clear();
+                    _headerVideos.Clear();
+                }
+                else
+                {
+                    AreAdditionalResultsBeingLoaded = true;
+                }
+
+                AdditionalVideosFound = false;
                 VideosResponse response = null;
+                bool isCategoryPage = false;
 
                 if ((this.Category == null) || (String.IsNullOrWhiteSpace(this.Category.Id)))
                 {
-                    response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideosAsync(_apiKey);
+                    response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideosAsync(_apiKey, _numberOfVideosCurrentlyShown);
                 }
                 else
                 {
                     isCategoryPage = true;
                     CategoryTitle = Category.Name;
                     CategoryDescription = Category.Deck;
-                    response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideosAsync(_apiKey, Category.Id);
+                    response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideosAsync(_apiKey, Category.Id, _numberOfVideosCurrentlyShown);
                 }
 
-                if ((response != null) && (response.Status == StatusCode.OK) && (response.Results != null))
+                if ((response != null) && (response.Status == StatusCode.OK) && (response.Results != null) && ((response.Results.Count() > 0)))
                 {
+                    FoundVideos = true;
+                    _numberOfVideosCurrentlyShown += response.Results.Count();
+
+                    if (response.NumberOfTotalResults > _numberOfVideosCurrentlyShown)
+                    {
+                        AdditionalVideosFound = true;
+                    }
+                    else
+                    {
+                        AdditionalVideosFound = false;
+                    }
+
                     foreach (var video in response.Results)
                     {
                         var viewModel = new VideoViewModel()
@@ -77,10 +108,6 @@ namespace GiantBombUnofficialClassic.ViewModels
                             {
                                 viewModel.ImageLocation = new Uri(video.Image.SmallUrl);
                             }
-                            else
-                            {
-                                // TODO: Add default image
-                            }
                         }
 
                         _videos.Add(viewModel);
@@ -88,55 +115,59 @@ namespace GiantBombUnofficialClassic.ViewModels
                 }
 
                 // Add in the header and subheader view models
-                if (isCategoryPage)
+                if (isFirstTimeLoadingVideos)
                 {
-                    // Category page style, no header. Don't show anything unless we have a full
-                    // second row (3 wide) of videos.
-                    if (_videos.Count > (NumberOfSubHeadersOnCategoryPage + 3))
+                    if (isCategoryPage)
                     {
-                        var subHeaderViewModels = _videos.Take(NumberOfSubHeadersOnCategoryPage);
-                        foreach (var video in subHeaderViewModels)
+                        // Category page style, no header. Don't show anything unless we have a full
+                        // second row (3 wide) of videos.
+                        if (_videos.Count > (NumberOfSubHeadersOnCategoryPage + 3))
                         {
-                            _subHeaderVideos.Add(video);
-                        }
+                            var subHeaderViewModels = _videos.Take(NumberOfSubHeadersOnCategoryPage);
+                            foreach (var video in subHeaderViewModels)
+                            {
+                                _subHeaderVideos.Add(video);
+                            }
 
-                        for (int i = 0; i < NumberOfSubHeadersOnCategoryPage; i++)
+                            for (int i = 0; i < NumberOfSubHeadersOnCategoryPage; i++)
+                            {
+                                _videos.RemoveAt(0);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        // Main page style, includes header. Don't show anything unless we have a full
+                        // third row (3 wide) of videos.
+                        if (_videos.Count > (NumberOfSubHeadersOnMainPage + 4))
                         {
+                            _headerVideos.Add(_videos.First());
                             _videos.RemoveAt(0);
+
+                            var subHeaderViewModels = _videos.Take(NumberOfSubHeadersOnMainPage);
+                            foreach (var video in subHeaderViewModels)
+                            {
+                                _subHeaderVideos.Add(video);
+                            }
+
+                            for (int i = 0; i < NumberOfSubHeadersOnMainPage; i++)
+                            {
+                                _videos.RemoveAt(0);
+                            }
                         }
                     }
                 }
-                else
-                {
-                    // Main page style, includes header. Don't show anything unless we have a full
-                    // third row (3 wide) of videos.
-                    if (_videos.Count > (NumberOfSubHeadersOnMainPage + 4))
-                    {
-                        _headerVideos.Add(_videos.First());
-                        _videos.RemoveAt(0);
-
-                        var subHeaderViewModels = _videos.Take(NumberOfSubHeadersOnMainPage);
-                        foreach (var video in subHeaderViewModels)
-                        {
-                            _subHeaderVideos.Add(video);
-                        }
-
-                        for (int i = 0; i < NumberOfSubHeadersOnMainPage; i++)
-                        {
-                            _videos.RemoveAt(0);
-                        }
-                    }
-                }
-
             }
             catch (Exception e)
             {
                 // TODO: Add a logger
             }
 
+            AreAdditionalResultsBeingLoaded = false;
             IsLoading = false;
         }
 
+        #region Bound Properties
         public ObservableCollection<VideoViewModel> Videos
         {
             get { return _videos; }
@@ -154,8 +185,7 @@ namespace GiantBombUnofficialClassic.ViewModels
             get { return _headerVideos; }
         }
         private ObservableCollection<VideoViewModel> _headerVideos;
-
-
+        
         public VideoCategory Category
         {
             get
@@ -210,6 +240,9 @@ namespace GiantBombUnofficialClassic.ViewModels
         }
         private string _categoryDescription;
 
+        /// <summary>
+        /// Whether the page is loading or not. Should completely hide the page behind a loading indicator.
+        /// </summary>
         public bool IsLoading
         {
             get
@@ -227,6 +260,92 @@ namespace GiantBombUnofficialClassic.ViewModels
             }
         }
         private bool _isLoading;
+
+        /// <summary>
+        /// Whether an additional page of results is being loaded. Should not hide existing results.
+        /// </summary>
+        public bool AreAdditionalResultsBeingLoaded
+        {
+            get
+            {
+                return _areAdditionalResultsBeingLoaded;
+            }
+
+            set
+            {
+                if (_areAdditionalResultsBeingLoaded != value)
+                {
+                    _areAdditionalResultsBeingLoaded = value;
+                    RaisePropertyChanged(() => AreAdditionalResultsBeingLoaded);
+                }
+            }
+        }
+        private bool _areAdditionalResultsBeingLoaded;
+
+
+        public bool AdditionalVideosFound
+        {
+            get
+            {
+                return _additionalVideosFound;
+            }
+
+            set
+            {
+                if (_additionalVideosFound != value)
+                {
+                    _additionalVideosFound = value;
+                    RaisePropertyChanged(() => AdditionalVideosFound);
+                }
+            }
+        }
+        private bool _additionalVideosFound;
+
+
+        public bool FoundVideos
+        {
+            get
+            {
+                return _foundVideos;
+            }
+
+            set
+            {
+                if (_foundVideos != value)
+                {
+                    _foundVideos = value;
+                    RaisePropertyChanged(() => FoundVideos);
+                }
+            }
+        }
+        private bool _foundVideos;
+
+        public RelayCommand ShowMoreVideosCommand
+        {
+            get
+            {
+                return _showMoreVideosCommand ?? (_showMoreVideosCommand = new RelayCommand(
+                () =>
+                {
+                    var unawaitedTask = LoadVideosAsync(false);
+                }));
+            }
+        }
+        private RelayCommand _showMoreVideosCommand;
+
+        public RelayCommand RefreshCommand
+        {
+            get
+            {
+                return _refreshCommand ?? (_refreshCommand = new RelayCommand(
+                () =>
+                {
+                    var unawaitedTask = LoadVideosAsync(true);
+                }));
+            }
+        }
+        private RelayCommand _refreshCommand;
+        #endregion
 
         #region Navigation
         public RelayCommand NavigateSearchPageCommand

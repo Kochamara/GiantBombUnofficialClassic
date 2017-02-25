@@ -26,7 +26,7 @@ namespace GiantBombUnofficialClassic.ViewModels
 
             _apiKey = Services.ApiKeyManager.GetInstance().GetSavedApiKey();
 
-            var response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideoTypesAsync(_apiKey);
+            var response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideoCategoriesAsync(_apiKey);
             if ((response != null) && (response.Status == StatusCode.OK) && (response.Results != null))
             {
                 foreach (var category in response.Results)

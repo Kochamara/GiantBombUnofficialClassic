@@ -3,14 +3,11 @@
 Windows Store release:
 -Next page buttons
 -Refresh buttons
--Handling of non-premium users
--Final assets
 -Error logging
 -Video player page styling
 -Unit tests
 -Should the video player page figure out the Uri itself?
 -Clean up the CommonStyles file
--Do I need to write a privacy policy?
 -Finalize video and category containers
 -Finalize category page style
 

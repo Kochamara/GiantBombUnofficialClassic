@@ -97,11 +97,23 @@
             </Grid>
 
             <ScrollViewer Grid.Column="1">
-                <StackPanel Orientation="Vertical" Margin="40">
-                    <ItemsControl ItemsSource="{Binding HeaderVideos}" Style="{StaticResource HeaderVideoListStyle}"  />
-                    <ItemsControl ItemsSource="{Binding SubHeaderVideos}" Style="{StaticResource SubHeaderVideoListStyle}"  />
-                    <ItemsControl ItemsSource="{Binding Videos}" Style="{StaticResource VideoListStyle}"  />
-                </StackPanel>
+                <Grid>
+                    <StackPanel Orientation="Vertical" Margin="40" Visibility="{Binding FoundVideos, Converter={StaticResource BoolToVisibility}}">
+                        <ItemsControl ItemsSource="{Binding HeaderVideos}" Style="{StaticResource HeaderVideoListStyle}"  />
+                        <ItemsControl ItemsSource="{Binding SubHeaderVideos}" Style="{StaticResource SubHeaderVideoListStyle}"  />
+                        <ItemsControl ItemsSource="{Binding Videos}" Style="{StaticResource VideoListStyle}"  />
+                        <Button Content="Show more" Command="{Binding ShowMoreVideosCommand}" Style="{StaticResource NavigationButtonStyle}" HorizontalAlignment="Center" Margin="20" Visibility="{Binding AdditionalVideosFound, Converter={StaticResource BoolToVisibility}}" />
+                        <ProgressRing Style="{StaticResource ProgressRingStyle}" VerticalAlignment="Top" Margin="0,50,0,0" Visibility="{Binding AreAdditionalResultsBeingLoaded, Converter={StaticResource BoolToVisibility}}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Margin="40" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding FoundVideos, Converter={StaticResource NegatedBoolToVisibility}}">
+                        <TextBlock Foreground="White" MaxWidth="600" TextAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource SubheaderTextBlockStyle}">
+                            <Run Text="Uh oh!"/>
+                            <LineBreak />
+                            <Run Text="No videos were found. Make sure you're connected to the internet and try again."/>
+                        </TextBlock>
+                        <Button Content="Refresh" Command="{Binding RefreshCommand}" Style="{StaticResource NavigationButtonStyle}" HorizontalAlignment="Center" Margin="40" />
+                    </StackPanel>
+                </Grid>
             </ScrollViewer>
         </Grid>
     </Grid>

@@ -24,6 +24,9 @@
     <Color x:Key="DarkRed">#FFB31919</Color>
     <SolidColorBrush x:Key="DarkRedBrush" Color="{StaticResource DarkRed}" />
 
+    <!--Translucent brush to make text visible layered on top of images-->
+    <Color x:Key="TranslucentBlack">#96000000</Color>
+    <SolidColorBrush x:Key="TranslucentBlackBrush" Color="{StaticResource TranslucentBlack}" />
 
     <Style x:Key="HeaderTextStyle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="24" />
@@ -127,21 +130,12 @@
                         </VisualState>
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>
-                <Button x:Name="HeaderButton" Width="592" Height="340" Command="{Binding PlayVideoCommand}" Padding="0">
+                <Button x:Name="HeaderButton" Width="592" Height="340" Command="{Binding PlayVideoCommand}" Padding="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
                     <Grid>
-                        <Image Stretch="UniformToFill" Opacity="30" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                            <Image.Source>
-                                <BitmapImage UriSource="{Binding ImageLocation}" />
-                            </Image.Source>
-                        </Image>
-                        <Grid VerticalAlignment="Bottom" MinHeight="80">
-                            <Grid.Background>
-                                <LinearGradientBrush StartPoint=".75,0" EndPoint=".75,1">
-                                    <GradientStop Offset="0" />
-                                    <GradientStop Offset="1" Color="Black"/>
-                                </LinearGradientBrush>
-                            </Grid.Background>
-                            <StackPanel Orientation="Vertical" Margin="8,0,8,8">
+                        <Image Source="ms-appx:///Assets/BlackBomb.png" MaxWidth="40" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" />
+                        <Image Source="{Binding ImageLocation}" Stretch="UniformToFill" Opacity="30" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                        <Grid VerticalAlignment="Bottom" MinHeight="80" Background="{StaticResource TranslucentBlackBrush}">
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="8,4,8,8">
                                 <TextBlock Text="{Binding Title}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource SubHeaderTextStyle}" />
                                 <TextBlock x:Name="DescriptionText" Text="{Binding Description}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource BodyTextStyle}" />
                             </StackPanel>
@@ -200,21 +194,12 @@
                         </VisualState>
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>
-                <Button x:Name="SubHeaderButton" Width="292" Height="164" Command="{Binding PlayVideoCommand}" Padding="0">
+                <Button x:Name="SubHeaderButton" Width="292" Height="164" Command="{Binding PlayVideoCommand}" Padding="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
                     <Grid>
-                        <Image Stretch="UniformToFill" Opacity="30" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                            <Image.Source>
-                                <BitmapImage UriSource="{Binding ImageLocation}" />
-                            </Image.Source>
-                        </Image>
-                        <Grid VerticalAlignment="Bottom" MinHeight="80">
-                            <Grid.Background>
-                                <LinearGradientBrush StartPoint=".5,0" EndPoint=".5,1">
-                                    <GradientStop Offset="0" />
-                                    <GradientStop Offset="1" Color="Black"/>
-                                </LinearGradientBrush>
-                            </Grid.Background>
-                            <StackPanel Orientation="Vertical" Margin="8,0,8,8">
+                        <Image Source="ms-appx:///Assets/BlackBomb.png" MaxWidth="40" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" />
+                        <Image Source="{Binding ImageLocation}" Stretch="UniformToFill" Opacity="30" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                        <Grid VerticalAlignment="Bottom" MinHeight="80" Background="{StaticResource TranslucentBlackBrush}">
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="8,4,8,8">
                                 <TextBlock Text="{Binding Title}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource SubHeaderTextStyle}" />
                                 <TextBlock x:Name="DescriptionText" Text="{Binding Description}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="2" Style="{StaticResource BodyTextStyle}" />
                             </StackPanel>
@@ -259,21 +244,12 @@
                         </VisualState>
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>
-                <Button x:Name="VideoButton" Width="192" Height="108" Command="{Binding PlayVideoCommand}" Padding="0">
+                <Button x:Name="VideoButton" Width="192" Height="108" Command="{Binding PlayVideoCommand}" Padding="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
                     <Grid>
-                        <Image Stretch="UniformToFill" Opacity="30" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                            <Image.Source>
-                                <BitmapImage UriSource="{Binding ImageLocation}" />
-                            </Image.Source>
-                        </Image>
-                        <Grid VerticalAlignment="Bottom" MinHeight="80">
-                            <Grid.Background>
-                                <LinearGradientBrush StartPoint=".5,0" EndPoint=".5,1">
-                                    <GradientStop Offset="0" />
-                                    <GradientStop Offset="1" Color="Black"/>
-                                </LinearGradientBrush>
-                            </Grid.Background>
-                            <TextBlock Margin="8,0,8,8" Text="{Binding Title}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource BodyTextStyle}" />
+                        <Image Source="ms-appx:///Assets/BlackBomb.png" MaxWidth="40" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" />
+                        <Image Source="{Binding ImageLocation}" Stretch="UniformToFill" Opacity="30" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                        <Grid VerticalAlignment="Bottom" Background="{StaticResource TranslucentBlackBrush}">
+                            <TextBlock Margin="8,4,8,4" Text="{Binding Title}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource BodyTextStyle}" />
                         </Grid>
                     </Grid>
                 </Button>
@@ -377,7 +353,7 @@
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
-                    <ItemsWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal" />
+                    <ItemsWrapGrid MaximumRowsOrColumns="2" Orientation="Horizontal" />
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>

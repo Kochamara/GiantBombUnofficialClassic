@@ -156,6 +156,7 @@
     <None Include="GiantBombUnofficialClassic_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\BlackBomb.png" />
     <Content Include="Assets\Categories\BestOfGiantBomb.jpg" />
     <Content Include="Assets\Categories\Bombcast.jpg" />
     <Content Include="Assets\Categories\BreakingBrad.jpg" />

@@ -9,31 +9,68 @@ namespace GiantBombApi.Services
 {
     public class VideoRetrievalAgent
     {
+        /// <summary>
+        /// Pulls a list of videos from Giant Bomb
+        /// </summary>
+        /// <param name="apiKey">API key unique to the user</param>
+        /// <returns></returns>
         public static async Task<VideosResponse> GetVideosAsync(string apiKey)
         {
-            VideosResponse response = null;
-
-            try
-            {
-                var uri = new Uri("http://www.giantbomb.com/api/videos/?format=json&api_key=" + apiKey);
-                response = await Utilities.HttpRequestAgent.GetDeserializedResponseAsync<VideosResponse>(uri);
-            }
-            catch (Exception e)
-            {
-                // TODO: add a logger
-            }
-
+            var response = await GetVideosAsync(apiKey, string.Empty, 0);
             return response;
         }
 
+        /// <summary>
+        /// Pulls a list of videos from Giant Bomb
+        /// </summary>
+        /// <param name="apiKey">API key unique to the user</param>
+        /// <param name="offset">If viewing multiple pages of videos, how many videos to skip in the query</param>
+        /// <returns></returns>
+        public static async Task<VideosResponse> GetVideosAsync(string apiKey, int offset)
+        {
+            var response = await GetVideosAsync(apiKey, string.Empty, offset);
+            return response;
+        }
+
+        /// <summary>
+        /// Pulls a list of videos from Giant Bomb
+        /// </summary>
+        /// <param name="apiKey">API key unique to the user</param>
+        /// <param name="videoCategoryId">Numerical ID of which category to query</param>
+        /// <returns></returns>
         public static async Task<VideosResponse> GetVideosAsync(string apiKey, string videoCategoryId)
+        {
+            var response = await GetVideosAsync(apiKey, videoCategoryId, 0);
+            return response;
+        }
+
+        /// <summary>
+        /// Pulls a list of videos from Giant Bomb
+        /// </summary>
+        /// <param name="apiKey">API key unique to the user</param>
+        /// <param name="videoCategoryId">Numerical ID of which category to query</param>
+        /// <param name="offset">If viewing multiple pages of videos, how many videos to skip in the query</param>
+        /// <returns></returns>
+        public static async Task<VideosResponse> GetVideosAsync(string apiKey, string videoCategoryId, int offset)
         {
             VideosResponse response = null;
 
             try
             {
-                // Despite "video_type" being deprecated, the filter is still "video_type"
-                var uri = new Uri("http://www.giantbomb.com/api/videos/?format=json&api_key=" + apiKey + "&video_type=" + videoCategoryId);
+                string categoryParameter = string.Empty;
+                if (!String.IsNullOrWhiteSpace(videoCategoryId))
+                {
+                    // Despite "video_type" being deprecated, the filter is still "video_type"
+                    categoryParameter = "&video_type=" + videoCategoryId;
+                }
+
+                string offsetParameter = string.Empty;
+                if (offset > 0)
+                {
+                    offsetParameter = "&offset=" + offset;
+                }
+
+                var uri = new Uri("http://www.giantbomb.com/api/videos/?format=json&api_key=" + apiKey + categoryParameter + offsetParameter);
                 response = await Utilities.HttpRequestAgent.GetDeserializedResponseAsync<VideosResponse>(uri);
             }
             catch (Exception e)
@@ -44,7 +81,12 @@ namespace GiantBombApi.Services
             return response;
         }
 
-        public static async Task<CategoriesResponse> GetVideoTypesAsync(string apiKey)
+        /// <summary>
+        /// Pulls a list of video categories
+        /// </summary>
+        /// <param name="apiKey">API key unique to the user</param>
+        /// <returns></returns>
+        public static async Task<CategoriesResponse> GetVideoCategoriesAsync(string apiKey)
         {
             CategoriesResponse response = null;
 
@@ -61,13 +103,38 @@ namespace GiantBombApi.Services
             return response;
         }
 
+        /// <summary>
+        /// Looks for videos matching a query
+        /// </summary>
+        /// <param name="apiKey">API key unique to the user</param>
+        /// <param name="query">What to search for</param>
+        /// <returns></returns>
         public static async Task<VideosResponse> GetVideoSearchResultsAsync(string apiKey, string query)
+        {
+            var response = await GetVideoSearchResultsAsync(apiKey, query, 0);
+            return response;
+        }
+
+        /// <summary>
+        /// Looks for videos matching a query
+        /// </summary>
+        /// <param name="apiKey">API key unique to the user</param>
+        /// <param name="query">What to search for</param>
+        /// <param name="pageNumber">Which page of results to view</param>
+        /// <returns></returns>
+        public static async Task<VideosResponse> GetVideoSearchResultsAsync(string apiKey, string query, int pageNumber)
         {
             VideosResponse response = null;
 
+            string pageNumberParameter = string.Empty;
+            if (pageNumber > 0)
+            {
+                pageNumberParameter = "&page=" + pageNumber;
+            }
+
             try
             {
-                var uri = new Uri("http://www.giantbomb.com/api/search/?format=json&api_key=" + apiKey + "&query=" + query + "&resources=video");
+                var uri = new Uri("http://www.giantbomb.com/api/search/?format=json&api_key=" + apiKey + "&query=" + query + "&resources=video" + pageNumberParameter);
                 response = await Utilities.HttpRequestAgent.GetDeserializedResponseAsync<VideosResponse>(uri);
             }
             catch (Exception e)
