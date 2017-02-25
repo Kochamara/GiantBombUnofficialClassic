@@ -1,0 +1,23 @@
+﻿<Page
+    x:Class="GiantBombUnofficialClassic.Views.PrivacyPolicyPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GiantBombUnofficialClassic.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <ScrollViewer Background="{StaticResource DarkestGrayBrush}">
+        <TextBlock  Style="{StaticResource BodyTextStyle}" Margin="100">
+            <Run Text="This application uses the Giant Bomb API, which is subject to the CBS Interactive Privacy Policy, detailed on this page:" />
+            <LineBreak />
+            <LineBreak />
+            <Hyperlink NavigateUri="https://www.cbsinteractive.com/legal/cbsi/privacy-policy">
+                <Run Text="https://www.cbsinteractive.com/legal/cbsi/privacy-policy"/>
+            </Hyperlink>
+            <LineBreak />
+            <LineBreak />
+            <Run Text="The Giant Bomb Video Player does not store any user data other than your API key. This application does not have access to your Giant Bomb username, email address, or password, and therefore does not store or transmit this information. Information about your video viewing habits is not collected."/>
+        </TextBlock>
+    </ScrollViewer>
+</Page>

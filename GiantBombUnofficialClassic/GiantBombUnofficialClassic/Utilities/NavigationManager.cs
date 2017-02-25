@@ -77,6 +77,7 @@ namespace GiantBombUnofficialClassic.Utilities
             navigationService.Configure(Views.WelcomePage.PageKey, typeof(Views.WelcomePage));
             navigationService.Configure(Views.CategoryPage.PageKey, typeof(Views.CategoryPage));
             navigationService.Configure(Views.OpenSourceLicenses.PageKey, typeof(Views.OpenSourceLicenses));
+            navigationService.Configure(Views.PrivacyPolicyPage.PageKey, typeof(Views.PrivacyPolicyPage));
 
             return navigationService;
         }

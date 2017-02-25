@@ -36,6 +36,20 @@ namespace GiantBombUnofficialClassic.ViewModels
         }
         private RelayCommand _viewOpenSourceLicensesCommand;
 
+        public RelayCommand ViewPrivacyPolicyCommand
+        {
+            get
+            {
+                return _viewPrivacyPolicyCommand ?? (_viewPrivacyPolicyCommand = new RelayCommand(
+                () =>
+                {
+                    var navigationManager = Utilities.NavigationManager.GetInstance();
+                    navigationManager.Navigate(Views.PrivacyPolicyPage.PageKey);
+                }));
+            }
+        }
+        private RelayCommand _viewPrivacyPolicyCommand;
+
         public RelayCommand ChangeApiKeyCommand
         {
             get

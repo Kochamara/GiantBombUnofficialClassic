@@ -65,6 +65,7 @@
 
             <Button Content="View open source licenses" Command="{Binding ViewOpenSourceLicensesCommand}" Style="{StaticResource ButtonStyle}" Margin="20" />
 
+            <Button Content="View privacy policy" Command="{Binding ViewPrivacyPolicyCommand}" Style="{StaticResource ButtonStyle}" Margin="20" />
         </StackPanel>
     </ScrollViewer>
 </Page>

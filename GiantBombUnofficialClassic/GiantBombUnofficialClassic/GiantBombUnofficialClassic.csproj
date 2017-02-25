@@ -93,6 +93,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="Assets\PrivacyPolicy.md" />
     <None Include="GiantBombUnofficialClassic_StoreKey.pfx" />
     <None Include="project.json" />
   </ItemGroup>
@@ -130,6 +131,9 @@
     </Compile>
     <Compile Include="Views\OpenSourceLicenses.xaml.cs">
       <DependentUpon>OpenSourceLicenses.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PrivacyPolicyPage.xaml.cs">
+      <DependentUpon>PrivacyPolicyPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SearchPage.xaml.cs">
       <DependentUpon>SearchPage.xaml</DependentUpon>
@@ -227,6 +231,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\OpenSourceLicenses.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PrivacyPolicyPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
