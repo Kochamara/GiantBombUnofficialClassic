@@ -26,13 +26,14 @@ namespace GiantBombApi.Services
             return response;
         }
 
-        public static async Task<VideosResponse> GetVideosAsync(string apiKey, string videoTypeId)
+        public static async Task<VideosResponse> GetVideosAsync(string apiKey, string videoCategoryId)
         {
             VideosResponse response = null;
 
             try
             {
-                var uri = new Uri("http://www.giantbomb.com/api/videos/?format=json&api_key=" + apiKey + "&video_type=" + videoTypeId);
+                // Despite "video_type" being deprecated, the filter is still "video_type"
+                var uri = new Uri("http://www.giantbomb.com/api/videos/?format=json&api_key=" + apiKey + "&video_type=" + videoCategoryId);
                 response = await Utilities.HttpRequestAgent.GetDeserializedResponseAsync<VideosResponse>(uri);
             }
             catch (Exception e)
@@ -43,14 +44,14 @@ namespace GiantBombApi.Services
             return response;
         }
 
-        public static async Task<TypesResponse> GetVideoTypesAsync(string apiKey)
+        public static async Task<CategoriesResponse> GetVideoTypesAsync(string apiKey)
         {
-            TypesResponse response = null;
+            CategoriesResponse response = null;
 
             try
             {
-                var uri = new Uri("http://www.giantbomb.com/api/video_types/?format=json&api_key=" + apiKey);
-                response = await Utilities.HttpRequestAgent.GetDeserializedResponseAsync<TypesResponse>(uri);
+                var uri = new Uri("http://www.giantbomb.com/api/video_categories/?format=json&api_key=" + apiKey);
+                response = await Utilities.HttpRequestAgent.GetDeserializedResponseAsync<CategoriesResponse>(uri);
             }
             catch (Exception e)
             {

@@ -156,7 +156,7 @@ namespace GiantBombUnofficialClassic.ViewModels
         private ObservableCollection<VideoViewModel> _headerVideos;
 
 
-        public VideoType Category
+        public VideoCategory Category
         {
             get
             {
@@ -172,7 +172,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 }
             }
         }
-        private VideoType _category;
+        private VideoCategory _category;
 
         public string CategoryTitle
         {
@@ -277,7 +277,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 {
                     // So yeah, we're hard coding this ID because there's no explicit API request to get this specific page.
                     // It's not ideal.
-                    _navigationManager.Navigate("CategoryPage", new GiantBombApi.Models.VideoType()
+                    _navigationManager.Navigate("CategoryPage", new GiantBombApi.Models.VideoCategory()
                     {
                         Name = "Quick Looks",
                         Deck = "Our editors provide commentary as they play through 20 minutes or more of uninterrupted gameplay.",

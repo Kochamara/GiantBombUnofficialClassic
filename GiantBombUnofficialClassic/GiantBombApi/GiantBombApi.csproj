@@ -108,7 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\ApiKeyResponse.cs" />
-    <Compile Include="Models\TypesResponse.cs" />
+    <Compile Include="Models\CategoriesResponse.cs" />
     <Compile Include="Models\Response.cs" />
     <Compile Include="Models\VideoQuality.cs" />
     <Compile Include="Models\VideosResponse.cs" />

@@ -109,8 +109,8 @@ namespace GiantBombApi.Models
         /// <summary>
         /// not in api
         /// </summary>
-        [DataMember(Name = "video_type")]
-        public string VideoType;
+        //[DataMember(Name = "video_type")]
+        //public string VideoType;
     }
 
     /// <summary>

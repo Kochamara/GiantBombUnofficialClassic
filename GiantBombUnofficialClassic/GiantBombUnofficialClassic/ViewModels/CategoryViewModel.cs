@@ -9,7 +9,7 @@ namespace GiantBombUnofficialClassic.ViewModels
 {
     public class CategoryViewModel : BasicViewModel
     {
-        public GiantBombApi.Models.VideoType Source;
+        public GiantBombApi.Models.VideoCategory Source;
 
         public RelayCommand ViewCategoryCommand
         {
