@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="GiantBombVideoPlayer" Publisher="CN=Spencer" Version="1.0.0.0" />
+  <Identity Name="48398SpencerGuy.GiantBombVideoPlayer" Publisher="CN=BF41D053-7540-4948-B5A1-C16A2B97FBDD" Version="1.1.0.0" />
   <mp:PhoneIdentity PhoneProductId="2c5858f2-33be-4173-9e09-d9074391f804" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Giant Bomb Video Player</DisplayName>

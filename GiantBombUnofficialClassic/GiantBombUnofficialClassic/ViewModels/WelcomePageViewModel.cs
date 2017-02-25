@@ -106,7 +106,7 @@ namespace GiantBombUnofficialClassic.ViewModels
         {
             get
             {
-                return true;
+                return Utilities.SystemInformationManager.IsTenFootExperience;
             }
         }
 
