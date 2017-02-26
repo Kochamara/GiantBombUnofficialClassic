@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiantBombUnofficialClassic"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiantBombApi", "GiantBombApi\GiantBombApi.csproj", "{A18FE160-293C-4FA1-9365-50C25BA3E0A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{40B895A1-9071-4838-81AE-AFFED83FB7FC}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,30 +77,6 @@ Global
 		{A18FE160-293C-4FA1-9365-50C25BA3E0A9}.Xbox - Debug|x64.Build.0 = Xbox - Debug|x64
 		{A18FE160-293C-4FA1-9365-50C25BA3E0A9}.Xbox - Debug|x86.ActiveCfg = Xbox - Debug|x86
 		{A18FE160-293C-4FA1-9365-50C25BA3E0A9}.Xbox - Debug|x86.Build.0 = Xbox - Debug|x86
-		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Debug|ARM.Build.0 = Debug|Any CPU
-		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Debug|x64.Build.0 = Debug|Any CPU
-		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Debug|x86.Build.0 = Debug|Any CPU
-		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Release|ARM.ActiveCfg = Release|Any CPU
-		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Release|ARM.Build.0 = Release|Any CPU
-		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Release|x64.ActiveCfg = Release|Any CPU
-		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Release|x64.Build.0 = Release|Any CPU
-		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Release|x86.ActiveCfg = Release|Any CPU
-		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Release|x86.Build.0 = Release|Any CPU
-		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Xbox - Debug|Any CPU.ActiveCfg = Xbox - Debug|Any CPU
-		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Xbox - Debug|Any CPU.Build.0 = Xbox - Debug|Any CPU
-		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Xbox - Debug|ARM.ActiveCfg = Xbox - Debug|Any CPU
-		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Xbox - Debug|ARM.Build.0 = Xbox - Debug|Any CPU
-		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Xbox - Debug|x64.ActiveCfg = Xbox - Debug|Any CPU
-		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Xbox - Debug|x64.Build.0 = Xbox - Debug|Any CPU
-		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Xbox - Debug|x86.ActiveCfg = Xbox - Debug|Any CPU
-		{40B895A1-9071-4838-81AE-AFFED83FB7FC}.Xbox - Debug|x86.Build.0 = Xbox - Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
