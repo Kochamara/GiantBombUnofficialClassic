@@ -66,11 +66,13 @@
 
         <Grid Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibility}}">
             <Grid.RowDefinitions>
-                <RowDefinition Height=".6*" />
+                <RowDefinition Height=".2*" />
                 <RowDefinition Height=".4*" />
+                <RowDefinition Height=".2*" />
+                <RowDefinition Height=".2*" />
             </Grid.RowDefinitions>
-            <Image Grid.Row="0" Source="ms-appx:///Assets/JeffFrame.jpg" MaxWidth="400" MaxHeight="600" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-            <ProgressRing Grid.Row="1" Style="{StaticResource ProgressRingStyle}" VerticalAlignment="Top" Margin="0,50,0,0" />
+            <Image Grid.Row="1" Source="ms-appx:///Assets/JeffFrame.jpg" MaxWidth="400" MaxHeight="600" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+            <ProgressRing Grid.Row="2" Style="{StaticResource ProgressRingStyle}" VerticalAlignment="Center" />
         </Grid>
 
         <Grid Visibility="{Binding IsLoading, Converter={StaticResource NegatedBoolToVisibility}}">
@@ -79,13 +81,13 @@
                 <ColumnDefinition x:Name="ScrollViewerColumn" Width=".6*" />
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Column="0" Height="800" VerticalAlignment="Center" HorizontalAlignment="Right">
+            <Grid Grid.Column="0" MaxHeight="800" VerticalAlignment="Center" HorizontalAlignment="Right">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <Image Grid.Row="0" Source="ms-appx:///Assets/JeffRunning.gif" Height="307" Margin="16" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                <Image Grid.Row="1" Source="ms-appx:///Assets/RyanRunning.gif" Height="307" Margin="16" Stretch="Uniform" HorizontalAlignment="Center" />
+                <Image Grid.Row="0" Source="ms-appx:///Assets/JeffRunning.gif" MaxHeight="307" Margin="16" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <Image Grid.Row="1" Source="ms-appx:///Assets/RyanRunning.gif" MaxHeight="307" Margin="16" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
             </Grid>
 
             <ScrollViewer Grid.Column="1">

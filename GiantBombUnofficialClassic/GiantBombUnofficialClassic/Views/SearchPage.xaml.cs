@@ -29,9 +29,12 @@ namespace GiantBombUnofficialClassic.Views
 
         private void SearchQueryTextBox_KeyDown(object sender, KeyRoutedEventArgs e)
         {
-            if ((e.Key == Windows.System.VirtualKey.Enter) && (e.KeyStatus.RepeatCount == 1))
+            if ((e.Key == Windows.System.VirtualKey.Enter) || (e.Key == Windows.System.VirtualKey.GamepadMenu))
             {
-                var unawaitedTask = _viewModel.GetSearchResultsAsync(SearchQueryTextBox.Text, true);
+                if (e.KeyStatus.RepeatCount == 1)
+                {
+                    var unawaitedTask = _viewModel.GetSearchResultsAsync(SearchQueryTextBox.Text, true);
+                }
             }
         }
     }

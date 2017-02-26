@@ -76,6 +76,7 @@
     </Style>
     
     <Style x:Key="HeaderVideoListStyle" TargetType="ItemsControl">
+        <Setter Property="IsTabStop" Value="False" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="ItemTemplate" Value="{StaticResource HeaderVideoTemplate}" />
         <Setter Property="ItemsPanel">
@@ -88,6 +89,7 @@
     </Style>
 
     <Style x:Key="SubHeaderVideoListStyle" TargetType="ItemsControl">
+        <Setter Property="IsTabStop" Value="False" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="ItemTemplate" Value="{StaticResource SubHeaderVideoTemplate}" />
         <Setter Property="ItemsPanel">
@@ -100,6 +102,7 @@
     </Style>
 
     <Style x:Key="VideoListStyle" TargetType="ItemsControl">
+        <Setter Property="IsTabStop" Value="False" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="ItemTemplate" Value="{StaticResource VideoTemplate}" />
         <Setter Property="ItemsPanel">
@@ -112,6 +115,7 @@
     </Style>
 
     <Style x:Key="CategoryListStyle" TargetType="ItemsControl">
+        <Setter Property="IsTabStop" Value="False" />
         <Setter Property="ItemTemplate" Value="{StaticResource CategoryTemplate}" />
         <Setter Property="ItemsPanel">
             <Setter.Value>

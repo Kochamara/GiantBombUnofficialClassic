@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <ScrollViewer Background="{StaticResource DarkestGrayBrush}">
+    <ScrollViewer Background="{StaticResource DarkestGrayBrush}" IsTabStop="True">
         <TextBlock x:Name="LicenseTextBlock" Style="{StaticResource BodyTextStyle}" Margin="100"/>
     </ScrollViewer>
 </Page>

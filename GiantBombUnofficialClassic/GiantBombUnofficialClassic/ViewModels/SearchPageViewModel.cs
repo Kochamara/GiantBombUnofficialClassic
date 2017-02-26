@@ -55,6 +55,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 var response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideoSearchResultsAsync(_apiKey, query, _resultPageCurrentlyShown);
                 if ((response != null) && (response.Status == StatusCode.OK) && (response.Results != null) && (response.Results.Count() > 0))
                 {
+                    ErrorText = null;
                     _numberOfVideosCurrentlyShown += response.Results.Count();
 
                     if (response.NumberOfTotalResults > _numberOfVideosCurrentlyShown)
@@ -222,6 +223,67 @@ namespace GiantBombUnofficialClassic.ViewModels
             }
         }
         private RelayCommand _showMoreVideosCommand;
+        #endregion
+
+        #region Navigation
+        public RelayCommand NavigateCategoriesPageCommand
+        {
+            get
+            {
+                return _navigateCategoriesPageCommand ?? (_navigateCategoriesPageCommand = new RelayCommand(
+                () =>
+                {
+                    _navigationManager.Navigate(Views.CategoriesPage.PageKey);
+                }));
+            }
+        }
+        private RelayCommand _navigateCategoriesPageCommand;
+
+        public RelayCommand NavigateSettingsPageCommand
+        {
+            get
+            {
+                return _navigateSettingsPageCommand ?? (_navigateSettingsPageCommand = new RelayCommand(
+                () =>
+                {
+                    _navigationManager.Navigate(Views.SettingsPage.PageKey);
+                }));
+            }
+        }
+        private RelayCommand _navigateSettingsPageCommand;
+
+        public RelayCommand NavigateQuickLooksPageCommand
+        {
+            get
+            {
+                return _navigateQuickLooksPageCommand ?? (_navigateQuickLooksPageCommand = new RelayCommand(
+                () =>
+                {
+                    // So yeah, we're hard coding this ID because there's no explicit API request to get this specific page.
+                    // It's not ideal.
+                    _navigationManager.Navigate("CategoryPage", new GiantBombApi.Models.VideoCategory()
+                    {
+                        Name = "Quick Looks",
+                        Deck = "Our editors provide commentary as they play through 20 minutes or more of uninterrupted gameplay.",
+                        Id = "3",
+                    });
+                }));
+            }
+        }
+        private RelayCommand _navigateQuickLooksPageCommand;
+
+        public RelayCommand NavigateHomeCommand
+        {
+            get
+            {
+                return _navigateHomeCommand ?? (_navigateHomeCommand = new RelayCommand(
+                () =>
+                {
+                    _navigationManager.NavigateHome();
+                }));
+            }
+        }
+        private RelayCommand _navigateHomeCommand;
         #endregion
     }
 }

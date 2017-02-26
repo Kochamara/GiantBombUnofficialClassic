@@ -10,7 +10,7 @@
     <ScrollViewer Background="{StaticResource DarkestGrayBrush}">
         <StackPanel Orientation="Vertical" Margin="40">
 
-            <TextBlock Text="Settings" Style="{StaticResource HeaderTextStyle}" Margin="20"/>
+            <TextBlock Text="Settings" Style="{StaticResource HeaderTextStyle}" Margin="20" IsTapEnabled="True"/>
 
             <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20" Text="{Binding VersionNumberText}"/>
 
@@ -20,14 +20,16 @@
                     <Run Text="@SpencerGuy"/>
                 </Hyperlink>
                 <Run Text="on Twitter."/>
-                <LineBreak/>
+            </TextBlock>
+
+            <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20">
                 <Run Text="Find a bug?"/>
                 <Hyperlink NavigateUri="http://www.giantbomb.com/pm/compose/?to=2787">
                     <Run Text="Send a PM to Spencer"/>
                 </Hyperlink>
                 <Run Text="on the site."/>
             </TextBlock>
-            
+
             <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20" Text="Giant Bomb content used with permission. © 2017 CBS Interactive Inc. All rights reserved."/>
 
             <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20">

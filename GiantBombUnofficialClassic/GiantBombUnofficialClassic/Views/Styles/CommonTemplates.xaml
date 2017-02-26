@@ -215,8 +215,8 @@
                                 <AdaptiveTrigger MinWindowWidth="800" />
                             </VisualState.StateTriggers>
                             <VisualState.Setters>
-                                <Setter Target="SubHeaderButton.Width" Value="292" />
-                                <Setter Target="SubHeaderButton.Height" Value="240" />
+                                <Setter Target="SubHeaderButton.Width" Value="338" />
+                                <Setter Target="SubHeaderButton.Height" Value="236" />
                             </VisualState.Setters>
                         </VisualState>
                         <VisualState x:Name="NarrowState">
@@ -230,7 +230,7 @@
                         </VisualState>
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>
-                <Button x:Name="SubHeaderButton" Width="192" Height="180" Margin="20" Command="{Binding ViewCategoryCommand}">
+                <Button x:Name="SubHeaderButton" Width="192" Height="180" Margin="0,20,20,20" Command="{Binding ViewCategoryCommand}">
                     <StackPanel Orientation="Vertical">
                         <Image Stretch="Uniform" HorizontalAlignment="Stretch" Source="{Binding ImageLocation}" />
                         <TextBlock Text="{Binding Title}" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center" Margin="0,8,0,0" Style="{StaticResource SubHeaderTextStyle}" Foreground="{StaticResource LightGrayBrush}" />
@@ -241,4 +241,3 @@
     </DataTemplate>
 
 </ResourceDictionary>
-    
