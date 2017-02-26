@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Serilog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,8 @@ namespace GiantBombUnofficialClassic.Services
         public static void Initialize()
         {
             GalaSoft.MvvmLight.Threading.DispatcherHelper.Initialize();
+
+            var unawaitedTask = SetUpLoggerAsync();
 
             if (Utilities.SystemInformationManager.IsTenFootExperience)
             {
@@ -66,6 +69,17 @@ namespace GiantBombUnofficialClassic.Services
             }
         }
 
+        public static async Task SetUpLoggerAsync()
+        {
+            var logFolder = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFolderAsync("Logs", Windows.Storage.CreationCollisionOption.OpenIfExists);
+            var logFilePath = System.IO.Path.Combine(logFolder.Path, "Log.txt");
+
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Information()
+                .WriteTo.RollingFile(logFilePath)
+                .CreateLogger();
+        }
+
         /// <summary>
         /// Returns which page should be loaded first
         /// </summary>
@@ -84,7 +98,7 @@ namespace GiantBombUnofficialClassic.Services
             }
             catch (Exception e)
             {
-                // TODO: Add logging
+                Serilog.Log.Error(e, "Error determining start page");
             }
 
             return startingPage;

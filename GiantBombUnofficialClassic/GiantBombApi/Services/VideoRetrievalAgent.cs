@@ -75,7 +75,7 @@ namespace GiantBombApi.Services
             }
             catch (Exception e)
             {
-                // TODO: add a logger
+                Serilog.Log.Error(e, "Error pulling videos with category ID " + videoCategoryId + " and offset " + offset);
             }
 
             return response;
@@ -97,7 +97,7 @@ namespace GiantBombApi.Services
             }
             catch (Exception e)
             {
-                // TODO: add a logger
+                Serilog.Log.Error(e, "Error pulling video categories");
             }
 
             return response;
@@ -139,7 +139,7 @@ namespace GiantBombApi.Services
             }
             catch (Exception e)
             {
-                // TODO: add a logger
+                Serilog.Log.Error(e, "Error finding search results for query " + query + " and page number " + pageNumber);
             }
 
             return response;

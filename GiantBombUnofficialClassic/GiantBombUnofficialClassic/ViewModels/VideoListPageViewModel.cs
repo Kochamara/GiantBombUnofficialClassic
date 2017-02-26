@@ -160,7 +160,7 @@ namespace GiantBombUnofficialClassic.ViewModels
             }
             catch (Exception e)
             {
-                // TODO: Add a logger
+                Serilog.Log.Information(e, "Error loading videos");
             }
 
             AreAdditionalResultsBeingLoaded = false;

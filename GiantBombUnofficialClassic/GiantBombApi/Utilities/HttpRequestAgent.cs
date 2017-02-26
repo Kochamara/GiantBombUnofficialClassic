@@ -29,7 +29,7 @@ namespace GiantBombApi.Utilities
             }
             catch (Exception e)
             {
-                // TODO: add a logger
+                Serilog.Log.Error(e, "Error getting server response");
             }
 
             return response;

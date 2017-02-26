@@ -28,12 +28,12 @@ namespace GiantBombApi.Services
                 }
                 else
                 {
-                    // TODO: add a logger
+                    Serilog.Log.Information("Unable to get API key from provided link code");
                 }
             }
             catch (Exception e)
             {
-                // TODO: add a logger
+                Serilog.Log.Error(e, "Error getting API key from link code");
             }
 
             return apiKey;

@@ -88,6 +88,7 @@ namespace GiantBombUnofficialClassic.Services
             }
             catch (Exception e)
             {
+                Serilog.Log.Error(e, "Error getting preferred video quality");
                 _currentQualityPreference = VideoQuality.HD;
             }
 

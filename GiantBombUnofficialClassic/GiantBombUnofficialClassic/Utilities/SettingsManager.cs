@@ -10,7 +10,7 @@ namespace GiantBombUnofficialClassic.Utilities
     public class SettingsManager
     {
         private ApplicationDataContainer _roamingSettings;
-        
+
         public SettingsManager()
         {
             _roamingSettings = ApplicationData.Current.RoamingSettings;
@@ -24,13 +24,16 @@ namespace GiantBombUnofficialClassic.Utilities
         public object GetSetting(string key)
         {
             object value = null;
+
             try
             {
                 value = _roamingSettings.Values[key];
             }
             catch (Exception e)
             {
+                Serilog.Log.Error(e, "Error locating setting with key " + key);
             }
+
             return value;
         }
 

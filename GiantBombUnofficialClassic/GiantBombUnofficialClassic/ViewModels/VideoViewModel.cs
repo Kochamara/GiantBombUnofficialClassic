@@ -28,7 +28,14 @@ namespace GiantBombUnofficialClassic.ViewModels
                     }
                     else
                     {
-                        // TODO: Add logging
+                        if ((this.Source != null) && (!String.IsNullOrWhiteSpace(this.Source.Name)))
+                        {
+                            Serilog.Log.Error("Unable to navigate to video page without URI for " + this.Source.Name);
+                        }
+                        else
+                        {
+                            Serilog.Log.Error("Unable to navigate to video page without source video");
+                        }
                     }
                 });
             }
