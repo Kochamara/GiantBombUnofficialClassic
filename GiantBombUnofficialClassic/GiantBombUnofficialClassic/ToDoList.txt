@@ -1,11 +1,7 @@
 ﻿THE GIANT BOMB UNOFFICIAL CLASSIC VIDEO PLAYER TO DO LIST
 
 Windows Store release:
--Error logging
--Video player page styling
 -Unit tests
--Should the video player page figure out the Uri itself?
--Clean up the CommonStyles file
 -Finalize video and category containers
 -Finalize category page style
 
@@ -14,7 +10,9 @@ Xbox release:
 
 V2 release:
 -Make styles for hyperlinks, text boxes, combo boxes
--Better video playback controls
+-Make a better style for buttons
+-Should the video player page figure out the Uri itself?
+-Better video playback controls and styling
 -Standard Windows 10 navigation for PC version
 -Random video button
 -Video playback position handling
@@ -23,3 +21,5 @@ https://www.fontspring.com/fonts/fontsite/glyddon
 -Konami code
 -Maybe move the category selection onto the main page itself? ComboBox? Ehh?
 -Move search to a normal search box without its own dedicated page
+-Optimize search layout to show 10 results at a time, maybe do the same for other videos where it's 100 at a time
+-Multiple page loading images
