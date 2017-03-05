@@ -23,3 +23,8 @@ https://www.fontspring.com/fonts/fontsite/glyddon
 -Move search to a normal search box without its own dedicated page
 -Optimize search layout to show 10 results at a time, maybe do the same for other videos where it's 100 at a time
 -Multiple page loading images
+-Maybe put a guinea pig icon in the video player that pops Brad out for a sec
+http://www.freepik.com/free-icon/guinea-pig-heag_814168.htm
+
+-add link to feedback form
+https://docs.google.com/forms/d/e/1FAIpQLSc4LnK3BJHtqsUNF4XAbkFVjEQg7mM5CrauSf7V2iKJd0vJzw/viewform

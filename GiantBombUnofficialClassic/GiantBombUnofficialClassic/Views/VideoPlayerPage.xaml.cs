@@ -27,15 +27,27 @@ namespace GiantBombUnofficialClassic.Views
             _context = new VideoPlayerViewModel();
             this.DataContext = _context;
 
+          //  VideoContainer.MediaPlayer.PlaybackSession.SeekCompleted += PlaybackSession_SeekCompleted;
+         //   VideoContainer.MediaPlayer.PlaybackSession. += PlaybackSession_PositionChanged;
+
+
             if (!Utilities.SystemInformationManager.IsTenFootExperience)
             {
-                this.MediaPlayer.DoubleTapped += MediaPlayer_DoubleTapped;
+                VideoContainer.DoubleTapped += MediaPlayer_DoubleTapped;
             }
+        }
+
+        private void PlaybackSession_PositionChanged(Windows.Media.Playback.MediaPlaybackSession sender, object args)
+        {
+        }
+
+        private void PlaybackSession_SeekCompleted(Windows.Media.Playback.MediaPlaybackSession sender, object args)
+        {
         }
 
         private void MediaPlayer_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
         {
-            MediaPlayer.IsFullWindow = !MediaPlayer.IsFullWindow;
+            VideoContainer.IsFullWindow = !VideoContainer.IsFullWindow;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -51,7 +63,32 @@ namespace GiantBombUnofficialClassic.Views
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             base.OnNavigatedFrom(e);
-            MediaPlayer.MediaPlayer.Dispose();
+            VideoContainer.MediaPlayer.Dispose();
+        }
+
+        private void CustomMediaTransportControls_SkipForward30(object sender, EventArgs e)
+        {
+            VideoContainer.MediaPlayer.PlaybackSession.Position += TimeSpan.FromSeconds(30);
+        }
+
+        private void CustomMediaTransportControls_SkipBack10(object sender, EventArgs e)
+        {
+            VideoContainer.MediaPlayer.PlaybackSession.Position -= TimeSpan.FromSeconds(10);
+        }
+
+        private void CustomMediaTransportControls_SliderManipulationCompleted(object sender, EventArgs e)
+        {
+            VideoContainer.MediaPlayer.Play();
+
+        }
+
+        private void CustomMediaTransportControls_SliderManipulationStarted(object sender, EventArgs e)
+        {
+            if (VideoContainer.MediaPlayer.PlaybackSession.CanPause)
+            {
+                VideoContainer.MediaPlayer.Pause();
+            }
+
         }
     }
 }
