@@ -24,7 +24,7 @@
 
             <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20">
                 <Run Text="Find a bug?"/>
-                <Hyperlink NavigateUri="http://www.giantbomb.com/pm/compose/?to=2787">
+                <Hyperlink NavigateUri="https://www.giantbomb.com/pm/compose/?to=2787">
                     <Run Text="Send a PM to Spencer"/>
                 </Hyperlink>
                 <Run Text="on the site."/>
@@ -34,7 +34,7 @@
 
             <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20">
                 <Run Text="Visit Giant Bomb dot com at"/>
-                <Hyperlink NavigateUri="http://www.giantbomb.com">
+                <Hyperlink NavigateUri="https://www.giantbomb.com">
                     <Run Text="giantbomb.com"/>
                 </Hyperlink>
                 <Run Text=" "/>
@@ -42,7 +42,7 @@
 
             <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20">
                 <Run Text="Make your own cool app using their API, documented at"/>
-                <Hyperlink NavigateUri="http://www.giantbomb.com/api">
+                <Hyperlink NavigateUri="https://www.giantbomb.com/api">
                     <Run Text="giantbomb.com/api"/>
                 </Hyperlink>
                 <Run Text=" "/>

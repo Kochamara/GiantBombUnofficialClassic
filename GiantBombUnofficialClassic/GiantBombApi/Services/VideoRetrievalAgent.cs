@@ -70,7 +70,7 @@ namespace GiantBombApi.Services
                     offsetParameter = "&offset=" + offset;
                 }
 
-                var uri = new Uri("http://www.giantbomb.com/api/videos/?format=json&api_key=" + apiKey + categoryParameter + offsetParameter);
+                var uri = new Uri("https://www.giantbomb.com/api/videos/?format=json&api_key=" + apiKey + categoryParameter + offsetParameter);
                 response = await Utilities.HttpRequestAgent.GetDeserializedResponseAsync<VideosResponse>(uri);
             }
             catch (Exception e)
@@ -92,7 +92,7 @@ namespace GiantBombApi.Services
 
             try
             {
-                var uri = new Uri("http://www.giantbomb.com/api/video_categories/?format=json&api_key=" + apiKey);
+                var uri = new Uri("https://www.giantbomb.com/api/video_categories/?format=json&api_key=" + apiKey);
                 response = await Utilities.HttpRequestAgent.GetDeserializedResponseAsync<CategoriesResponse>(uri);
             }
             catch (Exception e)
@@ -134,7 +134,7 @@ namespace GiantBombApi.Services
 
             try
             {
-                var uri = new Uri("http://www.giantbomb.com/api/search/?format=json&api_key=" + apiKey + "&query=" + query + "&resources=video" + pageNumberParameter);
+                var uri = new Uri("https://www.giantbomb.com/api/search/?format=json&api_key=" + apiKey + "&query=" + query + "&resources=video" + pageNumberParameter);
                 response = await Utilities.HttpRequestAgent.GetDeserializedResponseAsync<VideosResponse>(uri);
             }
             catch (Exception e)

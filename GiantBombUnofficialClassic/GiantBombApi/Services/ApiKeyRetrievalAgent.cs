@@ -20,7 +20,7 @@ namespace GiantBombApi.Services
 
             try
             {
-                var uri = new Uri("http://www.giantbomb.com/app/" + encodedAppName + "/get-result?format=json&regCode=" + linkCode);
+                var uri = new Uri("https://www.giantbomb.com/app/" + encodedAppName + "/get-result?format=json&regCode=" + linkCode);
                 var response = await Utilities.HttpRequestAgent.GetDeserializedResponseAsync<Models.ApiKeyResponse>(uri);
                 if ((response != null) && (!String.IsNullOrWhiteSpace(response.ApiKey)))
                 {

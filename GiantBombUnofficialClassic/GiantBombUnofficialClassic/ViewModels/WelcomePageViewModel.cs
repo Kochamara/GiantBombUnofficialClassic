@@ -28,11 +28,11 @@ namespace GiantBombUnofficialClassic.ViewModels
             
             if (IsTenFootExperience)
             {
-                LinkCodeWebsite = new Uri("http://www.giantbomb.com/app/" + EncodedAppNameForXboxVersion);
+                LinkCodeWebsite = new Uri("https://www.giantbomb.com/app/" + EncodedAppNameForXboxVersion);
             }
             else
             {
-                LinkCodeWebsite = new Uri("http://www.giantbomb.com/app/" + EncodedAppNameForPcVersion);
+                LinkCodeWebsite = new Uri("https://www.giantbomb.com/app/" + EncodedAppNameForPcVersion);
             }
         }
 
