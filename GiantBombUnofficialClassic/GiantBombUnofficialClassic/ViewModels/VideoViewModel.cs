@@ -18,24 +18,15 @@ namespace GiantBombUnofficialClassic.ViewModels
                 return new RelayCommand(
                 () =>
                 {
-                    var videoUriManager = Services.VideoUriManager.GetInstance();
                     var navigationManager = Utilities.NavigationManager.GetInstance();
-                    var videoUri = videoUriManager.GetAppropriateVideoUri(this.Source);
 
-                    if (videoUri != null)
+                    if (Source != null)
                     {
-                        navigationManager.Navigate(Views.VideoPlayerPage.PageKey, videoUri);
+                        navigationManager.Navigate(Views.VideoPlayerPage.PageKey, Source);
                     }
                     else
                     {
-                        if ((this.Source != null) && (!String.IsNullOrWhiteSpace(this.Source.Name)))
-                        {
-                            Serilog.Log.Error("Unable to navigate to video page without URI for " + this.Source.Name);
-                        }
-                        else
-                        {
-                            Serilog.Log.Error("Unable to navigate to video page without source video");
-                        }
+                        Serilog.Log.Error("Unable to navigate to video page without source video");
                     }
                 });
             }

@@ -34,6 +34,8 @@ namespace GiantBombUnofficialClassic.ViewModels
             _navigationManager = NavigationManager.GetInstance();
             _apiKey = ApiKeyManager.GetInstance().GetSavedApiKey();
             await LoadVideosAsync(true);
+            //TODO: Finish implementing live streams
+            //await CheckForLiveStreamAsync();
         }
 
         public async Task LoadVideosAsync(bool isFirstTimeLoadingVideos)
@@ -165,6 +167,16 @@ namespace GiantBombUnofficialClassic.ViewModels
 
             AreAdditionalResultsBeingLoaded = false;
             IsLoading = false;
+        }
+
+        public async Task CheckForLiveStreamAsync()
+        {
+            var response = await GiantBombApi.Services.VideoRetrievalAgent.GetLiveStreamAsync(_apiKey);
+
+            if ((response != null) && (response.Stream != null) && (!String.IsNullOrWhiteSpace(response.Stream.StreamSource)))
+            {
+                LiveBroadcast = response.Stream;
+            }
         }
 
         #region Bound Properties
@@ -302,6 +314,25 @@ namespace GiantBombUnofficialClassic.ViewModels
         private bool _additionalVideosFound;
 
 
+        public LiveStream LiveBroadcast
+        {
+            get
+            {
+                return _liveBroadcast;
+            }
+
+            set
+            {
+                if (_liveBroadcast != value)
+                {
+                    _liveBroadcast = value;
+                    RaisePropertyChanged(() => LiveBroadcast);
+                }
+            }
+        }
+        private LiveStream _liveBroadcast;
+        
+
         public bool FoundVideos
         {
             get
@@ -406,6 +437,19 @@ namespace GiantBombUnofficialClassic.ViewModels
             }
         }
         private RelayCommand _navigateQuickLooksPageCommand;
+
+        public RelayCommand NavigateLiveStreamPageCommand
+        {
+            get
+            {
+                return _navigateLiveStreamPageCommand ?? (_navigateLiveStreamPageCommand = new RelayCommand(
+                () =>
+                {
+                    _navigationManager.Navigate(Views.CategoriesPage.PageKey);
+                }));
+            }
+        }
+        private RelayCommand _navigateLiveStreamPageCommand;
 
         public RelayCommand NavigateHomeCommand
         {

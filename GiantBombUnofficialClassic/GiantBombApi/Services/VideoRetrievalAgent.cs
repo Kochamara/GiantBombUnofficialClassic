@@ -104,6 +104,28 @@ namespace GiantBombApi.Services
         }
 
         /// <summary>
+        /// Checks to see if there's a livestream running, and returns the stream info if available
+        /// </summary>
+        /// <param name="apiKey"></param>
+        /// <returns></returns>
+        public static async Task<LiveStreamResponse> GetLiveStreamAsync(string apiKey)
+        {
+            LiveStreamResponse response = null;
+
+            try
+            {
+                var uri = new Uri("https://www.giantbomb.com/api/video/current-live/?format=json&api_key=" + apiKey);
+                response = await Utilities.HttpRequestAgent.GetDeserializedResponseAsync<LiveStreamResponse>(uri);
+            }
+            catch (Exception e)
+            {
+                Serilog.Log.Error(e, "Error pulling live stream info");
+            }
+
+            return response;
+        }
+
+        /// <summary>
         /// Looks for videos matching a query
         /// </summary>
         /// <param name="apiKey">API key unique to the user</param>

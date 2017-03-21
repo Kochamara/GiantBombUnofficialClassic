@@ -109,11 +109,14 @@
   <ItemGroup>
     <Compile Include="Models\ApiKeyResponse.cs" />
     <Compile Include="Models\CategoriesResponse.cs" />
+    <Compile Include="Models\LiveStreamResponse.cs" />
+    <Compile Include="Models\PlaybackPositionResponse.cs" />
     <Compile Include="Models\Response.cs" />
     <Compile Include="Models\VideoQuality.cs" />
     <Compile Include="Models\VideosResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ApiKeyRetrievalAgent.cs" />
+    <Compile Include="Services\VideoPlaybackPositionAgent.cs" />
     <Compile Include="Services\VideoRetrievalAgent.cs" />
     <Compile Include="Utilities\HttpRequestAgent.cs" />
     <EmbeddedResource Include="Properties\GiantBombApi.rd.xml" />

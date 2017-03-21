@@ -9,6 +9,7 @@ Xbox release:
 -Full gamepad support (plus TextBox start button handling)
 
 V2 release:
+-Live streams? https://docs.microsoft.com/en-us/windows/uwp/audio-video-camera/adaptive-streaming
 -Make styles for hyperlinks, text boxes, combo boxes
 -Make a better style for buttons
 -Should the video player page figure out the Uri itself?
