@@ -27,9 +27,8 @@ namespace GiantBombUnofficialClassic.Views
             _context = new VideoPlayerViewModel();
             this.DataContext = _context;
 
-          //  VideoContainer.MediaPlayer.PlaybackSession.SeekCompleted += PlaybackSession_SeekCompleted;
-         //   VideoContainer.MediaPlayer.PlaybackSession. += PlaybackSession_PositionChanged;
-
+            //  VideoContainer.MediaPlayer.PlaybackSession.SeekCompleted += PlaybackSession_SeekCompleted;
+            //   VideoContainer.MediaPlayer.PlaybackSession. += PlaybackSession_PositionChanged;
 
             if (!Utilities.SystemInformationManager.IsTenFootExperience)
             {
@@ -55,38 +54,16 @@ namespace GiantBombUnofficialClassic.Views
             base.OnNavigatedTo(e);
             if ((e != null) && (e.Parameter != null))
             {
-                var video = e.Parameter as GiantBombApi.Models.Video;
-                var videoUriManager = Services.VideoUriManager.GetInstance();
-                var videoUri = videoUriManager.GetAppropriateVideoUri(video);
-                
-                _context.VideoSource = Windows.Media.Core.MediaSource.CreateFromUri(videoUri);
-
-                //TEMP: Initialize this shit better
-                _source = video;
-                SkipAheadToPreviousPositionAsync();
+                VideoContainer.SetMediaPlayer(_context.Player);
+                _context.Video = e.Parameter as GiantBombApi.Models.Video;
+                _context.InitializeAsync();
             }
         }
-
-        private GiantBombApi.Models.Video _source;
-        private async void SkipAheadToPreviousPositionAsync()
-        {
-            var apiKey = Services.ApiKeyManager.GetInstance().GetSavedApiKey();
-            var position = await GiantBombApi.Services.VideoPlaybackPositionAgent.GetPlaybackPositionAsync(apiKey, _source.Id);
-            if (position > 0)
-            {
-                VideoContainer.MediaPlayer.PlaybackSession.Position = TimeSpan.FromSeconds(position);
-            }
-        }
-        private async void SaveCurrentPositionAsync(int currentPosition)
-        {
-            var apiKey = Services.ApiKeyManager.GetInstance().GetSavedApiKey();
-            bool success = await GiantBombApi.Services.VideoPlaybackPositionAgent.SetPlaybackPositionAsync(apiKey, _source.Id, currentPosition);
-        }
-
+        
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             base.OnNavigatedFrom(e);
-            SaveCurrentPositionAsync(VideoContainer.MediaPlayer.PlaybackSession.Position.Seconds);
+            _context.PlaybackPositionReportingCancellationToken.Cancel();
             VideoContainer.MediaPlayer.Dispose();
         }
 
@@ -103,7 +80,6 @@ namespace GiantBombUnofficialClassic.Views
         private void CustomMediaTransportControls_SliderManipulationCompleted(object sender, EventArgs e)
         {
             VideoContainer.MediaPlayer.Play();
-
         }
 
         private void CustomMediaTransportControls_SliderManipulationStarted(object sender, EventArgs e)
@@ -112,7 +88,6 @@ namespace GiantBombUnofficialClassic.Views
             {
                 VideoContainer.MediaPlayer.Pause();
             }
-
         }
     }
 }

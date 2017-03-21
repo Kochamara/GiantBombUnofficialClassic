@@ -9,7 +9,7 @@
     mc:Ignorable="d">
 
     <Grid Background="{StaticResource DarkestGrayBrush}">
-        <MediaPlayerElement x:Name="VideoContainer" AutoPlay="True" Source="{Binding VideoSource}" AreTransportControlsEnabled="True" HorizontalAlignment="Stretch">
+        <MediaPlayerElement x:Name="VideoContainer" AutoPlay="True" AreTransportControlsEnabled="True" HorizontalAlignment="Stretch">
             <MediaPlayerElement.TransportControls>
                 <!--Instead of using the regular MediaTransportControls we are using our custom local:CustomMediaTransportControls.
                 The style is found in Themes/generic.xaml. The custom button is defined in CustomControls.cs. One thing to note is that
