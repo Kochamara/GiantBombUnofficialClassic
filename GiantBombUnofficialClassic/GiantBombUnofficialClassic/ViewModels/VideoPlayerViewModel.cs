@@ -67,9 +67,9 @@ namespace GiantBombUnofficialClassic.ViewModels
         private async Task SaveCurrentPositionAsync()
         {
             var apiKey = Services.ApiKeyManager.GetInstance().GetSavedApiKey();
-            bool success = await GiantBombApi.Services.VideoPlaybackPositionAgent.SetPlaybackPositionAsync(apiKey, Video.Id, (int)Player.PlaybackSession.Position.TotalSeconds));
+            bool success = await GiantBombApi.Services.VideoPlaybackPositionAgent.SetPlaybackPositionAsync(apiKey, Video.Id, (int)Player.PlaybackSession.Position.TotalSeconds);
         }
-        
+
         public Video Video
         {
             get
