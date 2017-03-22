@@ -20,7 +20,7 @@ namespace GiantBombApi.Models
         /// Saved playback position of the video, in seconds
         /// </summary>
         [DataMember(Name = "savedTime")]
-        public int SavedTime;
+        public double SavedTime;
 
         /// <summary>
         /// Message from the Top Men

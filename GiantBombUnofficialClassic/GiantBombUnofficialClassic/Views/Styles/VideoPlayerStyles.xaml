@@ -697,11 +697,13 @@
                                                 Height='0'
                                                 Width ='0'
                                                 Margin='0,0' />
+                                            
                                             <AppBarButton x:Name='StopButton'
                                                 Icon='Stop'
                                                 Style='{StaticResource AppBarButtonStyle}'
                                                 MediaTransportControlsHelper.DropoutOrder='7'
                                                 Visibility='Collapsed'/>
+                                            
                                             <AppBarButton x:Name='SkipBackwardButton'
                                                 Style='{StaticResource AppBarButtonStyle}'
                                                 MediaTransportControlsHelper.DropoutOrder='5'
@@ -710,11 +712,13 @@
                                                     <FontIcon Glyph="&#xED3C;"/>
                                                 </AppBarButton.Icon>
                                             </AppBarButton>
+                                            
                                             <AppBarButton x:Name='PreviousTrackButton'
                                                 Icon='Previous'
                                                 Style='{StaticResource AppBarButtonStyle}'
                                                 MediaTransportControlsHelper.DropoutOrder='3'
                                                 Visibility='Collapsed'/>
+                                            
                                             <AppBarButton x:Name='RewindButton'
                                               Style='{StaticResource AppBarButtonStyle}'
                                               MediaTransportControlsHelper.DropoutOrder='1'
@@ -731,8 +735,6 @@
                                                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xED3C;"/>
                                                 </AppBarButton.Icon>
                                             </AppBarButton>
-
-                                            
 
                                             <AppBarButton x:Name='PlayPauseButton'
                                                 Style='{StaticResource AppBarButtonStyle}'
@@ -780,14 +782,6 @@
                                                 Height='0'
                                                 Width ='0'
                                                 Margin='0,0' />
-                                            <AppBarButton x:Name='ZoomButton'
-                                                Style='{StaticResource AppBarButtonStyle}'
-                                                MediaTransportControlsHelper.DropoutOrder='9'>
-                                                <AppBarButton.Icon>
-                                                    <FontIcon Glyph="&#xE799;"/>
-                                                </AppBarButton.Icon>
-                                            </AppBarButton>
-
 
                                             <!--<AppBarButton x:Name='CastButton'
                                                 Style='{StaticResource AppBarButtonStyle}'
@@ -797,7 +791,6 @@
                                                 </AppBarButton.Icon>
                                             </AppBarButton>-->
 
-
                                             <AppBarButton x:Name='FullWindowButton'
                                                 Style='{StaticResource AppBarButtonStyle}'
                                                 MediaTransportControlsHelper.DropoutOrder='17'>
@@ -805,11 +798,11 @@
                                                     <SymbolIcon x:Name='FullWindowSymbol' Symbol='FullScreen' />
                                                 </AppBarButton.Icon>
                                             </AppBarButton>
-                                            
-                                            
+
                                         </CommandBar.PrimaryCommands>
                                         <CommandBar.SecondaryCommands>
                                             <AppBarButton x:Name='PlaybackRateButton' Label="Playback Rate" />
+                                            <AppBarButton x:Name='ZoomButton' Label="Zoom" />
                                         </CommandBar.SecondaryCommands>
                                     </CommandBar>
                                 </Border>

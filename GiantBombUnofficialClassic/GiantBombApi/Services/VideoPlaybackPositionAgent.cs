@@ -58,7 +58,7 @@ namespace GiantBombApi.Services
 
                     if ((response != null) && (response.SavedTime > 0))
                     {
-                        previousPosition = response.SavedTime;
+                        previousPosition = (int)response.SavedTime;
                     }
                 }
             }
