@@ -18,7 +18,7 @@ namespace GiantBombUnofficialClassic.ViewModels
             if ((package != null) && (package.Id != null))
             {
                 var version = package.Id.Version;
-                VersionNumberText = "Giant Bomb Video Player, version " + string.Format("{0}.{1}.{2}.{3}", version.Major, version.Minor, version.Build, version.Revision);
+                VersionNumberText = "Giant Bomb Video Player, version " + string.Format("{0}.{1}.{2}.{3}", version.Major, version.Minor, version.Build, version.Revision) + ".";
             }
         }
 

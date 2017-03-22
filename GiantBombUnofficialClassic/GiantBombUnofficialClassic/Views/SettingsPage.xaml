@@ -12,38 +12,31 @@
 
             <TextBlock Text="Settings" Style="{StaticResource HeaderTextStyle}" Margin="20" IsTapEnabled="True"/>
 
-            <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20" Text="{Binding VersionNumberText}"/>
+            <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20">
+                <Run Text="{Binding VersionNumberText}" />
+                <Run Text="Find a bug or have some feedback?" />
+                <Hyperlink NavigateUri="https://docs.google.com/forms/d/e/1FAIpQLSc4LnK3BJHtqsUNF4XAbkFVjEQg7mM5CrauSf7V2iKJd0vJzw/viewform">
+                    <Run Text="Let me know here!"/>
+                </Hyperlink>
+                <Run Text=" " />
+            </TextBlock>
 
             <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20">
                 <Run Text="This app was developed by Spencer Guy. I'm"/>
                 <Hyperlink NavigateUri="https://twitter.com/spencerguy">
                     <Run Text="@SpencerGuy"/>
                 </Hyperlink>
-                <Run Text="on Twitter."/>
-            </TextBlock>
-
-            <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20">
-                <Run Text="Find a bug?"/>
+                <Run Text="on Twitter, and feel free to" />
                 <Hyperlink NavigateUri="https://www.giantbomb.com/pm/compose/?to=2787">
-                    <Run Text="Send a PM to Spencer"/>
+                    <Run Text="send me a message on the site"/>
                 </Hyperlink>
-                <Run Text="on the site."/>
+                <Run Text="using my Giant Bomb username Spencer!"/>
             </TextBlock>
 
-            <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20" Text="Giant Bomb content used with permission. © 2017 CBS Interactive Inc. All rights reserved."/>
-
             <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20">
-                <Run Text="Visit Giant Bomb dot com at"/>
+                <Run Text="Giant Bomb content used with permission. © 2017 CBS Interactive Inc. All rights reserved. Visit Giant Bomb at"/>
                 <Hyperlink NavigateUri="https://www.giantbomb.com">
                     <Run Text="giantbomb.com"/>
-                </Hyperlink>
-                <Run Text=" "/>
-            </TextBlock>
-
-            <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20">
-                <Run Text="Make your own cool app using their API, documented at"/>
-                <Hyperlink NavigateUri="https://www.giantbomb.com/api">
-                    <Run Text="giantbomb.com/api"/>
                 </Hyperlink>
                 <Run Text=" "/>
             </TextBlock>
@@ -59,7 +52,7 @@
             <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20">
                 <Run Text="Portrait of Jeff Gerstmann provided by Avid Sarshab (Giant Bomb user LiquidPrince)." />
             </TextBlock>
-
+            
             <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20,20,20,4" Text="Preferred video quality:" />
             <ComboBox x:Name="VideoQualityComboBox" SelectionChanged="VideoQuality_SelectionChanged" Margin="20,0,20,20" />
 

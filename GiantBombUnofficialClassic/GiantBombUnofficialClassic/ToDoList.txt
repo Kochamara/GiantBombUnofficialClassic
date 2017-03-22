@@ -1,18 +1,13 @@
 ﻿THE GIANT BOMB UNOFFICIAL CLASSIC VIDEO PLAYER TO DO LIST
 
-Windows Store release:
--Unit tests
+V1.X release:
 -Finalize video and category containers
 -Finalize category page style
-
-Xbox release:
--Full gamepad support (plus TextBox start button handling)
 
 V2 release:
 -Live streams? https://docs.microsoft.com/en-us/windows/uwp/audio-video-camera/adaptive-streaming
 -Make styles for hyperlinks, text boxes, combo boxes
 -Make a better style for buttons
--Should the video player page figure out the Uri itself?
 -Better video playback controls and styling
 -Standard Windows 10 navigation for PC version
 -Random video button
@@ -26,6 +21,3 @@ https://www.fontspring.com/fonts/fontsite/glyddon
 -Multiple page loading images
 -Maybe put a guinea pig icon in the video player that pops Brad out for a sec
 http://www.freepik.com/free-icon/guinea-pig-heag_814168.htm
-
--add link to feedback form
-https://docs.google.com/forms/d/e/1FAIpQLSc4LnK3BJHtqsUNF4XAbkFVjEQg7mM5CrauSf7V2iKJd0vJzw/viewform
