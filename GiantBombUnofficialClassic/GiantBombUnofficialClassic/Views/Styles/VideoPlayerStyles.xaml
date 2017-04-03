@@ -16,7 +16,7 @@
         <Setter Property="IsTextScaleFactorEnabled" Value="False" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="controls:CustomMediaTransportControls">
+                <ControlTemplate TargetType="MediaTransportControls">
                     <Grid x:Name="RootGrid" Background="Transparent">
                         <Grid.Resources>
                             <!-- New AppBar button style 48x48 pixels in size -->
@@ -349,7 +349,7 @@
                             </Style>
                             <!-- Style for Volume Flyout used in Media Transport Controls -->
                             <Style x:Key="FlyoutStyle" TargetType="FlyoutPresenter">
-                                <Setter Property="Background" Value="{ThemeResource SystemControlPageBackgroundMediumAltMediumBrush}" />
+                                <Setter Property="Background" Value="{ThemeResource SystemControlPageBackgroundAltMediumBrush}" />
                                 <Setter Property="Padding" Value="0" />
                             </Style>
                         </Grid.Resources>
@@ -549,7 +549,7 @@
                         </VisualStateManager.VisualStateGroups>
                         <Border x:Name="ControlPanel_ControlPanelVisibilityStates_Border">
                             <Grid x:Name="ControlPanelGrid"
-                                Background="{ThemeResource SystemControlPageBackgroundMediumAltMediumBrush}"
+                                Background="{ThemeResource SystemControlPageBackgroundAltMediumBrush}"
                                 VerticalAlignment="Bottom"
                                 RenderTransformOrigin="0.5,0.5">
                                 <Grid.RenderTransform>
@@ -570,7 +570,7 @@
                                     Height="96"
                                     Grid.ColumnSpan="3"
                                     HorizontalAlignment="Center"
-                                    Background="{ThemeResource SystemControlPageBackgroundMediumAltMediumBrush}"
+                                    Background="{ThemeResource SystemControlPageBackgroundAltMediumBrush}"
                                     Visibility="Collapsed">
                                     <TextBlock x:Name="ErrorTextBlock"
                                         Style="{StaticResource MediaTextBlockStyle}"
@@ -672,57 +672,55 @@
                                                     <SymbolIcon x:Name='VolumeMuteSymbol' Symbol='Volume' />
                                                 </AppBarButton.Icon>
                                             </AppBarButton>
-                                            <AppBarButton x:Name='CCSelectionButton'
+
+                                            <!--<AppBarButton x:Name='CCSelectionButton'
                                               Style='{StaticResource AppBarButtonStyle}'
                                               MediaTransportControlsHelper.DropoutOrder='15'
                                               Visibility='Collapsed'>
                                                 <AppBarButton.Icon>
                                                     <FontIcon Glyph="&#xED1E;"/>
                                                 </AppBarButton.Icon>
-                                            </AppBarButton>
-                                            <AppBarButton x:Name='AudioTracksSelectionButton'
+                                            </AppBarButton>-->
+
+                                            <!--<AppBarButton x:Name='AudioTracksSelectionButton'
                                                 Style='{StaticResource AppBarButtonStyle}'
                                                 MediaTransportControlsHelper.DropoutOrder='13'
                                                 Visibility='Collapsed'>
                                                 <AppBarButton.Icon>
                                                     <FontIcon Glyph="&#xED1F;"/>
                                                 </AppBarButton.Icon>
-                                            </AppBarButton>
-                                            <!--<AppBarButton x:Name='LikeButton'
-                                                          Icon="Like"
-                                                          Label="Like"
-                                                          VerticalAlignment="Center"
-                                                          Style='{StaticResource AppBarButtonStyle}'></AppBarButton>-->
+                                            </AppBarButton>-->
+
                                             <AppBarSeparator x:Name='LeftSeparator'
                                                 Height='0'
                                                 Width ='0'
                                                 Margin='0,0' />
-                                            
-                                            <AppBarButton x:Name='StopButton'
+
+                                            <!--<AppBarButton x:Name='StopButton'
                                                 Icon='Stop'
                                                 Style='{StaticResource AppBarButtonStyle}'
                                                 MediaTransportControlsHelper.DropoutOrder='7'
-                                                Visibility='Collapsed'/>
-                                            
-                                            <AppBarButton x:Name='SkipBackwardButton'
+                                                Visibility='Collapsed'/>-->
+
+                                            <!--<AppBarButton x:Name='SkipBackwardButton'
                                                 Style='{StaticResource AppBarButtonStyle}'
                                                 MediaTransportControlsHelper.DropoutOrder='5'
                                                 Visibility='Collapsed'>
                                                 <AppBarButton.Icon>
                                                     <FontIcon Glyph="&#xED3C;"/>
                                                 </AppBarButton.Icon>
-                                            </AppBarButton>
-                                            
-                                            <AppBarButton x:Name='PreviousTrackButton'
+                                            </AppBarButton>-->
+
+                                            <!--<AppBarButton x:Name='PreviousTrackButton'
                                                 Icon='Previous'
                                                 Style='{StaticResource AppBarButtonStyle}'
                                                 MediaTransportControlsHelper.DropoutOrder='3'
-                                                Visibility='Collapsed'/>
-                                            
+                                                Visibility='Collapsed'/>-->
+
                                             <AppBarButton x:Name='RewindButton'
                                               Style='{StaticResource AppBarButtonStyle}'
                                               MediaTransportControlsHelper.DropoutOrder='1'
-                                              Visibility='Collapsed'>
+                                              >
                                                 <AppBarButton.Icon>
                                                     <FontIcon Glyph="&#xEB9E;"/>
                                                 </AppBarButton.Icon>
@@ -744,7 +742,6 @@
                                                 </AppBarButton.Icon>
                                             </AppBarButton>
 
-
                                             <AppBarButton x:Name='SkipForward30Button'
                                                 Style='{StaticResource AppBarButtonStyle}'
                                                 MediaTransportControlsHelper.DropoutOrder='23'>
@@ -752,44 +749,52 @@
                                                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xED3D;"/>
                                                 </AppBarButton.Icon>
                                             </AppBarButton>
-                                            
-                                            
+
                                             <AppBarButton x:Name='FastForwardButton'
                                               Style='{StaticResource AppBarButtonStyle}'
                                               MediaTransportControlsHelper.DropoutOrder='1'
-                                              Visibility='Collapsed'>
+                                                          IsEnabled="True"
+                                              >
                                                 <AppBarButton.Icon>
                                                     <FontIcon Glyph="&#xEB9D;"/>
                                                 </AppBarButton.Icon>
                                             </AppBarButton>
-                                            
-                                            <AppBarButton x:Name='NextTrackButton'
+
+                                            <!--<AppBarButton x:Name='NextTrackButton'
                                                 Icon='Next'
                                                 Style='{StaticResource AppBarButtonStyle}'
                                                 MediaTransportControlsHelper.DropoutOrder='3'
-                                                Visibility='Collapsed'/>
-                                            
-                                            <AppBarButton x:Name='SkipForwardButton'
+                                                Visibility='Collapsed'/>-->
+
+                                            <!--<AppBarButton x:Name='SkipForwardButton'
                                                 Style='{StaticResource AppBarButtonStyle}'
                                                 MediaTransportControlsHelper.DropoutOrder='5'
                                                 Visibility='Collapsed'>
                                                 <AppBarButton.Icon>
                                                     <FontIcon Glyph="&#xED3D;"/>
                                                 </AppBarButton.Icon>
-                                            </AppBarButton>
+                                            </AppBarButton>-->
 
                                             <AppBarSeparator x:Name='RightSeparator'
                                                 Height='0'
                                                 Width ='0'
                                                 Margin='0,0' />
 
-                                            <!--<AppBarButton x:Name='CastButton'
+                                            <AppBarButton x:Name='ZoomButton'
+                                                Style='{StaticResource AppBarButtonStyle}'
+                                                MediaTransportControlsHelper.DropoutOrder='9'>
+                                                <AppBarButton.Icon>
+                                                    <FontIcon Glyph="&#xE799;"/>
+                                                </AppBarButton.Icon>
+                                            </AppBarButton>
+
+                                            <AppBarButton x:Name='CastButton'
                                                 Style='{StaticResource AppBarButtonStyle}'
                                                 MediaTransportControlsHelper.DropoutOrder='11'>
                                                 <AppBarButton.Icon>
                                                     <FontIcon Glyph="&#xEC15;"/>
                                                 </AppBarButton.Icon>
-                                            </AppBarButton>-->
+                                            </AppBarButton>
 
                                             <AppBarButton x:Name='FullWindowButton'
                                                 Style='{StaticResource AppBarButtonStyle}'
@@ -798,12 +803,12 @@
                                                     <SymbolIcon x:Name='FullWindowSymbol' Symbol='FullScreen' />
                                                 </AppBarButton.Icon>
                                             </AppBarButton>
-
                                         </CommandBar.PrimaryCommands>
-                                        <CommandBar.SecondaryCommands>
+                                        
+                                        <!--<CommandBar.SecondaryCommands>
                                             <AppBarButton x:Name='PlaybackRateButton' Label="Playback Rate" />
-                                            <AppBarButton x:Name='ZoomButton' Label="Zoom" />
-                                        </CommandBar.SecondaryCommands>
+                                        </CommandBar.SecondaryCommands>-->
+                                        
                                     </CommandBar>
                                 </Border>
                             </Grid>
@@ -813,4 +818,5 @@
             </Setter.Value>
         </Setter>
     </Style>
+
 </ResourceDictionary>

@@ -6,22 +6,50 @@
     xmlns:controls="using:GiantBombUnofficialClassic.Views.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:triggers="using:GiantBombUnofficialClassic.Views.Triggers"
     mc:Ignorable="d">
 
     <Grid Background="{StaticResource DarkestGrayBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="TenFootExperience">
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <triggers:IsTenFootTrigger/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+
+                        <Setter Target="PlaybackControls.IsFastForwardButtonVisible" Value="True"/>
+                        <!--<Setter Target="PlaybackControls.IsFastForwardButtonEnabled" Value="True"/>-->
+                        <!--<Setter Target="PlaybackControls.IsFastRewindButtonVisible" Value="True"/>
+                        <Setter Target="PlaybackControls.IsFastRewindButtonEnabled" Value="True"/>-->
+
+                        <Setter Target="PlaybackControls.IsFullWindowEnabled" Value="True"/>
+                        <Setter Target="PlaybackControls.IsZoomButtonVisible" Value="False"/>
+                        <Setter Target="PlaybackControls.IsFullWindowButtonVisible" Value="False"/>
+                        <Setter Target="PlaybackControls.IsVolumeButtonVisible" Value="False"/>
+
+                       
+                        <Setter Target="PlaybackControls.IsSeekEnabled" Value="False"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
         <MediaPlayerElement x:Name="VideoContainer" AutoPlay="True" AreTransportControlsEnabled="True" HorizontalAlignment="Stretch">
             <MediaPlayerElement.TransportControls>
                 <!--Instead of using the regular MediaTransportControls we are using our custom local:CustomMediaTransportControls.
                 The style is found in Themes/generic.xaml. The custom button is defined in CustomControls.cs. One thing to note is that
                 even when using a custom control, our API's for hiding and showing buttons still work as expected-->
-                <controls:CustomMediaTransportControls IsCompact="False"
-                                                    IsZoomButtonVisible="True"
-                                                    IsZoomEnabled="True"
-                                                    IsPlaybackRateButtonVisible="True"
-                                                    IsPlaybackRateEnabled="True"
+                <controls:CustomMediaTransportControls x:Name="PlaybackControls"  
+                                                       IsCompact="False"
+                                                       IsZoomButtonVisible="True"
+                                                       IsZoomEnabled="True"
+                                                       IsPlaybackRateButtonVisible="False"  
+                                                       IsPlaybackRateEnabled="True"
                                                        SkipForward30="CustomMediaTransportControls_SkipForward30"
                                                        SkipBack10="CustomMediaTransportControls_SkipBack10"
-                                                    >
+                                                       >
+                    
                     <!--SliderManipulationCompleted="CustomMediaTransportControls_SliderManipulationCompleted"
                                                        SliderManipulationStarted="CustomMediaTransportControls_SliderManipulationStarted"-->
 

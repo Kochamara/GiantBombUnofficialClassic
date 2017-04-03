@@ -13,5 +13,8 @@ namespace GiantBombUnofficialClassic.Utilities
 
         // For now, the 10-foot experience is enabled only on Xbox.
         public static bool IsTenFootExperience => _isXbox;
+
+        // Just for testing. Don't forget to change this back!
+        //public static bool IsTenFootExperience => true;
     }
 }
