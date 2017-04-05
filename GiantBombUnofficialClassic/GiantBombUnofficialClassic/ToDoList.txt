@@ -11,7 +11,6 @@ V2 release:
 -Better video playback controls and styling
 -Standard Windows 10 navigation for PC version
 -Random video button
--Video playback position handling
 -New font for header text: Glyddon regular, weight 400
 https://www.fontspring.com/fonts/fontsite/glyddon
 -Konami code
