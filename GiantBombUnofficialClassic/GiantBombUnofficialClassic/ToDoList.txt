@@ -1,16 +1,25 @@
 ﻿THE GIANT BOMB UNOFFICIAL CLASSIC VIDEO PLAYER TO DO LIST
 
 V1.X release:
+-Keep screen from going to sleep on PC during video playback
+-Keep app from minimizing itself when clicking around in other applications, like opening new tabs in Chrome
+-Look into A/V syncing, it might be a little off
+-Escape should exit full screen mode
+-Spacebar should pause, clicking on video should pause
 -Finalize video and category containers
 -Finalize category page style
+-Hover states should be more obvious both on console and PC
 
 V2 release:
 -Live streams? https://docs.microsoft.com/en-us/windows/uwp/audio-video-camera/adaptive-streaming
+-Mouse "back" button should do the same thing as the back button on Xbox
+-Arrow keys to skip forward/backward
 -Make styles for hyperlinks, text boxes, combo boxes
 -Make a better style for buttons
 -Better video playback controls and styling
 -Standard Windows 10 navigation for PC version
 -Random video button
+-Next video suggestions after video is done?
 -New font for header text: Glyddon regular, weight 400
 https://www.fontspring.com/fonts/fontsite/glyddon
 -Konami code
