@@ -22,15 +22,11 @@
             </TextBlock>
 
             <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20">
-                <Run Text="This app was developed by Spencer Guy. I'm"/>
+                <Run Text="This app was developed by Spencer Guy. I'm &quot;Spencer&quot; on the site and"/>
                 <Hyperlink NavigateUri="https://twitter.com/spencerguy">
                     <Run Text="@SpencerGuy"/>
                 </Hyperlink>
-                <Run Text="on Twitter, and feel free to" />
-                <Hyperlink NavigateUri="https://www.giantbomb.com/pm/compose/?to=2787">
-                    <Run Text="send me a message on the site"/>
-                </Hyperlink>
-                <Run Text="using my Giant Bomb username Spencer!"/>
+                <Run Text="on Twitter!"/>
             </TextBlock>
 
             <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20">
