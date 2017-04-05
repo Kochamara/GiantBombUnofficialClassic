@@ -210,7 +210,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 if (_category != value)
                 {
                     _category = value;
-                    RaisePropertyChanged(() => Category);
+                    RaisePropertyChanged("Category");
                 }
             }
         }
@@ -228,7 +228,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 if (_categoryTitle != value)
                 {
                     _categoryTitle = value;
-                    RaisePropertyChanged(() => CategoryTitle);
+                    RaisePropertyChanged("CategoryTitle");
                 }
             }
         }
@@ -246,7 +246,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 if (_categoryDescription != value)
                 {
                     _categoryDescription = value;
-                    RaisePropertyChanged(() => CategoryDescription);
+                    RaisePropertyChanged("CategoryDescription");
                 }
             }
         }
@@ -267,7 +267,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 if (_isLoading != value)
                 {
                     _isLoading = value;
-                    RaisePropertyChanged(() => IsLoading);
+                    RaisePropertyChanged("IsLoading");
                 }
             }
         }
@@ -288,7 +288,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 if (_areAdditionalResultsBeingLoaded != value)
                 {
                     _areAdditionalResultsBeingLoaded = value;
-                    RaisePropertyChanged(() => AreAdditionalResultsBeingLoaded);
+                    RaisePropertyChanged("AreAdditionalResultsBeingLoaded");
                 }
             }
         }
@@ -307,7 +307,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 if (_additionalVideosFound != value)
                 {
                     _additionalVideosFound = value;
-                    RaisePropertyChanged(() => AdditionalVideosFound);
+                    RaisePropertyChanged("AdditionalVideosFound");
                 }
             }
         }
@@ -326,7 +326,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 if (_liveBroadcast != value)
                 {
                     _liveBroadcast = value;
-                    RaisePropertyChanged(() => LiveBroadcast);
+                    RaisePropertyChanged("LiveBroadcast");
                 }
             }
         }
@@ -345,7 +345,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 if (_foundVideos != value)
                 {
                     _foundVideos = value;
-                    RaisePropertyChanged(() => FoundVideos);
+                    RaisePropertyChanged("FoundVideos");
                 }
             }
         }

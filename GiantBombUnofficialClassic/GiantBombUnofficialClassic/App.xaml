@@ -4,13 +4,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:GiantBombUnofficialClassic"
     RequestedTheme="Light">
-    
+
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Views/Styles/CommonStyles.xaml" />
                 <ResourceDictionary Source="Views/Styles/CommonTemplates.xaml" />
-                <ResourceDictionary Source="Views/Styles/VideoPlayerStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

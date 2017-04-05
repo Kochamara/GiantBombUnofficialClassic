@@ -76,7 +76,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 if (_versionNumberText != value)
                 {
                     _versionNumberText = value;
-                    RaisePropertyChanged(() => VersionNumberText);
+                    RaisePropertyChanged("VersionNumberText");
                 }
             }
         }

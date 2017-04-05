@@ -21,7 +21,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 if (value != _id)
                 {
                     _id = value;
-                    RaisePropertyChanged(() => Id);
+                    RaisePropertyChanged("Id");
                 }
             }
         }
@@ -38,7 +38,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 if (value != _title)
                 {
                     _title = value;
-                    RaisePropertyChanged(() => Title);
+                    RaisePropertyChanged("Title");
                 }
             }
         }
@@ -55,7 +55,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 if (value != _description)
                 {
                     _description = value;
-                    RaisePropertyChanged(() => Description);
+                    RaisePropertyChanged("Description");
                 }
             }
         }
@@ -72,7 +72,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 if (value != _imageLocation)
                 {
                     _imageLocation = value;
-                    RaisePropertyChanged(() => ImageLocation);
+                    RaisePropertyChanged("ImageLocation");
                 }
             }
         }
@@ -89,7 +89,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 if (value != _command)
                 {
                     _command = value;
-                    RaisePropertyChanged(() => Command);
+                    RaisePropertyChanged("Command");
                 }
             }
         }

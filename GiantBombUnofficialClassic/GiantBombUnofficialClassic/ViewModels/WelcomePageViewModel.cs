@@ -96,7 +96,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 if (_isLoading != value)
                 {
                     _isLoading = value;
-                    RaisePropertyChanged(() => IsLoading);
+                    RaisePropertyChanged("IsLoading");
                 }
             }
         }
@@ -122,7 +122,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 if (_linkCodeWebsite != value)
                 {
                     _linkCodeWebsite = value;
-                    RaisePropertyChanged(() => LinkCodeWebsite);
+                    RaisePropertyChanged("LinkCodeWebsite");
                 }
             }
         }
@@ -140,7 +140,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 if (_errorText != value)
                 {
                     _errorText = value;
-                    RaisePropertyChanged(() => ErrorText);
+                    RaisePropertyChanged("ErrorText");
                 }
             }
         }

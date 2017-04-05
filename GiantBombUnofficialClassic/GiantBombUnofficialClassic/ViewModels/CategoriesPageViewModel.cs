@@ -64,7 +64,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 if (_isLoading != value)
                 {
                     _isLoading = value;
-                    RaisePropertyChanged(() => IsLoading);
+                    RaisePropertyChanged("IsLoading");
                 }
             }
         }

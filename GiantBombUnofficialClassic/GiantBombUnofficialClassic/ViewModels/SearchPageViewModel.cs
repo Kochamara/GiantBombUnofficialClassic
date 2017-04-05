@@ -132,7 +132,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 if (_isLoading != value)
                 {
                     _isLoading = value;
-                    RaisePropertyChanged(() => IsLoading);
+                    RaisePropertyChanged("IsLoading");
                 }
             }
         }
@@ -153,7 +153,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 if (_areAdditionalResultsBeingLoaded != value)
                 {
                     _areAdditionalResultsBeingLoaded = value;
-                    RaisePropertyChanged(() => AreAdditionalResultsBeingLoaded);
+                    RaisePropertyChanged("AreAdditionalResultsBeingLoaded");
                 }
             }
         }
@@ -172,7 +172,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 if (_additionalVideosFound != value)
                 {
                     _additionalVideosFound = value;
-                    RaisePropertyChanged(() => AdditionalVideosFound);
+                    RaisePropertyChanged("AdditionalVideosFound");
                 }
             }
         }
@@ -190,7 +190,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 if (_errorText != value)
                 {
                     _errorText = value;
-                    RaisePropertyChanged(() => ErrorText);
+                    RaisePropertyChanged("ErrorText");
                 }
             }
         }

@@ -82,7 +82,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 if (_video != value)
                 {
                     _video = value;
-                    RaisePropertyChanged(() => Video);
+                    RaisePropertyChanged("Video");
                 }
             }
         }
@@ -100,7 +100,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 if (_player != value)
                 {
                     _player = value;
-                    RaisePropertyChanged(() => Player);
+                    RaisePropertyChanged("Player");
                 }
             }
         }
