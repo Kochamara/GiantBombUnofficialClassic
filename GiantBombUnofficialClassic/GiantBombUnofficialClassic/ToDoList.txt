@@ -11,6 +11,7 @@ V1.X release:
 -Finalize category page style
 -Hover states should be more obvious both on console and PC
 -Set focus on play/pause when media controls appear (instead of timeline)
+-Give Xbox users a better way to give feedback
 
 V2 release:
 -Live streams? https://docs.microsoft.com/en-us/windows/uwp/audio-video-camera/adaptive-streaming
