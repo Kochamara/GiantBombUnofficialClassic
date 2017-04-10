@@ -1,5 +1,9 @@
 ﻿THE GIANT BOMB UNOFFICIAL CLASSIC VIDEO PLAYER TO DO LIST
 
+Next release:
+-Try/catch around keyup event
+-Border for the button focus. It's black and white. All white?
+
 V1.X release:
 -Keep screen from going to sleep on PC during video playback
 -Keep app from minimizing itself when clicking around in other applications, like opening new tabs in Chrome
@@ -9,6 +13,7 @@ V1.X release:
 -Finalize video and category containers
 -Finalize category page style
 -Hover states should be more obvious both on console and PC
+-Set focus on play/pause when media controls appear (instead of timeline)
 
 V2 release:
 -Live streams? https://docs.microsoft.com/en-us/windows/uwp/audio-video-camera/adaptive-streaming
@@ -29,3 +34,4 @@ https://www.fontspring.com/fonts/fontsite/glyddon
 -Multiple page loading images
 -Maybe put a guinea pig icon in the video player that pops Brad out for a sec
 http://www.freepik.com/free-icon/guinea-pig-heag_814168.htm
+-Maybe show video suggestions once the current video ends? Right now it just sits at a black screen

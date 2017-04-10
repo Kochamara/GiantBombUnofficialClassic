@@ -42,13 +42,13 @@ namespace GiantBombUnofficialClassic.ViewModels
                     await SaveCurrentPositionAsync();
                 }
             }
-            catch (OperationCanceledException e)
+            catch (OperationCanceledException)
             {
                 // Expected
             }
             catch (Exception e)
             {
-                // Uh oh!
+                Serilog.Log.Error("Exception thrown while trying to report playback position", e);
             }
 
             PlaybackPositionReportingCancellationToken.Dispose();
