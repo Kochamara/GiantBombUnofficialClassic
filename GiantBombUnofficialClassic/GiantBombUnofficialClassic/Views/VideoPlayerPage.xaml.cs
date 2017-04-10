@@ -38,35 +38,42 @@ namespace GiantBombUnofficialClassic.Views
         {
             if (args != null)
             {
-                switch (args.VirtualKey)
+                try
                 {
-                    case Windows.System.VirtualKey.GamepadMenu:
-                    case Windows.System.VirtualKey.GamepadX:
-                    case Windows.System.VirtualKey.GamepadY:
-                        if (this.VideoContainer.MediaPlayer.PlaybackSession.PlaybackState == Windows.Media.Playback.MediaPlaybackState.Paused)
-                        {
-                            this.VideoContainer.MediaPlayer.Play();
-                        }
-                        else
-                        {
-                            this.VideoContainer.MediaPlayer.Pause();
-                        }
-                        args.Handled = true;
-                        break;
-                    case Windows.System.VirtualKey.GamepadDPadRight:
-                    case Windows.System.VirtualKey.GamepadRightShoulder:
-                    case Windows.System.VirtualKey.GamepadRightTrigger:
-                        this.VideoContainer.MediaPlayer.PlaybackSession.Position += TimeSpan.FromSeconds(30);
-                        args.Handled = true;
-                        break;
-                    case Windows.System.VirtualKey.GamepadDPadLeft:
-                    case Windows.System.VirtualKey.GamepadLeftShoulder:
-                    case Windows.System.VirtualKey.GamepadLeftTrigger:
-                        this.VideoContainer.MediaPlayer.PlaybackSession.Position -= TimeSpan.FromSeconds(10);
-                        args.Handled = true;
-                        break;
-                    default:
-                        break;
+                    switch (args.VirtualKey)
+                    {
+                        case Windows.System.VirtualKey.GamepadMenu:
+                        case Windows.System.VirtualKey.GamepadX:
+                        case Windows.System.VirtualKey.GamepadY:
+                            if (this.VideoContainer.MediaPlayer.PlaybackSession.PlaybackState == Windows.Media.Playback.MediaPlaybackState.Paused)
+                            {
+                                this.VideoContainer.MediaPlayer.Play();
+                            }
+                            else
+                            {
+                                this.VideoContainer.MediaPlayer.Pause();
+                            }
+                            args.Handled = true;
+                            break;
+                        case Windows.System.VirtualKey.GamepadDPadRight:
+                        case Windows.System.VirtualKey.GamepadRightShoulder:
+                        case Windows.System.VirtualKey.GamepadRightTrigger:
+                            this.VideoContainer.MediaPlayer.PlaybackSession.Position += TimeSpan.FromSeconds(30);
+                            args.Handled = true;
+                            break;
+                        case Windows.System.VirtualKey.GamepadDPadLeft:
+                        case Windows.System.VirtualKey.GamepadLeftShoulder:
+                        case Windows.System.VirtualKey.GamepadLeftTrigger:
+                            this.VideoContainer.MediaPlayer.PlaybackSession.Position -= TimeSpan.FromSeconds(10);
+                            args.Handled = true;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Serilog.Log.Error("Exception thrown trying to use gamepad shortcut", e);
                 }
             }
         }

@@ -1,10 +1,7 @@
 ﻿THE GIANT BOMB UNOFFICIAL CLASSIC VIDEO PLAYER TO DO LIST
 
-Next release:
--Try/catch around keyup event
--Border for the button focus. It's black and white. All white?
-
 V1.X release:
+-Border for the button focus. It's black and white. All white?
 -Keep screen from going to sleep on PC during video playback
 -Keep app from minimizing itself when clicking around in other applications, like opening new tabs in Chrome
 -Look into A/V syncing, it might be a little off
