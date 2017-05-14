@@ -33,3 +33,69 @@ https://www.fontspring.com/fonts/fontsite/glyddon
 -Maybe put a guinea pig icon in the video player that pops Brad out for a sec
 http://www.freepik.com/free-icon/guinea-pig-heag_814168.htm
 -Maybe show video suggestions once the current video ends? Right now it just sits at a black screen
+
+
+
+
+
+so im using windows 10 and im seeing 2 smaller issues
+1. i cant hit ESC to exit full screen
+2. using alt tab seems to pause the video
+
+not huge OMGWTFBBQ problems.. but maybe things you want to fix if u can, maybe its not even your fault idk
+
+
+Chris Edgerton also even when im watching a video.. the app doesnt ignore sleep settings so if i just dont touch anything after 20 mins or what ever it goes to sleep and pauses the video
+
+
+there be a way for you to add a button to be able to download to my PC? idk why but on my surface 3 im having loading issues on low quality but the app looks sick
+
+Any playlist support? Something to make binge watching the endurance runs simpler? I watch them on YouTube now but would rather watch them without ads
+
+
+My only recommendation would be to look into adding support for the new Compact Overlay feature in the Windows 10 Creators Update. Basically it allows you to have an OS level picture in picture mode. This is how Beam works, for example. You can see the implementation I'm thinking of by using the Movies & TV app (it calls it mini-mode, I think).
+
+
+
+On Windows 10 every video (and I've tried both premium and non-premium videos) I click on I get this:
+
+http://imgur.com/FwJamnl
+
+Did download it on the xbox and runs buttery smooth there for me though :)
+
+
+
+
+Would you be able to include an audio podcast section and have it run as background audio?
+
+I currently use an Xbox App called 'Podcasts (beta)' for my giant/beastcast needs while relaxing with Elite Dangerous or Forza for example.
+
+
+
+
+@spencer I don't know if this is a problem with the API but I'm trying to search for the Cities Skylines QL and getting zero results. Searching for Sim City brings up nothing as well.
+
+Also, Metal Gear Scanlon 4 - Part 14 comes up as an "unsupported video type or invalid file path". Again, don't know if that's something you can fix on your end, but thought I'd bring it up.
+
+
+
+
+
+Bugs:
+-While using app on a surface pro 3, the screen still dims and then falls asleep if you leave it alone. 
+-pressing the B button on the main menu screen takes you back to the authorization code screen 
+
+
+Feature requests:
+-keyboard shortcuts. I know you can click the buttons and navigate a bit, but whenever a video starts space to pause and arrow keys for the two rewinds default would be stellar.  Fantastic app either way, it fits my specific needs very well as is.  Its just more of a convenience thing. 
+-Can totally understand if it's not doable since 64-bit is the norm now, but is there any chance the app will be able to support 32-bit machines? My dinky old tablet is usually my GB video player but sadly no 64-bit CPU on it. Other than that, great app thanks, works great on the PC when I get a chance to use it!
+-It would be nice if you could show progress bars on videos.  This way users can easily see which videos they have watched and how far they are into other videos, similar to how the website shows progress bars on videos.
+-Some way to view more info about a video, such as duration, the "deck"/extra-description, which staff member uploaded it, etc.
+Progress Bar on videos while browsing/continue watching section
+It would be cool to get the red progress bar under the videos to see how long through you are on it. Like it does on the Giantbomb site, Also maybe add a 'Latest' list into the categories and maybe some GFB easter eggs? (just nit picking now) . Apart from that its great! Been waiting for something like this for ages so cheers Duder! Like seriously thanks so much! 
+Add the Giant Beastcast podcast please
+Smoother video scrolling and control 
+
+
+
+

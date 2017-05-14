@@ -1,4 +1,2 @@
 ﻿New for the next release:
--Saved playback positions
--Better video playback controls!
--Hotter GIFs
+-
