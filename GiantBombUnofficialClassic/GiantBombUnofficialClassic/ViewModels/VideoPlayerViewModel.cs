@@ -56,11 +56,20 @@ namespace GiantBombUnofficialClassic.ViewModels
         
         private async Task SkipAheadToPreviousPositionAsync()
         {
+            //TODO: Sometimes I think this is getting called before the video is even loaded
+
             var apiKey = Services.ApiKeyManager.GetInstance().GetSavedApiKey();
-            var position = await GiantBombApi.Services.VideoPlaybackPositionAgent.GetPlaybackPositionAsync(apiKey, Video.Id);
-            if (position > 0)
+            var previouslySavedPosition = await GiantBombApi.Services.VideoPlaybackPositionAgent.GetPlaybackPositionAsync(apiKey, Video.Id);
+            // Don't skip if the previous position was in the first 15 seconds of the video
+            if (previouslySavedPosition > 15)
             {
-                Player.PlaybackSession.Position = TimeSpan.FromSeconds(position);
+                // Don't skip if the previous position was in the last 30 seconds of the video
+                double furthestPositionInSecondsToJumpTo = (Player.PlaybackSession.NaturalDuration.TotalSeconds - 30);
+
+                if (previouslySavedPosition < furthestPositionInSecondsToJumpTo)
+                {
+                    Player.PlaybackSession.Position = TimeSpan.FromSeconds(previouslySavedPosition);
+                }
             }
         }
 
