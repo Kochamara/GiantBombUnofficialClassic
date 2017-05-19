@@ -62,7 +62,7 @@ namespace GiantBombApi.Models
         /// Main image of the video.
         /// </summary>
         [DataMember(Name = "image")]
-        public VideoImage Image;
+        public Image Image;
 
         /// <summary>
         /// Length (in seconds) of the video.
@@ -105,60 +105,5 @@ namespace GiantBombApi.Models
         /// </summary>
         [DataMember(Name = "youtube_id")]
         public string YouTubeId;
-        
-        /// <summary>
-        /// not in api
-        /// </summary>
-        //[DataMember(Name = "video_type")]
-        //public string VideoType;
-    }
-
-    /// <summary>
-    /// Image for a video. Not properly documented in the API.
-    /// </summary>
-    [DataContract]
-    public class VideoImage
-    {
-        /// <summary>
-        /// 
-        /// </summary>
-        [DataMember(Name = "icon_url")]
-        public string IconUrl;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [DataMember(Name = "medium_url")]
-        public string MediumUrl;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [DataMember(Name = "screen_url")]
-        public string ScreenUrl;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [DataMember(Name = "small_url")]
-        public string SmallUrl;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [DataMember(Name = "super_url")]
-        public string SuperUrl;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [DataMember(Name = "thumb_url")]
-        public string ThumbUrl;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [DataMember(Name = "tiny_url")]
-        public string TinyUrl;
     }
 }

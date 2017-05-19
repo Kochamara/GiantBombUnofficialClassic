@@ -7,8 +7,22 @@ using System.Threading.Tasks;
 
 namespace GiantBombApi.Models
 {
+    /// <summary>
+    /// Giant Bomb groups videos together three different ways:
+    /// 
+    /// Show - A series of videos with the same premise, like Mario Party Party, Jar Time w/ Jeff, or VRodeo
+    /// Category - A traditional, generic category, like Reviews, Latest, or Events
+    /// Type - Deprecated. Don't use this.
+    /// 
+    /// For shows and categories (both used in this app), their responses look mostly similar, so this VideoGroupingsResponse
+    /// handles both of them. The primary differences are as follows:
+    /// 
+    /// * Categories don't use images
+    /// * Shows use "name" instead of "title"
+    ///
+    /// </summary>
     [DataContract]
-    public class VideoGroupResponse : Response
+    public class VideoGroupingsResponse : Response
     {
         /// <summary>
         /// Zero or more items that match the filters specified
@@ -57,18 +71,18 @@ namespace GiantBombApi.Models
         public string SiteDetailUrl;
 
         /// <summary>
-        /// Main image of the video_show.
+        /// Main image of the video_show. Not used for categories.
         /// </summary>
         [DataMember(Name = "image")]
-        public VideoImage Image;
-
-
-
-        public GroupingType CategoryType;
-
-
+        public Image Image;
+        
         /// <summary>
-        /// Name of the video_category.
+        /// Whether it's a show or a category
+        /// </summary>
+        public GroupingType GroupingType;
+        
+        /// <summary>
+        /// Name of the video_category. Not used by shows. Instead of referencing this, use Title.
         /// </summary>
         [DataMember(Name = "name")]
         public string DoNotUse_Name

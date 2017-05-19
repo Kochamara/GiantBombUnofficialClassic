@@ -28,7 +28,7 @@ namespace GiantBombUnofficialClassic.ViewModels
 
             _apiKey = Services.ApiKeyManager.GetInstance().GetSavedApiKey();
 
-            VideoGroupResponse response = null;
+            VideoGroupingsResponse response = null;
 
             switch (_pageType)
             {
@@ -46,7 +46,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 foreach (var category in response.Results)
                 {
                     Uri imageLocation = null;
-                    category.CategoryType = _pageType;
+                    category.GroupingType = _pageType;
                     if (category.Image == null)
                     {
                         imageLocation = Services.CategoryImageProvider.GetImageForCategoryName(category.Title);

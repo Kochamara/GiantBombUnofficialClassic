@@ -97,14 +97,14 @@ namespace GiantBombApi.Services
         /// </summary>
         /// <param name="apiKey">API key unique to the user</param>
         /// <returns></returns>
-        public static async Task<VideoGroupResponse> GetVideoCategoriesAsync(string apiKey)
+        public static async Task<VideoGroupingsResponse> GetVideoCategoriesAsync(string apiKey)
         {
-            VideoGroupResponse response = null;
+            VideoGroupingsResponse response = null;
 
             try
             {
                 var uri = new Uri("https://www.giantbomb.com/api/video_categories/?format=json&api_key=" + apiKey);
-                response = await Utilities.HttpRequestAgent.GetDeserializedResponseAsync<VideoGroupResponse>(uri);
+                response = await Utilities.HttpRequestAgent.GetDeserializedResponseAsync<VideoGroupingsResponse>(uri);
             }
             catch (Exception e)
             {
@@ -119,14 +119,14 @@ namespace GiantBombApi.Services
         /// </summary>
         /// <param name="apiKey">API key unique to the user</param>
         /// <returns></returns>
-        public static async Task<VideoGroupResponse> GetVideoShowsAsync(string apiKey)
+        public static async Task<VideoGroupingsResponse> GetVideoShowsAsync(string apiKey)
         {
-            VideoGroupResponse response = null;
+            VideoGroupingsResponse response = null;
 
             try
             {
                 var uri = new Uri("https://www.giantbomb.com/api/video_shows/?format=json&api_key=" + apiKey);
-                response = await Utilities.HttpRequestAgent.GetDeserializedResponseAsync<VideoGroupResponse>(uri);
+                response = await Utilities.HttpRequestAgent.GetDeserializedResponseAsync<VideoGroupingsResponse>(uri);
             }
             catch (Exception e)
             {

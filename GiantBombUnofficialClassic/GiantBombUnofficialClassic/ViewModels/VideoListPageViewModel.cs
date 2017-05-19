@@ -69,7 +69,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                     isCategoryPage = true;
                     CategoryTitle = Category.Title;
                     CategoryDescription = Category.Deck;
-                    response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideosAsync(_apiKey, _numberOfVideosCurrentlyShown, Category.Id, Category.CategoryType);
+                    response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideosAsync(_apiKey, _numberOfVideosCurrentlyShown, Category.Id, Category.GroupingType);
                 }
 
                 if ((response != null) && (response.Status == StatusCode.OK) && (response.Results != null) && ((response.Results.Count() > 0)))

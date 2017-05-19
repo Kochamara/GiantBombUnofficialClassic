@@ -17,7 +17,7 @@ namespace GiantBombApi.Models
         public string Success;
 
         /// <summary>
-        /// Brief summary of the video.
+        /// The active livestream, if it exists
         /// </summary>
         [DataMember(Name = "video")]
         public LiveStream Stream;
@@ -27,7 +27,7 @@ namespace GiantBombApi.Models
     public class LiveStream
     {
         /// <summary>
-        /// Stream title
+        /// Brief summary of the video
         /// </summary>
         [DataMember(Name = "title")]
         public string Title;

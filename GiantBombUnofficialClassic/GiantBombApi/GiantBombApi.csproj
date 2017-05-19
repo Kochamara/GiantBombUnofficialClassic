@@ -108,6 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\ApiKeyResponse.cs" />
+    <Compile Include="Models\Image.cs" />
     <Compile Include="Models\VideoGroupResponse.cs" />
     <Compile Include="Models\LiveStreamResponse.cs" />
     <Compile Include="Models\PlaybackPositionResponse.cs" />
