@@ -84,7 +84,7 @@ Also, Metal Gear Scanlon 4 - Part 14 comes up as an "unsupported video type or i
 Bugs:
 -While using app on a surface pro 3, the screen still dims and then falls asleep if you leave it alone. 
 -pressing the B button on the main menu screen takes you back to the authorization code screen 
-
+-check current crash reports before final builds
 
 Feature requests:
 -keyboard shortcuts. I know you can click the buttons and navigate a bit, but whenever a video starts space to pause and arrow keys for the two rewinds default would be stellar.  Fantastic app either way, it fits my specific needs very well as is.  Its just more of a convenience thing. 

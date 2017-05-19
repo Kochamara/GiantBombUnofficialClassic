@@ -67,9 +67,9 @@ namespace GiantBombUnofficialClassic.ViewModels
                 else
                 {
                     isCategoryPage = true;
-                    CategoryTitle = Category.Name;
+                    CategoryTitle = Category.Title;
                     CategoryDescription = Category.Deck;
-                    response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideosAsync(_apiKey, Category.Id, _numberOfVideosCurrentlyShown);
+                    response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideosAsync(_apiKey, _numberOfVideosCurrentlyShown, Category.Id, Category.CategoryType);
                 }
 
                 if ((response != null) && (response.Status == StatusCode.OK) && (response.Results != null) && ((response.Results.Count() > 0)))
@@ -198,7 +198,7 @@ namespace GiantBombUnofficialClassic.ViewModels
         }
         private ObservableCollection<VideoViewModel> _headerVideos;
         
-        public VideoCategory Category
+        public VideoGrouping Category
         {
             get
             {
@@ -214,7 +214,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 }
             }
         }
-        private VideoCategory _category;
+        private VideoGrouping _category;
 
         public string CategoryTitle
         {
@@ -405,6 +405,19 @@ namespace GiantBombUnofficialClassic.ViewModels
         }
         private RelayCommand _navigateCategoriesPageCommand;
 
+        public RelayCommand NavigateShowsPageCommand
+        {
+            get
+            {
+                return _navigateShowsPageCommand ?? (_navigateShowsPageCommand = new RelayCommand(
+                () =>
+                {
+                    _navigationManager.Navigate(Views.ShowsPage.PageKey);
+                }));
+            }
+        }
+        private RelayCommand _navigateShowsPageCommand;
+        
         public RelayCommand NavigateSettingsPageCommand
         {
             get
@@ -427,9 +440,9 @@ namespace GiantBombUnofficialClassic.ViewModels
                 {
                     // So yeah, we're hard coding this ID because there's no explicit API request to get this specific page.
                     // It's not ideal.
-                    _navigationManager.Navigate("CategoryPage", new GiantBombApi.Models.VideoCategory()
+                    _navigationManager.Navigate("CategoryPage", new GiantBombApi.Models.VideoGrouping()
                     {
-                        Name = "Quick Looks",
+                        Title = "Quick Looks",
                         Deck = "Our editors provide commentary as they play through 20 minutes or more of uninterrupted gameplay.",
                         Id = "3",
                     });

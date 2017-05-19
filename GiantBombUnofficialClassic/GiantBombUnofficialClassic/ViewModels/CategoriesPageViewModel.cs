@@ -13,11 +13,13 @@ namespace GiantBombUnofficialClassic.ViewModels
     {
         private Utilities.NavigationManager _navigationManager;
         private string _apiKey;
+        private GroupingType _pageType;
 
-        public CategoriesPageViewModel()
+        public CategoriesPageViewModel(GroupingType pageType)
         {
             _navigationManager = Utilities.NavigationManager.GetInstance();
             _categories = new ObservableCollection<BasicViewModel>();
+            _pageType = pageType;
         }
 
         public async Task InitializeAsync()
@@ -26,20 +28,58 @@ namespace GiantBombUnofficialClassic.ViewModels
 
             _apiKey = Services.ApiKeyManager.GetInstance().GetSavedApiKey();
 
-            var response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideoCategoriesAsync(_apiKey);
+            VideoGroupResponse response = null;
+
+            switch (_pageType)
+            {
+                case GroupingType.Category:
+                    response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideoCategoriesAsync(_apiKey);
+                    break;
+                case GroupingType.Show:
+                default:
+                    response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideoShowsAsync(_apiKey);
+                    break;
+            }
+
             if ((response != null) && (response.Status == StatusCode.OK) && (response.Results != null))
             {
                 foreach (var category in response.Results)
                 {
-                    var imageLocation = Services.CategoryImageProvider.GetImageForCategoryName(category.Name);
-                    _categories.Add(new CategoryViewModel
+                    Uri imageLocation = null;
+                    category.CategoryType = _pageType;
+                    if (category.Image == null)
                     {
-                        Title = category.Name,
+                        imageLocation = Services.CategoryImageProvider.GetImageForCategoryName(category.Title);
+                    }
+                    else
+                    {
+                        if (category.Image != null)
+                        {
+                            if (!String.IsNullOrWhiteSpace(category.Image.SuperUrl))
+                            {
+                                imageLocation = new Uri(category.Image.SuperUrl);
+                            }
+                            else if (!String.IsNullOrWhiteSpace(category.Image.MediumUrl))
+                            {
+                                imageLocation = new Uri(category.Image.MediumUrl);
+                            }
+                            else if (!String.IsNullOrWhiteSpace(category.Image.SmallUrl))
+                            {
+                                imageLocation = new Uri(category.Image.SmallUrl);
+                            }
+                        }
+                    }
+
+                    var cat = new VideoGroupViewModel
+                    {
+                        Title = category.Title,
                         Description = category.Deck,
                         Id = category.Id,
                         ImageLocation = imageLocation,
                         Source = category
-                    });
+                    };
+                    
+                    _categories.Add(cat);
                 }
             }
 

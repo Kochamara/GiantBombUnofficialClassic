@@ -10,7 +10,7 @@ namespace GiantBombApi.Models
         /// Zero or more items that match the filters specified
         /// </summary>
         [DataMember(Name = "results")]
-        public IEnumerable<Video> Results;
+        public List<Video> Results;
     }
 
     [DataContract]

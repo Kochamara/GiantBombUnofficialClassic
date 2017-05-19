@@ -16,7 +16,7 @@ namespace GiantBombApi.Services
         /// <returns></returns>
         public static async Task<VideosResponse> GetVideosAsync(string apiKey)
         {
-            var response = await GetVideosAsync(apiKey, string.Empty, 0);
+            var response = await GetVideosAsync(apiKey, 0, string.Empty, GroupingType.None);
             return response;
         }
 
@@ -28,7 +28,7 @@ namespace GiantBombApi.Services
         /// <returns></returns>
         public static async Task<VideosResponse> GetVideosAsync(string apiKey, int offset)
         {
-            var response = await GetVideosAsync(apiKey, string.Empty, offset);
+            var response = await GetVideosAsync(apiKey, offset, string.Empty, GroupingType.None);
             return response;
         }
 
@@ -38,9 +38,9 @@ namespace GiantBombApi.Services
         /// <param name="apiKey">API key unique to the user</param>
         /// <param name="videoCategoryId">Numerical ID of which category to query</param>
         /// <returns></returns>
-        public static async Task<VideosResponse> GetVideosAsync(string apiKey, string videoCategoryId)
+        public static async Task<VideosResponse> GetVideosAsync(string apiKey, string videoGroupingId, GroupingType grouping)
         {
-            var response = await GetVideosAsync(apiKey, videoCategoryId, 0);
+            var response = await GetVideosAsync(apiKey, 0, videoGroupingId, grouping);
             return response;
         }
 
@@ -48,20 +48,30 @@ namespace GiantBombApi.Services
         /// Pulls a list of videos from Giant Bomb
         /// </summary>
         /// <param name="apiKey">API key unique to the user</param>
-        /// <param name="videoCategoryId">Numerical ID of which category to query</param>
+        /// <param name="videoGroupingId">Numerical ID of which grouping to query</param>
+        /// <param name="grouping">Whether the group is a category or a show</param>
         /// <param name="offset">If viewing multiple pages of videos, how many videos to skip in the query</param>
         /// <returns></returns>
-        public static async Task<VideosResponse> GetVideosAsync(string apiKey, string videoCategoryId, int offset)
+        public static async Task<VideosResponse> GetVideosAsync(string apiKey, int offset, string videoGroupingId, GroupingType grouping)
         {
             VideosResponse response = null;
 
             try
             {
                 string categoryParameter = string.Empty;
-                if (!String.IsNullOrWhiteSpace(videoCategoryId))
+                if (!String.IsNullOrWhiteSpace(videoGroupingId))
                 {
-                    // Despite "video_type" being deprecated, the filter is still "video_type"
-                    categoryParameter = "&video_type=" + videoCategoryId;
+                    switch (grouping)
+                    {
+                        case GroupingType.Category:
+                            categoryParameter = "&filter=video_categories:" + videoGroupingId;
+                            break;
+                        case GroupingType.Show:
+                            categoryParameter = "&filter=video_show:" + videoGroupingId;
+                            break;
+                        case GroupingType.None:
+                            break;
+                    }
                 }
 
                 string offsetParameter = string.Empty;
@@ -72,10 +82,11 @@ namespace GiantBombApi.Services
 
                 var uri = new Uri("https://www.giantbomb.com/api/videos/?format=json&api_key=" + apiKey + categoryParameter + offsetParameter);
                 response = await Utilities.HttpRequestAgent.GetDeserializedResponseAsync<VideosResponse>(uri);
+                response = RemoveInvalidVideos(response);
             }
             catch (Exception e)
             {
-                Serilog.Log.Error(e, "Error pulling videos with category ID " + videoCategoryId + " and offset " + offset);
+                Serilog.Log.Error(e, "Error pulling videos with category ID " + videoGroupingId + " and offset " + offset);
             }
 
             return response;
@@ -86,18 +97,40 @@ namespace GiantBombApi.Services
         /// </summary>
         /// <param name="apiKey">API key unique to the user</param>
         /// <returns></returns>
-        public static async Task<CategoriesResponse> GetVideoCategoriesAsync(string apiKey)
+        public static async Task<VideoGroupResponse> GetVideoCategoriesAsync(string apiKey)
         {
-            CategoriesResponse response = null;
+            VideoGroupResponse response = null;
 
             try
             {
                 var uri = new Uri("https://www.giantbomb.com/api/video_categories/?format=json&api_key=" + apiKey);
-                response = await Utilities.HttpRequestAgent.GetDeserializedResponseAsync<CategoriesResponse>(uri);
+                response = await Utilities.HttpRequestAgent.GetDeserializedResponseAsync<VideoGroupResponse>(uri);
             }
             catch (Exception e)
             {
                 Serilog.Log.Error(e, "Error pulling video categories");
+            }
+
+            return response;
+        }
+
+        /// <summary>
+        /// Pulls a list of video shows
+        /// </summary>
+        /// <param name="apiKey">API key unique to the user</param>
+        /// <returns></returns>
+        public static async Task<VideoGroupResponse> GetVideoShowsAsync(string apiKey)
+        {
+            VideoGroupResponse response = null;
+
+            try
+            {
+                var uri = new Uri("https://www.giantbomb.com/api/video_shows/?format=json&api_key=" + apiKey);
+                response = await Utilities.HttpRequestAgent.GetDeserializedResponseAsync<VideoGroupResponse>(uri);
+            }
+            catch (Exception e)
+            {
+                Serilog.Log.Error(e, "Error pulling video shows");
             }
 
             return response;
@@ -158,6 +191,7 @@ namespace GiantBombApi.Services
             {
                 var uri = new Uri("https://www.giantbomb.com/api/search/?format=json&api_key=" + apiKey + "&query=" + query + "&resources=video" + pageNumberParameter);
                 response = await Utilities.HttpRequestAgent.GetDeserializedResponseAsync<VideosResponse>(uri);
+                response = RemoveInvalidVideos(response);
             }
             catch (Exception e)
             {
@@ -165,6 +199,24 @@ namespace GiantBombApi.Services
             }
 
             return response;
+        }
+
+        /// <summary>
+        /// Removes all items where there's no video URL or name
+        /// </summary>
+        /// <param name="videos"></param>
+        /// <returns></returns>
+        public static VideosResponse RemoveInvalidVideos(VideosResponse videos)
+        {
+            if ((videos != null) && (videos.Results != null) && (videos.Results.Count > 0))
+            {
+                videos.Results.RemoveAll(item => (
+                String.IsNullOrWhiteSpace(item.HdUrl) ||
+                String.IsNullOrWhiteSpace(item.HighUrl) ||
+                String.IsNullOrWhiteSpace(item.LowUrl) ||
+                String.IsNullOrWhiteSpace(item.Name)));
+            }
+            return videos;
         }
     }
 }

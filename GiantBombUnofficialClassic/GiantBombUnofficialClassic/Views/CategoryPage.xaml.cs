@@ -32,7 +32,7 @@ namespace GiantBombUnofficialClassic.Views
             base.OnNavigatedTo(e);
             if ((e != null) && (e.Parameter != null))
             {
-                var category = e.Parameter as GiantBombApi.Models.VideoCategory;
+                var category = e.Parameter as GiantBombApi.Models.VideoGrouping;
                 _viewModel.Category = category;
                 var unawaitedTask = _viewModel.InitializeAsync();
             }

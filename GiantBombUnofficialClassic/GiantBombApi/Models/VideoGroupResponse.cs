@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 namespace GiantBombApi.Models
 {
     [DataContract]
-    public class CategoriesResponse : Response
+    public class VideoGroupResponse : Response
     {
         /// <summary>
         /// Zero or more items that match the filters specified
         /// </summary>
         [DataMember(Name = "results")]
-        public IEnumerable<VideoCategory> Results;
+        public IEnumerable<VideoGrouping> Results;
     }
 
     [DataContract]
-    public class VideoCategory
+    public class VideoGrouping
     {
         /// <summary>
         /// URL pointing to the video_category detail resource.
@@ -39,15 +39,55 @@ namespace GiantBombApi.Models
         public string Id;
 
         /// <summary>
-        /// Name of the video_category.
+        /// Title of the video_show.
         /// </summary>
-        [DataMember(Name = "name")]
-        public string Name;
+        [DataMember(Name = "title")]
+        public string Title;
+
+        /// <summary>
+        /// Editor ordering.
+        /// </summary>
+        [DataMember(Name = "position")]
+        public int Position;
 
         /// <summary>
         /// URL pointing to the video_category on Giant Bomb.
         /// </summary>
         [DataMember(Name = "site_detail_url")]
         public string SiteDetailUrl;
+
+        /// <summary>
+        /// Main image of the video_show.
+        /// </summary>
+        [DataMember(Name = "image")]
+        public VideoImage Image;
+
+
+
+        public GroupingType CategoryType;
+
+
+        /// <summary>
+        /// Name of the video_category.
+        /// </summary>
+        [DataMember(Name = "name")]
+        public string DoNotUse_Name
+        {
+            get
+            {
+                return Title;
+            }
+            set
+            {
+                this.Title = value;
+            }
+        }
+    }
+
+    public enum GroupingType
+    {
+        None,
+        Category,
+        Show
     }
 }

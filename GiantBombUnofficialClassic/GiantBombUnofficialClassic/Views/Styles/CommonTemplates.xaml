@@ -230,7 +230,7 @@
                         </VisualState>
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>
-                <Button x:Name="SubHeaderButton" Width="192" Height="180" Margin="0,20,20,20" Command="{Binding ViewCategoryCommand}">
+                <Button x:Name="SubHeaderButton" Width="192" Height="180" Margin="0,20,20,20" Command="{Binding ViewGroupCommand}">
                     <StackPanel Orientation="Vertical">
                         <Image Stretch="Uniform" HorizontalAlignment="Stretch" Source="{Binding ImageLocation}" />
                         <TextBlock Text="{Binding Title}" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center" Margin="0,8,0,0" Style="{StaticResource SubHeaderTextStyle}" Foreground="{StaticResource LightGrayBrush}" />
