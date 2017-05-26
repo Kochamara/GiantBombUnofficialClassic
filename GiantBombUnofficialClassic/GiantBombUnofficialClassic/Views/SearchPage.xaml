@@ -81,9 +81,9 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Image Grid.Row="0" Source="ms-appx:///Assets/GiantBombLogo.png" Width="192" Stretch="Uniform" HorizontalAlignment="Center" />
-                <Button Grid.Row="1" Content="Home" Command="{Binding NavigateHomeCommand}" Style="{StaticResource NavigationButtonStyle}" HorizontalAlignment="Center" />
+                <Button Grid.Row="1" Content="Search" Command="{Binding NavigateSearchPageCommand}" Style="{StaticResource NavigationButtonStyle}" HorizontalAlignment="Center" />
                 <Button Grid.Row="2" Content="Categories" Command="{Binding NavigateCategoriesPageCommand}" Style="{StaticResource NavigationButtonStyle}" HorizontalAlignment="Center" />
-                <Button Grid.Row="3" Content="Quick Looks" Command="{Binding NavigateQuickLooksPageCommand}" Style="{StaticResource NavigationButtonStyle}" HorizontalAlignment="Center" />
+                <Button Grid.Row="3" Content="Shows" Command="{Binding NavigateShowsPageCommand}" Style="{StaticResource NavigationButtonStyle}" HorizontalAlignment="Center" />
                 <Button Grid.Row="4" Content="Settings" Command="{Binding NavigateSettingsPageCommand}" Style="{StaticResource NavigationButtonStyle}" HorizontalAlignment="Center" />
             </Grid>
 

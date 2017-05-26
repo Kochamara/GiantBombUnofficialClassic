@@ -34,14 +34,15 @@ namespace GiantBombUnofficialClassic.ViewModels
             _navigationManager = NavigationManager.GetInstance();
             _apiKey = ApiKeyManager.GetInstance().GetSavedApiKey();
             await LoadVideosAsync(true);
-            //TODO: Finish implementing live streams
-            //await CheckForLiveStreamAsync();
         }
 
         public async Task LoadVideosAsync(bool isFirstTimeLoadingVideos)
         {
             try
             {
+                //TODO: Finish implementing live streams
+                //await CheckForLiveStreamAsync();
+
                 if (isFirstTimeLoadingVideos)
                 {
                     IsLoading = true;
@@ -378,7 +379,20 @@ namespace GiantBombUnofficialClassic.ViewModels
         private RelayCommand _refreshCommand;
         #endregion
 
-        #region Navigation
+        #region Commands
+        public RelayCommand RefreshPageCommand
+        {
+            get
+            {
+                return _refreshPageCommand ?? (_refreshPageCommand = new RelayCommand(
+                () =>
+                {
+                    var unawaitedTask = LoadVideosAsync(true);
+                }));
+            }
+        }
+        private RelayCommand _refreshPageCommand;
+
         public RelayCommand NavigateSearchPageCommand
         {
             get
@@ -430,26 +444,6 @@ namespace GiantBombUnofficialClassic.ViewModels
             }
         }
         private RelayCommand _navigateSettingsPageCommand;
-
-        public RelayCommand NavigateQuickLooksPageCommand
-        {
-            get
-            {
-                return _navigateQuickLooksPageCommand ?? (_navigateQuickLooksPageCommand = new RelayCommand(
-                () =>
-                {
-                    // So yeah, we're hard coding this ID because there's no explicit API request to get this specific page.
-                    // It's not ideal.
-                    _navigationManager.Navigate("CategoryPage", new GiantBombApi.Models.VideoGrouping()
-                    {
-                        Title = "Quick Looks",
-                        Deck = "Our editors provide commentary as they play through 20 minutes or more of uninterrupted gameplay.",
-                        Id = "3",
-                    });
-                }));
-            }
-        }
-        private RelayCommand _navigateQuickLooksPageCommand;
 
         public RelayCommand NavigateLiveStreamPageCommand
         {
