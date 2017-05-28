@@ -76,6 +76,88 @@
         </UserControl>
     </DataTemplate>
 
+    <DataTemplate x:Name="LiveVideoTemplate">
+        <UserControl>
+            <RelativePanel Margin="0,0,8,8">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="WindowWidthStates">
+                        <VisualState x:Name="MaxState">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="1600" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="HeaderButton.Width" Value="1168" />
+                                <Setter Target="HeaderButton.Height" Value="680" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="WideState">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="1300" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="HeaderButton.Width" Value="880" />
+                                <Setter Target="HeaderButton.Height" Value="510" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="MiddleState">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="910" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="HeaderButton.Width" Value="592" />
+                                <Setter Target="HeaderButton.Height" Value="340" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="SemiNarrowState">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="600" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="HeaderButton.Width" Value="292" />
+                                <Setter Target="HeaderButton.Height" Value="164" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="NarrowState">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="0" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="HeaderButton.Width" Value="192" />
+                                <Setter Target="HeaderButton.Height" Value="108" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+                <Button x:Name="HeaderButton" Width="592" Height="340" Command="{Binding PlayVideoCommand}" Padding="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                    <Grid>
+                        <Image Source="ms-appx:///Assets/BlackBomb.png" MaxWidth="40" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" />
+                        <Image Source="{Binding ImageLocation}" Stretch="UniformToFill" Opacity="30" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                        <Grid BorderBrush="{StaticResource DarkRedBrush}" BorderThickness="4" Background="{StaticResource TranslucentBlackBrush}">
+                            <Grid BorderBrush="Transparent" BorderThickness="4">
+                                <Grid BorderBrush="{StaticResource DarkRedBrush}" BorderThickness="4">
+                                    <Grid BorderBrush="Transparent" BorderThickness="4">
+                                        <Grid BorderBrush="{StaticResource DarkRedBrush}" BorderThickness="4">
+                                            <Grid VerticalAlignment="Bottom" MinHeight="80" >
+                                                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="8,4,8,8">
+                                                    <TextBlock FontWeight="SemiBold" FontSize="28" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource SubHeaderTextStyle}">
+                                                        <Run Text="LIVE!" />
+                                                        <Run Text="ON GIANT BOMB" />
+                                                    </TextBlock>
+                                                    <TextBlock Text="{Binding Title}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource SubHeaderTextStyle}" />
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+                </Button>
+            </RelativePanel>
+        </UserControl>
+    </DataTemplate>
+
     <DataTemplate x:Name="SubHeaderVideoTemplate">
         <UserControl>
             <RelativePanel Margin="0,0,8,8">

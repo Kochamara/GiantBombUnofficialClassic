@@ -1,4 +1,5 @@
-﻿using GiantBombUnofficialClassic.ViewModels;
+﻿using GiantBombApi.Models;
+using GiantBombUnofficialClassic.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -89,7 +90,16 @@ namespace GiantBombUnofficialClassic.Views
             if ((e != null) && (e.Parameter != null))
             {
                 VideoContainer.SetMediaPlayer(_context.Player);
-                _context.Video = e.Parameter as GiantBombApi.Models.Video;
+
+                if (e.Parameter is Video)
+                {
+                    _context.Video = e.Parameter as Video;
+                }
+                else if (e.Parameter is LiveStream)
+                {
+                    _context.LiveStream = e.Parameter as LiveStream;
+                }
+
                 _context.InitializeAsync();
 
                 if (Utilities.SystemInformationManager.IsTenFootExperience)

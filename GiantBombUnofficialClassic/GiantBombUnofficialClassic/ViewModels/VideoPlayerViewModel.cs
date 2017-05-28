@@ -20,16 +20,38 @@ namespace GiantBombUnofficialClassic.ViewModels
             PlaybackPositionReportingCancellationToken = new CancellationTokenSource();
         }
 
+        /// <summary>
+        /// This view model handles both archived videos and live streams, but initializes
+        /// differently based on either scenario.
+        /// </summary>
         public async void InitializeAsync()
         {
-            var videoUriManager = Services.VideoUriManager.GetInstance();
-            var videoUri = videoUriManager.GetAppropriateVideoUri(Video);
-            Player.Source = Windows.Media.Core.MediaSource.CreateFromUri(videoUri);
+            if (this.Video != null)
+            {
+                // For archived videos, we need to determine which URI to use (HD/high/low quality) and
+                // also we should handle sycning playback position with the site.
+                ShowSystemMediaTransportControls = true;
+                var videoUriManager = Services.VideoUriManager.GetInstance();
+                var videoUri = videoUriManager.GetAppropriateVideoUri(Video);
+                Player.Source = Windows.Media.Core.MediaSource.CreateFromUri(videoUri);
 
-            await SkipAheadToPreviousPositionAsync();
-            await ReportPlaybackPositionAsync(PlaybackPositionReportingCancellationToken.Token);
+                await SkipAheadToPreviousPositionAsync();
+                await ReportPlaybackPositionAsync(PlaybackPositionReportingCancellationToken.Token);
+            }
+            else if (this.LiveStream != null)
+            {
+                ShowSystemMediaTransportControls = false;
+                var videoUriManager = Services.VideoUriManager.GetInstance();
+                var videoUri = videoUriManager.GetAppropriateVideoUri(LiveStream);
+                Player.Source = Windows.Media.Core.MediaSource.CreateFromUri(videoUri);
+            }
+            else
+            {
+                Serilog.Log.Error("Unable to initialize view model without valid video");
+            }
         }
-        
+
+        #region Playback position handling
         private async Task ReportPlaybackPositionAsync(CancellationToken token)
         {
             try
@@ -53,7 +75,7 @@ namespace GiantBombUnofficialClassic.ViewModels
 
             PlaybackPositionReportingCancellationToken.Dispose();
         }
-        
+
         private async Task SkipAheadToPreviousPositionAsync()
         {
             //TODO: Sometimes I think this is getting called before the video is even loaded
@@ -78,7 +100,9 @@ namespace GiantBombUnofficialClassic.ViewModels
             var apiKey = Services.ApiKeyManager.GetInstance().GetSavedApiKey();
             bool success = await GiantBombApi.Services.VideoPlaybackPositionAgent.SetPlaybackPositionAsync(apiKey, Video.Id, (int)Player.PlaybackSession.Position.TotalSeconds);
         }
+        #endregion
 
+        #region Bound properties
         public Video Video
         {
             get
@@ -97,6 +121,24 @@ namespace GiantBombUnofficialClassic.ViewModels
         }
         private Video _video;
 
+        public LiveStream LiveStream
+        {
+            get
+            {
+                return _liveStream;
+            }
+
+            set
+            {
+                if (_liveStream != value)
+                {
+                    _liveStream = value;
+                    RaisePropertyChanged("LiveStream");
+                }
+            }
+        }
+        private LiveStream _liveStream;
+
         public MediaPlayer Player
         {
             get
@@ -114,5 +156,24 @@ namespace GiantBombUnofficialClassic.ViewModels
             }
         }
         private MediaPlayer _player;
+
+        public bool ShowSystemMediaTransportControls
+        {
+            get
+            {
+                return _showSystemMediaTransportControls;
+            }
+
+            set
+            {
+                if (_showSystemMediaTransportControls != value)
+                {
+                    _showSystemMediaTransportControls = value;
+                    RaisePropertyChanged("ShowSystemMediaTransportControls");
+                }
+            }
+        }
+        private bool _showSystemMediaTransportControls;
+        #endregion
     }
 }

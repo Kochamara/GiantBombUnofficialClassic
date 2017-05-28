@@ -1,2 +1,3 @@
 ﻿New for the next release:
--
+-Watch live broadcasts of premium Giant Bomb content!
+-Added "Shows"

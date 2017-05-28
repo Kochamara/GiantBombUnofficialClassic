@@ -25,7 +25,7 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
-        <MediaPlayerElement x:Name="VideoContainer" AutoPlay="True" AreTransportControlsEnabled="True"  HorizontalAlignment="Stretch" >
+        <MediaPlayerElement x:Name="VideoContainer" AutoPlay="True" AreTransportControlsEnabled="{Binding ShowSystemMediaTransportControls}"  HorizontalAlignment="Stretch" >
             <MediaPlayerElement.TransportControls>
                 <MediaTransportControls x:Name="PlaybackControls" 
                                         IsSkipBackwardButtonVisible="True" 

@@ -68,6 +68,19 @@ namespace GiantBombUnofficialClassic.Services
             return appropriateUri;
         }
 
+        public Uri GetAppropriateVideoUri(LiveStream video)
+        {
+            Uri appropriateUri = null;
+
+            if (video != null)
+            {
+                var apiKey = _apiKeyManager.GetSavedApiKey();
+                appropriateUri = new Uri(video.StreamSource + "?api_key=" + apiKey);
+            }
+
+            return appropriateUri;
+        }
+
         public VideoQuality GetPreferredVideoQuality()
         {
             try

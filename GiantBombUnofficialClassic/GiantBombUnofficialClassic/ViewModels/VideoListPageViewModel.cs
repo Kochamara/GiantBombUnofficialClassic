@@ -27,6 +27,7 @@ namespace GiantBombUnofficialClassic.ViewModels
             _videos = new ObservableCollection<VideoViewModel>();
             _subHeaderVideos = new ObservableCollection<VideoViewModel>();
             _headerVideos = new ObservableCollection<VideoViewModel>();
+            _liveBroadcasts = new ObservableCollection<LiveStreamViewModel>();
         }
 
         public async Task InitializeAsync()
@@ -40,9 +41,6 @@ namespace GiantBombUnofficialClassic.ViewModels
         {
             try
             {
-                //TODO: Finish implementing live streams
-                //await CheckForLiveStreamAsync();
-
                 if (isFirstTimeLoadingVideos)
                 {
                     IsLoading = true;
@@ -51,6 +49,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                     _videos.Clear();
                     _subHeaderVideos.Clear();
                     _headerVideos.Clear();
+                    _liveBroadcasts.Clear();
                 }
                 else
                 {
@@ -63,6 +62,7 @@ namespace GiantBombUnofficialClassic.ViewModels
 
                 if ((this.Category == null) || (String.IsNullOrWhiteSpace(this.Category.Id)))
                 {
+                    await CheckForLiveStreamAsync();
                     response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideosAsync(_apiKey, _numberOfVideosCurrentlyShown);
                 }
                 else
@@ -144,8 +144,11 @@ namespace GiantBombUnofficialClassic.ViewModels
                         // third row (3 wide) of videos.
                         if (_videos.Count > (NumberOfSubHeadersOnMainPage + 4))
                         {
-                            _headerVideos.Add(_videos.First());
-                            _videos.RemoveAt(0);
+                            if ((LiveBroadcasts == null) || (LiveBroadcasts.Count == 0))
+                            {
+                                _headerVideos.Add(_videos.First());
+                                _videos.RemoveAt(0);
+                            }
 
                             var subHeaderViewModels = _videos.Take(NumberOfSubHeadersOnMainPage);
                             foreach (var video in subHeaderViewModels)
@@ -170,17 +173,56 @@ namespace GiantBombUnofficialClassic.ViewModels
             IsLoading = false;
         }
 
-        public async Task CheckForLiveStreamAsync()
+        private async Task<bool> CheckForLiveStreamAsync()
         {
-            var response = await GiantBombApi.Services.VideoRetrievalAgent.GetLiveStreamAsync(_apiKey);
+            bool success = false;
 
-            if ((response != null) && (response.Stream != null) && (!String.IsNullOrWhiteSpace(response.Stream.StreamSource)))
+            try
             {
-                LiveBroadcast = response.Stream;
+                var liveStream = await GiantBombApi.Services.VideoRetrievalAgent.GetLiveStreamAsync(_apiKey);
+                if ((liveStream != null) && (liveStream.Stream != null) && (!String.IsNullOrWhiteSpace(liveStream.Stream.StreamSource)))
+                {
+                    var liveBroadcast = new LiveStreamViewModel()
+                    {
+                        Source = liveStream.Stream,
+                        Title = liveStream.Stream.Title,
+                    };
+
+                    if (!String.IsNullOrWhiteSpace(liveStream.Stream.Image))
+                    {
+                        var imageLocation = liveStream.Stream.Image;
+                        imageLocation = imageLocation.Trim();
+
+                        if (!imageLocation.StartsWith("http"))
+                        {
+                            // The image is sometimes returned as "static.giantbomb.com/something.jpg", which 
+                            // confuses the URI, so we need to manually add the "https://"
+                            imageLocation = "https://" + imageLocation;
+                        }
+
+                        liveBroadcast.ImageLocation = new Uri(imageLocation);
+
+                        _liveBroadcasts.Add(liveBroadcast);
+                    }
+
+                    success = true;
+                }
             }
+            catch (Exception e)
+            {
+                Serilog.Log.Information(e, "Error loading live stream");
+            }
+
+            return success;
         }
 
         #region Bound Properties
+        public ObservableCollection<LiveStreamViewModel> LiveBroadcasts
+        {
+            get { return _liveBroadcasts; }
+        }
+        private ObservableCollection<LiveStreamViewModel> _liveBroadcasts;
+
         public ObservableCollection<VideoViewModel> Videos
         {
             get { return _videos; }
@@ -198,7 +240,7 @@ namespace GiantBombUnofficialClassic.ViewModels
             get { return _headerVideos; }
         }
         private ObservableCollection<VideoViewModel> _headerVideos;
-        
+
         public VideoGrouping Category
         {
             get
@@ -314,26 +356,6 @@ namespace GiantBombUnofficialClassic.ViewModels
         }
         private bool _additionalVideosFound;
 
-
-        public LiveStream LiveBroadcast
-        {
-            get
-            {
-                return _liveBroadcast;
-            }
-
-            set
-            {
-                if (_liveBroadcast != value)
-                {
-                    _liveBroadcast = value;
-                    RaisePropertyChanged("LiveBroadcast");
-                }
-            }
-        }
-        private LiveStream _liveBroadcast;
-        
-
         public bool FoundVideos
         {
             get
@@ -431,7 +453,7 @@ namespace GiantBombUnofficialClassic.ViewModels
             }
         }
         private RelayCommand _navigateShowsPageCommand;
-        
+
         public RelayCommand NavigateSettingsPageCommand
         {
             get
