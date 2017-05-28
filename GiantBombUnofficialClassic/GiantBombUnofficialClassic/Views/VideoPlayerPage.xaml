@@ -6,7 +6,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:triggers="using:GiantBombUnofficialClassic.Views.Triggers"
+    xmlns:converters="using:GiantBombUnofficialClassic.Views.Converters"
     mc:Ignorable="d">
+
+    <Page.Resources>
+        <converters:NegatedBoolToVisibilityConverter x:Key="NegatedBoolToVisibility"/>
+    </Page.Resources>
 
     <Grid Background="{StaticResource DarkestGrayBrush}">
         <VisualStateManager.VisualStateGroups>
@@ -25,7 +30,10 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
-        <MediaPlayerElement x:Name="VideoContainer" AutoPlay="True" AreTransportControlsEnabled="{Binding ShowSystemMediaTransportControls}"  HorizontalAlignment="Stretch" >
+        <!--Without System Media Transport Controls, there's no loading indicator, so let's add one-->
+        <ProgressRing Visibility="{Binding ShowSystemMediaTransportControls, Converter={StaticResource NegatedBoolToVisibility}}" Style="{StaticResource ProgressRingStyle}" Width="100" Height="100" />
+
+        <MediaPlayerElement x:Name="VideoContainer" AutoPlay="True" AreTransportControlsEnabled="{Binding ShowSystemMediaTransportControls}" HorizontalAlignment="Stretch" >
             <MediaPlayerElement.TransportControls>
                 <MediaTransportControls x:Name="PlaybackControls" 
                                         IsSkipBackwardButtonVisible="True" 
