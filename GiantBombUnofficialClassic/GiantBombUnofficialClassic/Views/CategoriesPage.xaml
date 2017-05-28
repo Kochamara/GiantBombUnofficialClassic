@@ -26,7 +26,7 @@
         </Grid>
 
         <ScrollViewer Visibility="{Binding IsLoading, Converter={StaticResource NegatedBoolToVisibility}}">
-            <ItemsControl HorizontalAlignment="Center" ItemsSource="{Binding Categories}" Style="{StaticResource CategoryListStyle}" />
+            <ItemsControl HorizontalAlignment="Center" ItemsSource="{Binding Groups}" Style="{StaticResource CategoryListStyle}" />
         </ScrollViewer>
     </Grid>
 </Page>

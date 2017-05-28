@@ -9,16 +9,16 @@ using System.Threading.Tasks;
 
 namespace GiantBombUnofficialClassic.ViewModels
 {
-    public class CategoriesPageViewModel : ViewModelBase
+    public class VideoGroupsPageViewModel : ViewModelBase
     {
         private Utilities.NavigationManager _navigationManager;
         private string _apiKey;
         private GroupingType _pageType;
 
-        public CategoriesPageViewModel(GroupingType pageType)
+        public VideoGroupsPageViewModel(GroupingType pageType)
         {
             _navigationManager = Utilities.NavigationManager.GetInstance();
-            _categories = new ObservableCollection<BasicViewModel>();
+            _groups = new ObservableCollection<BasicViewModel>();
             _pageType = pageType;
         }
 
@@ -43,54 +43,57 @@ namespace GiantBombUnofficialClassic.ViewModels
 
             if ((response != null) && (response.Status == StatusCode.OK) && (response.Results != null))
             {
-                foreach (var category in response.Results)
+                foreach (var group in response.Results)
                 {
                     Uri imageLocation = null;
-                    category.GroupingType = _pageType;
-                    if (category.Image == null)
+                    group.GroupingType = _pageType;
+                    if (group.Image == null)
                     {
-                        imageLocation = Services.CategoryImageProvider.GetImageForCategoryName(category.Title);
+                        imageLocation = Services.VideoGroupImageProvider.GetImageForGroupName(group.Title);
                     }
                     else
                     {
-                        if (category.Image != null)
+                        // Get the override image if we're using one. Otherwise, use the image that's provided.
+                        imageLocation = Services.VideoGroupImageProvider.GetOverrideImageForGroupName(group.Title);
+
+                        if (imageLocation == null)
                         {
-                            if (!String.IsNullOrWhiteSpace(category.Image.SuperUrl))
+                            if (!String.IsNullOrWhiteSpace(group.Image.SuperUrl))
                             {
-                                imageLocation = new Uri(category.Image.SuperUrl);
+                                imageLocation = new Uri(group.Image.SuperUrl);
                             }
-                            else if (!String.IsNullOrWhiteSpace(category.Image.MediumUrl))
+                            else if (!String.IsNullOrWhiteSpace(group.Image.MediumUrl))
                             {
-                                imageLocation = new Uri(category.Image.MediumUrl);
+                                imageLocation = new Uri(group.Image.MediumUrl);
                             }
-                            else if (!String.IsNullOrWhiteSpace(category.Image.SmallUrl))
+                            else if (!String.IsNullOrWhiteSpace(group.Image.SmallUrl))
                             {
-                                imageLocation = new Uri(category.Image.SmallUrl);
+                                imageLocation = new Uri(group.Image.SmallUrl);
                             }
                         }
                     }
 
                     var cat = new VideoGroupViewModel
                     {
-                        Title = category.Title,
-                        Description = category.Deck,
-                        Id = category.Id,
+                        Title = group.Title,
+                        Description = group.Deck,
+                        Id = group.Id,
                         ImageLocation = imageLocation,
-                        Source = category
+                        Source = group
                     };
-                    
-                    _categories.Add(cat);
+
+                    _groups.Add(cat);
                 }
             }
 
             IsLoading = false;
         }
 
-        public ObservableCollection<BasicViewModel> Categories
+        public ObservableCollection<BasicViewModel> Groups
         {
-            get { return _categories; }
+            get { return _groups; }
         }
-        private ObservableCollection<BasicViewModel> _categories;
+        private ObservableCollection<BasicViewModel> _groups;
 
         public bool IsLoading
         {

@@ -19,11 +19,11 @@ namespace GiantBombUnofficialClassic.Views
     public sealed partial class CategoriesPage : Page
     {
         public const string PageKey = "CategoriesPage";
-        private ViewModels.CategoriesPageViewModel _viewModel;
+        private ViewModels.VideoGroupsPageViewModel _viewModel;
 
         public CategoriesPage()
         {
-            _viewModel = new ViewModels.CategoriesPageViewModel(GroupingType.Category);
+            _viewModel = new ViewModels.VideoGroupsPageViewModel(GroupingType.Category);
             this.DataContext = _viewModel;
             this.InitializeComponent();
             var unawaitedTask = _viewModel.InitializeAsync();

@@ -103,14 +103,14 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ApiKeyManager.cs" />
-    <Compile Include="Services\CategoryImageProvider.cs" />
+    <Compile Include="Services\VideoGroupImageProvider.cs" />
     <Compile Include="Services\InitializationAgent.cs" />
     <Compile Include="Services\VideoUriManager.cs" />
     <Compile Include="Utilities\NavigationManager.cs" />
     <Compile Include="Utilities\SettingsManager.cs" />
     <Compile Include="Utilities\SystemInformationManager.cs" />
     <Compile Include="ViewModels\BasicViewModel.cs" />
-    <Compile Include="ViewModels\CategoriesPageViewModel.cs" />
+    <Compile Include="ViewModels\VideoGroupsPageViewModel.cs" />
     <Compile Include="ViewModels\LiveStreamViewModel.cs" />
     <Compile Include="ViewModels\VideoGroupViewModel.cs" />
     <Compile Include="ViewModels\VideoListPageViewModel.cs" />
@@ -122,8 +122,8 @@
     <Compile Include="Views\CategoriesPage.xaml.cs">
       <DependentUpon>CategoriesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CategoryPage.xaml.cs">
-      <DependentUpon>CategoryPage.xaml</DependentUpon>
+    <Compile Include="Views\GroupPage.xaml.cs">
+      <DependentUpon>GroupPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Views\Converters\NullToVisibilityConverter.cs" />
@@ -161,25 +161,26 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\BlackBomb.png" />
-    <Content Include="Assets\Categories\BestOfGiantBomb.jpg" />
-    <Content Include="Assets\Categories\Bombcast.jpg" />
-    <Content Include="Assets\Categories\BreakingBrad.jpg" />
-    <Content Include="Assets\Categories\default.png" />
-    <Content Include="Assets\Categories\EnduranceRun.jpg" />
-    <Content Include="Assets\Categories\Events.jpg" />
-    <Content Include="Assets\Categories\ExtraLife.jpg" />
-    <Content Include="Assets\Categories\Features.jpg" />
-    <Content Include="Assets\Categories\GameTapes.jpg" />
-    <Content Include="Assets\Categories\MetalGearScanlon.jpg" />
-    <Content Include="Assets\Categories\OldGames.png" />
-    <Content Include="Assets\Categories\Premium.jpg" />
-    <Content Include="Assets\Categories\ProjectBEAST.jpg" />
-    <Content Include="Assets\Categories\QuickLooks.jpg" />
-    <Content Include="Assets\Categories\TANG.jpg" />
-    <Content Include="Assets\Categories\Trailers.jpg" />
-    <Content Include="Assets\Categories\Unfinished.png" />
-    <Content Include="Assets\Categories\VideoReview.jpg" />
-    <Content Include="Assets\Categories\Vinnyvania.jpg" />
+    <Content Include="Assets\Groups\BestOfGiantBomb.jpg" />
+    <Content Include="Assets\Groups\Bombcast.jpg" />
+    <Content Include="Assets\Groups\BreakingBrad.jpg" />
+    <Content Include="Assets\Groups\default.png" />
+    <Content Include="Assets\Groups\EnduranceRun.jpg" />
+    <Content Include="Assets\Groups\Events.jpg" />
+    <Content Include="Assets\Groups\ExtraLife.jpg" />
+    <Content Include="Assets\Groups\Features.jpg" />
+    <Content Include="Assets\Groups\GameTapes.jpg" />
+    <Content Include="Assets\Groups\GameTapesRAW.jpg" />
+    <Content Include="Assets\Groups\MetalGearScanlon.jpg" />
+    <Content Include="Assets\Groups\OldGames.png" />
+    <Content Include="Assets\Groups\Premium.jpg" />
+    <Content Include="Assets\Groups\ProjectBEAST.jpg" />
+    <Content Include="Assets\Groups\QuickLooks.jpg" />
+    <Content Include="Assets\Groups\TANG.jpg" />
+    <Content Include="Assets\Groups\Trailers.jpg" />
+    <Content Include="Assets\Groups\Unfinished.png" />
+    <Content Include="Assets\Groups\VideoReview.jpg" />
+    <Content Include="Assets\Groups\Vinnyvania.jpg" />
     <Content Include="Assets\GiantBombLogo.png" />
     <Content Include="Assets\JeffFrame.jpg" />
     <Content Include="Assets\Licenses.txt" />
@@ -226,7 +227,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CategoryPage.xaml">
+    <Page Include="Views\GroupPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

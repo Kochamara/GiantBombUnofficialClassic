@@ -19,7 +19,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                         () =>
                         {
                             var navigationManager = Utilities.NavigationManager.GetInstance();
-                            navigationManager.Navigate(Views.CategoryPage.PageKey, this.Source);
+                            navigationManager.Navigate(Views.GroupPage.PageKey, this.Source);
                         });
             }
         }

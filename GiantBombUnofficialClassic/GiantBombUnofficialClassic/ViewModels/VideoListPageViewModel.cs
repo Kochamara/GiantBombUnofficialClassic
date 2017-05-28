@@ -20,7 +20,7 @@ namespace GiantBombUnofficialClassic.ViewModels
         private string _apiKey;
         private int _numberOfVideosCurrentlyShown;
         private const int NumberOfSubHeadersOnMainPage = 2;
-        private const int NumberOfSubHeadersOnCategoryPage = 4;
+        private const int NumberOfSubHeadersOnGroupPage = 4;
 
         public VideoListPageViewModel()
         {
@@ -58,19 +58,19 @@ namespace GiantBombUnofficialClassic.ViewModels
 
                 AdditionalVideosFound = false;
                 VideosResponse response = null;
-                bool isCategoryPage = false;
+                bool isGroupPage = false;
 
-                if ((this.Category == null) || (String.IsNullOrWhiteSpace(this.Category.Id)))
+                if ((this.Group == null) || (String.IsNullOrWhiteSpace(this.Group.Id)))
                 {
                     await CheckForLiveStreamAsync();
                     response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideosAsync(_apiKey, _numberOfVideosCurrentlyShown);
                 }
                 else
                 {
-                    isCategoryPage = true;
-                    CategoryTitle = Category.Title;
-                    CategoryDescription = Category.Deck;
-                    response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideosAsync(_apiKey, _numberOfVideosCurrentlyShown, Category.Id, Category.GroupingType);
+                    isGroupPage = true;
+                    GroupTitle = Group.Title;
+                    GroupDescription = Group.Deck;
+                    response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideosAsync(_apiKey, _numberOfVideosCurrentlyShown, Group.Id, Group.GroupingType);
                 }
 
                 if ((response != null) && (response.Status == StatusCode.OK) && (response.Results != null) && ((response.Results.Count() > 0)))
@@ -120,19 +120,19 @@ namespace GiantBombUnofficialClassic.ViewModels
                 // Add in the header and subheader view models
                 if (isFirstTimeLoadingVideos)
                 {
-                    if (isCategoryPage)
+                    if (isGroupPage)
                     {
-                        // Category page style, no header. Don't show anything unless we have a full
+                        // Group page style, no header. Don't show anything unless we have a full
                         // second row (3 wide) of videos.
-                        if (_videos.Count > (NumberOfSubHeadersOnCategoryPage + 3))
+                        if (_videos.Count > (NumberOfSubHeadersOnGroupPage + 3))
                         {
-                            var subHeaderViewModels = _videos.Take(NumberOfSubHeadersOnCategoryPage);
+                            var subHeaderViewModels = _videos.Take(NumberOfSubHeadersOnGroupPage);
                             foreach (var video in subHeaderViewModels)
                             {
                                 _subHeaderVideos.Add(video);
                             }
 
-                            for (int i = 0; i < NumberOfSubHeadersOnCategoryPage; i++)
+                            for (int i = 0; i < NumberOfSubHeadersOnGroupPage; i++)
                             {
                                 _videos.RemoveAt(0);
                             }
@@ -241,59 +241,59 @@ namespace GiantBombUnofficialClassic.ViewModels
         }
         private ObservableCollection<VideoViewModel> _headerVideos;
 
-        public VideoGrouping Category
+        public VideoGrouping Group
         {
             get
             {
-                return _category;
+                return _group;
             }
 
             set
             {
-                if (_category != value)
+                if (_group != value)
                 {
-                    _category = value;
-                    RaisePropertyChanged("Category");
+                    _group = value;
+                    RaisePropertyChanged("Group");
                 }
             }
         }
-        private VideoGrouping _category;
+        private VideoGrouping _group;
 
-        public string CategoryTitle
+        public string GroupTitle
         {
             get
             {
-                return _categoryTitle;
+                return _groupTitle;
             }
 
             set
             {
-                if (_categoryTitle != value)
+                if (_groupTitle != value)
                 {
-                    _categoryTitle = value;
-                    RaisePropertyChanged("CategoryTitle");
+                    _groupTitle = value;
+                    RaisePropertyChanged("GroupTitle");
                 }
             }
         }
-        private string _categoryTitle;
+        private string _groupTitle;
 
-        public string CategoryDescription
+        public string GroupDescription
         {
             get
             {
-                return _categoryDescription;
+                return _groupDescription;
             }
 
             set
             {
-                if (_categoryDescription != value)
+                if (_groupDescription != value)
                 {
-                    _categoryDescription = value;
-                    RaisePropertyChanged("CategoryDescription");
+                    _groupDescription = value;
+                    RaisePropertyChanged("GroupDescription");
                 }
             }
         }
-        private string _categoryDescription;
+        private string _groupDescription;
 
         /// <summary>
         /// Whether the page is loading or not. Should completely hide the page behind a loading indicator.

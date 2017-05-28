@@ -15,12 +15,12 @@ using Windows.UI.Xaml.Navigation;
 
 namespace GiantBombUnofficialClassic.Views
 {
-    public sealed partial class CategoryPage : Page
+    public sealed partial class GroupPage : Page
     {
-        public const string PageKey = "CategoryPage";
+        public const string PageKey = "GroupPage";
         private ViewModels.VideoListPageViewModel _viewModel;
 
-        public CategoryPage()
+        public GroupPage()
         {
             _viewModel = new ViewModels.VideoListPageViewModel();
             this.DataContext = _viewModel;
@@ -32,8 +32,8 @@ namespace GiantBombUnofficialClassic.Views
             base.OnNavigatedTo(e);
             if ((e != null) && (e.Parameter != null))
             {
-                var category = e.Parameter as GiantBombApi.Models.VideoGrouping;
-                _viewModel.Category = category;
+                var group = e.Parameter as GiantBombApi.Models.VideoGrouping;
+                _viewModel.Group = group;
                 var unawaitedTask = _viewModel.InitializeAsync();
             }
         }

@@ -19,11 +19,11 @@ namespace GiantBombUnofficialClassic.Views
     public sealed partial class ShowsPage : Page
     {
         public const string PageKey = "ShowsPage";
-        private ViewModels.CategoriesPageViewModel _viewModel;
+        private ViewModels.VideoGroupsPageViewModel _viewModel;
 
         public ShowsPage()
         {
-            _viewModel = new ViewModels.CategoriesPageViewModel(GroupingType.Show);
+            _viewModel = new ViewModels.VideoGroupsPageViewModel(GroupingType.Show);
             this.DataContext = _viewModel;
             this.InitializeComponent();
             var unawaitedTask = _viewModel.InitializeAsync();
