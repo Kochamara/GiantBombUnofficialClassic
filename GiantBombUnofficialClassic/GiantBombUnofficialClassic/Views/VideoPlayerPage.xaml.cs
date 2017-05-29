@@ -22,6 +22,7 @@ namespace GiantBombUnofficialClassic.Views
     {
         public const string PageKey = "VideoPlayerPage";
         private VideoPlayerViewModel _context;
+        private Windows.System.Display.DisplayRequest _displayRequest;
 
         public VideoPlayerPage()
         {
@@ -109,6 +110,7 @@ namespace GiantBombUnofficialClassic.Views
                 else
                 {
                     VideoContainer.DoubleTapped += MediaPlayer_DoubleTapped;
+                    ActivateDisplay();
                 }
             }
         }
@@ -122,6 +124,54 @@ namespace GiantBombUnofficialClassic.Views
             {
                 Window.Current.CoreWindow.KeyUp -= CoreWindow_KeyUp;
             }
+            else
+            {
+                ReleaseDisplay();
+            }
         }
+
+        #region Screen Locking/Sleeping Handling
+        // More information on this behavior is documented here: https://msdn.microsoft.com/en-us/library/windows/apps/xaml/jj152728.aspx
+
+        /// <summary>
+        /// To prevent screens going to sleep or locking during video playback, send an activation request.
+        /// </summary>
+        public void ActivateDisplay()
+        {
+            try
+            {
+                // Create the request instance if needed
+                if (_displayRequest == null)
+                {
+                    _displayRequest = new Windows.System.Display.DisplayRequest();
+                }
+
+                // Make request to put in active state
+                _displayRequest.RequestActive();
+            }
+            catch (Exception e)
+            {
+                Serilog.Log.Information(e, "Error sending display request");
+            }
+        }
+
+        /// <summary>
+        /// Once video playback has ended, release the display so Windows can handle the display state normally.
+        /// </summary>
+        public void ReleaseDisplay()
+        {
+            try
+            {
+                if (_displayRequest != null)
+                {
+                    _displayRequest.RequestRelease();
+                }
+            }
+            catch (Exception e)
+            {
+                Serilog.Log.Information(e, "Error releasing display");
+            }
+        }
+        #endregion
     }
 }

@@ -1,5 +1,8 @@
 ﻿THE GIANT BOMB UNOFFICIAL CLASSIC VIDEO PLAYER TO DO LIST
 
+Items to test before builds:
+-Keeping screen active while watching video
+
 V1.X release:
 -Border for the button focus. It's black and white. All white?
 -Keep screen from going to sleep on PC during video playback

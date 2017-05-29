@@ -1,3 +1,4 @@
 ﻿New for the next release:
 -Watch live broadcasts of premium Giant Bomb content!
 -Added "Shows"
+-Display should no longer go to sleep or lock during video playback
