@@ -399,21 +399,6 @@ namespace GiantBombUnofficialClassic.ViewModels
             }
         }
         private RelayCommand _refreshCommand;
-        #endregion
-
-        #region Commands
-        public RelayCommand RefreshPageCommand
-        {
-            get
-            {
-                return _refreshPageCommand ?? (_refreshPageCommand = new RelayCommand(
-                () =>
-                {
-                    var unawaitedTask = LoadVideosAsync(true);
-                }));
-            }
-        }
-        private RelayCommand _refreshPageCommand;
 
         public RelayCommand NavigateSearchPageCommand
         {
@@ -427,71 +412,6 @@ namespace GiantBombUnofficialClassic.ViewModels
             }
         }
         private RelayCommand _navigateSearchPageCommand;
-
-        public RelayCommand NavigateCategoriesPageCommand
-        {
-            get
-            {
-                return _navigateCategoriesPageCommand ?? (_navigateCategoriesPageCommand = new RelayCommand(
-                () =>
-                {
-                    _navigationManager.Navigate(Views.CategoriesPage.PageKey);
-                }));
-            }
-        }
-        private RelayCommand _navigateCategoriesPageCommand;
-
-        public RelayCommand NavigateShowsPageCommand
-        {
-            get
-            {
-                return _navigateShowsPageCommand ?? (_navigateShowsPageCommand = new RelayCommand(
-                () =>
-                {
-                    _navigationManager.Navigate(Views.ShowsPage.PageKey);
-                }));
-            }
-        }
-        private RelayCommand _navigateShowsPageCommand;
-
-        public RelayCommand NavigateSettingsPageCommand
-        {
-            get
-            {
-                return _navigateSettingsPageCommand ?? (_navigateSettingsPageCommand = new RelayCommand(
-                () =>
-                {
-                    _navigationManager.Navigate(Views.SettingsPage.PageKey);
-                }));
-            }
-        }
-        private RelayCommand _navigateSettingsPageCommand;
-
-        public RelayCommand NavigateLiveStreamPageCommand
-        {
-            get
-            {
-                return _navigateLiveStreamPageCommand ?? (_navigateLiveStreamPageCommand = new RelayCommand(
-                () =>
-                {
-                    _navigationManager.Navigate(Views.CategoriesPage.PageKey);
-                }));
-            }
-        }
-        private RelayCommand _navigateLiveStreamPageCommand;
-
-        public RelayCommand NavigateHomeCommand
-        {
-            get
-            {
-                return _navigateHomeCommand ?? (_navigateHomeCommand = new RelayCommand(
-                () =>
-                {
-                    _navigationManager.NavigateHome();
-                }));
-            }
-        }
-        private RelayCommand _navigateHomeCommand;
         #endregion
     }
 }

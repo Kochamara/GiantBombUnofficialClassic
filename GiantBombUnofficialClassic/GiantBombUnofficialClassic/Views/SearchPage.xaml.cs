@@ -18,13 +18,23 @@ namespace GiantBombUnofficialClassic.Views
     public sealed partial class SearchPage : Page
     {
         public const string PageKey = "SearchPage";
-        private ViewModels.SearchPageViewModel _viewModel;
+        private ViewModels.SearchPageViewModel _context;
 
         public SearchPage()
         {
-            _viewModel = new ViewModels.SearchPageViewModel();
-            this.DataContext = _viewModel;
+            _context = new ViewModels.SearchPageViewModel();
+            this.DataContext = _context;
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            if ((_context != null))
+            {
+                this.NavigationControl.UpdateNavigationMenuForParentPage(typeof(SearchPage));
+            }
         }
 
         private void SearchQueryTextBox_KeyDown(object sender, KeyRoutedEventArgs e)
@@ -33,7 +43,7 @@ namespace GiantBombUnofficialClassic.Views
             {
                 if (e.KeyStatus.RepeatCount == 1)
                 {
-                    var unawaitedTask = _viewModel.GetSearchResultsAsync(SearchQueryTextBox.Text, true);
+                    var unawaitedTask = _context.GetSearchResultsAsync(SearchQueryTextBox.Text, true);
                 }
             }
         }

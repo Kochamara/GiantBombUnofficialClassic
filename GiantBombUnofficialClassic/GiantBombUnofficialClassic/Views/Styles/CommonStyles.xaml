@@ -56,9 +56,9 @@
     </Style>
 
     <Style x:Key="NavigationButtonStyle" TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
-        <Setter Property="MinHeight" Value="48" />
-        <Setter Property="MinWidth" Value="108" />
-        <Setter Property="Margin" Value="0,0,0,8" />
+        <Setter Property="Width" Value="108" />
+        <Setter Property="Margin" Value="0,0,0,16" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
     </Style>
 
     <Style x:Key="ButtonStyle" TargetType="Button">
