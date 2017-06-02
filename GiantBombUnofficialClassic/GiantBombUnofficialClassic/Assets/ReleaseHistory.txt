@@ -1,0 +1,13 @@
+﻿Current version
+-
+
+Version 1.1.4
+-Public release!
+-Better gamepad control of video playback!
+
+Version 1.1.2
+-Video playback position is saved and synced with the site!
+-Better video player controls!
+
+Version 1.1.1
+-Beta release!

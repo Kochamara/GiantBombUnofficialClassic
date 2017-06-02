@@ -1,13 +1,10 @@
 ﻿THE GIANT BOMB UNOFFICIAL CLASSIC VIDEO PLAYER TO DO LIST
 
 E3 release:
--Escape should exit full screen mode.
--Arrow keys to skip forward/backward
 -x86 build
 -check current crash reports before final builds
 -Release history notes in app
 -code review
--descriptions by default for xbox users
 
 Items to test before builds:
 -Keeping screen active while watching video
