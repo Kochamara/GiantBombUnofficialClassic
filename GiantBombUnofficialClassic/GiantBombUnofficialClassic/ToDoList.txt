@@ -1,8 +1,6 @@
 ﻿THE GIANT BOMB UNOFFICIAL CLASSIC VIDEO PLAYER TO DO LIST
 
 E3 release:
--Fix text truncation with livestream box
--Fix visual states on groupings page
 -Escape should exit full screen mode.
 -Arrow keys to skip forward/backward
 -x86 build

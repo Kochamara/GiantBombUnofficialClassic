@@ -32,7 +32,7 @@ namespace GiantBombUnofficialClassic.Views
         }
 
         /// <summary>
-        /// Gamepad shortcuts for media playback
+        /// Gamepad and keyboard shortcuts for media playback
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -60,13 +60,19 @@ namespace GiantBombUnofficialClassic.Views
                         case Windows.System.VirtualKey.GamepadDPadRight:
                         case Windows.System.VirtualKey.GamepadRightShoulder:
                         case Windows.System.VirtualKey.GamepadRightTrigger:
+                        case Windows.System.VirtualKey.Right:
                             this.VideoContainer.MediaPlayer.PlaybackSession.Position += TimeSpan.FromSeconds(30);
                             args.Handled = true;
                             break;
                         case Windows.System.VirtualKey.GamepadDPadLeft:
                         case Windows.System.VirtualKey.GamepadLeftShoulder:
                         case Windows.System.VirtualKey.GamepadLeftTrigger:
+                        case Windows.System.VirtualKey.Left:
                             this.VideoContainer.MediaPlayer.PlaybackSession.Position -= TimeSpan.FromSeconds(10);
+                            args.Handled = true;
+                            break;
+                        case Windows.System.VirtualKey.Escape:
+                            VideoContainer.IsFullWindow = !VideoContainer.IsFullWindow;
                             args.Handled = true;
                             break;
                         default:
@@ -75,7 +81,7 @@ namespace GiantBombUnofficialClassic.Views
                 }
                 catch (Exception e)
                 {
-                    Serilog.Log.Error("Exception thrown trying to use gamepad shortcut", e);
+                    Serilog.Log.Error("Exception thrown trying to use gamepad or keyboard shortcut", e);
                 }
             }
         }
@@ -91,23 +97,43 @@ namespace GiantBombUnofficialClassic.Views
             if ((e != null) && (e.Parameter != null))
             {
                 VideoContainer.SetMediaPlayer(_context.Player);
-
+                
                 if (e.Parameter is Video)
                 {
                     _context.Video = e.Parameter as Video;
+
+                    VideoContainer.TransportControls.IsSkipBackwardButtonVisible = true;
+                    VideoContainer.TransportControls.IsSkipBackwardEnabled = true;
+                    VideoContainer.TransportControls.IsSkipForwardButtonVisible = true;
+                    VideoContainer.TransportControls.IsSkipForwardEnabled = true;
+                    VideoContainer.TransportControls.IsSeekBarVisible = true;
+                    VideoContainer.TransportControls.IsSeekEnabled = true;
                 }
                 else if (e.Parameter is LiveStream)
                 {
                     _context.LiveStream = e.Parameter as LiveStream;
+
+                    VideoContainer.TransportControls.IsSkipBackwardButtonVisible = false;
+                    VideoContainer.TransportControls.IsSkipBackwardEnabled = false;
+                    VideoContainer.TransportControls.IsSkipForwardButtonVisible = false;
+                    VideoContainer.TransportControls.IsSkipForwardEnabled = false;
+                    VideoContainer.TransportControls.IsSeekBarVisible = false;
+                    VideoContainer.TransportControls.IsSeekEnabled = false;
+                }
+
+                if (Utilities.SystemInformationManager.IsTenFootExperience)
+                {
+                    VideoContainer.TransportControls.IsFullWindowEnabled = false;
+                    VideoContainer.TransportControls.IsZoomButtonVisible = false;
+                    VideoContainer.TransportControls.IsFullWindowButtonVisible = false;
+                    VideoContainer.TransportControls.IsVolumeButtonVisible = false;
                 }
 
                 _context.Initialize();
 
-                if (Utilities.SystemInformationManager.IsTenFootExperience)
-                {
-                    Window.Current.CoreWindow.KeyUp += CoreWindow_KeyUp;
-                }
-                else
+                Window.Current.CoreWindow.KeyUp += CoreWindow_KeyUp;
+
+                if (!Utilities.SystemInformationManager.IsTenFootExperience)
                 {
                     VideoContainer.DoubleTapped += MediaPlayer_DoubleTapped;
                     ActivateDisplay();
@@ -120,12 +146,11 @@ namespace GiantBombUnofficialClassic.Views
             base.OnNavigatedFrom(e);
             _context.PlaybackPositionReportingCancellationToken.Cancel();
             VideoContainer.MediaPlayer.Dispose();
-            if (Utilities.SystemInformationManager.IsTenFootExperience)
+            Window.Current.CoreWindow.KeyUp -= CoreWindow_KeyUp;
+
+            if (!Utilities.SystemInformationManager.IsTenFootExperience)
             {
-                Window.Current.CoreWindow.KeyUp -= CoreWindow_KeyUp;
-            }
-            else
-            {
+                VideoContainer.DoubleTapped -= MediaPlayer_DoubleTapped;
                 ReleaseDisplay();
             }
         }

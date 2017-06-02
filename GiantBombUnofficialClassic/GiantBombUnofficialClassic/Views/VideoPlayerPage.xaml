@@ -14,35 +14,11 @@
     </Page.Resources>
 
     <Grid Background="{StaticResource DarkestGrayBrush}">
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup x:Name="TenFootExperience">
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <triggers:IsTenFootTrigger/>
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="PlaybackControls.IsFullWindowEnabled" Value="True"/>
-                        <Setter Target="PlaybackControls.IsZoomButtonVisible" Value="False"/>
-                        <Setter Target="PlaybackControls.IsFullWindowButtonVisible" Value="False"/>
-                        <Setter Target="PlaybackControls.IsVolumeButtonVisible" Value="False"/>
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
 
         <!--Without System Media Transport Controls, there's no loading indicator, so let's add one-->
         <ProgressRing Visibility="{Binding ShowSystemMediaTransportControls, Converter={StaticResource NegatedBoolToVisibility}}" Style="{StaticResource ProgressRingStyle}" Width="100" Height="100" />
 
-        <MediaPlayerElement x:Name="VideoContainer" AutoPlay="True" AreTransportControlsEnabled="{Binding ShowSystemMediaTransportControls}" HorizontalAlignment="Stretch" >
-            <MediaPlayerElement.TransportControls>
-                <MediaTransportControls x:Name="PlaybackControls" 
-                                        IsSkipBackwardButtonVisible="{Binding AreSkipButtonsVisible}" 
-                                        IsSkipBackwardEnabled="{Binding AreSkipButtonsVisible}"
-                                        IsSkipForwardButtonVisible="{Binding AreSkipButtonsVisible}" 
-                                        IsSkipForwardEnabled="{Binding AreSkipButtonsVisible}"
-                                        IsSeekBarVisible="{Binding IsSeekBarVisibleAndEnabled}"
-                                        IsSeekEnabled="{Binding IsSeekBarVisibleAndEnabled}"/>
-            </MediaPlayerElement.TransportControls>
-        </MediaPlayerElement>
+        <MediaPlayerElement x:Name="VideoContainer" AutoPlay="True" AreTransportControlsEnabled="{Binding ShowSystemMediaTransportControls}" HorizontalAlignment="Stretch" />
+        
     </Grid>
 </Page>
