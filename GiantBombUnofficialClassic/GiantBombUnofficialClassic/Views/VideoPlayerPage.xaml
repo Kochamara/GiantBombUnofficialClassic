@@ -36,10 +36,12 @@
         <MediaPlayerElement x:Name="VideoContainer" AutoPlay="True" AreTransportControlsEnabled="{Binding ShowSystemMediaTransportControls}" HorizontalAlignment="Stretch" >
             <MediaPlayerElement.TransportControls>
                 <MediaTransportControls x:Name="PlaybackControls" 
-                                        IsSkipBackwardButtonVisible="True" 
-                                        IsSkipBackwardEnabled="True"
-                                        IsSkipForwardButtonVisible="True" 
-                                        IsSkipForwardEnabled="True"/>
+                                        IsSkipBackwardButtonVisible="{Binding AreSkipButtonsVisible}" 
+                                        IsSkipBackwardEnabled="{Binding AreSkipButtonsVisible}"
+                                        IsSkipForwardButtonVisible="{Binding AreSkipButtonsVisible}" 
+                                        IsSkipForwardEnabled="{Binding AreSkipButtonsVisible}"
+                                        IsSeekBarVisible="{Binding IsSeekBarVisibleAndEnabled}"
+                                        IsSeekEnabled="{Binding IsSeekBarVisibleAndEnabled}"/>
             </MediaPlayerElement.TransportControls>
         </MediaPlayerElement>
     </Grid>

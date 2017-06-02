@@ -131,7 +131,7 @@
                 <Button x:Name="HeaderButton" Width="592" Height="340" Command="{Binding PlayVideoCommand}" Padding="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
                     <Grid>
                         <Image Source="ms-appx:///Assets/BlackBomb.png" MaxWidth="40" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" />
-                        <Image Source="{Binding ImageLocation}" Stretch="UniformToFill" Opacity="30" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                        <Image Source="{Binding ImageLocation}" Stretch="UniformToFill" Opacity="30" HorizontalAlignment="Center" VerticalAlignment="Center" />
                         <Grid BorderBrush="{StaticResource DarkRedBrush}" BorderThickness="4" Background="{StaticResource TranslucentBlackBrush}">
                             <Grid BorderBrush="Transparent" BorderThickness="4">
                                 <Grid BorderBrush="{StaticResource DarkRedBrush}" BorderThickness="4">

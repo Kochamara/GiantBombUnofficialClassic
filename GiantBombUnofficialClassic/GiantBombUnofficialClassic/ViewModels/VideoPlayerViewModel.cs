@@ -31,6 +31,10 @@ namespace GiantBombUnofficialClassic.ViewModels
 
             if (this.Video != null)
             {
+                ShowSystemMediaTransportControls = true;
+                IsSeekBarVisibleAndEnabled = true;
+                AreSkipButtonsVisible = true;
+
                 // For archived videos, we need to determine which URI to use (HD/high/low quality) and
                 // also we should handle sycning playback position with the site.
                 var videoUri = videoUriManager.GetAppropriateVideoUri(Video);
@@ -42,7 +46,6 @@ namespace GiantBombUnofficialClassic.ViewModels
                     Player.Source = playbackItem;
 
                     Player.MediaOpened += Player_MediaOpened;
-                    ShowSystemMediaTransportControls = true;
                 }
                 else
                 {
@@ -51,7 +54,12 @@ namespace GiantBombUnofficialClassic.ViewModels
             }
             else if (this.LiveStream != null)
             {
-                ShowSystemMediaTransportControls = false;
+                // Seek controls don't work with livestreams
+                ShowSystemMediaTransportControls = true;
+                IsSeekBarVisibleAndEnabled = false;
+                AreSkipButtonsVisible = false;
+
+                // For live streams, we just need to get the URI with the API key appended to the end of it.
                 var videoUri = videoUriManager.GetAppropriateVideoUri(LiveStream);
 
                 if (videoUri != null)
@@ -151,7 +159,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 if (_video != value)
                 {
                     _video = value;
-                    RaisePropertyChanged("Video");
+                    RaisePropertyChanged(() => Video);
                 }
             }
         }
@@ -169,7 +177,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 if (_liveStream != value)
                 {
                     _liveStream = value;
-                    RaisePropertyChanged("LiveStream");
+                    RaisePropertyChanged(() => LiveStream);
                 }
             }
         }
@@ -187,7 +195,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 if (_player != value)
                 {
                     _player = value;
-                    RaisePropertyChanged("Player");
+                    RaisePropertyChanged(() => Player);
                 }
             }
         }
@@ -205,11 +213,47 @@ namespace GiantBombUnofficialClassic.ViewModels
                 if (_showSystemMediaTransportControls != value)
                 {
                     _showSystemMediaTransportControls = value;
-                    RaisePropertyChanged("ShowSystemMediaTransportControls");
+                    RaisePropertyChanged(() => ShowSystemMediaTransportControls);
                 }
             }
         }
         private bool _showSystemMediaTransportControls;
+
+        public bool AreSkipButtonsVisible
+        {
+            get
+            {
+                return _areSkipButtonsVisible;
+            }
+
+            set
+            {
+                if (_areSkipButtonsVisible != value)
+                {
+                    _areSkipButtonsVisible = value;
+                    RaisePropertyChanged(() => AreSkipButtonsVisible);
+                }
+            }
+        }
+        private bool _areSkipButtonsVisible;
+
+        public bool IsSeekBarVisibleAndEnabled
+        {
+            get
+            {
+                return _isSeekBarVisibleAndEnabled;
+            }
+
+            set
+            {
+                if (_isSeekBarVisibleAndEnabled != value)
+                {
+                    _isSeekBarVisibleAndEnabled = value;
+                    RaisePropertyChanged(() => IsSeekBarVisibleAndEnabled);
+                }
+            }
+        }
+        private bool _isSeekBarVisibleAndEnabled;
         #endregion
     }
 }
