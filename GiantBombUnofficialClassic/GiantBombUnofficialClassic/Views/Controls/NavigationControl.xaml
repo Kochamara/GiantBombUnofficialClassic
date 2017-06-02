@@ -22,7 +22,7 @@
             <VisualStateGroup x:Name="WindowHeightStates">
                 <VisualState x:Name="TallState">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowHeight="600" />
+                        <AdaptiveTrigger MinWindowHeight="440" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="SearchButton.Height" Value="48" />
