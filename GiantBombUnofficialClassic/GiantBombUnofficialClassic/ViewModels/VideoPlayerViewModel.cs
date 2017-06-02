@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Windows.Media.Core;
 using Windows.Media.Playback;
 
 namespace GiantBombUnofficialClassic.ViewModels
@@ -24,26 +25,45 @@ namespace GiantBombUnofficialClassic.ViewModels
         /// This view model handles both archived videos and live streams, but initializes
         /// differently based on either scenario.
         /// </summary>
-        public async void InitializeAsync()
+        public void Initialize()
         {
+            var videoUriManager = Services.VideoUriManager.GetInstance();
+
             if (this.Video != null)
             {
                 // For archived videos, we need to determine which URI to use (HD/high/low quality) and
                 // also we should handle sycning playback position with the site.
-                ShowSystemMediaTransportControls = true;
-                var videoUriManager = Services.VideoUriManager.GetInstance();
                 var videoUri = videoUriManager.GetAppropriateVideoUri(Video);
-                Player.Source = Windows.Media.Core.MediaSource.CreateFromUri(videoUri);
 
-                await SkipAheadToPreviousPositionAsync();
-                await ReportPlaybackPositionAsync(PlaybackPositionReportingCancellationToken.Token);
+                if (videoUri != null)
+                {
+                    MediaSource mediaSource = MediaSource.CreateFromUri(videoUri);
+                    MediaPlaybackItem playbackItem = new MediaPlaybackItem(mediaSource);
+                    Player.Source = playbackItem;
+
+                    Player.MediaOpened += Player_MediaOpened;
+                    ShowSystemMediaTransportControls = true;
+                }
+                else
+                {
+                    Serilog.Log.Error("Unable to start video without URI");
+                }
             }
             else if (this.LiveStream != null)
             {
                 ShowSystemMediaTransportControls = false;
-                var videoUriManager = Services.VideoUriManager.GetInstance();
                 var videoUri = videoUriManager.GetAppropriateVideoUri(LiveStream);
-                Player.Source = Windows.Media.Core.MediaSource.CreateFromUri(videoUri);
+
+                if (videoUri != null)
+                {
+                    MediaSource mediaSource = MediaSource.CreateFromUri(videoUri);
+                    MediaPlaybackItem playbackItem = new MediaPlaybackItem(mediaSource);
+                    Player.Source = playbackItem;
+                }
+                else
+                {
+                    Serilog.Log.Error("Unable to start live stream without URI");
+                }
             }
             else
             {
@@ -51,7 +71,24 @@ namespace GiantBombUnofficialClassic.ViewModels
             }
         }
 
+        /// <summary>
+        /// Wait until the video is opened before we try to skip ahead to the previous playback position.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        private void Player_MediaOpened(MediaPlayer sender, object args)
+        {
+            Player.MediaOpened -= Player_MediaOpened;
+            var unawaitedTask = SetCorrectPlaybackPositionAndStartReportingPositionToApi();
+        }
+
         #region Playback position handling
+        private async Task SetCorrectPlaybackPositionAndStartReportingPositionToApi()
+        {
+            await SkipAheadToPreviousPositionAsync();
+            await ReportPlaybackPositionAsync(PlaybackPositionReportingCancellationToken.Token);
+        }
+
         private async Task ReportPlaybackPositionAsync(CancellationToken token)
         {
             try
@@ -78,10 +115,9 @@ namespace GiantBombUnofficialClassic.ViewModels
 
         private async Task SkipAheadToPreviousPositionAsync()
         {
-            //TODO: Sometimes I think this is getting called before the video is even loaded
-
             var apiKey = Services.ApiKeyManager.GetInstance().GetSavedApiKey();
             var previouslySavedPosition = await GiantBombApi.Services.VideoPlaybackPositionAgent.GetPlaybackPositionAsync(apiKey, Video.Id);
+
             // Don't skip if the previous position was in the first 15 seconds of the video
             if (previouslySavedPosition > 15)
             {

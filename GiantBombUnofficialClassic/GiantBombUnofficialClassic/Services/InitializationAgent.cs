@@ -31,6 +31,7 @@ namespace GiantBombUnofficialClassic.Services
             {
                 // System is a PC
                 SetTitleBarColors();
+                Utilities.INetCacheCleanupManager.DeleteOldDatFiles(TimeSpan.FromDays(1));
             }
         }
 

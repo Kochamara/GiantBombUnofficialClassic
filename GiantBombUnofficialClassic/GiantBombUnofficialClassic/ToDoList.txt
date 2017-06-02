@@ -1,72 +1,44 @@
 ﻿THE GIANT BOMB UNOFFICIAL CLASSIC VIDEO PLAYER TO DO LIST
 
+E3 release:
+-Fix text truncation with livestream box
+-Fix visual states on groupings page
+-Escape should exit full screen mode
+-take another crack at SkipAheadToPreviousPositionAsync()
+-x86 build
+
 Items to test before builds:
 -Keeping screen active while watching video
 
 V1.X release:
 -Border for the button focus. It's black and white. All white?
--Keep screen from going to sleep on PC during video playback
--Keep app from minimizing itself when clicking around in other applications, like opening new tabs in Chrome
--Look into A/V syncing, it might be a little off
--Escape should exit full screen mode
--Spacebar should pause, clicking on video should pause
--Finalize video and category containers
--Finalize category page style
 -Hover states should be more obvious both on console and PC
+-Keep app from minimizing itself when clicking around in other applications, like opening new tabs in Chrome. Sometimes this happens when you alt+tab.
+-Spacebar should pause, clicking on video should pause
+-Take another crack at the video and category containers
+-Make a better style for buttons
+-Make styles for hyperlinks, text boxes, combo boxes
 -Set focus on play/pause when media controls appear (instead of timeline)
 -Give Xbox users a better way to give feedback
--take another crack at SkipAheadToPreviousPositionAsync()
-
-V2 release:
--Live streams? https://docs.microsoft.com/en-us/windows/uwp/audio-video-camera/adaptive-streaming
 -Mouse "back" button should do the same thing as the back button on Xbox
 -Arrow keys to skip forward/backward
--Make styles for hyperlinks, text boxes, combo boxes
--Make a better style for buttons
+
+V2.X release:
+-Random video button
+-Next video suggestions after current video ends
 -Better video playback controls and styling
 -Standard Windows 10 navigation for PC version
--Random video button
--Next video suggestions after video is done?
 -New font for header text: Glyddon regular, weight 400
 https://www.fontspring.com/fonts/fontsite/glyddon
 -Konami code
--Maybe move the category selection onto the main page itself? ComboBox? Ehh?
+-Reevaluate if the categories page is necessary, or if there's a better way to handle that selection
 -Move search to a normal search box without its own dedicated page
--Optimize search layout to show 10 results at a time, maybe do the same for other videos where it's 100 at a time
 -Multiple page loading images
 -Maybe put a guinea pig icon in the video player that pops Brad out for a sec
 http://www.freepik.com/free-icon/guinea-pig-heag_814168.htm
--Maybe show video suggestions once the current video ends? Right now it just sits at a black screen
-
-
-
-
-
-so im using windows 10 and im seeing 2 smaller issues
-1. i cant hit ESC to exit full screen
-2. using alt tab seems to pause the video
-
-not huge OMGWTFBBQ problems.. but maybe things you want to fix if u can, maybe its not even your fault idk
-
-
-Chris Edgerton also even when im watching a video.. the app doesnt ignore sleep settings so if i just dont touch anything after 20 mins or what ever it goes to sleep and pauses the video
-
-
-there be a way for you to add a button to be able to download to my PC? idk why but on my surface 3 im having loading issues on low quality but the app looks sick
-
-Any playlist support? Something to make binge watching the endurance runs simpler? I watch them on YouTube now but would rather watch them without ads
-
-
-My only recommendation would be to look into adding support for the new Compact Overlay feature in the Windows 10 Creators Update. Basically it allows you to have an OS level picture in picture mode. This is how Beam works, for example. You can see the implementation I'm thinking of by using the Movies & TV app (it calls it mini-mode, I think).
-
-
-
-On Windows 10 every video (and I've tried both premium and non-premium videos) I click on I get this:
-
-http://imgur.com/FwJamnl
-
-Did download it on the xbox and runs buttery smooth there for me though :)
-
+-Downloading of video files. Some users are having loading issues even on low quality.
+-Playlist support
+-Support for the new Compact Overlay feature in the Creators Update, allowing OS-level picture-in-picture. This is how Beam works, for example. You can see the implementation I'm thinking of by using the Movies & TV app (it calls it mini-mode, I think).
 
 
 
@@ -82,6 +54,10 @@ I currently use an Xbox App called 'Podcasts (beta)' for my giant/beastcast need
 Also, Metal Gear Scanlon 4 - Part 14 comes up as an "unsupported video type or invalid file path". Again, don't know if that's something you can fix on your end, but thought I'd bring it up.
 
 
+
+ I was starting to lose more and more data from my SSD and had no idea why. I knew Overwatch updates weren't THAT big. I finally figured out that this app was the culprit (it was over 30 gigs).
+The slightly more user friendly way of clearing app data is by going to Settings -> Apps -> Giant Bomb -> Advanced Options -> Reset. You'll have to sign back in when you do this.
+I would highly recommend pushing out some sort of update to notify current and future users of this problem until (if/when) a permanent solution can be found.
 
 
 

@@ -106,6 +106,7 @@
     <Compile Include="Services\VideoGroupImageProvider.cs" />
     <Compile Include="Services\InitializationAgent.cs" />
     <Compile Include="Services\VideoUriManager.cs" />
+    <Compile Include="Utilities\INetCacheCleanupManager.cs" />
     <Compile Include="Utilities\NavigationManager.cs" />
     <Compile Include="Utilities\SettingsManager.cs" />
     <Compile Include="Utilities\SystemInformationManager.cs" />

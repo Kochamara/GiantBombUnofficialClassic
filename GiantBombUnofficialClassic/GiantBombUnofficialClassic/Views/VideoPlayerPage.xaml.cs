@@ -101,7 +101,7 @@ namespace GiantBombUnofficialClassic.Views
                     _context.LiveStream = e.Parameter as LiveStream;
                 }
 
-                _context.InitializeAsync();
+                _context.Initialize();
 
                 if (Utilities.SystemInformationManager.IsTenFootExperience)
                 {
