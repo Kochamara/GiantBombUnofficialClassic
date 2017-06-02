@@ -16,6 +16,7 @@ Known bugs:
 
 V1.X release:
 -Border for the button focus. It's black and white. All white?
+-Skip to beginning button
 -Hover states should be more obvious both on console and PC
 -Keep app from minimizing itself when clicking around in other applications, like opening new tabs in Chrome. Sometimes this happens when you alt+tab.
 -Spacebar should pause, clicking on video should pause
