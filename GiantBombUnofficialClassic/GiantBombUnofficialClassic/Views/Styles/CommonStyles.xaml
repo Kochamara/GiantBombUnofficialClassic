@@ -127,9 +127,9 @@
         </Setter>
     </Style>
 
-    <Style x:Key="CategoryListStyle" TargetType="ItemsControl">
+    <Style x:Key="GroupListStyle" TargetType="ItemsControl">
         <Setter Property="IsTabStop" Value="False" />
-        <Setter Property="ItemTemplate" Value="{StaticResource CategoryTemplate}" />
+        <Setter Property="ItemTemplate" Value="{StaticResource GroupingTemplate}" />
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>

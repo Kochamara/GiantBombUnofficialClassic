@@ -45,7 +45,7 @@
                             <VisualState.Setters>
                                 <Setter Target="HeaderButton.Width" Value="292" />
                                 <Setter Target="HeaderButton.Height" Value="164" />
-                                <Setter Target="DescriptionText.Visibility" Value="Collapsed" />
+                                <Setter Target="DescriptionText.Visibility" Value="Visible" />
                             </VisualState.Setters>
                         </VisualState>
                         <VisualState x:Name="NarrowState">
@@ -88,6 +88,8 @@
                             <VisualState.Setters>
                                 <Setter Target="HeaderButton.Width" Value="1168" />
                                 <Setter Target="HeaderButton.Height" Value="680" />
+                                <Setter Target="LiveHeaderText.Text" Value="LIVE! ON GIANT BOMB" />
+                                <Setter Target="LiveBroadcastName.MaxLines" Value="4" />
                             </VisualState.Setters>
                         </VisualState>
                         <VisualState x:Name="WideState">
@@ -97,6 +99,8 @@
                             <VisualState.Setters>
                                 <Setter Target="HeaderButton.Width" Value="880" />
                                 <Setter Target="HeaderButton.Height" Value="510" />
+                                <Setter Target="LiveHeaderText.Text" Value="LIVE! ON GIANT BOMB" />
+                                <Setter Target="LiveBroadcastName.MaxLines" Value="4" />
                             </VisualState.Setters>
                         </VisualState>
                         <VisualState x:Name="MiddleState">
@@ -106,6 +110,8 @@
                             <VisualState.Setters>
                                 <Setter Target="HeaderButton.Width" Value="592" />
                                 <Setter Target="HeaderButton.Height" Value="340" />
+                                <Setter Target="LiveHeaderText.Text" Value="LIVE! ON GIANT BOMB" />
+                                <Setter Target="LiveBroadcastName.MaxLines" Value="4" />
                             </VisualState.Setters>
                         </VisualState>
                         <VisualState x:Name="SemiNarrowState">
@@ -115,6 +121,8 @@
                             <VisualState.Setters>
                                 <Setter Target="HeaderButton.Width" Value="292" />
                                 <Setter Target="HeaderButton.Height" Value="164" />
+                                <Setter Target="LiveHeaderText.Text" Value="LIVE!" />
+                                <Setter Target="LiveBroadcastName.MaxLines" Value="2" />
                             </VisualState.Setters>
                         </VisualState>
                         <VisualState x:Name="NarrowState">
@@ -124,6 +132,8 @@
                             <VisualState.Setters>
                                 <Setter Target="HeaderButton.Width" Value="192" />
                                 <Setter Target="HeaderButton.Height" Value="108" />
+                                <Setter Target="LiveHeaderText.Text" Value="" />
+                                <Setter Target="LiveBroadcastName.MaxLines" Value="1" />
                             </VisualState.Setters>
                         </VisualState>
                     </VisualStateGroup>
@@ -139,11 +149,8 @@
                                         <Grid BorderBrush="{StaticResource DarkRedBrush}" BorderThickness="4">
                                             <Grid VerticalAlignment="Bottom" MinHeight="80" >
                                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="8,4,8,8">
-                                                    <TextBlock FontWeight="SemiBold" FontSize="28" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource SubHeaderTextStyle}">
-                                                        <Run Text="LIVE!" />
-                                                        <Run Text="ON GIANT BOMB" />
-                                                    </TextBlock>
-                                                    <TextBlock Text="{Binding Title}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource SubHeaderTextStyle}" />
+                                                    <TextBlock x:Name="LiveHeaderText" Text="LIVE! ON GIANT BOMB" FontWeight="SemiBold" FontSize="28" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource SubHeaderTextStyle}" />
+                                                    <TextBlock x:Name="LiveBroadcastName" Text="{Binding Title}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource SubHeaderTextStyle}" />
                                                 </StackPanel>
                                             </Grid>
                                         </Grid>
@@ -190,10 +197,9 @@
                             <VisualState.Setters>
                                 <Setter Target="SubHeaderButton.Width" Value="292" />
                                 <Setter Target="SubHeaderButton.Height" Value="164" />
-                                <Setter Target="DescriptionText.Visibility" Value="Collapsed" />
+                                <Setter Target="DescriptionText.Visibility" Value="Visible" />
                             </VisualState.Setters>
                         </VisualState>
-
                         <VisualState x:Name="NarrowState">
                             <VisualState.StateTriggers>
                                 <AdaptiveTrigger MinWindowWidth="0" />
@@ -269,14 +275,14 @@
         </UserControl>
     </DataTemplate>
 
-    <DataTemplate x:Name="CategoryTemplate">
+    <DataTemplate x:Name="GroupingTemplate">
         <UserControl>
-            <RelativePanel Margin="0,0,8,8">
+            <RelativePanel Margin="10,10,10,10">
                 <VisualStateManager.VisualStateGroups>
                     <VisualStateGroup x:Name="WindowWidthStates">
                         <VisualState x:Name="MaxState">
                             <VisualState.StateTriggers>
-                                <AdaptiveTrigger MinWindowWidth="1600" />
+                                <AdaptiveTrigger MinWindowWidth="1300" />
                             </VisualState.StateTriggers>
                             <VisualState.Setters>
                                 <Setter Target="SubHeaderButton.Width" Value="580" />
@@ -285,7 +291,7 @@
                         </VisualState>
                         <VisualState x:Name="WideState">
                             <VisualState.StateTriggers>
-                                <AdaptiveTrigger MinWindowWidth="1300" />
+                                <AdaptiveTrigger MinWindowWidth="1000" />
                             </VisualState.StateTriggers>
                             <VisualState.Setters>
                                 <Setter Target="SubHeaderButton.Width" Value="436" />
@@ -312,7 +318,7 @@
                         </VisualState>
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>
-                <Button x:Name="SubHeaderButton" Width="192" Height="180" Margin="0,20,20,20" Command="{Binding ViewGroupCommand}">
+                <Button x:Name="SubHeaderButton" Width="192" Height="180" Command="{Binding ViewGroupCommand}">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
