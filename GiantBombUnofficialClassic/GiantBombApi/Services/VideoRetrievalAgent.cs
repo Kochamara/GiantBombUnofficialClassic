@@ -157,16 +157,16 @@ namespace GiantBombApi.Services
 
 
             // TEST - REMOVE BEFORE BUILD
-            response = new LiveStreamResponse()
-            {
-                Success = "true",
-                Stream = new LiveStream()
-                {
-                    Title = "[FAKE] Bring Your B-Game: The Force Unleashed",
-                    Image = "static.giantbomb.com/uploads/original/21/211414/2941316-star-wars-force-unleashed.jpg",
-                    StreamSource = "https://giantbomb-pdl.akamaized.net/2017/05/26/mc_gbwpd_vanquish_052517_wp3gvf9t_4000.mp4"
-                }
-            };
+            //response = new LiveStreamResponse()
+            //{
+            //    Success = "true",
+            //    Stream = new LiveStream()
+            //    {
+            //        Title = "[FAKE] Bring Your B-Game: The Force Unleashed",
+            //        Image = "static.giantbomb.com/uploads/original/21/211414/2941316-star-wars-force-unleashed.jpg",
+            //        StreamSource = "https://giantbomb-pdl.akamaized.net/2017/05/26/mc_gbwpd_vanquish_052517_wp3gvf9t_4000.mp4"
+            //    }
+            //};
             
 
             return response;
