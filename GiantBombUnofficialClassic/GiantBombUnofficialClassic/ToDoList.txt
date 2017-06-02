@@ -3,12 +3,21 @@
 E3 release:
 -Fix text truncation with livestream box
 -Fix visual states on groupings page
--Escape should exit full screen mode
--take another crack at SkipAheadToPreviousPositionAsync()
+-Escape should exit full screen mode.
+-Arrow keys to skip forward/backward
 -x86 build
+-check current crash reports before final builds
+-Release history notes in app
+-code review
+-descriptions by default for xbox users
 
 Items to test before builds:
 -Keeping screen active while watching video
+
+Known bugs:
+-Metal Gear Scanlon 4 - Part 14 doesn't work in HD. Should implement an automatic downgrade in quality if one version fails.
+-Videos that don't show up in search: Cities Skylines QL, Sim City QL
+-Pressing the B button on the main page on first launch takes you back to the API key entry page
 
 V1.X release:
 -Border for the button focus. It's black and white. All white?
@@ -21,7 +30,7 @@ V1.X release:
 -Set focus on play/pause when media controls appear (instead of timeline)
 -Give Xbox users a better way to give feedback
 -Mouse "back" button should do the same thing as the back button on Xbox
--Arrow keys to skip forward/backward
+-More video information, such as duration, the deck, which staff member uploaded it, etc.
 
 V2.X release:
 -Random video button
@@ -31,6 +40,7 @@ V2.X release:
 -New font for header text: Glyddon regular, weight 400
 https://www.fontspring.com/fonts/fontsite/glyddon
 -Konami code
+-Someone asked for a GFB easter egg
 -Reevaluate if the categories page is necessary, or if there's a better way to handle that selection
 -Move search to a normal search box without its own dedicated page
 -Multiple page loading images
@@ -39,43 +49,6 @@ http://www.freepik.com/free-icon/guinea-pig-heag_814168.htm
 -Downloading of video files. Some users are having loading issues even on low quality.
 -Playlist support
 -Support for the new Compact Overlay feature in the Creators Update, allowing OS-level picture-in-picture. This is how Beam works, for example. You can see the implementation I'm thinking of by using the Movies & TV app (it calls it mini-mode, I think).
-
-
-
-Would you be able to include an audio podcast section and have it run as background audio?
-
-I currently use an Xbox App called 'Podcasts (beta)' for my giant/beastcast needs while relaxing with Elite Dangerous or Forza for example.
-
-
-
-
-@spencer I don't know if this is a problem with the API but I'm trying to search for the Cities Skylines QL and getting zero results. Searching for Sim City brings up nothing as well.
-
-Also, Metal Gear Scanlon 4 - Part 14 comes up as an "unsupported video type or invalid file path". Again, don't know if that's something you can fix on your end, but thought I'd bring it up.
-
-
-
- I was starting to lose more and more data from my SSD and had no idea why. I knew Overwatch updates weren't THAT big. I finally figured out that this app was the culprit (it was over 30 gigs).
-The slightly more user friendly way of clearing app data is by going to Settings -> Apps -> Giant Bomb -> Advanced Options -> Reset. You'll have to sign back in when you do this.
-I would highly recommend pushing out some sort of update to notify current and future users of this problem until (if/when) a permanent solution can be found.
-
-
-
-Bugs:
--While using app on a surface pro 3, the screen still dims and then falls asleep if you leave it alone. 
--pressing the B button on the main menu screen takes you back to the authorization code screen 
--check current crash reports before final builds
-
-Feature requests:
--keyboard shortcuts. I know you can click the buttons and navigate a bit, but whenever a video starts space to pause and arrow keys for the two rewinds default would be stellar.  Fantastic app either way, it fits my specific needs very well as is.  Its just more of a convenience thing. 
--Can totally understand if it's not doable since 64-bit is the norm now, but is there any chance the app will be able to support 32-bit machines? My dinky old tablet is usually my GB video player but sadly no 64-bit CPU on it. Other than that, great app thanks, works great on the PC when I get a chance to use it!
--It would be nice if you could show progress bars on videos.  This way users can easily see which videos they have watched and how far they are into other videos, similar to how the website shows progress bars on videos.
--Some way to view more info about a video, such as duration, the "deck"/extra-description, which staff member uploaded it, etc.
-Progress Bar on videos while browsing/continue watching section
-It would be cool to get the red progress bar under the videos to see how long through you are on it. Like it does on the Giantbomb site, Also maybe add a 'Latest' list into the categories and maybe some GFB easter eggs? (just nit picking now) . Apart from that its great! Been waiting for something like this for ages so cheers Duder! Like seriously thanks so much! 
-Add the Giant Beastcast podcast please
-Smoother video scrolling and control 
-
-
-
-
+-Podcasts with backgrond audio support. There's a podcasts app in the Store if I need an example.
+-Progress bar on videos while browsing (like on the site)
+-Continue watching section
