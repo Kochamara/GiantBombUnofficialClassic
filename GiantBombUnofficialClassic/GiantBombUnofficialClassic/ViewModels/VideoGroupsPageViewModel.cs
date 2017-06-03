@@ -43,6 +43,8 @@ namespace GiantBombUnofficialClassic.ViewModels
 
             if ((response != null) && (response.Status == StatusCode.OK) && (response.Results != null))
             {
+                var viewModels = new List<VideoGroupViewModel>();
+
                 foreach (var group in response.Results)
                 {
                     Uri imageLocation = null;
@@ -79,10 +81,18 @@ namespace GiantBombUnofficialClassic.ViewModels
                         Description = group.Deck,
                         Id = group.Id,
                         ImageLocation = imageLocation,
+                        Order = group.Position,
                         Source = group
                     };
 
-                    _groups.Add(cat);
+                    viewModels.Add(cat);
+                }
+
+                // Now time to order the list
+                var orderedList = viewModels.OrderBy(x => x.Order);
+                foreach (var group in orderedList)
+                {
+                    _groups.Add(group);
                 }
             }
 

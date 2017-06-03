@@ -61,6 +61,23 @@ namespace GiantBombUnofficialClassic.ViewModels
         }
         private string _description;
 
+        public int Order
+        {
+            get
+            {
+                return _order;
+            }
+            set
+            {
+                if (value != _order)
+                {
+                    _order = value;
+                    RaisePropertyChanged("Order");
+                }
+            }
+        }
+        private int _order;
+
         public Uri ImageLocation
         {
             get

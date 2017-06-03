@@ -1,6 +1,7 @@
 ﻿THE GIANT BOMB UNOFFICIAL CLASSIC VIDEO PLAYER TO DO LIST
 
 E3 release:
+-Promo art for store submission + new screenshots
 -x86 build
 -check current crash reports before final builds
 -Release history notes in app
