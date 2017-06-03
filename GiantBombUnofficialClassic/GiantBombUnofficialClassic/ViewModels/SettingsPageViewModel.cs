@@ -22,6 +22,20 @@ namespace GiantBombUnofficialClassic.ViewModels
             }
         }
 
+        public RelayCommand ViewReleaseNotesCommand
+        {
+            get
+            {
+                return _viewReleaseNotesCommand ?? (_viewReleaseNotesCommand = new RelayCommand(
+                () =>
+                {
+                    var navigationManager = Utilities.NavigationManager.GetInstance();
+                    navigationManager.Navigate(Views.TextPage.PageKey, new Uri(@"ms-appx:///Assets//ReleaseNotes.txt"));
+                }));
+            }
+        }
+        private RelayCommand _viewReleaseNotesCommand;
+
         public RelayCommand ViewOpenSourceLicensesCommand
         {
             get
@@ -30,7 +44,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 () =>
                 {
                     var navigationManager = Utilities.NavigationManager.GetInstance();
-                    navigationManager.Navigate(Views.OpenSourceLicenses.PageKey);
+                    navigationManager.Navigate(Views.TextPage.PageKey, new Uri(@"ms-appx:///Assets//Licenses.txt"));
                 }));
             }
         }

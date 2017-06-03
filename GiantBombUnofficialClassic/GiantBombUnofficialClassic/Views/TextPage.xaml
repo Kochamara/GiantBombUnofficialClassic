@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="GiantBombUnofficialClassic.Views.OpenSourceLicenses"
+    x:Class="GiantBombUnofficialClassic.Views.TextPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:GiantBombUnofficialClassic.Views"
@@ -8,6 +8,6 @@
     mc:Ignorable="d">
 
     <ScrollViewer Background="{StaticResource DarkestGrayBrush}" IsTabStop="True">
-        <TextBlock x:Name="LicenseTextBlock" Style="{StaticResource BodyTextStyle}" Margin="100"/>
+        <TextBlock x:Name="TextBlock" Style="{StaticResource BodyTextStyle}" Margin="100"/>
     </ScrollViewer>
 </Page>

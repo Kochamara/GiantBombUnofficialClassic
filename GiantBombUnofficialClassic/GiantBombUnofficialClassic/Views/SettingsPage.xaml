@@ -54,6 +54,8 @@
 
             <Button Content="Change API key" Command="{Binding ChangeApiKeyCommand}" Style="{StaticResource ButtonStyle}" Margin="20" />
 
+            <Button Content="View release notes" Command="{Binding ViewReleaseNotesCommand}" Style="{StaticResource ButtonStyle}" Margin="20" />
+
             <Button Content="View open source licenses" Command="{Binding ViewOpenSourceLicensesCommand}" Style="{StaticResource ButtonStyle}" Margin="20" />
 
             <Button Content="View privacy policy" Command="{Binding ViewPrivacyPolicyCommand}" Style="{StaticResource ButtonStyle}" Margin="20" />

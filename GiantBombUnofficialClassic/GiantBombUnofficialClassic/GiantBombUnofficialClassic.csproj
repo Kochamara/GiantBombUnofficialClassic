@@ -135,8 +135,8 @@
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\OpenSourceLicenses.xaml.cs">
-      <DependentUpon>OpenSourceLicenses.xaml</DependentUpon>
+    <Compile Include="Views\TextPage.xaml.cs">
+      <DependentUpon>TextPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PrivacyPolicyPage.xaml.cs">
       <DependentUpon>PrivacyPolicyPage.xaml</DependentUpon>
@@ -188,7 +188,7 @@
     <Content Include="Assets\Groups\Vinnyvania.jpg" />
     <Content Include="Assets\GiantBombLogo.png" />
     <Content Include="Assets\JeffFrame.jpg" />
-    <Content Include="Assets\ReleaseHistory.txt" />
+    <Content Include="Assets\ReleaseNotes.txt" />
     <Content Include="Assets\Licenses.txt" />
     <Content Include="Assets\Required\Square150x150Logo.scale-100.png" />
     <Content Include="Assets\Required\Square150x150Logo.scale-400.png" />
@@ -221,7 +221,6 @@
     <Content Include="Assets\Required\Square44x44Logo.scale-200.png" />
     <Content Include="Assets\Required\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\Required\Wide310x150Logo.scale-200.png" />
-    <Content Include="ReleaseNotes.txt" />
     <Content Include="ToDoList.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -245,7 +244,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\OpenSourceLicenses.xaml">
+    <Page Include="Views\TextPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,0 +1,44 @@
+﻿                        ,----.!,
+                  ___/      -*-
+             ,d0008b.    '|`
+             008888M     
+             `90MMP'   
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Current version
+
+Some pretty big features for everyone:
+
+-Watch live broadcasts of premium Giant Bomb content!
+-New "Shows" sorting of videos, allowing easy access for Bring Your B-Game, Demo Derby, Beast in the East, and more!
+-Refresh button added to home page
+
+Plus some enhancements and fixes for PC users:
+
+-x86 verison added for people with older CPUs
+-Arrow keys can skip around video, and escape toggles full screen
+-Display should no longer go to sleep or lock during video playback
+-App cache clears itself every 24 hours, as opposed to waiting for Windows every 30 days
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Version 1.1.4
+
+-Public release!
+-Better gamepad control of video playback
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Version 1.1.2
+
+-Video playback position is saved and synced with the site
+-Better video player controls
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Version 1.1.1
+
+-Beta release!
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
