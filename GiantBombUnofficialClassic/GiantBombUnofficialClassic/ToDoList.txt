@@ -3,17 +3,14 @@
 E3 release:
 -Promo art for store submission + new screenshots
 -x86 build
--check current crash reports before final builds
--Release history notes in app
--code review
-
-Items to test before builds:
--Keeping screen active while watching video
 
 Known bugs:
 -Metal Gear Scanlon 4 - Part 14 doesn't work in HD. Should implement an automatic downgrade in quality if one version fails.
--Videos that don't show up in search: Cities Skylines QL, Sim City QL
 -Pressing the B button on the main page on first launch takes you back to the API key entry page
+
+Items to report to the API forum:
+-Videos that don't show up in search: Cities Skylines QL, Sim City QL
+-Get videos request is returning live videos
 
 V1.X release:
 -Border for the button focus. It's black and white. All white?
@@ -28,10 +25,15 @@ V1.X release:
 -Give Xbox users a better way to give feedback
 -Mouse "back" button should do the same thing as the back button on Xbox
 -More video information, such as duration, the deck, which staff member uploaded it, etc.
+-Resume playing last video watched shortcut (if didn't finish watching entire video)
+-Switch video quailty while watching a video
+-Maybe get the project building by default with Github checkout
+-Remember volume level (currently resets to max volume with each video)
 
 V2.X release:
 -Random video button
 -Next video suggestions after current video ends
+-Make current video title visible on transport controls maybe
 -Better video playback controls and styling
 -Standard Windows 10 navigation for PC version
 -New font for header text: Glyddon regular, weight 400
@@ -44,8 +46,15 @@ https://www.fontspring.com/fonts/fontsite/glyddon
 -Maybe put a guinea pig icon in the video player that pops Brad out for a sec
 http://www.freepik.com/free-icon/guinea-pig-heag_814168.htm
 -Downloading of video files. Some users are having loading issues even on low quality.
--Playlist support
+-Playlist support (or maybe a watch later feature)
 -Support for the new Compact Overlay feature in the Creators Update, allowing OS-level picture-in-picture. This is how Beam works, for example. You can see the implementation I'm thinking of by using the Movies & TV app (it calls it mini-mode, I think).
 -Podcasts with backgrond audio support. There's a podcasts app in the Store if I need an example.
 -Progress bar on videos while browsing (like on the site)
 -Continue watching section
+-Keyboard media shortcut support
+-Change volume level with mouse scroll wheel
+
+Feature requests I'm not so sure about:
+-Allow video to resume playing even if the app is minimized
+-Different layouts for viewing videos (especially search results), like lists or small thumbnails
+-Site links for each video
