@@ -1,0 +1,16 @@
+﻿Right click GiantBombUnofficialClassic_X.X.X.X_x86_x64.cer
+Click Install Certificate
+Click Open
+Click Local Machine
+Click Next
+Click Yes
+Click Place all certificates in the following store
+Click Browse...
+Click Trusted Root Certification Authorities
+Click Next
+Click Finish
+
+Double click GiantBombUnofficialClassic_X.X.X.X_x86_x64.appxbundle
+Click Open
+Click Install
+Click Launch

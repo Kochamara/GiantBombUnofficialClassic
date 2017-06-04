@@ -222,6 +222,7 @@
     <Content Include="Assets\Required\Square44x44Logo.scale-200.png" />
     <Content Include="Assets\Required\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\Required\Wide310x150Logo.scale-200.png" />
+    <Content Include="InstallationInstructions.txt" />
     <Content Include="ToDoList.txt" />
   </ItemGroup>
   <ItemGroup>
