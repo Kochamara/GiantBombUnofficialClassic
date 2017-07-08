@@ -215,7 +215,6 @@
     <Content Include="Assets\Required\SplashScreen.scale-150.png" />
     <Content Include="Assets\WelcomePageAudio.mp3" />
     <None Include="Package.StoreAssociation.xml" />
-    <Content Include="Private.txt" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\Required\SplashScreen.scale-200.png" />
     <Content Include="Assets\Required\Square150x150Logo.scale-200.png" />
