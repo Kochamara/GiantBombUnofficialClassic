@@ -304,7 +304,6 @@
                     <Grid>
                         <Image Source="ms-appx:///Assets/BlackBomb.png" MaxWidth="40" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" />
                         <Image Source="{Binding ImageLocation}" Stretch="UniformToFill" Opacity="30" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-                        <TextBlock Text="{Binding PercentageComplete}" FontSize="30" Foreground="White" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" />
                         <Grid VerticalAlignment="Bottom" Background="{StaticResource TranslucentBlackBrush}">
                             <!--Blur needs to be in separate grid to not blur the content-->
                             <Grid>
