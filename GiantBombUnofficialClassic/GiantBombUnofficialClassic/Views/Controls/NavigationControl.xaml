@@ -62,21 +62,20 @@
             <Button x:Name="RefreshButton" Command="{Binding RefreshCommand}" Visibility="{Binding IsRefreshButtonVisible, Converter={StaticResource BoolToVisibility}}" Style="{StaticResource NavigationButtonStyle}" Height="48">
                 <SymbolIcon Symbol="Refresh"/>
             </Button>
-
-            <Grid x:Name="ButtonShortcutsGrid" HorizontalAlignment="Center">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <TextBlock Grid.Column="0" Grid.Row="0" Visibility="{Binding IsRefreshButtonPromptVisible, Converter={StaticResource BoolToVisibility}}" Text="&#x24CD;" FontFamily="Segoe UI Symbol" Style="{StaticResource BodyTextStyle}" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                <TextBlock Grid.Column="1" Grid.Row="0" Visibility="{Binding IsRefreshButtonPromptVisible, Converter={StaticResource BoolToVisibility}}" Margin="8,8,0,6" Text="Refresh" Style="{StaticResource BodyTextStyle}" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                <TextBlock Grid.Column="0" Grid.Row="1" Visibility="{Binding IsSearchButtonPromptVisible, Converter={StaticResource BoolToVisibility}}" Text="&#x24CE;" FontFamily="Segoe UI Symbol" Style="{StaticResource BodyTextStyle}" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                <TextBlock Grid.Column="1" Grid.Row="1" Visibility="{Binding IsSearchButtonPromptVisible, Converter={StaticResource BoolToVisibility}}" Margin="8,8,0,6" Text="Search" Style="{StaticResource BodyTextStyle}" VerticalAlignment="Center" HorizontalAlignment="Center" />
-            </Grid>
+            
+            <!--Button prompts for Xbox users. Not an obvious button, as they are only buttons for users with remotes (no X or Y buttons).-->
+            <Button Height="36" Background="Transparent" BorderBrush="Transparent" Style="{StaticResource NavigationButtonStyle}" Visibility="{Binding IsRefreshButtonPromptVisible, Converter={StaticResource BoolToVisibility}}" Command="{Binding RefreshCommand}" Margin="0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Width="28" Text="&#x24CD;" FontFamily="Segoe UI Symbol" Style="{StaticResource BodyTextStyle}" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <TextBlock Width="56" Text="Refresh" Style="{StaticResource BodyTextStyle}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <Button Height="36" Background="Transparent" BorderBrush="Transparent" Style="{StaticResource NavigationButtonStyle}" Visibility="{Binding IsSearchButtonPromptVisible, Converter={StaticResource BoolToVisibility}}" Command="{Binding NavigateSearchPageCommand}" Margin="0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Width="28" Text="&#x24CE;" FontFamily="Segoe UI Symbol" Style="{StaticResource BodyTextStyle}" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <TextBlock Width="56" Text="Search" Style="{StaticResource BodyTextStyle}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
         </StackPanel>
     </Grid>
 </UserControl>
