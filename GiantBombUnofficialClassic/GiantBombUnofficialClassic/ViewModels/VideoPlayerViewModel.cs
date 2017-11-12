@@ -82,16 +82,11 @@ namespace GiantBombUnofficialClassic.ViewModels
         private void Player_MediaOpened(MediaPlayer sender, object args)
         {
             Player.MediaOpened -= Player_MediaOpened;
-            var unawaitedTask = SetCorrectPlaybackPositionAndStartReportingPositionToApi();
+            var unawaitedPlaybackPositionTask = SkipAheadToPreviousPositionAsync();
+            var unawaitedReportPositionTask = ReportPlaybackPositionAsync(PlaybackPositionReportingCancellationToken.Token);
         }
 
         #region Playback position handling
-        private async Task SetCorrectPlaybackPositionAndStartReportingPositionToApi()
-        {
-            await SkipAheadToPreviousPositionAsync();
-            await ReportPlaybackPositionAsync(PlaybackPositionReportingCancellationToken.Token);
-        }
-
         private async Task ReportPlaybackPositionAsync(CancellationToken token)
         {
             try
@@ -119,18 +114,20 @@ namespace GiantBombUnofficialClassic.ViewModels
         private async Task SkipAheadToPreviousPositionAsync()
         {
             var apiKey = Services.ApiKeyManager.GetInstance().GetSavedApiKey();
+
+            // First make an API call to directly request the playback position.
             var previouslySavedPosition = await GiantBombApi.Services.VideoPlaybackPositionAgent.GetPlaybackPositionAsync(apiKey, Video.Id);
 
-            // Don't skip if the previous position was in the first 15 seconds of the video
-            if (previouslySavedPosition > 15)
+            // If nothing's returned, use the value that's bundled directly with the Video object. I believe this value isn't updated
+            // as frequently, so it's less accurate. This value frequently is out of sync with the direct API call requesting the position.
+            if (previouslySavedPosition <= 0)
             {
-                // Don't skip if the previous position was in the last 30 seconds of the video
-                double furthestPositionInSecondsToJumpTo = (Player.PlaybackSession.NaturalDuration.TotalSeconds - 30);
+                previouslySavedPosition = GiantBombApi.Services.VideoPlaybackPositionAgent.GetValidatedPlaybackPosition(Video);
+            }
 
-                if (previouslySavedPosition < furthestPositionInSecondsToJumpTo)
-                {
-                    Player.PlaybackSession.Position = TimeSpan.FromSeconds(previouslySavedPosition);
-                }
+            if (previouslySavedPosition > 0)
+            {
+                Player.PlaybackSession.Position = TimeSpan.FromSeconds(previouslySavedPosition);
             }
         }
 

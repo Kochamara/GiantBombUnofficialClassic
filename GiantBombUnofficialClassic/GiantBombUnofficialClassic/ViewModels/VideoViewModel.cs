@@ -11,6 +11,48 @@ namespace GiantBombUnofficialClassic.ViewModels
     {
         public GiantBombApi.Models.Video Source;
 
+        /// <summary>
+        /// How far the user has watched this video previously. Value from 0 to 100.
+        /// </summary>
+        public int PercentageComplete
+        {
+            get
+            {
+                return _percentageComplete;
+            }
+            set
+            {
+                if (value != _percentageComplete)
+                {
+                    _percentageComplete = value;
+                    RaisePropertyChanged("PercentageComplete");
+                    RaisePropertyChanged("PercentageCompleteString");
+                    RaisePropertyChanged("PercentageRemainingString");
+                }
+            }
+        }
+        private int _percentageComplete;
+
+        /// <summary>
+        /// Because we are showing a visual indicator in XAML, we need to convert the integer to
+        /// a string that ends with a *. This is used in the column definitions.
+        /// </summary>
+        public string PercentageCompleteString
+        {
+            get
+            {
+                return (this.PercentageComplete + "*");
+            }
+        }
+
+        public string PercentageRemainingString
+        {
+            get
+            {
+                return ((100 - this.PercentageComplete) + "*");
+            }
+        }
+
         public RelayCommand PlayVideoCommand
         {
             get

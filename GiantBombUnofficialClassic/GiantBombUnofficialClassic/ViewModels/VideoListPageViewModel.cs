@@ -89,12 +89,14 @@ namespace GiantBombUnofficialClassic.ViewModels
 
                     foreach (var video in response.Results)
                     {
+                        int percentComplete = GiantBombApi.Services.VideoPlaybackPositionAgent.GetPlaybackPercentageComplete(video);
                         var viewModel = new VideoViewModel()
                         {
                             Id = video.Id,
                             Title = video.Name,
                             Description = video.Deck,
-                            Source = video
+                            Source = video,
+                            PercentageComplete = percentComplete
                         };
 
                         if (video.Image != null)

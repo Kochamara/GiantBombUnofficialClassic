@@ -266,8 +266,18 @@
                     <Grid>
                         <Image Source="ms-appx:///Assets/BlackBomb.png" MaxWidth="40" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" />
                         <Image Source="{Binding ImageLocation}" Stretch="UniformToFill" Opacity="30" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                        <TextBlock Text="{Binding PercentageComplete}" FontSize="30" Foreground="White" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center" />
                         <Grid VerticalAlignment="Bottom" Background="{StaticResource TranslucentBlackBrush}">
-                            <TextBlock Margin="8,4,8,4" Text="{Binding Title}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource BodyTextStyle}" />
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="4" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="{Binding PercentageCompleteString}" />
+                                <ColumnDefinition Width="{Binding PercentageRemainingString}"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Margin="8,4,8,4" Text="{Binding Title}" Foreground="White" HorizontalAlignment="Left" MaxLines="3" Style="{StaticResource BodyTextStyle}" />
+                            <Grid Grid.Row="1" Grid.Column="0" Background="{StaticResource BrightRedBrush}" />
                         </Grid>
                     </Grid>
                 </Button>

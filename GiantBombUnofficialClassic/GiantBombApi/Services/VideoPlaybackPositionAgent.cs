@@ -40,14 +40,14 @@ namespace GiantBombApi.Services
 
 
         /// <summary>
-        /// Pulls the playback position (in seconds) of a given video
+        /// Pulls the playback position (in seconds) of a given video directly from the API without validation
         /// </summary>
         /// <param name="apiKey"></param>
         /// <param name="videoId"></param>
         /// <returns>The previous playback position in seconds. -1 if no value was found.</returns>
-        public static async Task<int> GetPlaybackPositionAsync(string apiKey, string videoId)
+        public static async Task<double> GetPlaybackPositionAsync(string apiKey, string videoId)
         {
-            int previousPosition = -1;
+            double previousPosition = -1;
 
             try
             {
@@ -58,7 +58,7 @@ namespace GiantBombApi.Services
 
                     if ((response != null) && (response.SavedTime > 0))
                     {
-                        previousPosition = (int)response.SavedTime;
+                        previousPosition = response.SavedTime;
                     }
                 }
             }
@@ -68,6 +68,81 @@ namespace GiantBombApi.Services
             }
 
             return previousPosition;
+        }
+
+        /// <summary>
+        /// Validates the Video object's playback position and returns it in seconds
+        /// </summary>
+        /// <param name="video"></param>
+        /// <returns></returns>
+        public static double GetValidatedPlaybackPosition(Video video)
+        {
+            double position = 0;
+
+            try
+            {
+                if ((video != null) && (!String.IsNullOrWhiteSpace(video.SavedTime)) && (!String.IsNullOrWhiteSpace(video.LengthInSeconds)))
+                {
+                    double savedTime = Convert.ToDouble(video.SavedTime);
+                    double videoDuration = Convert.ToDouble(video.LengthInSeconds);
+                    double furthestPositionInSecondsToJumpTo = (videoDuration - 30);
+
+                    // Input validation
+                    if ((savedTime > 0) && (videoDuration > 0) && (furthestPositionInSecondsToJumpTo > 0))
+                    {
+                        // Don't skip if the previous position was in the first 15 seconds or the last 30 seconds of the video
+                        if ((savedTime > 15) && (savedTime < furthestPositionInSecondsToJumpTo))
+                        {
+                            position = savedTime;
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Serilog.Log.Error(e, "Error validating playback position");
+            }
+
+            return position;
+        }
+
+        /// <summary>
+        /// Returns a percentage from 0 to 100 of how far the user is into a given Video
+        /// </summary>
+        /// <param name="video"></param>
+        /// <returns></returns>
+        public static int GetPlaybackPercentageComplete(Video video)
+        {
+            int percentageComplete = 0;
+
+            try
+            {
+                if ((video != null) && (!String.IsNullOrWhiteSpace(video.SavedTime)) && (!String.IsNullOrWhiteSpace(video.LengthInSeconds)))
+                {
+                    double savedTime = Convert.ToDouble(video.SavedTime);
+                    double videoDuration = Convert.ToDouble(video.LengthInSeconds);
+                    double furthestPositionInSecondsToJumpTo = (videoDuration - 30);
+
+                    if (savedTime < 30)
+                    {
+                        percentageComplete = 0;
+                    }
+                    else if ((videoDuration - savedTime) < 30)
+                    {
+                        percentageComplete = 100;
+                    }
+                    else
+                    {
+                        percentageComplete = (int)((savedTime / videoDuration) * 100);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Serilog.Log.Error(e, "Error calculating playback position");
+            }
+            
+            return percentageComplete;
         }
 
 

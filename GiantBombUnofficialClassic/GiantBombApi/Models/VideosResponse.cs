@@ -105,5 +105,11 @@ namespace GiantBombApi.Models
         /// </summary>
         [DataMember(Name = "youtube_id")]
         public string YouTubeId;
+
+        /// <summary>
+        /// The time where the user left off watching this video.
+        /// </summary>
+        [DataMember(Name = "saved_time")]
+        public string SavedTime;
     }
 }
