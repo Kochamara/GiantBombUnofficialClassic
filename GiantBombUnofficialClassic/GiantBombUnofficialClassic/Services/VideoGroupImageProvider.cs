@@ -104,6 +104,56 @@ namespace GiantBombUnofficialClassic.Services
                     case "this is the run":
                         imageLocation = new Uri(@"ms-appx:///Assets//Groups//ThisIsTheRun.jpg");
                         break;
+                    case "best of giant bomb":
+                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//BestOfGiantBomb.jpg");
+                        break;
+                    case "breaking brad":
+                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//BreakingBrad.jpg");
+                        break;
+                    case "endurance run":
+                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//EnduranceRun.jpg");
+                        break;
+                    case "events":
+                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//Events.jpg");
+                        break;
+                    case "extra life":
+                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//ExtraLife.jpg");
+                        break;
+                    case "features":
+                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//Features.jpg");
+                        break;
+                    case "old games":
+                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//OldGames.png");
+                        break;
+                    case "premium":
+                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//Premium.jpg");
+                        break;
+                    case "trailers":
+                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//Trailers.jpg");
+                        break;
+                    case "unfinished":
+                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//Unfinished.png");
+                        break;
+                    case "game tapes raw":
+                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//GameTapesRaw.jpg");
+                        break;
+                    case "metal gear scanlon":
+                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//MetalGearScanlon.jpg");
+                        break;
+                    case "kerbal: project b.e.a.s.t":
+                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//ProjectBEAST.jpg");
+                        break;
+                    case "reviews":
+                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//VideoReview.jpg");
+                        break;
+                    case "tang":
+                    case "this ain't no game":
+                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//TANG.jpg");
+                        break;
+
+                    case "vinnyvania":
+                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//Vinnyvania.jpg");
+                        break;
                     default:
                         break;
                 }
