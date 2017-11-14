@@ -51,6 +51,7 @@ namespace GiantBombUnofficialClassic.Utilities
         {
             _navigationService.GoBack();
             UpdateBackButtonVisibility();
+            e.Handled = true;
         }
 
         private void UpdateBackButtonVisibility()

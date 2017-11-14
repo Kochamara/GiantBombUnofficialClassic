@@ -14,6 +14,7 @@ namespace GiantBombUnofficialClassic.Services
             if (!String.IsNullOrWhiteSpace(groupName))
             {
                 groupName = groupName.Trim().ToLower();
+
                 switch (groupName)
                 {
                     case "best of giant bomb":
@@ -73,6 +74,9 @@ namespace GiantBombUnofficialClassic.Services
                         break;
                     case "vinnyvania":
                         imageLocation = new Uri(@"ms-appx:///Assets//Groups//Vinnyvania.jpg");
+                        break;
+                    case "unprofessional fridays":
+                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//UPF.jpg");
                         break;
                     default:
                         break;
@@ -150,9 +154,11 @@ namespace GiantBombUnofficialClassic.Services
                     case "this ain't no game":
                         imageLocation = new Uri(@"ms-appx:///Assets//Groups//TANG.jpg");
                         break;
-
                     case "vinnyvania":
                         imageLocation = new Uri(@"ms-appx:///Assets//Groups//Vinnyvania.jpg");
+                        break;
+                    case "unprofessional fridays":
+                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//UPF.jpg");
                         break;
                     default:
                         break;
