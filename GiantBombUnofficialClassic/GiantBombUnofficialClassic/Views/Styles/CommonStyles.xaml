@@ -28,7 +28,10 @@
     <!--Translucent brush to make text visible layered on top of images-->
     <Color x:Key="TranslucentBlack">#96000000</Color>
     <SolidColorBrush x:Key="TranslucentBlackBrush" Color="{StaticResource TranslucentBlack}" />
-    
+
+    <!--Override the system accent color as this app targets a red theme-->
+    <Color x:Key="SystemAccentColor">#FFE61919</Color>
+
     
     <!--Styles-->
 
