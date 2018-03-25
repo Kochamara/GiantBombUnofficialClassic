@@ -167,7 +167,7 @@ namespace GiantBombApi.Services
             //        StreamSource = "https://giantbomb-pdl.akamaized.net/2017/05/26/mc_gbwpd_vanquish_052517_wp3gvf9t_4000.mp4"
             //    }
             //};
-            
+
 
             return response;
         }

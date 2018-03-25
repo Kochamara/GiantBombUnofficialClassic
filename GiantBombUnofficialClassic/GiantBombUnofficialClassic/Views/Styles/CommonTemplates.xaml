@@ -30,16 +30,20 @@
                                 <Setter Target="HeaderButton.Width" Value="880" />
                                 <Setter Target="HeaderButton.Height" Value="510" />
                                 <Setter Target="DescriptionText.Visibility" Value="Visible" />
+                                <Setter Target="TitleText.Style" Value="{StaticResource SubHeaderTextStyle}" />
+                                <Setter Target="TextStackPanel.Margin" Value="8,4,8,8" />
                             </VisualState.Setters>
                         </VisualState>
                         <VisualState x:Name="MiddleState">
                             <VisualState.StateTriggers>
-                                <AdaptiveTrigger MinWindowWidth="910" />
+                                <AdaptiveTrigger MinWindowWidth="950" />
                             </VisualState.StateTriggers>
                             <VisualState.Setters>
-                                <Setter Target="HeaderButton.Width" Value="592" />
-                                <Setter Target="HeaderButton.Height" Value="340" />
+                                <Setter Target="HeaderButton.Width" Value="640" />
+                                <Setter Target="HeaderButton.Height" Value="360" />
                                 <Setter Target="DescriptionText.Visibility" Value="Visible" />
+                                <Setter Target="TitleText.Style" Value="{StaticResource BodyTextStyle}" />
+                                <Setter Target="TextStackPanel.Margin" Value="4,0,4,2" />
                             </VisualState.Setters>
                         </VisualState>
                         <VisualState x:Name="SemiNarrowState">
@@ -57,8 +61,8 @@
                                 <AdaptiveTrigger MinWindowWidth="0" />
                             </VisualState.StateTriggers>
                             <VisualState.Setters>
-                                <Setter Target="HeaderButton.Width" Value="192" />
-                                <Setter Target="HeaderButton.Height" Value="108" />
+                                <Setter Target="HeaderButton.Width" Value="208" />
+                                <Setter Target="HeaderButton.Height" Value="116" />
                                 <Setter Target="DescriptionText.Visibility" Value="Collapsed" />
                             </VisualState.Setters>
                         </VisualState>
@@ -68,7 +72,7 @@
                     <Grid>
                         <Image Source="ms-appx:///Assets/BlackBomb.png" MaxWidth="40" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" />
                         <Image Source="{Binding ImageLocation}" Stretch="UniformToFill" Opacity="30" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-                        <Grid VerticalAlignment="Bottom" MinHeight="80" Background="{StaticResource TranslucentBlackBrush}">
+                        <Grid VerticalAlignment="Bottom" Background="{StaticResource TranslucentBlackBrush}">
                             <!--Blur needs to be in separate grid to not blur the content-->
                             <Grid>
                                 <interactivity:Interaction.Behaviors>
@@ -84,8 +88,8 @@
                                     <ColumnDefinition Width="{Binding PercentageCompleteString}" />
                                     <ColumnDefinition Width="{Binding PercentageRemainingString}"/>
                                 </Grid.ColumnDefinitions>
-                                <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Vertical" VerticalAlignment="Center" Margin="8,4,8,8">
-                                    <TextBlock Text="{Binding Title}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource SubHeaderTextStyle}" />
+                                <StackPanel x:Name="TextStackPanel" Grid.Row="0" Grid.ColumnSpan="2" Orientation="Vertical" VerticalAlignment="Center" Margin="8,4,8,8">
+                                    <TextBlock x:Name="TitleText" Text="{Binding Title}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource SubHeaderTextStyle}" />
                                     <TextBlock x:Name="DescriptionText" Text="{Binding Description}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource BodyTextStyle}" />
                                 </StackPanel>
                                 <Grid Grid.Row="1" Grid.Column="0" Background="{StaticResource BrightRedBrush}" />
@@ -126,11 +130,11 @@
                         </VisualState>
                         <VisualState x:Name="MiddleState">
                             <VisualState.StateTriggers>
-                                <AdaptiveTrigger MinWindowWidth="910" />
+                                <AdaptiveTrigger MinWindowWidth="950" />
                             </VisualState.StateTriggers>
                             <VisualState.Setters>
-                                <Setter Target="HeaderButton.Width" Value="592" />
-                                <Setter Target="HeaderButton.Height" Value="340" />
+                                <Setter Target="HeaderButton.Width" Value="640" />
+                                <Setter Target="HeaderButton.Height" Value="360" />
                                 <Setter Target="LiveHeaderText.Text" Value="LIVE! ON GIANT BOMB" />
                                 <Setter Target="LiveBroadcastName.MaxLines" Value="4" />
                             </VisualState.Setters>
@@ -151,8 +155,8 @@
                                 <AdaptiveTrigger MinWindowWidth="0" />
                             </VisualState.StateTriggers>
                             <VisualState.Setters>
-                                <Setter Target="HeaderButton.Width" Value="192" />
-                                <Setter Target="HeaderButton.Height" Value="108" />
+                                <Setter Target="HeaderButton.Width" Value="208" />
+                                <Setter Target="HeaderButton.Height" Value="116" />
                                 <Setter Target="LiveHeaderText.Text" Value="" />
                                 <Setter Target="LiveBroadcastName.MaxLines" Value="1" />
                             </VisualState.Setters>
@@ -209,16 +213,20 @@
                                 <Setter Target="SubHeaderButton.Width" Value="436" />
                                 <Setter Target="SubHeaderButton.Height" Value="246" />
                                 <Setter Target="DescriptionText.Visibility" Value="Visible" />
+                                <Setter Target="TitleText.Style" Value="{StaticResource SubHeaderTextStyle}" />
+                                <Setter Target="TextStackPanel.Margin" Value="8,4,8,8" />
                             </VisualState.Setters>
                         </VisualState>
                         <VisualState x:Name="MiddleState">
                             <VisualState.StateTriggers>
-                                <AdaptiveTrigger MinWindowWidth="800" />
+                                <AdaptiveTrigger MinWindowWidth="950" />
                             </VisualState.StateTriggers>
                             <VisualState.Setters>
-                                <Setter Target="SubHeaderButton.Width" Value="292" />
-                                <Setter Target="SubHeaderButton.Height" Value="164" />
+                                <Setter Target="SubHeaderButton.Width" Value="316" />
+                                <Setter Target="SubHeaderButton.Height" Value="176" />
                                 <Setter Target="DescriptionText.Visibility" Value="Visible" />
+                                <Setter Target="TitleText.Style" Value="{StaticResource BodyTextStyle}" />
+                                <Setter Target="TextStackPanel.Margin" Value="4,0,4,2" />
                             </VisualState.Setters>
                         </VisualState>
                         <VisualState x:Name="NarrowState">
@@ -226,8 +234,8 @@
                                 <AdaptiveTrigger MinWindowWidth="0" />
                             </VisualState.StateTriggers>
                             <VisualState.Setters>
-                                <Setter Target="SubHeaderButton.Width" Value="192" />
-                                <Setter Target="SubHeaderButton.Height" Value="108" />
+                                <Setter Target="SubHeaderButton.Width" Value="208" />
+                                <Setter Target="SubHeaderButton.Height" Value="116" />
                                 <Setter Target="DescriptionText.Visibility" Value="Collapsed" />
                             </VisualState.Setters>
                         </VisualState>
@@ -253,8 +261,8 @@
                                     <ColumnDefinition Width="{Binding PercentageCompleteString}" />
                                     <ColumnDefinition Width="{Binding PercentageRemainingString}"/>
                                 </Grid.ColumnDefinitions>
-                                <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Vertical" VerticalAlignment="Center" Margin="8,4,8,8">
-                                    <TextBlock Text="{Binding Title}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource SubHeaderTextStyle}" />
+                                <StackPanel x:Name="TextStackPanel" Grid.Row="0" Grid.ColumnSpan="2" Orientation="Vertical" VerticalAlignment="Center" Margin="8,4,8,8">
+                                    <TextBlock x:Name="TitleText" Text="{Binding Title}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="3" Style="{StaticResource SubHeaderTextStyle}" />
                                     <TextBlock x:Name="DescriptionText" Text="{Binding Description}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" MaxLines="2" Style="{StaticResource BodyTextStyle}" />
                                 </StackPanel>
                                 <Grid Grid.Row="1" Grid.Column="0" Background="{StaticResource BrightRedBrush}" />
@@ -278,6 +286,7 @@
                             <VisualState.Setters>
                                 <Setter Target="VideoButton.Width" Value="384" />
                                 <Setter Target="VideoButton.Height" Value="216" />
+                                <Setter Target="TitleText.Margin" Value="8,4,8,4" />
                             </VisualState.Setters>
                         </VisualState>
                         <VisualState x:Name="WideState">
@@ -287,6 +296,7 @@
                             <VisualState.Setters>
                                 <Setter Target="VideoButton.Width" Value="288" />
                                 <Setter Target="VideoButton.Height" Value="162" />
+                                <Setter Target="TitleText.Margin" Value="8,4,8,4" />
                             </VisualState.Setters>
                         </VisualState>
                         <VisualState x:Name="NarrowState">
@@ -294,8 +304,9 @@
                                 <AdaptiveTrigger MinWindowWidth="0" />
                             </VisualState.StateTriggers>
                             <VisualState.Setters>
-                                <Setter Target="VideoButton.Width" Value="192" />
-                                <Setter Target="VideoButton.Height" Value="108" />
+                                <Setter Target="VideoButton.Width" Value="208" />
+                                <Setter Target="VideoButton.Height" Value="116" />
+                                <Setter Target="TitleText.Margin" Value="4,0,4,2" />
                             </VisualState.Setters>
                         </VisualState>
                     </VisualStateGroup>
@@ -320,7 +331,7 @@
                                     <ColumnDefinition Width="{Binding PercentageCompleteString}" />
                                     <ColumnDefinition Width="{Binding PercentageRemainingString}"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Margin="8,4,8,4" Text="{Binding Title}" Foreground="White" HorizontalAlignment="Left" MaxLines="3" Style="{StaticResource BodyTextStyle}" />
+                                <TextBlock x:Name="TitleText" Grid.Row="0" Grid.ColumnSpan="2" Margin="8,4,8,4" Text="{Binding Title}" Foreground="White" HorizontalAlignment="Left" MaxLines="3" Style="{StaticResource BodyTextStyle}" />
                                 <Grid Grid.Row="1" Grid.Column="0" Background="{StaticResource BrightRedBrush}" />
                             </Grid>
                         </Grid>
@@ -346,11 +357,11 @@
                         </VisualState>
                         <VisualState x:Name="WideState">
                             <VisualState.StateTriggers>
-                                <AdaptiveTrigger MinWindowWidth="1000" />
+                                <AdaptiveTrigger MinWindowWidth="960" />
                             </VisualState.StateTriggers>
                             <VisualState.Setters>
-                                <Setter Target="SubHeaderButton.Width" Value="436" />
-                                <Setter Target="SubHeaderButton.Height" Value="300" />
+                                <Setter Target="SubHeaderButton.Width" Value="412" />
+                                <Setter Target="SubHeaderButton.Height" Value="268" />
                             </VisualState.Setters>
                         </VisualState>
                         <VisualState x:Name="MidState">

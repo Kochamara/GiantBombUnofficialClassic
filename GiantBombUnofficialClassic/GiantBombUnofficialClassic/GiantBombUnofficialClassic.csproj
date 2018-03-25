@@ -127,6 +127,7 @@
     <Compile Include="Views\Controls\NavigationControl.xaml.cs">
       <DependentUpon>NavigationControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Converters\ZeroToVisibilityConverter.cs" />
     <Compile Include="Views\GroupPage.xaml.cs">
       <DependentUpon>GroupPage.xaml</DependentUpon>
     </Compile>

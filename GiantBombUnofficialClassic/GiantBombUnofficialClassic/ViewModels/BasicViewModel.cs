@@ -32,6 +32,7 @@ namespace GiantBombUnofficialClassic.ViewModels
             get
             {
                 return _title;
+                //return "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sagittis mi pulvinar tempor commodo. Aliquam fermentum tempor velit. Nunc efficitur, tellus in volutpat bibendum, mi metus finibus lorem, eget cursus velit lorem at risus. Donec ut risus pulvinar, malesuada ex feugiat, finibus diam. Pellentesque luctus massa urna, nec mattis ipsum egestas nec. Sed sollicitudin mollis quam sit amet pulvinar. Sed aliquet facilisis rutrum. Morbi venenatis turpis id congue efficitur. Proin id feugiat mauris. Proin semper porttitor dictum. Aliquam tristique libero vel nunc fringilla pretium. Aliquam erat volutpat. Nulla rhoncus ornare mauris, non iaculis erat finibus eu.";
             }
             set
             {
@@ -49,6 +50,7 @@ namespace GiantBombUnofficialClassic.ViewModels
             get
             {
                 return _description;
+                //return "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sagittis mi pulvinar tempor commodo. Aliquam fermentum tempor velit. Nunc efficitur, tellus in volutpat bibendum, mi metus finibus lorem, eget cursus velit lorem at risus. Donec ut risus pulvinar, malesuada ex feugiat, finibus diam. Pellentesque luctus massa urna, nec mattis ipsum egestas nec. Sed sollicitudin mollis quam sit amet pulvinar. Sed aliquet facilisis rutrum. Morbi venenatis turpis id congue efficitur. Proin id feugiat mauris. Proin semper porttitor dictum. Aliquam tristique libero vel nunc fringilla pretium. Aliquam erat volutpat. Nulla rhoncus ornare mauris, non iaculis erat finibus eu.";
             }
             set
             {
