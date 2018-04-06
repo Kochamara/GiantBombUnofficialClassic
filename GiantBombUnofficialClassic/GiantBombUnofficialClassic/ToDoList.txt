@@ -1,9 +1,5 @@
 ﻿THE GIANT BOMB UNOFFICIAL CLASSIC VIDEO PLAYER TO DO LIST
 
-E3 release:
--Promo art for store submission + new screenshots
--x86 build
-
 Known bugs:
 -Metal Gear Scanlon 4 - Part 14 doesn't work in HD. Should implement an automatic downgrade in quality if one version fails.
 -Pressing the B button on the main page on first launch takes you back to the API key entry page
@@ -13,12 +9,9 @@ Items to report to the API forum:
 -Get videos request is returning live videos
 
 V1.X release:
--Border for the button focus. It's black and white. All white?
 -Skip to beginning button
--Hover states should be more obvious both on console and PC
 -Keep app from minimizing itself when clicking around in other applications, like opening new tabs in Chrome. Sometimes this happens when you alt+tab.
 -Spacebar should pause, clicking on video should pause
--Take another crack at the video and category containers
 -Make a better style for buttons
 -Make styles for hyperlinks, text boxes, combo boxes
 -Set focus on play/pause when media controls appear (instead of timeline)
@@ -27,7 +20,6 @@ V1.X release:
 -More video information, such as duration, the deck, which staff member uploaded it, etc.
 -Resume playing last video watched shortcut (if didn't finish watching entire video)
 -Switch video quailty while watching a video
--Maybe get the project building by default with Github checkout
 -Remember volume level (currently resets to max volume with each video)
 
 V2.X release:
@@ -49,7 +41,6 @@ http://www.freepik.com/free-icon/guinea-pig-heag_814168.htm
 -Playlist support (or maybe a watch later feature)
 -Support for the new Compact Overlay feature in the Creators Update, allowing OS-level picture-in-picture. This is how Beam works, for example. You can see the implementation I'm thinking of by using the Movies & TV app (it calls it mini-mode, I think).
 -Podcasts with backgrond audio support. There's a podcasts app in the Store if I need an example.
--Progress bar on videos while browsing (like on the site)
 -Continue watching section
 -Keyboard media shortcut support
 -Change volume level with mouse scroll wheel
