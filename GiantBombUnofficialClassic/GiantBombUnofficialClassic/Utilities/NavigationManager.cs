@@ -80,6 +80,7 @@ namespace GiantBombUnofficialClassic.Utilities
             navigationService.Configure(Views.GroupPage.PageKey, typeof(Views.GroupPage));
             navigationService.Configure(Views.TextPage.PageKey, typeof(Views.TextPage));
             navigationService.Configure(Views.PrivacyPolicyPage.PageKey, typeof(Views.PrivacyPolicyPage));
+            navigationService.Configure(Views.LockdownSimulatorPage.PageKey, typeof(Views.LockdownSimulatorPage));
 
             return navigationService;
         }

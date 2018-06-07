@@ -29,6 +29,7 @@
                         <Setter Target="HomeButton.Height" Value="48" />
                         <Setter Target="CategoriesButton.Height" Value="48" />
                         <Setter Target="ShowsButton.Height" Value="48" />
+                        <Setter Target="LockdownButton.Height" Value="48" />
                         <Setter Target="SettingsButton.Height" Value="48" />
                         <Setter Target="RefreshButton.Height" Value="48" />
                         <Setter Target="GiantBombLogo.Width" Value="124" />
@@ -43,6 +44,7 @@
                         <Setter Target="HomeButton.Height" Value="36" />
                         <Setter Target="CategoriesButton.Height" Value="36" />
                         <Setter Target="ShowsButton.Height" Value="36" />
+                        <Setter Target="LockdownButton.Height" Value="36" />
                         <Setter Target="SettingsButton.Height" Value="36" />
                         <Setter Target="RefreshButton.Height" Value="36" />
                         <Setter Target="GiantBombLogo.Width" Value="62" />
@@ -58,6 +60,7 @@
             <Button x:Name="SearchButton" Content="Search" Command="{Binding NavigateSearchPageCommand}" Visibility="{Binding IsSearchButtonVisible, Converter={StaticResource BoolToVisibility}}" Style="{StaticResource NavigationButtonStyle}" Height="48" />
             <Button x:Name="CategoriesButton" Content="Categories" Command="{Binding NavigateCategoriesPageCommand}" Visibility="{Binding IsCategoriesButtonVisible, Converter={StaticResource BoolToVisibility}}" Style="{StaticResource NavigationButtonStyle}" Height="48" />
             <Button x:Name="ShowsButton" Content="Shows" Command="{Binding NavigateShowsPageCommand}" Visibility="{Binding IsShowsButtonVisible, Converter={StaticResource BoolToVisibility}}" Style="{StaticResource NavigationButtonStyle}" Height="48" />
+            <Button x:Name="LockdownButton" Content="Lockdown" Command="{Binding NavigateLockdownPageCommand}" Visibility="{Binding IsLockdownButtonVisible, Converter={StaticResource BoolToVisibility}}" Style="{StaticResource NavigationButtonStyle}" Height="48" />
             <Button x:Name="SettingsButton" Content="Settings" Command="{Binding NavigateSettingsPageCommand}" Visibility="{Binding IsSettingsButtonVisible, Converter={StaticResource BoolToVisibility}}" Style="{StaticResource NavigationButtonStyle}" Height="48" />
             <Button x:Name="RefreshButton" Command="{Binding RefreshCommand}" Visibility="{Binding IsRefreshButtonVisible, Converter={StaticResource BoolToVisibility}}" Style="{StaticResource NavigationButtonStyle}" Height="48">
                 <SymbolIcon Symbol="Refresh"/>

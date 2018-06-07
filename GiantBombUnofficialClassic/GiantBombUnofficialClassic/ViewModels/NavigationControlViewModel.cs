@@ -12,10 +12,13 @@ namespace GiantBombUnofficialClassic.ViewModels
     public class NavigationControlViewModel : ViewModelBase
     {
         private NavigationManager _navigationManager;
+        private DateTime _E3StartDate = new DateTime(2018, 06, 07);
+        private DateTime _E3EndDate = new DateTime(2018, 06, 16);
 
         public NavigationControlViewModel()
         {
             _navigationManager = NavigationManager.GetInstance();
+            SetLockdownStatus();
         }
 
         public void SetRefreshCommand(RelayCommand refreshCommand)
@@ -138,6 +141,19 @@ namespace GiantBombUnofficialClassic.ViewModels
             }
         }
 
+        // Only show the Lockdown button if it's during E3. Duh.
+        private void SetLockdownStatus()
+        {
+            if ((DateTime.Now >= _E3StartDate) && (DateTime.Now < _E3EndDate))
+            {
+                IsLockdownButtonVisible = true;
+            }
+            else
+            {
+                IsLockdownButtonVisible = false;
+            }
+        }
+
         #region Button Visibility
         public bool IsHomeButtonVisible
         {
@@ -210,6 +226,24 @@ namespace GiantBombUnofficialClassic.ViewModels
             }
         }
         private bool _isShowsButtonVisible;
+
+        public bool IsLockdownButtonVisible
+        {
+            get
+            {
+                return _isLockdownButtonVisible;
+            }
+
+            set
+            {
+                if (_isLockdownButtonVisible != value)
+                {
+                    _isLockdownButtonVisible = value;
+                    RaisePropertyChanged(() => IsLockdownButtonVisible);
+                }
+            }
+        }
+        private bool _isLockdownButtonVisible;
 
         public bool IsSettingsButtonVisible
         {
@@ -341,6 +375,19 @@ namespace GiantBombUnofficialClassic.ViewModels
             }
         }
         private RelayCommand _navigateShowsPageCommand;
+
+        public RelayCommand NavigateLockdownPageCommand
+        {
+            get
+            {
+                return _navigateLockdownPageCommand ?? (_navigateLockdownPageCommand = new RelayCommand(
+                () =>
+                {
+                    _navigationManager.Navigate(Views.LockdownSimulatorPage.PageKey);
+                }));
+            }
+        }
+        private RelayCommand _navigateLockdownPageCommand;
 
         public RelayCommand NavigateSettingsPageCommand
         {

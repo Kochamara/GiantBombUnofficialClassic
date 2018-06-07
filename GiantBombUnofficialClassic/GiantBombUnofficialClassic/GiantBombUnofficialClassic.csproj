@@ -133,6 +133,9 @@
     </Compile>
     <Compile Include="Views\Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Views\Converters\NullToVisibilityConverter.cs" />
+    <Compile Include="Views\LockdownSimulatorPage.xaml.cs">
+      <DependentUpon>LockdownSimulatorPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -192,6 +195,7 @@
     <Content Include="Assets\GiantBombLogo.png" />
     <Content Include="Assets\JeffFrame.jpg" />
     <Content Include="Assets\Lockdown.mp3" />
+    <Content Include="Assets\PleaseStandBy.png" />
     <Content Include="Assets\ReleaseNotes.txt" />
     <Content Include="Assets\Licenses.txt" />
     <Content Include="Assets\Required\Square150x150Logo.scale-100.png" />
@@ -242,6 +246,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\GroupPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LockdownSimulatorPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

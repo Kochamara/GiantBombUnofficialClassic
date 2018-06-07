@@ -14,7 +14,7 @@ namespace GiantBombUnofficialClassic.Views.Triggers
 
         public IsTenFootTrigger()
         {
-            // Set default values.
+            // Set default value.
             IsTenFoot = true;
         }
 
