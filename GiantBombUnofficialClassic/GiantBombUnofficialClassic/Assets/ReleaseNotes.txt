@@ -7,6 +7,41 @@
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
 Current version
+June 2018
+
+< >
+Have a great E3, duders!
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Verison 1.1.10
+April 2018
+
+-Optimized UI for TV screens and other minor tweaks
+-Added ARM package
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Version 1.1.7
+November 2017
+
+-Hotfix build to fix an issue where pressing B on a gamepad to navigate backwards switched Xbox users to the previous app they were using (likely the dashboard)
+-Added an image for Unprofessional Fridays
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Version 1.1.6
+November 2017
+
+-Playback position preview in the main menu
+-Improved support for the Xbox One Media Remote
+-Minor UI enhancements
+-Fixed video category images
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Version 1.1.5
+June 2017
 
 Some pretty big features for everyone:
 
@@ -24,6 +59,7 @@ Plus some enhancements and fixes for PC users:
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
 Version 1.1.4
+April 2017
 
 -Public release!
 -Better gamepad control of video playback
@@ -31,6 +67,7 @@ Version 1.1.4
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
 Version 1.1.2
+April 2017
 
 -Video playback position is saved and synced with the site
 -Better video player controls
@@ -38,6 +75,7 @@ Version 1.1.2
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
 Version 1.1.1
+February 2017
 
 -Beta release!
 

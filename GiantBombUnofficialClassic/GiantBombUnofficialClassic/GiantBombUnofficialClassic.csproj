@@ -16,11 +16,11 @@
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>GiantBombUnofficialClassic_StoreKey.pfx</PackageCertificateKeyFile>
-    <PackageCertificateThumbprint>5E2ADDC80EF7B43EA204E0D2492E03011FBDCFE1</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>GiantBombUnofficialClassic_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>D79EE3FCE696B142253C02694C959AFF29F837D6</PackageCertificateThumbprint>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
-    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
     <RuntimeIdentifiers>win10-arm;win10-arm-aot;win10-x86;win10-x86-aot;win10-x64;win10-x64-aot</RuntimeIdentifiers>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
@@ -217,6 +217,7 @@
     <Content Include="Assets\Required\SplashScreen.scale-150.png" />
     <Content Include="Assets\WelcomePageAudio.mp3" />
     <None Include="Package.StoreAssociation.xml" />
+    <None Include="Package.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\Required\SplashScreen.scale-200.png" />
     <Content Include="Assets\Required\Square150x150Logo.scale-200.png" />
