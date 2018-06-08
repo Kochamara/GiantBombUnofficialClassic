@@ -8,7 +8,7 @@
     mc:Ignorable="d">
 
     <Grid Background="{StaticResource DarkestGrayBrush}">
-        <MediaElement x:Name="AudioPlayer" />
         <Image Source="ms-appx:///Assets/PleaseStandBy.png" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="UniformToFill" />
+        <MediaPlayerElement x:Name="AudioPlayer" AutoPlay="True" AreTransportControlsEnabled="False" />
     </Grid>
 </Page>

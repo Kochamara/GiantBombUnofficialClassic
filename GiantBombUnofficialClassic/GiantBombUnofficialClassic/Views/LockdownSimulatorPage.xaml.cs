@@ -6,6 +6,8 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Media.Core;
+using Windows.Media.Playback;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -19,7 +21,8 @@ namespace GiantBombUnofficialClassic.Views
     public sealed partial class LockdownSimulatorPage : Page
     {
         public const string PageKey = "LockdownSimulatorPage";
-        private Windows.Storage.Streams.IRandomAccessStream _audioStream;
+        private Windows.System.Display.DisplayRequest _displayRequest;
+        private MediaPlayer _mediaPlayer;
 
         /// <summary>
         /// The worst, most necessary page in this dumb app.
@@ -32,15 +35,14 @@ namespace GiantBombUnofficialClassic.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            var unawaitedTask = PlayBackgroundAudio();
+            PlayBackgroundAudio();
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             try
             {
-                AudioPlayer.Stop();
-                _audioStream.Dispose();
+                _mediaPlayer.Dispose();
             }
             catch (Exception ex)
             {
@@ -54,22 +56,20 @@ namespace GiantBombUnofficialClassic.Views
         /// It's E3 time! Loop this shit!
         /// </summary>
         /// <returns></returns>
-        private async Task PlayBackgroundAudio()
+        private void PlayBackgroundAudio()
         {
-            _audioStream = null;
-
             try
             {
-                AudioPlayer = new MediaElement();
-                Windows.Storage.StorageFile file = await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(new Uri(@"ms-appx:///Assets//Lockdown.mp3"));
+                AudioPlayer = new MediaPlayerElement();
 
-                if ((file != null) && File.Exists(file.Path))
-                {
-                    _audioStream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
-                    AudioPlayer.SetSource(_audioStream, file.ContentType);
-                    AudioPlayer.IsLooping = true;
-                    AudioPlayer.Play();
-                }
+                MediaSource mediaSource = MediaSource.CreateFromUri(new Uri(@"ms-appx:///Assets//Lockdown.mp3"));
+                MediaPlaybackItem playbackItem = new MediaPlaybackItem(mediaSource);
+
+                _mediaPlayer = new MediaPlayer();
+                _mediaPlayer.IsLoopingEnabled = true;
+                _mediaPlayer.Source = playbackItem;
+                AudioPlayer.SetMediaPlayer(_mediaPlayer);
+                _mediaPlayer.Play();
             }
             catch (Exception e)
             {
