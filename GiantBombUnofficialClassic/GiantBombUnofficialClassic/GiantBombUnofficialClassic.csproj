@@ -174,7 +174,6 @@
   <ItemGroup>
     <Content Include="Assets\BlackBomb.png" />
     <Content Include="Assets\Groups\BestOfGiantBomb.jpg" />
-    <Content Include="Assets\Groups\Bombcast.jpg" />
     <Content Include="Assets\Groups\BreakingBrad.jpg" />
     <Content Include="Assets\Groups\default.png" />
     <Content Include="Assets\Groups\EnduranceRun.jpg" />
@@ -187,12 +186,9 @@
     <Content Include="Assets\Groups\OldGames.png" />
     <Content Include="Assets\Groups\Premium.jpg" />
     <Content Include="Assets\Groups\ProjectBEAST.jpg" />
-    <Content Include="Assets\Groups\QuickLooks.jpg" />
     <Content Include="Assets\Groups\TANG.jpg" />
     <Content Include="Assets\Groups\ThisIsTheRun.jpg" />
     <Content Include="Assets\Groups\Trailers.jpg" />
-    <Content Include="Assets\Groups\Unfinished.png" />
-    <Content Include="Assets\Groups\UPF.jpg" />
     <Content Include="Assets\Groups\VideoReview.jpg" />
     <Content Include="Assets\Groups\Vinnyvania.jpg" />
     <Content Include="Assets\GiantBombLogo.png" />

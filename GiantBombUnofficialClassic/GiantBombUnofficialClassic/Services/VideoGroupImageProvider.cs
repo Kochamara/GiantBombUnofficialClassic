@@ -99,12 +99,6 @@ namespace GiantBombUnofficialClassic.Services
                 groupName = groupName.Trim().ToLower();
                 switch (groupName)
                 {
-                    case "quick looks":
-                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//QuickLooks.jpg");
-                        break;
-                    case "giant bombcast":
-                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//Bombcast.jpg");
-                        break;
                     case "this is the run":
                         imageLocation = new Uri(@"ms-appx:///Assets//Groups//ThisIsTheRun.jpg");
                         break;
@@ -135,9 +129,6 @@ namespace GiantBombUnofficialClassic.Services
                     case "trailers":
                         imageLocation = new Uri(@"ms-appx:///Assets//Groups//Trailers.jpg");
                         break;
-                    case "unfinished":
-                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//Unfinished.png");
-                        break;
                     case "game tapes raw":
                         imageLocation = new Uri(@"ms-appx:///Assets//Groups//GameTapesRaw.jpg");
                         break;
@@ -156,9 +147,6 @@ namespace GiantBombUnofficialClassic.Services
                         break;
                     case "vinnyvania":
                         imageLocation = new Uri(@"ms-appx:///Assets//Groups//Vinnyvania.jpg");
-                        break;
-                    case "unprofessional fridays":
-                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//UPF.jpg");
                         break;
                     default:
                         break;
