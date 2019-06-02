@@ -75,7 +75,19 @@ namespace GiantBombApi.Models
         /// </summary>
         [DataMember(Name = "image")]
         public Image Image;
-        
+
+        /// <summary>
+        /// Is this show currently active
+        /// </summary>
+        [DataMember(Name = "active")]
+        public bool IsActive;
+
+        /// <summary>
+        /// Should this show be displayed in navigation menus
+        /// </summary>
+        [DataMember(Name = "display_nav")]
+        public bool IsShownInDisplayNav;
+
         /// <summary>
         /// Whether it's a show or a category
         /// </summary>

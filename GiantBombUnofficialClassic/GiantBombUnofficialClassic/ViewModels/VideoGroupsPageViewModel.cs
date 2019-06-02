@@ -19,6 +19,7 @@ namespace GiantBombUnofficialClassic.ViewModels
         {
             _navigationManager = Utilities.NavigationManager.GetInstance();
             _groups = new ObservableCollection<BasicViewModel>();
+            _archivedGroups = new ObservableCollection<BasicViewModel>();
             _pageType = pageType;
         }
 
@@ -43,7 +44,8 @@ namespace GiantBombUnofficialClassic.ViewModels
 
             if ((response != null) && (response.Status == StatusCode.OK) && (response.Results != null))
             {
-                var viewModels = new List<VideoGroupViewModel>();
+                var activeShowViewModels = new List<VideoGroupViewModel>();
+                var inactiveShowViewModels = new List<VideoGroupViewModel>();
 
                 foreach (var group in response.Results)
                 {
@@ -85,14 +87,28 @@ namespace GiantBombUnofficialClassic.ViewModels
                         Source = group
                     };
 
-                    viewModels.Add(cat);
+                    // Active/Inactive distinction only exists for shows, not categories.
+                    if ((group.GroupingType == GroupingType.Category) || (group.IsActive))
+                    {
+                        activeShowViewModels.Add(cat);
+                    }
+                    else
+                    {
+                        inactiveShowViewModels.Add(cat);
+                    }
                 }
 
                 // Now time to order the list
-                var orderedList = viewModels.OrderBy(x => x.Order);
+                var orderedList = activeShowViewModels.OrderBy(x => x.Order);
                 foreach (var group in orderedList)
                 {
                     _groups.Add(group);
+                }
+
+                orderedList = inactiveShowViewModels.OrderBy(x => x.Order);
+                foreach (var group in orderedList)
+                {
+                    _archivedGroups.Add(group);
                 }
             }
 
@@ -104,6 +120,12 @@ namespace GiantBombUnofficialClassic.ViewModels
             get { return _groups; }
         }
         private ObservableCollection<BasicViewModel> _groups;
+
+        public ObservableCollection<BasicViewModel> ArchivedGroups
+        {
+            get { return _archivedGroups; }
+        }
+        private ObservableCollection<BasicViewModel> _archivedGroups;
 
         public bool IsLoading
         {
