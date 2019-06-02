@@ -17,9 +17,6 @@ namespace GiantBombUnofficialClassic.Services
 
                 switch (groupName)
                 {
-                    case "best of giant bomb":
-                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//BestOfGiantBomb.jpg");
-                        break;
                     case "breaking brad":
                         imageLocation = new Uri(@"ms-appx:///Assets//Groups//BreakingBrad.jpg");
                         break;
@@ -29,14 +26,8 @@ namespace GiantBombUnofficialClassic.Services
                     case "events":
                         imageLocation = new Uri(@"ms-appx:///Assets//Groups//Events.jpg");
                         break;
-                    case "extra life":
-                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//ExtraLife.jpg");
-                        break;
                     case "features":
                         imageLocation = new Uri(@"ms-appx:///Assets//Groups//Features.jpg");
-                        break;
-                    case "game tapes":
-                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//GameTapes.jpg");
                         break;
                     case "game tapes raw":
                         imageLocation = new Uri(@"ms-appx:///Assets//Groups//GameTapesRaw.jpg");
@@ -49,9 +40,6 @@ namespace GiantBombUnofficialClassic.Services
                         break;
                     case "metal gear scanlon":
                         imageLocation = new Uri(@"ms-appx:///Assets//Groups//MetalGearScanlon.jpg");
-                        break;
-                    case "old games":
-                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//OldGames.png");
                         break;
                     case "premium":
                         imageLocation = new Uri(@"ms-appx:///Assets//Groups//Premium.jpg");
@@ -71,9 +59,6 @@ namespace GiantBombUnofficialClassic.Services
                         break;
                     case "unfinished":
                         imageLocation = new Uri(@"ms-appx:///Assets//Groups//Unfinished.png");
-                        break;
-                    case "vinnyvania":
-                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//Vinnyvania.jpg");
                         break;
                     case "unprofessional fridays":
                         imageLocation = new Uri(@"ms-appx:///Assets//Groups//UPF.jpg");
@@ -99,12 +84,6 @@ namespace GiantBombUnofficialClassic.Services
                 groupName = groupName.Trim().ToLower();
                 switch (groupName)
                 {
-                    case "this is the run":
-                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//ThisIsTheRun.jpg");
-                        break;
-                    case "best of giant bomb":
-                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//BestOfGiantBomb.jpg");
-                        break;
                     case "breaking brad":
                         imageLocation = new Uri(@"ms-appx:///Assets//Groups//BreakingBrad.jpg");
                         break;
@@ -114,14 +93,8 @@ namespace GiantBombUnofficialClassic.Services
                     case "events":
                         imageLocation = new Uri(@"ms-appx:///Assets//Groups//Events.jpg");
                         break;
-                    case "extra life":
-                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//ExtraLife.jpg");
-                        break;
                     case "features":
                         imageLocation = new Uri(@"ms-appx:///Assets//Groups//Features.jpg");
-                        break;
-                    case "old games":
-                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//OldGames.png");
                         break;
                     case "premium":
                         imageLocation = new Uri(@"ms-appx:///Assets//Groups//Premium.jpg");
@@ -144,9 +117,6 @@ namespace GiantBombUnofficialClassic.Services
                     case "tang":
                     case "this ain't no game":
                         imageLocation = new Uri(@"ms-appx:///Assets//Groups//TANG.jpg");
-                        break;
-                    case "vinnyvania":
-                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//Vinnyvania.jpg");
                         break;
                     default:
                         break;
