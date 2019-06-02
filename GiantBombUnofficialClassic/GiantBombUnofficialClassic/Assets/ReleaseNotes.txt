@@ -7,11 +7,19 @@
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
 Current version
+Verison 1.1.12
+June 2019
+
+-Separated new shows from archived shows
+-Updated assets to use new Giant Bomb logos
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+Current version
 Verison 1.1.11
 June 2018
 
-< >
-Have a great E3, duders!
+-Added a Lockdown simulator for E3
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
