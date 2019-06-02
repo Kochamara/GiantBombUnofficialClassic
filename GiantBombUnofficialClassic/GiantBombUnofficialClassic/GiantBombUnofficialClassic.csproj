@@ -173,24 +173,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\BlackBomb.png" />
-    <Content Include="Assets\Groups\BestOfGiantBomb.jpg" />
     <Content Include="Assets\Groups\BreakingBrad.jpg" />
     <Content Include="Assets\Groups\default.png" />
     <Content Include="Assets\Groups\EnduranceRun.jpg" />
     <Content Include="Assets\Groups\Events.jpg" />
     <Content Include="Assets\Groups\ExtraLife.jpg" />
     <Content Include="Assets\Groups\Features.jpg" />
-    <Content Include="Assets\Groups\GameTapes.jpg" />
     <Content Include="Assets\Groups\GameTapesRAW.jpg" />
     <Content Include="Assets\Groups\MetalGearScanlon.jpg" />
-    <Content Include="Assets\Groups\OldGames.png" />
     <Content Include="Assets\Groups\Premium.jpg" />
     <Content Include="Assets\Groups\ProjectBEAST.jpg" />
     <Content Include="Assets\Groups\TANG.jpg" />
     <Content Include="Assets\Groups\ThisIsTheRun.jpg" />
     <Content Include="Assets\Groups\Trailers.jpg" />
     <Content Include="Assets\Groups\VideoReview.jpg" />
-    <Content Include="Assets\Groups\Vinnyvania.jpg" />
     <Content Include="Assets\GiantBombLogo.png" />
     <Content Include="Assets\JeffFrame.jpg" />
     <Content Include="Assets\Lockdown.mp3" />

@@ -84,6 +84,9 @@ namespace GiantBombUnofficialClassic.Services
                 groupName = groupName.Trim().ToLower();
                 switch (groupName)
                 {
+                    case "this is the run":
+                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//ThisIsTheRun.jpg");
+                        break;
                     case "breaking brad":
                         imageLocation = new Uri(@"ms-appx:///Assets//Groups//BreakingBrad.jpg");
                         break;
@@ -92,6 +95,9 @@ namespace GiantBombUnofficialClassic.Services
                         break;
                     case "events":
                         imageLocation = new Uri(@"ms-appx:///Assets//Groups//Events.jpg");
+                        break;
+                    case "extra life":
+                        imageLocation = new Uri(@"ms-appx:///Assets//Groups//ExtraLife.jpg");
                         break;
                     case "features":
                         imageLocation = new Uri(@"ms-appx:///Assets//Groups//Features.jpg");
