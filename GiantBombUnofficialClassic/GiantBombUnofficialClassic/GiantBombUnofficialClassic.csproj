@@ -197,6 +197,7 @@
     <Content Include="Assets\PleaseStandBy.png" />
     <Content Include="Assets\ReleaseNotes.txt" />
     <Content Include="Assets\Licenses.txt" />
+    <Content Include="Assets\Required\SplashScreen.scale-400.png" />
     <Content Include="Assets\Required\Square150x150Logo.scale-100.png" />
     <Content Include="Assets\Required\Square150x150Logo.scale-400.png" />
     <Content Include="Assets\Required\Square310x310Logo.scale-100.png" />
@@ -219,6 +220,7 @@
     <Content Include="Assets\Required\SplashScreen.scale-100.png" />
     <Content Include="Assets\Required\SplashScreen.scale-125.png" />
     <Content Include="Assets\Required\SplashScreen.scale-150.png" />
+    <Content Include="Assets\Required\Wide310x150Logo.scale-400.png" />
     <Content Include="Assets\WelcomePageAudio.mp3" />
     <None Include="Package.StoreAssociation.xml" />
     <None Include="Package.xml" />
