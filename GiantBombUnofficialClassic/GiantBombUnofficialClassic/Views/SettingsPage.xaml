@@ -30,7 +30,7 @@
             </TextBlock>
 
             <TextBlock Style="{StaticResource BodyTextStyle}" Margin="20">
-                <Run Text="Giant Bomb content used with permission. © 2017 CBS Interactive Inc. All rights reserved. Visit Giant Bomb at"/>
+                <Run Text="Giant Bomb content used with permission. © 2019 CBS Interactive Inc. All rights reserved. Visit Giant Bomb at"/>
                 <Hyperlink NavigateUri="https://www.giantbomb.com">
                     <Run Text="giantbomb.com"/>
                 </Hyperlink>
