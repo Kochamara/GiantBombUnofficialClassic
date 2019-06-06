@@ -19,7 +19,6 @@ namespace GiantBombUnofficialClassic.ViewModels
         {
             _navigationManager = Utilities.NavigationManager.GetInstance();
             _groups = new ObservableCollection<BasicViewModel>();
-            _archivedGroups = new ObservableCollection<BasicViewModel>();
             _pageType = pageType;
         }
 
@@ -108,7 +107,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 orderedList = inactiveShowViewModels.OrderBy(x => x.Order);
                 foreach (var group in orderedList)
                 {
-                    _archivedGroups.Add(group);
+                    _groups.Add(group);
                 }
             }
 
@@ -120,12 +119,6 @@ namespace GiantBombUnofficialClassic.ViewModels
             get { return _groups; }
         }
         private ObservableCollection<BasicViewModel> _groups;
-
-        public ObservableCollection<BasicViewModel> ArchivedGroups
-        {
-            get { return _archivedGroups; }
-        }
-        private ObservableCollection<BasicViewModel> _archivedGroups;
 
         public bool IsLoading
         {

@@ -28,9 +28,6 @@
         <ScrollViewer Visibility="{Binding IsLoading, Converter={StaticResource NegatedBoolToVisibility}}">
             <StackPanel Orientation="Vertical">
                 <ItemsControl HorizontalAlignment="Center" ItemsSource="{Binding Groups}" Style="{StaticResource GroupListStyle}" Margin="20" />
-
-                <TextBlock Text="Archives" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,24,0,0" FontSize="24" Style="{StaticResource SubHeaderTextStyle}" />
-                <ItemsControl HorizontalAlignment="Center" ItemsSource="{Binding ArchivedGroups}" Style="{StaticResource GroupListStyle}" Margin="20"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>
