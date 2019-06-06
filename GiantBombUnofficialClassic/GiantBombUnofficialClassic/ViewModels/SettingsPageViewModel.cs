@@ -36,6 +36,20 @@ namespace GiantBombUnofficialClassic.ViewModels
         }
         private RelayCommand _viewReleaseNotesCommand;
 
+        public RelayCommand ViewGiantBombInfiniteFaqCommand
+        {
+            get
+            {
+                return _viewGiantBombInfiniteFaqCommand ?? (_viewGiantBombInfiniteFaqCommand = new RelayCommand(
+                () =>
+                {
+                    var navigationManager = Utilities.NavigationManager.GetInstance();
+                    navigationManager.Navigate(Views.TextPage.PageKey, new Uri(@"ms-appx:///Assets//Infinite.txt"));
+                }));
+            }
+        }
+        private RelayCommand _viewGiantBombInfiniteFaqCommand;
+
         public RelayCommand ViewOpenSourceLicensesCommand
         {
             get
@@ -96,6 +110,14 @@ namespace GiantBombUnofficialClassic.ViewModels
         }
         private string _versionNumberText;
 
+        public string CbsCopyrightText
+        {
+            get
+            {
+                return ("© " + DateTime.Today.Year + " CBS Interactive Inc.");
+            }
+        }
+
         public string OpenSourceDescription
         {
             get
@@ -108,6 +130,14 @@ namespace GiantBombUnofficialClassic.ViewModels
                 {
                     return "The Giant Bomb Unofficial Classic Video Player for Your Computer and Mine is open source, and available at";
                 }
+            }
+        }
+
+        public bool IsTenFootExperience
+        {
+            get
+            {
+                return Utilities.SystemInformationManager.IsTenFootExperience;
             }
         }
     }

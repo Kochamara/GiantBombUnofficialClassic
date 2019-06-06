@@ -188,6 +188,7 @@
     <Content Include="Assets\Groups\Trailers.jpg" />
     <Content Include="Assets\Groups\VideoReview.jpg" />
     <Content Include="Assets\GiantBombLogo.png" />
+    <Content Include="Assets\Infinite.txt" />
     <Content Include="Assets\JeffFrame.jpg" />
     <Content Include="Assets\Lockdown.mp3" />
     <Content Include="Assets\PleaseStandBy.png" />
