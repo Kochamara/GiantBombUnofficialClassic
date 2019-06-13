@@ -12,8 +12,8 @@ namespace GiantBombUnofficialClassic.ViewModels
     public class NavigationControlViewModel : ViewModelBase
     {
         private NavigationManager _navigationManager;
-        private DateTime _E3StartDate = new DateTime(2019, 06, 07);
-        private DateTime _E3EndDate = new DateTime(2019, 06, 15);
+        private DateTime _E3StartDate = new DateTime(2020, 06, 5);
+        private DateTime _E3EndDate = new DateTime(2020, 06, 12);
 
         public NavigationControlViewModel()
         {
