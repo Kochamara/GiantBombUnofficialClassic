@@ -1,0 +1,51 @@
+﻿<Page
+    x:Class="GiantBombUnofficialClassic.Views.ContinuePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GiantBombUnofficialClassic.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="using:GiantBombUnofficialClassic.Views.Converters"
+    NavigationCacheMode="Enabled"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibility"/>
+        <converters:NegatedBoolToVisibilityConverter x:Key="NegatedBoolToVisibility"/>
+    </Page.Resources>
+
+    <Grid Background="{StaticResource DarkestGrayBrush}">
+        <Grid Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibility}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".2*" />
+                <RowDefinition Height=".4*" />
+                <RowDefinition Height=".2*" />
+                <RowDefinition Height=".2*" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="1" Source="ms-appx:///Assets/JeffFrame.jpg" MaxWidth="400" MaxHeight="600" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+            <ProgressRing Grid.Row="2" Style="{StaticResource ProgressRingStyle}" VerticalAlignment="Center" />
+        </Grid>
+
+        <ScrollViewer Visibility="{Binding IsLoading, Converter={StaticResource NegatedBoolToVisibility}}">
+            <StackPanel Orientation="Vertical" Margin="40">
+
+                <StackPanel Orientation="Vertical" Margin="40" Visibility="{Binding FoundVideos, Converter={StaticResource BoolToVisibility}}">
+                    <TextBlock Text="In Progress" Style="{StaticResource HeaderTextStyle}" HorizontalAlignment="Center" TextAlignment="Center" Margin="16" />
+                    <ItemsControl ItemsSource="{Binding ContinueVideos}" Style="{StaticResource VideoListStyle}"  />
+                    <TextBlock Text="Finished" Style="{StaticResource HeaderTextStyle}" HorizontalAlignment="Center" TextAlignment="Center" Margin="16" />
+                    <ItemsControl ItemsSource="{Binding FinishedVideos}" Style="{StaticResource VideoListStyle}"  />
+                    <ProgressRing Style="{StaticResource ProgressRingStyle}" VerticalAlignment="Top" Margin="0,50,0,0" Visibility="{Binding AreAdditionalResultsBeingLoaded, Converter={StaticResource BoolToVisibility}}" />
+                </StackPanel>
+                
+                <StackPanel Orientation="Vertical" Margin="40" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding FoundVideos, Converter={StaticResource NegatedBoolToVisibility}}">
+                    <TextBlock Foreground="White" MaxWidth="600" TextAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource SubheaderTextBlockStyle}">
+                            <Run Text="Uh oh!"/>
+                            <LineBreak />
+                            <Run Text="No videos were found. Make sure you're connected to the internet and try again."/>
+                    </TextBlock>
+                    <Button Content="Refresh" Command="{Binding RefreshCommand}" Style="{StaticResource NavigationButtonStyle}" HorizontalAlignment="Center" Margin="40" />
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

@@ -178,5 +178,30 @@ namespace GiantBombApi.Services
 
             return allPlaybackPositions;
         }
+
+        /// <summary>
+        /// Get all the video saved times for the user
+        /// </summary>
+        /// <param name="apiKey"></param>
+        /// <returns></returns>
+        public static async Task<AllPlaybackPositionsResponse> GetAllPlaybackPositionsListAsync(string apiKey)
+        {
+            AllPlaybackPositionsResponse allPlaybackPositions = null;
+
+            try
+            {
+                if (!String.IsNullOrWhiteSpace(apiKey))
+                {
+                    var uri = new Uri("https://www.giantbomb.com/api/video/get-all-saved-times/?format=json&api_key=" + apiKey);
+                    allPlaybackPositions = await Utilities.HttpRequestAgent.GetDeserializedResponseAsync<AllPlaybackPositionsResponse>(uri);
+                }
+            }
+            catch (Exception e)
+            {
+                Serilog.Log.Error(e, "Error retrieving all playback positions");
+            }
+
+            return allPlaybackPositions;
+        }
     }
 }

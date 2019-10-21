@@ -52,6 +52,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 IsHomeButtonVisible = false;
                 IsCategoriesButtonVisible = true;
                 IsShowsButtonVisible = true;
+                IsContinueButtonVisible = true;
                 IsSettingsButtonVisible = true;
 
                 if (SystemInformationManager.IsTenFootExperience)
@@ -69,6 +70,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 IsSearchButtonVisible = false;
                 IsCategoriesButtonVisible = true;
                 IsShowsButtonVisible = true;
+                IsContinueButtonVisible = true;
                 IsSettingsButtonVisible = true;
             }
             else if (parentPage == typeof(Views.CategoriesPage))
@@ -77,6 +79,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                 IsSearchButtonVisible = true;
                 IsCategoriesButtonVisible = false;
                 IsShowsButtonVisible = true;
+                IsContinueButtonVisible = true;
                 IsSettingsButtonVisible = true;
 
                 if (SystemInformationManager.IsTenFootExperience)
@@ -94,6 +97,25 @@ namespace GiantBombUnofficialClassic.ViewModels
                 IsSearchButtonVisible = true;
                 IsCategoriesButtonVisible = true;
                 IsShowsButtonVisible = false;
+                IsContinueButtonVisible = true;
+                IsSettingsButtonVisible = true;
+
+                if (SystemInformationManager.IsTenFootExperience)
+                {
+                    IsSearchButtonPromptVisible = true;
+                }
+                else
+                {
+                    IsSearchButtonVisible = true;
+                }
+            }
+            else if (parentPage == typeof(Views.ContinuePage))
+            {
+                IsHomeButtonVisible = true;
+                IsSearchButtonVisible = true;
+                IsCategoriesButtonVisible = true;
+                IsShowsButtonVisible = true;
+                IsContinueButtonVisible = false;
                 IsSettingsButtonVisible = true;
 
                 if (SystemInformationManager.IsTenFootExperience)
@@ -226,6 +248,24 @@ namespace GiantBombUnofficialClassic.ViewModels
             }
         }
         private bool _isShowsButtonVisible;
+
+        public bool IsContinueButtonVisible
+        {
+            get
+            {
+                return _isContinueButtonVisible;
+            }
+
+            set
+            {
+                if (_isContinueButtonVisible != value)
+                {
+                    _isContinueButtonVisible = value;
+                    RaisePropertyChanged(() => IsContinueButtonVisible);
+                }
+            }
+        }
+        private bool _isContinueButtonVisible;
 
         public bool IsLockdownButtonVisible
         {
@@ -375,6 +415,19 @@ namespace GiantBombUnofficialClassic.ViewModels
             }
         }
         private RelayCommand _navigateShowsPageCommand;
+
+        public RelayCommand NavigateContinuePageCommand
+        {
+            get
+            {
+                return _navigateContinuePageCommand ?? (_navigateContinuePageCommand = new RelayCommand(
+                    () =>
+                    {
+                        _navigationManager.Navigate(Views.ContinuePage.PageKey);
+                    }));
+            }
+        }
+        private RelayCommand _navigateContinuePageCommand;
 
         public RelayCommand NavigateLockdownPageCommand
         {

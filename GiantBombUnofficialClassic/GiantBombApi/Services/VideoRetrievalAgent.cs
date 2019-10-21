@@ -92,6 +92,26 @@ namespace GiantBombApi.Services
             return response;
         }
 
+        public static async Task<VideosResponse> GetVideoContinueAsync(string apiKey, string videoId)
+        {
+            VideosResponse response = null;
+
+            try
+            {
+                // Build the uri to retrive the video
+                Uri uri = new Uri("https://www.giantbomb.com/api/videos/?format=json&filter=id:" + videoId + "&api_key=" + apiKey);
+
+                response = await Utilities.HttpRequestAgent.GetDeserializedResponseAsync<VideosResponse>(uri);
+                response = RemoveInvalidVideos(response);
+            }
+            catch (Exception e)
+            {
+                Serilog.Log.Error(e, "Error pulling continue watching videos.");
+            }
+
+            return response;
+        }
+
         /// <summary>
         /// Pulls a list of video categories
         /// </summary>
