@@ -180,7 +180,7 @@ namespace GiantBombApi.Services
         }
 
         /// <summary>
-        /// Get all the video saved times for the user
+        /// Get all the video saved times for the user and returns the fulll AllPlaybackPositionsResponse object.
         /// </summary>
         /// <param name="apiKey"></param>
         /// <returns></returns>

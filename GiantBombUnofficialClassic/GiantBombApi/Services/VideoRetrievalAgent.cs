@@ -92,6 +92,12 @@ namespace GiantBombApi.Services
             return response;
         }
 
+        /// <summary>
+        /// Retrieves an individual video's information by the video id.
+        /// </summary>
+        /// <param name="apiKey">API key unique to the user.</param>
+        /// <param name="videoId">The id of the single video that is to have meta data retrieved.</param>
+        /// <returns></returns>
         public static async Task<VideosResponse> GetVideoContinueAsync(string apiKey, string videoId)
         {
             VideosResponse response = null;

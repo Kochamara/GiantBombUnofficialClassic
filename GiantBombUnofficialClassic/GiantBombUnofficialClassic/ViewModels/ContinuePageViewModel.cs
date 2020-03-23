@@ -4,10 +4,8 @@ using GiantBombApi.Models;
 using GiantBombUnofficialClassic.Services;
 using GiantBombUnofficialClassic.Utilities;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace GiantBombUnofficialClassic.ViewModels
@@ -49,10 +47,12 @@ namespace GiantBombUnofficialClassic.ViewModels
                     AreAdditionalResultsBeingLoaded = true;
                 }
 
+                // Get the saved video times and ids for the user account
                 AllPlaybackPositionsResponse allSavedTimes = await GiantBombApi.Services.VideoPlaybackPositionAgent.GetAllPlaybackPositionsListAsync(_apiKey);
 
                 foreach (PlaybackPosition savedTimne in allSavedTimes?.SavedTimes)
                 {
+                    // Using the id for each saved video, retrieve the video info
                     VideosResponse response = await GiantBombApi.Services.VideoRetrievalAgent.GetVideoContinueAsync(_apiKey, savedTimne.Id);
 
                     if ((response != null) && (response.Status == StatusCode.OK) && (response.Results != null) && (response.Results.Count() > 0))
@@ -86,6 +86,7 @@ namespace GiantBombUnofficialClassic.ViewModels
                                 }
                             }
 
+                            // Determine if the video is 100% completed and should appear in the Finished section of the Continue Videos page
                             if (percentComplete < FINISHED)
                             {
                                 _continueVideos.Add(viewModel);
