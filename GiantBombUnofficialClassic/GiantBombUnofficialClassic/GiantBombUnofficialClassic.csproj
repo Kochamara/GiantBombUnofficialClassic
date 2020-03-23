@@ -114,6 +114,7 @@
     <Compile Include="Utilities\SettingsManager.cs" />
     <Compile Include="Utilities\SystemInformationManager.cs" />
     <Compile Include="ViewModels\BasicViewModel.cs" />
+    <Compile Include="ViewModels\ContinuePageViewModel.cs" />
     <Compile Include="ViewModels\NavigationControlViewModel.cs" />
     <Compile Include="ViewModels\VideoGroupsPageViewModel.cs" />
     <Compile Include="ViewModels\LiveStreamViewModel.cs" />
@@ -126,6 +127,9 @@
     <Compile Include="ViewModels\WelcomePageViewModel.cs" />
     <Compile Include="Views\CategoriesPage.xaml.cs">
       <DependentUpon>CategoriesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ContinuePage.xaml.cs">
+      <DependentUpon>ContinuePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Controls\NavigationControl.xaml.cs">
       <DependentUpon>NavigationControl.xaml</DependentUpon>
@@ -240,6 +244,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Views\CategoriesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ContinuePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

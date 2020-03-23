@@ -252,6 +252,19 @@ namespace GiantBombUnofficialClassic.ViewModels
         }
         private RelayCommand _navigateShowsPageCommand;
 
+        public RelayCommand NavigateContinuePageCommand
+        {
+            get
+            {
+                return _navigateContinuePageCommand ?? (_navigateContinuePageCommand = new RelayCommand(
+                    () =>
+                    {
+                        _navigationManager.Navigate(Views.ShowsPage.PageKey);
+                    }));
+            }
+        }
+        private RelayCommand _navigateContinuePageCommand;
+
         public RelayCommand NavigateSettingsPageCommand
         {
             get
